@@ -1,0 +1,15 @@
+{{ $containerClass := "container" }}
+
+{{ if .layout.is_fluid }}
+  {{ $containerClass = "container_fluid" }}
+{{ end }}
+
+{{ if .config.is_main }}
+  <main id="{{ .config.id }}" class="position-relative {{ .styles.section.background_color }} {{ .styles.section.text_color }}">
+    {{ block "component" . }}{{ end }}
+  </main>
+{{ else }}  
+  <section id="{{ .config.id }}" class="position-relative {{ .styles.section.background_color }} {{ .styles.section.text_color }}" aria-labelledby="{{ .config.aria_labelled_by }}-label">
+    {{ block "component" . }}{{ end }}
+  </section>
+{{ end }}

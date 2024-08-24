@@ -1,0 +1,14 @@
+<div class="wvu-bg-img">
+  {{ if .src }}
+    <img class="object-fit-cover w-100" width="1780px" height="1184px" src="{{ .src }}" />
+  {{ end }}
+  {{ if .styles.background_layers.pattern }}
+    <div class="{{ .styles.background_layers.pattern.option }} {{ .styles.background_layers.pattern.color }}" style="opacity: 0.{{ .styles.background_layers.pattern.opacity }}"></div>
+  {{ end }}
+  {{ if eq .styles.background_layers.texture.enable true }}
+    <div class="d-flex w-100 h-100 justify-content-between position-absolute">
+      <img class="align-self-end" src="/textures/halftone-grunge-dark.svg" width="400px" />
+      <img class="align-self-start" src="/textures/halftone-grunge-dark.svg" width="400px" style="transform: rotate(180deg);"/>
+    </div>
+  {{ end }}
+</div>

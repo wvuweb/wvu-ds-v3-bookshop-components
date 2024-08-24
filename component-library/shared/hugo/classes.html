@@ -1,0 +1,39 @@
+{{ $font := "" }}
+{{ $size := "" }}
+{{ $color := "" }}
+{{ $weight := "" }}
+{{ $spacing := "" }}
+{{ $decoration := "" }}
+{{ $classes := "" }}
+
+{{ if .font }}
+  {{ $font = .font }}
+{{ end }}
+
+{{ if .size }}
+  {{ $size = .size }}
+{{ end }}
+
+{{ if .color }}
+  {{ $color = .color }}
+{{ end }}
+
+{{ if .weight }}
+  {{ $weight = .weight }}
+{{ end }}
+
+{{ if .spacing }}
+  {{ $spacing = .spacing }}
+{{ end }}
+
+{{ if .decoration }}
+  {{ $decoration = .decoration }}
+{{ end }}
+
+{{ if .classes }}
+  {{ $classes = .classes }}
+{{ end }}
+
+{{ $classes = slice $classes $font $size $color $weight $spacing $decoration }}
+
+{{ return $classes }}

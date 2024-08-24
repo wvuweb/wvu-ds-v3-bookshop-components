@@ -1,0 +1,15 @@
+{{ $size := "" }}
+
+{{ if lt (len .heading) 20 }}
+  {{ $size = "display-1" }}
+{{ else if lt (len .heading) 30 }}
+  {{ $size = "display-2" }}
+{{ else if lt (len .heading) 30 }}
+  {{ $size = "display-3" }}
+{{ else if lt (len .heading) 40 }}
+  {{ $size = "display-4" }}
+{{ else }}
+  {{ $size = "display-5" }}
+{{ end }}
+
+{{ return $size }}

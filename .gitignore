@@ -1,0 +1,8 @@
+node_modules
+public
+resources
+.hugo_build.lock
+data/collections_names.json
+data/collections.json
+data/nav_section_names.json
+.DS_Store
