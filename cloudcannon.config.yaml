@@ -6,3 +6,4 @@ collections_config:
     _enabled_editors:
       - content
       - visual
+data_config: true

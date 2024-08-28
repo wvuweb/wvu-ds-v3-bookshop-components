@@ -4,6 +4,7 @@
     <div class="row">
       {{ range .elements.columns }}
         <div class="{{ range .config.column_widths }}{{ . }}{{ end }}">
+          {{ partial "bookshop_bindings" `.Params.column_blocks` }}
           {{ partial "bookshop_partial" (slice "column" .column_blocks) }}
         </div>
       {{ end }}
