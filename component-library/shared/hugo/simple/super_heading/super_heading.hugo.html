@@ -1,0 +1,3 @@
+<p class="{{ range .styles.text }}{{ . }} {{ end }}">
+  <span class="fa-regular fa-{{ .elements.icon }}"></span> <span class="{{ range .styles.label }}{{ . }} {{ end }}">{{ .elements.label }}</span> {{ .elements.text }}
+</p>

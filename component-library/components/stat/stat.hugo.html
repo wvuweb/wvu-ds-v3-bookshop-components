@@ -1,0 +1,15 @@
+<p>
+  {{ if .elements.pre }}
+    {{ .elements.pre }}
+  {{ end }}
+  
+  <span class="d-block {{ .styles.stat.font }} {{ .styles.stat.size }} {{ .styles.stat.color }}">{{ .elements.stat }}</span>
+  
+  {{ if .elements.post }}
+    {{ .elements.post }}
+  {{ end }}
+
+  {{ if .elements.source }}
+    <span class="d-block"><em>{{ .elements.source }}</em></span>
+  {{ end }}
+</p>

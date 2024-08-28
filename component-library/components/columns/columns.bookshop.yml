@@ -1,0 +1,35 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: "Columns"
+  description:
+  icon:
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  elements:
+    background_image:
+      src: "https://designsystemv2demo.sandbox.wvu.edu/files/e4742958-d585-48b8-ade6-7f45ab929897/1780x1780"
+      alt:
+    heading: Test Heading
+    columns:
+      - components: [bookshop:structure:column_blocks]
+        config:
+          column_widths:
+            xxl:
+            xl:
+            lg:
+            md:
+            sm: col
+    postscript: Test Postscript
+  config:
+  layout:
+  styles:
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:

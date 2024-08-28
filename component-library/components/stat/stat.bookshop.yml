@@ -1,15 +1,30 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - content_blocks
-  label: "Simple Super_heading"
+    - column_blocks
+  label: "Stat"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  text: "Hello World!"
+  elements:
+    pre: "According to Niche"
+    stat: "93%"
+    post: "job placement rate (two years after graduation)"/
+    source:
+  config:
+    source:
+      disable: false
+  styles:
+    container:
+      margin_bottom: "mb-4"
+    stat:
+      font: "wvu-shout"
+      size: "display-1"
+      color: "text-wvu-gold"
+    divider:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

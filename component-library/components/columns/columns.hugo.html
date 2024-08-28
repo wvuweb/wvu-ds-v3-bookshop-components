@@ -1,0 +1,12 @@
+<section>
+  <div class="container">
+    <h2>Column Example</h2>
+    <div class="row">
+      {{ range .elements.columns }}
+        <div class="{{ range .config.column_widths }}{{ . }}{{ end }}">
+          {{ partial "bookshop_partial" (slice "column" .column_blocks) }}
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

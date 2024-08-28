@@ -1,0 +1,17 @@
+<main class="py-6">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-3">
+        {{ partial "bookshop_partial" (slice "menu_sidebar" (dict "menuID" "design_system" "page" .))}}
+        {{ partial "bookshop_partial" (slice "menu_sidebar" (dict "menuID" "docs" "page" .)) }}
+      </div>
+      <div class="col-xl-6 ms-xxl-auto">
+        <h1 class="display-3 mb-5">{{ .Title }}</h1>
+        {{ .Content }}
+      </div>
+      <div class="col-xl-3">
+
+      </div>
+    </div>
+  </div>
+</main>
