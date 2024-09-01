@@ -1,10 +1,9 @@
-{{ define "component" }}
+{{ $superHeadingStyles := .styles.super_heading }}
+{{ $headingSize := partial "bookshop_partial" (slice "heading_resizer" (dict "heading" .elements.heading "font" .styles.heading.font)) }}
 
-  {{ $superHeadingStyles := .styles.super_heading }}
-  {{ $headingSize := partial "bookshop_partial" (slice "heading_resizer" (dict "heading" .elements.heading "font" .styles.heading.font)) }}
+{{ partial "bookshop_partial" (slice "section_background" (dict "src" .elements.background_image.src "styles" .styles)) }}
 
-  {{ partial "bookshop_partial" (slice "section_background" (dict "src" .elements.background_image.src "styles" .styles)) }}
-
+<main>
   <div class="container position-relative {{ .layout.padding_y }}">
     <div class="row">
       <div class="col col-md-14 col-xl-12">
@@ -40,7 +39,4 @@
       </div>
     </div>
   </div>
-
-{{ end }}
-
-{{ partial "bookshop_partial" (slice "section_tag" .) }}
+</main>
