@@ -1,9 +1,8 @@
 <section>
-  <div class="container">
-    <h2>Column Example</h2>
-    <div class="row">
+  <div class="container py-8">
+    <div class="row {{ .config.justify_content }} {{ range .config.gutters }}{{ . }} {{ end }}">
       {{ range .elements.columns }}
-        <div class="{{ range .config.column_widths }}{{ . }}{{ end }}">
+        <div class="{{ range .config.column_widths }}{{ . }}{{ end }} {{ .config.text_align }}">
           {{ partial "bookshop_bindings" `.Params.column_blocks` }}
           {{ partial "bookshop_partial" (slice "column" .column_blocks) }}
         </div>

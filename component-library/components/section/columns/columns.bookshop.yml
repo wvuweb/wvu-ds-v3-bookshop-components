@@ -1,6 +1,7 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
+    - column_blocks
     - content_blocks
   label: "Columns"
   description:
@@ -18,13 +19,18 @@ blueprint:
       - components: [bookshop:structure:column_blocks]
         config:
           column_widths:
+            xxxl:
             xxl:
             xl:
             lg:
             md:
             sm: col
+          text_align: text-center
     postscript: Test Postscript
   config:
+    justify_content: justify-content-center
+    gutters:
+      xxl: gx-10
   layout:
   styles:
 

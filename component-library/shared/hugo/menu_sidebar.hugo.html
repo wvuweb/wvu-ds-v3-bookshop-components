@@ -11,7 +11,7 @@
   {{- $menuID := .menuID }}
   
   {{- with index site.Menus $menuID }}
-    <ul class="nav flex-column mb-3">
+    <ul class="nav flex-column mb-4">
       {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
     </ul>
   {{- end }}
@@ -33,15 +33,15 @@
       {{- end }}
       <li class="nav-item">
         <a
-          class="nav-link text-dark text-decoration-none"
+          class="nav-link text-dark text-decoration-none py-1"
           {{- range $k, $v := $attrs }}
             {{- with $v }}
               {{- printf " %s=%q" $k $v | safeHTMLAttr }}
             {{- end }}
           {{- end -}}
-        >{{ $name }}</a>
+        ><strong>{{ $name }}</strong></a>
         {{- with .Children }}
-          <ul class="nav flex-column ms-3">
+          <ul class="nav flex-column mb-4">
             {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
           </ul>
         {{- end }}

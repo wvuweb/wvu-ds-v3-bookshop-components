@@ -2,7 +2,7 @@
 spec:
   structures:
     - column_blocks
-  label: "Stat"
+  label: "Column Profile"
   description:
   icon:
   tags: []
@@ -10,21 +10,11 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   elements:
-    pre: "According to Niche"
-    stat: "93%"
-    post: "job placement rate (two years after graduation)"
-    source:
-  config:
-    source:
-      disable: false
-  styles:
-    container:
-      margin_bottom: "mb-4"
-    stat:
-      font: "wvu-shout"
-      size: "display-1"
-      color: "text-wvu-gold"
-    divider:
+    super_heading:
+      label:
+      text:
+    heading:
+    subheading:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

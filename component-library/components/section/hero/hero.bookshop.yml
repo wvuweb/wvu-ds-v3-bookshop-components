@@ -33,6 +33,7 @@ blueprint:
     vibe: 
     section:
       background_color: "bg-dark"
+      blend_mode: 
       text_color: "text-white"
     background_layers:
       photo:
@@ -59,6 +60,7 @@ blueprint:
     heading:
       font: "wvu-shout"
       color: 
+      case: "text-uppercase"
       decoration: "wvu-bar"
     subheading:
       font: "helvetica-neue-bold"
