@@ -1,0 +1,110 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: "Hero"
+  description:
+  icon:
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  content:
+    background_image:
+      image:
+      alt:
+    heading:
+    lead:
+    body:
+    ctas:
+  config:
+    is_main: false
+    id:
+    aria_labelledby:
+  layout:
+    align: left
+    vertical_space: py-8
+  styles:
+    vibe: Down to Business 1
+    background_c: bg-dark
+    bg_image_blend_mode: Normal
+    text_c: text-white
+    heading_size: display-2
+    heading_c: text-white
+    heading_extras:
+    ctas: buttons
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  background_c:
+    label: Background Color
+    type: select
+    options:
+      allow_empty: false
+      values:
+      - name: Dark
+        id: bg-dark
+      - name: WVU Gold
+        id: bg-wvu-gold
+  heading_size:
+    label: Heading Size
+    type: select
+    options:
+      allow_empty: false
+      values:
+      - name: Display 1
+        id: display-1
+      - name: Display 2
+        id: display-2
+  heading_c:
+    label: Heading Color
+    type: select
+    options:
+      allow_empty: false
+      values:
+      - name: Dark
+        id: text-dark
+      - name: White
+        id: text-white
+      - name: WVU Gold
+        id: text-wvu-gold
+      - name: Sunset to Light Blue
+        id: wvu-text-gradient wvu-gradient-sunset-light-blue
+  heading_extras:
+    label: Heading Extras
+    type: multiselect
+    options:
+      allow_empty: true
+      values:
+      - name: Echo Outline
+        id: wvu-text-echo-outline
+      - name: Echo Shadow
+        id: wvu-text-echo-shadow
+  text_c:
+    label: Text Color
+    type: select
+    options:
+      allow_empty: false
+      values:
+      - name: Dark
+        id: text-dark
+      - name: White
+        id: text-white
+      - name: WVU Gold
+        id: text-wvu-gold
+  vibe:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        - name: WVU Experience 1
+          id: wvu-experience-1
+        - name: Down to Business 1
+          id: down-to-business-1
+        - name: Discovery 1
+          id: discovery-1
+        - name: Nostalgic 1
+          id: nostalgic-1

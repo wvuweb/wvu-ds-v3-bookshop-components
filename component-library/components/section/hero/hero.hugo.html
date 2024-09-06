@@ -1,0 +1,65 @@
+{{ $backgroundColor := "bg-dark" }}
+{{ $textColor := "text-dark" }}
+{{ $image := "" }}
+{{ $blendMode := "" }}
+{{ $alt := "" }}
+{{ $vibe := "" }}
+{{ $headingStyles := "" }}
+{{ $headingExtras := "" }}
+{{ $leadStyles := "" }}
+{{ $bodyStyles := "" }}
+
+{{ if and .styles .styles.background_c }}{{ $backgroundColor = .styles.background_c }}{{ end }}
+{{ if and .styles .styles.text_c }}{{ $textColor = .styles.text_c }}{{ end }}
+
+{{ if and .content.background_image .content.background_image.image }}{{ $image = .content.background_image.image }}{{ end }}
+{{ if and .content.background_image .content.background_image.alt }}{{ $image = .content.background_image.alt }}{{ end }}
+
+{{ if and .styles .styles.vibe }}
+  {{ if eq .styles.vibe "wvu-experience-1" }}
+    {{ $headingStyles = "oliviar-black text-uppercase" }}
+    {{ $leadStyles = "h3 iowan-old-style-black-italic" }}
+  {{ else if eq .styles.vibe "down-to-business-1" }}
+    {{ $headingStyles = "wvu-shout" }}
+    {{ $leadStyles = "h3 iowan-old-style-black-italic" }}
+  {{ else if eq .styles.vibe "nostalgic-1" }}
+    {{ $headingStyles = "oliviar-black" }}
+    {{ $leadStyles = "h3 helvetica-neue-light" }}
+  {{ else }}
+    {{ $headingStyles = "display-2 wvu-shout text-uppercase" }}
+    {{ $leadStyles = "h4 helvetica-neue-light" }}
+  {{ end }}
+{{ end }}
+
+{{ if and .styles .styles.heading_extras }}
+  {{ $headingExtras = .styles.heading_extras }}
+{{ end }}
+
+<main id="{{ .config.id }}" class="position-relative py-8 {{ .styles.background_c }} {{ .styles.text_c }}" aria-labelledby="{{ .config.aria_labelledby }}-label">
+  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "blendMode" $blendMode "alt" $alt)) }}
+  <div class="container position-relative {{ .layout.padding_y }}">
+    <div class="row">
+      <div class="col col-md-14 col-xl-12">
+        <div>
+          <h2 id="{{ .config.aria_labelledby }}-label" class="{{ .styles.heading_size }} {{ .styles.heading_c }} {{ $headingStyles }} {{ range .styles.heading_extras }}{{ . }} {{ end }} mb-3" data-text="{{ .content.heading }}">{{ .content.heading }}</h2>
+
+          {{ if .content.lead }}
+            {{ partial "bookshop" (slice "generic/lead" (dict "text" .content.lead "styles" $leadStyles)) }}
+          {{ end }}
+  
+          {{ if .content.body }}
+            <div class="{{ $bodyStyles }}">
+              {{ .content.body | markdownify }}
+            </div>
+          {{ end }}
+  
+          {{ if .content.ctas }}
+            {{ range .content.ctas }}
+              CTA
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
