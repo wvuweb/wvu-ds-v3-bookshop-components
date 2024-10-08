@@ -1,6 +1,6 @@
 <div class="wvu-bg-img">
-  {{ if .src }}
-    <img class="object-fit-cover w-100 {{ .styles.section.blend_mode }}" width="1780px" height="1184px" src="{{ .src }}" />
+  {{ if .image }}
+    <img class="object-fit-cover w-100 {{ .styles.section.blend_mode }}" width="1780px" height="1184px" src="{{ .image }}" />
   {{ end }}
   {{ if .styles.background_layers.pattern }}
     <div class="{{ .styles.background_layers.pattern.option }} {{ .styles.background_layers.pattern.color }}" style="opacity: 0.{{ .styles.background_layers.pattern.opacity }}"></div>

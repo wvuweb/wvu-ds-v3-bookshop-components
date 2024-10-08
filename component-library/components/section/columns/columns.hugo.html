@@ -1,8 +1,12 @@
+{{ $padding := "py-8" }}
+
+{{ if and .layout .layout.padding }}{{ $padding = .layout.padding }}{{ end }}
+
 <section>
-  <div class="container py-8">
-    <div class="row {{ .config.justify_content }} {{ range .config.gutters }}{{ . }} {{ end }}">
-      {{ range .elements.columns }}
-        <div class="{{ range .config.column_widths }}{{ . }}{{ end }} {{ .config.text_align }}">
+  <div class="container {{ $padding }}">
+    <div class="row {{ .layout.justify_content }} {{ range .layout.gutters }}{{ . }} {{ end }}">
+      {{ range .columns }}
+        <div class="{{ range .layout.column_widths }}{{ . }}{{ end }} {{ .layout.text_align }}">
           {{ partial "bookshop_bindings" `.Params.column_blocks` }}
           {{ partial "bookshop_partial" (slice "column" .column_blocks) }}
         </div>

@@ -11,8 +11,7 @@ spec:
 blueprint:
   content:
     background_image:
-      image:
-      alt:
+    alt_text:
     heading:
     lead:
     body:

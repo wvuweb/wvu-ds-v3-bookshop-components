@@ -10,28 +10,27 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  elements:
-    background_image:
-      src: "https://designsystemv2demo.sandbox.wvu.edu/files/e4742958-d585-48b8-ade6-7f45ab929897/1780x1780"
-      alt:
-    heading: Test Heading
-    columns:
-      - components: [bookshop:structure:column_blocks]
-        config:
-          column_widths:
-            xxxl:
-            xxl:
-            xl:
-            lg:
-            md:
-            sm: col
-          text_align: text-center
-    postscript: Test Postscript
-  config:
+  background_image:
+    image:
+    alt:
+  heading: Test Heading
+  columns:
+    - column_blocks: [bookshop:structure:column_blocks]
+      layout:
+        column_widths:
+          xxxl:
+          xxl:
+          xl:
+          lg:
+          md:
+          sm: col
+        text_align: text-center
+  postscript: Test Postscript
+  layout:
+    padding:
     justify_content: justify-content-center
     gutters:
       xxl: gx-10
-  layout:
   styles:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
