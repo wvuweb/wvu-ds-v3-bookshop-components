@@ -16,6 +16,8 @@ blueprint:
     lead:
     body:
     ctas:
+    postscript:
+    postscript_links:
   config:
     is_main: false
     id:
