@@ -62,7 +62,7 @@
 
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
-  {{ else if and (site.Params.env_bookshop_live) (.config.hide_collection_pages) .student }}
+  {{ else if and (site.Params.env_bookshop_live) (not .show_content) .student }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Hide collection pages' is currently selected in this component to speed up the editing of other areas - to see the pages here uncheck 'hide collection pages'" ) ) }}
   {{ else }}
     
