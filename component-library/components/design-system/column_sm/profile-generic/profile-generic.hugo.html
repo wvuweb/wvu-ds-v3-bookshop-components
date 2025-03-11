@@ -1,0 +1,54 @@
+{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
+    
+  <div class="{{ .styles.container }}">
+    <div class="row gx-0">
+      <div class="col-9">
+        <div class="{{ .styles.image_margin }}">
+          <div class="ratio ratio-1x1 bg-light {{ .styles.image_container }}">
+            {{ if .thumbnail }}
+              {{ $src := .thumbnail }}
+              {{- if not site.Params.env_bookshop_live -}}
+                {{ $image := "" }}
+                {{/*  Get the image, either from its remote or local source  */}}
+                {{ if hasPrefix $src "http"}}
+                  {{ $image = resources.GetRemote .thumbnail }}
+                {{ else }}
+                  {{ $image = resources.Get .thumbnail }}
+                {{ end }}
+
+                {{/* Resize images and add them to a variable  */}}
+                {{ if and $image (ne $image.MediaType.SubType "svg") }}
+                  {{ $src = ($image.Fill (printf "%dx%d webp" 100 100)).RelPermalink }}
+                {{ end }}
+              {{- end -}}
+              <img src="{{ $src }}" alt="Portrait of {{ .heading }}" />
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      <div class="col-15">
+        {{ with .superheading }}
+          <div class="{{ .styles.label }}">
+            <p>
+              {{ range . }}
+                <span class="d-block">{{ . }}</span>
+              {{ end }}
+            </p>
+          </div>
+        {{ end }}
+        <div class="">
+          <h3 class="wvu-shout">{{ .heading }}</h3>
+          {{ with .subheading }}
+            <p class="fs-5">{{ range . }}<span class="d-block">{{ . }}</span>{{ end }}</p>
+          {{ end }}
+        </div>
+      </div>
+      <div class="col-24 p-4">
+        {{ range .lists }}
+          <p><span class="wvu-shout text-wvu-accent--yellow">{{ .label }}:</span> {{ range .items }}{{ . }}; {{ end }}</p>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+
+{{ end }}
