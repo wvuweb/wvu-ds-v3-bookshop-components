@@ -1,10 +1,10 @@
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
     
-  <div class="{{ .styles.container }}">
+  <div class="">
     <div class="row gx-0">
       <div class="col-9">
-        <div class="{{ .styles.image_margin }}">
-          <div class="ratio ratio-1x1 bg-light {{ .styles.image_container }}">
+        <div class="">
+          <div class="ratio ratio-1x1 bg-light">
             {{ if .thumbnail }}
               {{ $src := .thumbnail }}
               {{- if not site.Params.env_bookshop_live -}}
