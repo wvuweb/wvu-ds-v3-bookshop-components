@@ -1,9 +1,9 @@
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-  <section class="section-component c-link-lists py-7 position-relative">
+  <section class="section-component c-link-lists py-6 position-relative">
     <div class="container {{ .styles.margin }}">    
       <div class="row">
         <div class="col-xxl-18 mx-xxl-auto">
-          <div class="p-4 p-xl-5 p-xxl-6 bg-white wvu-z-index-content" style="background-color: inherit;">
+          <div class="p-5 p-xl-6 bg-white wvu-z-index-content" style="background-color: inherit;">
             {{ range $index, $element := .lists }}
               <div class="{{ if ne $index 0 }}border-top border-1 border-wvu-neutral--warm-gray-light py-5{{ else }}pb-5{{ end }}">
                 <div class="row">
