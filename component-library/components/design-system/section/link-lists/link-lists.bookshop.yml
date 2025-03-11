@@ -22,9 +22,8 @@ blueprint:
           url:
   config:
     edit_mode_only: false
-    is_main: true
-    id:
-    aria_labelledby:
+  styles:
+    margin:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
