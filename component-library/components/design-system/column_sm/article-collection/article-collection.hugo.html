@@ -7,8 +7,8 @@
 
 {{ $tags := slice }}
 
-{{ if .tags }}
-  {{ $tags = .tags }}
+{{ if .tagged_as }}
+  {{ $tags = .tagged_as }}
 {{ end }}
 
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}

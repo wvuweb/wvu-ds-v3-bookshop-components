@@ -4,7 +4,7 @@
 {{ if not site.Data }}
   {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This content will not display inside the bookshop browser." )) }}
 {{ else if and (site.Params.env_bookshop_live) (not .show_content) }}
-  {{ partial "bookshop" (slice "design-system/generic/sitewide-component-tooltip" (dict "text" "Sitewide components will not display inside the live editor unless Show Content is set to <strong>True.</strong>" "backgroundColor" "bg-light")) }}
+  {{ partial "bookshop" (slice "design-system/generic/sitewide-component-tooltip" (dict "text" "Sitewide components will not display inside the live editor unless <strong>Show Content</strong> is set to <strong>True.</strong> Setting <strong>Show Content</strong> to <strong>False</strong> will speed up live editing of the page." "backgroundColor" "bg-light")) }}
 {{ else }}
   {{ range site.Data.sitewide_components }}
     {{ $title := .title | urlize }}
