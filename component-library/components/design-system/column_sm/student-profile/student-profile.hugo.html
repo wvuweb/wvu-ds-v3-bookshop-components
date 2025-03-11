@@ -12,7 +12,7 @@
   {{ $vibe = .styles.vibe }}
 {{ end }}
 
-{{ if not .config.hide_collection_pages }}
+{{ if .config.show_content }}
 
   {{ $vibes := site.Data.styles.components_column_sm_student_profile_vibes }}
 
@@ -95,7 +95,7 @@
         </div>
         <div class="col-24 p-4">
           {{ with $majors }}
-            <p><span class="wvu-shout text-wvu-accent--yellow">Programs:</span> {{ range . }}{{ . }}; {{ end }}</p>
+            <p><span class="wvu-shout text-wvu-accent--yellow">Majors:</span> {{ range . }}{{ . }}; {{ end }}</p>
           {{ end }}
         </div>
       </div>

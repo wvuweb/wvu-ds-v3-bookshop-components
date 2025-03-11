@@ -19,7 +19,7 @@ blueprint:
     - Major in X
   config:
     edit_mode_only: false
-    hide_collection_pages: true
+    show_content: false
   styles:
     vibe: wvu_experience
     container:
