@@ -10,24 +10,9 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   student:
-  superheading:
-  heading:
-  name:
-  subheading:
-  graduation_year:
-  majors:
-    - Major in X
   config:
     edit_mode_only: false
     show_content: false
-  styles:
-    vibe: wvu_experience
-    container:
-    image_margin:
-    image_container:
-    label:
-    heading:
-    hometown:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
