@@ -26,6 +26,11 @@ _inputs:
     type: array
     options:
       preview:
+        metadata:
+          - icon: nature_people
+            icon_color:
+              - key: color
+              - '#ff0000'
         text:
           - key: contact.name
   contact:
