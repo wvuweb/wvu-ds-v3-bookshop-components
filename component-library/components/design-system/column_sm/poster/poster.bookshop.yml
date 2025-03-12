@@ -11,11 +11,15 @@ spec:
 blueprint:
   heading: Headline
   subheading:
-  config:
-    edit_mode_only: false
+  body:
+  ctas:
+    - text:
+      url:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  body:
+    type: markdown

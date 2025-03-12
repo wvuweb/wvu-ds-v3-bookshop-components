@@ -1,20 +1,16 @@
-{{ $font := "oliviar-black" }}
-{{ $size := "display-1" }}
-{{ $color := "text-wvu-blue" }}
-
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
   <div class="c-factoids">
     <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
     {{ range .items }}
-      <p class="{{ $color }}">
+      <p class="">
         {{ if .pre }}
-          <span class="d-block helvetica-neue-bold">{{ .pre }}</span>
+          <span class="d-block helvetica-neue-bold small">{{ .pre }}</span>
         {{ end }}
         
-        <span class="d-block {{ $font }} {{ $size }}">{{ .stat }}</span>
+        <span class="d-block oliviar-black display-4">{{ .stat }}</span>
         
         {{ if .post }}
-          <span class="d-block helvetica-neue-bold">{{ .post }}</span>
+          <span class="d-block helvetica-neue-bold small">{{ .post }}</span>
         {{ end }}
 
         {{ if .source }}

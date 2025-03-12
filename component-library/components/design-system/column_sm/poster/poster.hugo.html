@@ -1,3 +1,13 @@
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-
+  <div class="p-4 bg-wvu-blue text-white h-100">
+    <h2 class="wvu-shout text-wvu-gold">{{ .heading }}</h2>
+    <p class="helvetica-neue-light">{{ .subheading }}</p>
+    {{ .body | markdownify }}
+    
+    <ul class="wvu-ul-chevrons wvu-ul-chevrons-wvu-gold">
+      {{ range .ctas }}
+        <li><a href="{{ .url }}">{{ .text }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
 {{ end }}

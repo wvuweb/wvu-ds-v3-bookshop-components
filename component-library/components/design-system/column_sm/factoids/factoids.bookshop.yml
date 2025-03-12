@@ -11,10 +11,10 @@ spec:
 blueprint:
   heading: By the Numbers
   items:
-    - pre: "According to Niche"
-      stat: "93%"
-      post: "job placement rate (two years after graduation)"
-      source:
+    - pre: Pre text
+      stat: "95%"
+      post: Post text.
+      source: Source
   config:
     edit_mode_only: false
     source:
