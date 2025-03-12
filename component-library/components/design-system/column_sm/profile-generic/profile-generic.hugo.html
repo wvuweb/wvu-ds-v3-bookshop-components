@@ -1,5 +1,7 @@
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-    
+  {{ if .heading }}
+    <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
+  {{ end }}
   <div class="">
     <div class="row gx-0">
       <div class="col-9">

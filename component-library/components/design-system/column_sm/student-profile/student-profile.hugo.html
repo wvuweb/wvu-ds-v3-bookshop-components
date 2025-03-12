@@ -26,6 +26,10 @@
 
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
+  {{ if .heading }}
+    <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
+  {{ end }}
+
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
   {{ else if and (site.Params.env_bookshop_live) (not .config.show_content) .student }}
@@ -33,9 +37,9 @@
   {{ else }}
     
     <div class="{{ .styles.container }}">
-      <div class="row gx-0">
+      <div class="row gx-3">
         <div class="col-9">
-          <div class="{{ .styles.image_margin }}">
+          <div class="{{ .styles.image_margin }} mb-3">
             <div class="ratio ratio-1x1 bg-light {{ .styles.image_container }}">
               {{ if $image }}
                 {{ $src := $image }}
@@ -58,24 +62,27 @@
           </div>
         </div>
         <div class="col-15">
-          {{ if $graduationYear }}
-            <div class="{{ .styles.label }}">
-              <p>
-                <span class="d-block">Class of {{ $graduationYear }}</span>
-              </p>
-            </div>
-          {{ end }}
-          <div class="">
-            <h3 class="wvu-shout {{ .styles.heading }}">{{ $name }}</h3>
-            {{ if $hometown }}
-              <p class="fs-5 {{ .styles.hometown }}">{{ $hometown }}</p>
+          <div class="h-100 d-flex w-100 flex-column justify-content-between">
+            {{ if $graduationYear }}
+              <div class="h6 text-uppercase small oliviar-black {{ .styles.label }}">
+                <p>
+                  <span class="d-block">Class of {{ $graduationYear }}</span>
+                </p>
+              </div>
             {{ end }}
+            <div class="">
+              <h3 class="wvu-shout h5 {{ .styles.heading }}">{{ $name }}</h3>
+              {{ if $hometown }}
+                <p class="small {{ .styles.hometown }}"><span class="fa-regular fa-location-dot"></span> {{ $hometown }}</p>
+              {{ end }}
+            </div>
           </div>
         </div>
-        <div class="col-24 p-4">
+        <div class="col-24">
           {{ with $majors }}
-            <p><span class="wvu-shout text-wvu-accent--yellow">Majors:</span> {{ range . }}{{ .title }}; {{ end }}</p>
+            <p class="small"><span class="wvu-shout">Majors:</span> {{ range . }}{{ .title }}; {{ end }}</p>
           {{ end }}
+          <a href="{{ .path }}" class="text-decoration-none small">View Profile <span class="fa-regular fa-arrow-circle-right"></span></a>
         </div>
       </div>
     </div>
