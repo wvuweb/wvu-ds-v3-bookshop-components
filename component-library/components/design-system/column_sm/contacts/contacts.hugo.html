@@ -1,20 +1,38 @@
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
+  <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
+
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
   {{ else if and (site.Params.env_bookshop_live) (not .config.show_content) }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Hide collection pages' is currently selected in this component to speed up the editing of other areas - to see the pages here uncheck 'hide collection pages'" ) ) }}
   {{ else }}
-    {{ $contacts := site.Data.people }}
-
-    <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
+    {{ $contacts := site.Data.people_data }}
 
     {{ range .people }}
       {{ $contact := .contact }}
       {{ range $contacts }}
-        {{ if and .uuid (eq .uuid $contact) }}
+        {{ if eq .uuid $contact }}
           <div class="row mb-4">
             {{ if .image }}
+
+              {{ $src := .profile_image }}
+
+              {{- if not site.Params.env_bookshop_live -}}
+                {{ $image := "" }}
+                {{/*  Get the image, either from its remote or local source  */}}
+                {{ if hasPrefix $src "http"}}
+                  {{ $image = resources.GetRemote $src }}
+                {{ else }}
+                  {{ $image = resources.Get $src }}
+                {{ end }}
+
+                {{/* Resize images and add them to a variable  */}}
+                {{ if and $image (ne $image.MediaType.SubType "svg") }}
+                  {{ $src = ($image.Fill (printf "%dx%d webp" 100 100)).RelPermalink }}
+                {{ end }}
+              {{- end -}}
+
               <div class="col-8">
                 <div class="ratio ratio-1x1">
                   <img class="object-fit" src="{{ .image.src }}" alt="{{ if .image.alt }}{{ .image.alt }}{{ else }}Portrait of {{ .name }}{{ end }}" />
@@ -23,12 +41,12 @@
             {{ end }}
             <div class="col">
               <h3 class="h5">{{ .name }}</h3>
-              <p>
-                {{ with .phone }}
-                  <span class="fa-solid fa-phone"></span> <a href="tel:{{ . }}">{{ . }}</a><br>
+              <p class="small">
+                {{ range .phone }}
+                  <span class="fa-solid fa-phone"></span> <a href="tel:{{ .number }}">{{ .number }}</a><br>
                 {{ end }}
-                {{ with .email }}
-                  <span class="fa-solid fa-envelope"></span> <a href="mailto:{{ . }}">{{ . }}</a>
+                {{ range .email }}
+                  <span class="fa-solid fa-envelope"></span> <a href="mailto:{{ .email }}">{{ .email }}</a>
                 {{ end }}
               </p>
             </div>
