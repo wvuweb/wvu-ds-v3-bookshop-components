@@ -9,7 +9,9 @@
   {{ else }}
     {{ $contacts := site.Data.people_data }}
 
+    {{ $label := .label }}
     {{ range .people }}
+      {{ with $label }}<p class="helvetica-neue-bold">{{ . }}</p>{{ end }}
       {{ $contact := .contact }}
       {{ range $contacts }}
         {{ if eq .uuid $contact }}
