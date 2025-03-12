@@ -14,6 +14,7 @@ blueprint:
     - contact:
   config:
     edit_mode_only: false
+    show_content: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
