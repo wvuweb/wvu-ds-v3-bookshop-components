@@ -8,7 +8,7 @@
     <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
 
     {{ range .people }}
-      {{ $contact := .person }}
+      {{ $contact := .contact }}
       {{ range $contacts }}
         {{ if and .uuid (eq .uuid $contact) }}
           <div class="row mb-4">

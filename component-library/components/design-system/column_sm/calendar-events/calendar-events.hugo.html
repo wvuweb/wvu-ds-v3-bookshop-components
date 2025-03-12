@@ -2,5 +2,12 @@
   {{ if .heading }}
     <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
   {{ end }}
-  {{ .event_feed | safeHTML }}
+  {{ if site.Params.env_bookshop_live }}
+    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "Events will show on live site." ) ) }}
+  {{ else }}
+    {{ .event_feed | safeHTML }}
+  {{ end }}
+  {{ if and .url .link_text }}
+    <a class="text-decoration-none small" href="{{ .url }}">{{ .link_text }} <span class="fa-regular fa-arrow-circle-right"></span></a>
+  {{ end }}
 {{ end }}

@@ -11,7 +11,7 @@ spec:
 blueprint:
   heading: Contacts
   people:
-    - person:
+    - contact:
   config:
     edit_mode_only: false
 

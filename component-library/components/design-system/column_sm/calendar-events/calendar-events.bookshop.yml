@@ -1,7 +1,10 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
+    - column_blocks
     - column_blocks_sm
+    - detail_blocks
+    - sidebar_blocks
   label: "Calendar Events"
   description:
   icon:
@@ -12,6 +15,8 @@ blueprint:
   heading: Events
   subheading:
   event_feed:
+  link_text:
+  url:
   config:
     edit_mode_only: false
 
@@ -20,3 +25,5 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  event_feed:
+    type: textarea
