@@ -24,17 +24,3 @@ preview:
 _inputs:
   people:
     type: array
-    options:
-      preview:
-        metadata:
-          - icon: nature_people
-            icon_color:
-              - key: color
-              - '#ff0000'
-        text:
-          - key: contact.name
-  contact:
-    options:
-      preview:
-        text:
-          - key: name
