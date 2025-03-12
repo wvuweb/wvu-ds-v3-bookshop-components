@@ -27,4 +27,9 @@ _inputs:
     options:
       preview:
         text:
+          - key: contact.name
+  contact:
+    options:
+      preview:
+        text:
           - key: name
