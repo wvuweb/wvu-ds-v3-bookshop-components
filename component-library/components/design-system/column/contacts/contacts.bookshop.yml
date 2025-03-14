@@ -11,20 +11,14 @@ spec:
 blueprint:
   heading: Contacts
   people:
-    - person:
+    - label: "For Inquiries, Contact"
+      contact:
   config:
     edit_mode_only: false
+    show_content: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  person:
-    type: select
-    options:
-      preview:
-        text:
-          - key: name
-      values: data.people[*]
-      value_key: id

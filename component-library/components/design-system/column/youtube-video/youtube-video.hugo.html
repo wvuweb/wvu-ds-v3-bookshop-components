@@ -1,8 +1,8 @@
 {{ if .heading }}
   <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
 {{ end }}
-<div class="p-4 bg-light mb-4">
+<div class="mb-4 mb-xl-0">
   {{ partial "bookshop" (slice "design-system/generic/youtube-video" .) }}
-  <h2 class="h4">{{ .title }}</h2>
+  <h2 class="h4 oliviar-black">{{ .title }}</h2>
   <p class="mb-0">{{ .description }}</p>
 </div>
