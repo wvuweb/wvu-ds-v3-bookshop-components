@@ -14,7 +14,11 @@ blueprint:
   subheading:
   styles:
     vibe: down-to-business
-    color_palette:
+    background_c:
+    gradient_1:
+    gradient_2:
+    gradient_3:
+    heading_c:
     enable_blend: false
     enable_pattern: false
     tint_opacity: 0.5

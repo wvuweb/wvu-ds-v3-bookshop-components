@@ -49,8 +49,23 @@
   {{ end }}
   {{ if and .styles .styles.enable_pattern (eq $pattern "wvu-bg-texture") (not .image) }}
     <div class="d-flex w-100 h-100 justify-content-between position-absolute">
-      <img class="align-self-end" src="/textures/halftone-grunge-dark.svg" width="400px" />
-      <img class="align-self-start" src="/textures/halftone-grunge-dark.svg" width="400px" style="transform: rotate(180deg);"/>
+      
     </div>
+  {{ end }}
+  {{ if .styles }}
+    {{ if or .styles.gradient_1 .styles.gradient_2 .styles.gradient_3 }}
+      <div class="d-flex w-100 h-100 justify-content-between position-absolute" style="background:
+        {{- if .styles.gradient_1 -}}
+          linear-gradient(200deg, rgba({{ .styles.gradient_1 }}, 0.8), transparent),
+        {{- end }}
+        {{ if .styles.gradient_2 }}
+          linear-gradient(300deg, rgba({{ .styles.gradient_2 }}, 0.8), transparent),
+        {{ end }}
+        {{ if .styles.gradient_3 }}
+          linear-gradient(100deg, rgba({{ .styles.gradient_3 }}, 0.8), transparent)
+        {{ end }}
+      ">  
+      </div>
+    {{ end }}
   {{ end }}
 </div>
