@@ -13,7 +13,7 @@
     {{ if not site.Params.env_bookshop_live }}
       {{ $contacts = where site.RegularPages "Params.is_contact" true }}
     {{ else }}
-      {{ $contacts = site.Data.people_data }}
+      {{ $contacts = where site.Data.people_data ".is_contact" true }}
     {{ end }}
 
     {{ $label := .label }}
