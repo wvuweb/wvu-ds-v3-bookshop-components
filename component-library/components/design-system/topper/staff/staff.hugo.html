@@ -54,11 +54,8 @@
 
               {{ if .params.staff_contact_info }}
                 <div class="mt-4">
-                  {{ range .params.staff_contact_info }}
-                    <span class="d-block">
-                      {{ partial "bookshop" . }}
-                    </span>
-                  {{ end }}
+                  {{ partial "bookshop_bindings" `.params.staff_contact_info` }}
+                  {{ partial "bookshop_partial" (slice "page" .params.staff_contact_info) }}
                 </div>
               {{ end }}
             </div>
