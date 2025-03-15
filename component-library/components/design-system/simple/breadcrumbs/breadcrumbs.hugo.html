@@ -1,0 +1,42 @@
+{{ $topper := "" }}
+{{- $color := "bg-white text-dark" -}}
+
+{{ if .params.topper }}
+  {{ if eq .params.topper._bookshop_name "default" }}
+    {{ $color = "text-dark" }}
+  {{ end }}
+  {{ if and .params.topper.styles .params.topper.styles.background_c }}
+    {{ $color = .params.topper.styles.background_c }}
+  {{ end }}
+{{ else if and .params.article_topper.styles .params.article_topper.styles.background_c }}
+  {{ $color = .params.article_topper.styles.background_c }}
+{{ else if and .params.faculty_profile_topper.styles .params.faculty_profile_topper.styles.background_c }}
+  {{ $color = .params.faculty_profile_topper.styles.background_c }}
+{{ else if and .params.organization_topper.styles .params.organization_topper.styles.background_c }}
+  {{ $color = .params.organization_topper.styles.background_c }}
+{{ else if and .params.staff_profile_topper.styles .params.staff_profile_topper.styles.background_c }}
+  {{ $color = .params.staff_topper.styles.background_c }}
+{{ else if and .params.student_profile_topper.styles .params.student_profile_topper.styles.background_c }}
+  {{ $color = .params.student_profile_topper.styles.background_c }}
+{{ end }}
+
+<div class="d-flex position-relative wvu-z-index-breadcrumbs" style="height: 0px;">
+  <div class="position-absolute mt-3 w-100 text-start" style="top: 0px;">
+    <div class="container">
+      <ul class="list-inline d-inline-block small mt-2 {{ $color }} rounded-2 px-2 py-1 mx-n2 my-n1" style="background-color: inherit;">
+        {{ $breadcrumb := split (replaceRE `\/[0-9]{4}\/[0-9]{2}\/[0-9]{2}` "" (trim .rel_permalink "/" )) "/" }}
+        {{ $crumb_link := "/" }}
+        {{ $rel_permalink := .rel_permalink }}
+        <li class="list-inline-item me-0"><a class="{{ $color }}" href="/">Home</a></li> / 
+        {{ range $breadcrumb }}
+          {{ $crumb_link = print $crumb_link . "/" }}
+          {{ if ne $rel_permalink $crumb_link }}
+            <li class="list-inline-item me-0"><a class="{{ $color }}" href="{{ $crumb_link }}" style="color: inherit;">{{ title (replace . "-" " ") }}</a></li> / 
+          {{ else }}
+            <li class="list-inline-item active me-0">{{ title (replace . "-" " ") }}</li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+</div>
