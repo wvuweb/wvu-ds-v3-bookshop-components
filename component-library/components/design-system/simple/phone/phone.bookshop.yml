@@ -1,0 +1,22 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - faculty_contact_info
+    - staff_contact_info
+  label: "Phone"
+  description:
+  icon:
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  label: Phone
+  phone_n: (304) 123-4567
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  phone_n:
+    label: Number

@@ -1,0 +1,5 @@
+{{ if .map_link }}
+  <span class="fa-regular fa-building"></span> {{ with .label }}<strong>{{ . }}:</strong>{{ end }} <a class="{{ .classes }}" href="tel:{{ .map_link }}">{{ .location }}</a>
+{{ else }}
+  <span class="fa-regular fa-building"></span> {{ with .label }}<strong>{{ . }}:</strong>{{ end }} {{ .location }}
+{{ end }}
