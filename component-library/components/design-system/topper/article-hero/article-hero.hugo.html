@@ -30,7 +30,7 @@
   {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .alt_text "styles" .article_topper.styles)) }}
   <div class="container wvu-z-index-content py-6">
     <div class="row">
-      <div class="col-xl-16 mx-xl-auto">
+      <div class="col-xl-16 mx-xl-auto text-center">
         <h1 id="big-search-1-label" class="display-5 iowan-old-style mb-4">{{ if .article_topper.heading }}{{ .article_topper.heading }}{{ else }}{{ .title }}{{ end }}</h1>
         {{ if .article_topper.subheading }}
           <p class="helvetica-neue-light fs-3 mb-0">{{ .article_topper.subheading }}</p>
