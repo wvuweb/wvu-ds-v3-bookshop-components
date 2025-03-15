@@ -1,7 +1,6 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - topper
     - article_topper
   label: "Topper - Article Hero"
   description:
@@ -14,8 +13,8 @@ blueprint:
   background_image:
   alt_text:
   heading:
-  show_byline: true
   body_text:
+  show_byline: true
   styles:
     vibe: down-to-business
     background_c:

@@ -1,6 +1,8 @@
 {{ $alt := "" }}
 {{ $sectionMargin := "" }}
 
+{{ $authorList := slice }}
+
 {{ $src := .article_topper.background_image }}
 
 {{ $containerStyles := "" }}
@@ -26,59 +28,89 @@
 
 {{ $format := "Jan 2, 2006" }}
 
-<header id="" aria-labelledby="" class="py-9 text-center bg-dark text-white position-relative">  
+<header id="" aria-labelledby="" class="position-relative bg-light">
   {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .alt_text "styles" .article_topper.styles)) }}
-  <div class="container wvu-z-index-content py-6">
+  <div class="container wvu-z-index-content py-10">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto text-center">
-        <h1 id="big-search-1-label" class="display-5 iowan-old-style mb-4">{{ if .article_topper.heading }}{{ .article_topper.heading }}{{ else }}{{ .title }}{{ end }}</h1>
+        <h1 id="big-search-1-label" class="display-5 iowan-old-style mb-3">{{ if .params.title }}{{ .params.title }}{{ end }}</h1>
         {{ if .params.subheading }}
-          <p class="helvetica-neue-light fs-3 mb-0">{{ .params.subheading }}</p>
+          <p class="helvetica-neue-light fs-4 mb-0">{{ .params.subheading }}</p>
         {{ end }}
-        <p class="mt-5 mb-0 iowan-old-style text-uppercase">{{ .publishDate.Format $format }}</p>
-        <div class="d-flex justify-content-center mt-5">
-
+        <p class="mt-4 mb-0 iowan-old-style text-uppercase">{{ .params.publishDate.Format $format }}</p>
+        <div class="d-flex mt-4 justify-content-center">
           {{ if not site.Data }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
-          {{ else if and (site.Params.env_bookshop_live) (.topper.config.hide_collection_pages) }}
+          {{ else if and (site.Params.env_bookshop_live) (not .topper.config.show_byline) }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Hide dynamic content' is currently selected in this component to speed up the editing of other areas - to see authors here uncheck 'hide dynamic content'" ) ) }}
           {{ else }}
 
-            {{ $authorData := where site.Data.people_data "schema" "author-profile" }}
+            {{ $authorData := slice }}
 
-            {{ $byline := slice }}
-            {{ if .byline }}
-              {{ $byline = .byline }}
+            {{ if not site.Params.env_bookshop_live }}
+              {{ $authorData = where site.RegularPages "Params._schema" "author-profile" }}
+            {{ else }}
+              {{ $authorData = where site.Data.people_data ".schema" "author-profile" }}
             {{ end }}
 
-            {{ $authorList := slice }}
+            {{ $byline := slice }}
+
+            {{ if .params.authors }}
+              {{ $byline = .params.authors }}
+            {{ end }}
+          
             {{ range $authorData }}
-              {{ $author := . }}
+
+              {{ $author := "" }}
+
+              {{ if not site.Params.env_bookshop_live }}
+                {{ $author = .Params }}
+              {{ else }}
+                {{ $author = . }}
+              {{ end }}
+
               {{ range $byline }}
-                {{ if eq .ref $author.uuid }}
+                {{ if eq .author $author.uuid }}
                   {{ $authorList = $authorList | append $author }}
                 {{ end }}
               {{ end }}
             {{ end }}
 
             {{ range $authorList }}
-              {{ if .profile_image }}
-                <div class="ratio ratio-1x1 d-inline-block me-3" style="height: 50px; width: 50px;">
-                  <img class="rounded-circle object-fit h-100 w-100" src="{{ .image.src }}" alt="{{ .image.alt }}" />
+
+              {{- if not site.Params.env_bookshop_live -}}
+                {{ $profileImage := "" }}
+                {{/*  Get the image, either from its remote or local source  */}}
+                {{ if hasPrefix $src "http"}}
+                  {{ $profileImage = resources.GetRemote .profile_image }}
+                {{ else }}
+                  {{ $profileImage = resources.Get .profile_image }}
+                {{ end }}
+
+                {{/* Resize images and add them to a variable  */}}
+                {{ if and $profileImage (ne $profileImage.MediaType.SubType "svg") }}
+                  {{ $src = ($profileImage.Fill (printf "%dx%d webp" 100 100)).RelPermalink }}
+                {{ end }}
+              {{- end -}}
+
+              <div>
+                {{ if .profile_image }}
+                  <div class="ratio ratio-1x1 d-inline-block me-3" style="height: 50px; width: 50px;">
+                    <img class="rounded-circle object-fit h-100 w-100" src="{{ $src }}" alt="{{ .image.alt }}" />
+                  </div>
+                {{ end }}
+                
+                <div class="d-inline-block h-100 text-start">
+                  <p class="small">
+                    <span class="d-block helvetica-neue-bold text-uppercase">{{ .name }}</span>
+                    <span class="d-block helvetica-neue-light text-uppercase">
+                      Role
+                    </span>
+                  </p>
                 </div>
-              {{ end }}
-              
-              <div class="d-inline-block h-100 text-start">
-                <p class="small">
-                  <span class="d-block helvetica-neue-bold text-uppercase">{{ .name }}</span>
-                  <span class="d-block">
-                    {{ range .position }}
-                      {{ . }}
-                    {{ end }}
-                  </span>
-                </p>
               </div>
             {{ end }}
+
           {{ end }}
         </div>
       </div>
