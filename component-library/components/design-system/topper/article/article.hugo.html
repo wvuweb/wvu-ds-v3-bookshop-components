@@ -31,7 +31,7 @@
   <div class="container wvu-z-index-content py-6">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto text-center">
-        <h1 id="big-search-1-label" class="display-5 iowan-old-style mb-3">{{ if .article_topper.heading }}{{ .article_topper.heading }}{{ else }}{{ .params.title }}{{ end }}</h1>
+        <h1 id="big-search-1-label" class="display-5 iowan-old-style mb-3">{{ if .params.title }}{{ .params.title }}{{ end }}</h1>
         {{ if .params.subheading }}
           <p class="helvetica-neue-light fs-4 mb-0">{{ .params.subheading }}</p>
         {{ end }}
