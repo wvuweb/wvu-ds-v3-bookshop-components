@@ -1,12 +1,12 @@
-{{ $src := .params.image }}
+{{ $src := .params.profile_image }}
 
 {{- if not site.Params.env_bookshop_live -}}
   {{ $image := "" }}
   {{/*  Get the image, either from its remote or local source  */}}
   {{ if hasPrefix $src "http"}}
-    {{ $image = resources.GetRemote .params.image_lg }}
+    {{ $image = resources.GetRemote .params.profile_image }}
   {{ else }}
-    {{ $image = resources.Get .params.image_lg }}
+    {{ $image = resources.Get .params.profile_image }}
   {{ end }}
 
   {{/* Resize images and add them to a variable  */}}
@@ -19,7 +19,7 @@
   {{ end }}
 {{- end -}}
 
-<section class="pt-6 {{ .topper.styles.background_c }} position-relative">
+<section class="pt-6 position-relative">
   <div class="container mb-6 wvu-z-index-content">
     <div class="row">
       <div class="col-xl-18 col-xxl-12 mx-xl-auto">
@@ -27,7 +27,7 @@
           <div class="col-lg-6">
             <div class="ratio ratio-1x1">
               <div class="w-100 h-100 overflow-hidden rounded-circle">
-                {{ if .params.image }}
+                {{ if .params.profile_image }}
                   <img class="img-fluid" src="{{ $src}}" alt="" />
                 {{ else }}
                   <img class="img-fluid" src="https://placehold.co/960x960" alt="Placeholder image." />
