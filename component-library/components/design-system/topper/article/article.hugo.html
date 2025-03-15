@@ -26,17 +26,17 @@
 
 {{ $format := "Jan 2, 2006" }}
 
-<header id="" aria-labelledby="" class="position-relative">
+<header id="" aria-labelledby="" class="position-relative bg-light">
   {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .alt_text "styles" .article_topper.styles)) }}
-  <div class="container wvu-z-index-content py-6">
+  <div class="container wvu-z-index-content py-10">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto text-center">
         <h1 id="big-search-1-label" class="display-5 iowan-old-style mb-3">{{ if .params.title }}{{ .params.title }}{{ end }}</h1>
         {{ if .params.subheading }}
           <p class="helvetica-neue-light fs-4 mb-0">{{ .params.subheading }}</p>
         {{ end }}
-        <p class="mt-4 mb-0 iowan-old-style text-uppercase">{{ .publishDate.Format $format }}</p>
-        <div class="d-flex mt-4">
+        <p class="mt-4 mb-0 iowan-old-style text-uppercase">{{ .params.publishDate.Format $format }}</p>
+        <div class="d-flex mt-4 justify-content-center">
           {{ if not site.Data }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
           {{ else if and (site.Params.env_bookshop_live) (not .topper.config.show_byline) }}
@@ -91,19 +91,21 @@
                 {{ end }}
               {{- end -}}
 
-              {{ if .profile_image }}
-                <div class="ratio ratio-1x1 d-inline-block me-3" style="height: 50px; width: 50px;">
-                  <img class="rounded-circle object-fit h-100 w-100" src="{{ $src }}" alt="{{ .image.alt }}" />
+              <div>
+                {{ if .profile_image }}
+                  <div class="ratio ratio-1x1 d-inline-block me-3" style="height: 50px; width: 50px;">
+                    <img class="rounded-circle object-fit h-100 w-100" src="{{ $src }}" alt="{{ .image.alt }}" />
+                  </div>
+                {{ end }}
+                
+                <div class="d-inline-block h-100 text-start">
+                  <p class="small">
+                    <span class="d-block helvetica-neue-bold text-uppercase">{{ .name }}</span>
+                    <span class="d-block helvetica-neue-light text-uppercase">
+                      Role
+                    </span>
+                  </p>
                 </div>
-              {{ end }}
-              
-              <div class="d-inline-block h-100 text-start">
-                <p class="small">
-                  <span class="d-block helvetica-neue-bold text-uppercase">{{ .name }}</span>
-                  <span class="d-block helvetica-neue-light text-uppercase">
-                    Role
-                  </span>
-                </p>
               </div>
             {{ end }}
 
