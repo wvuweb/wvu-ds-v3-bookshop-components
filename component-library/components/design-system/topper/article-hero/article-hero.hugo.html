@@ -1,9 +1,9 @@
 {{ $alt := "" }}
 {{ $sectionMargin := "" }}
-
 {{ $src := .article_topper.background_image }}
-
 {{ $containerStyles := "" }}
+{{ $publishDate := "" }}
+{{ $format := "January 2, 2006" }}
 
 {{- if not site.Params.env_bookshop_live -}}
   {{ $image := "" }}
@@ -24,9 +24,11 @@
   {{ end }}
 {{- end -}}
 
-{{ $publishDate := .params.publishDate }}
-{{ $publishDate = time.AsTime $publishDate }}
-{{ $format := "January 2, 2006" }}
+{{ if .params.publishDate }}
+  {{ $publishDate := .params.publishDate }}
+  {{ $publishDate = time.AsTime $publishDate }}
+  {{ $publishDate = $publishDate.Format $format }}
+{{ end }}
 
 <header id="" aria-labelledby="" class="position-relative bg-light">
   {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .alt_text "styles" .article_topper.styles)) }}
@@ -37,7 +39,7 @@
         {{ if .params.subheading }}
           <p class="helvetica-neue-light fs-4 mb-0">{{ .params.subheading }}</p>
         {{ end }}
-        <p class="mt-4 mb-0 iowan-old-style text-uppercase wvu-text-letter-spacing small">{{ $publishDate.Format $format }}</p>
+        <p class="mt-4 mb-0 iowan-old-style text-uppercase wvu-text-letter-spacing small">{{ $publishDate }}</p>
         <div class="d-flex mt-4 justify-content-center">
           {{ if not site.Data }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
