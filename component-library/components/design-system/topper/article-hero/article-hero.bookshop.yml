@@ -14,7 +14,7 @@ blueprint:
   alt_text:
   heading:
   body_text:
-  show_byline: true
+  show_byline: false
   styles:
     vibe: down-to-business
     background_c:
