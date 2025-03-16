@@ -1,8 +1,6 @@
 {{ $alt := "" }}
 {{ $sectionMargin := "" }}
 
-{{ $authorList := slice }}
-
 {{ $src := .article_topper.background_image }}
 
 {{ $containerStyles := "" }}
@@ -39,89 +37,14 @@
         {{ if .params.subheading }}
           <p class="helvetica-neue-light fs-4 mb-0">{{ .params.subheading }}</p>
         {{ end }}
-        <p class="mt-4 mb-0 iowan-old-style text-uppercase wvu-text-letter-spacing-lg">{{ $publishDate.Format $format }}</p>
+        <p class="mt-4 mb-0 iowan-old-style text-uppercase wvu-text-letter-spacing small">{{ $publishDate.Format $format }}</p>
         <div class="d-flex mt-4 justify-content-center">
           {{ if not site.Data }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
           {{ else if and (site.Params.env_bookshop_live) (not .topper.show_byline) }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Show Byline' is currently set to 'false' to speed up editing. To see the byline in the Live Editor, uncheck 'Show Byline'." ) ) }}
           {{ else }}
-
-            {{ $authorData := slice }}
-
-            {{ if not site.Params.env_bookshop_live }}
-              {{ $authorData = where site.RegularPages "Params._schema" "author-profile" }}
-            {{ else }}
-              {{ $authorData = where site.Data.people_data ".schema" "author-profile" }}
-            {{ end }}
-
-            {{ $byline := slice }}
-
-            {{ if .params.authors }}
-              {{ $byline = .params.authors }}
-            {{ end }}
-          
-            {{ range $authorData }}
-
-              {{ $author := "" }}
-
-              {{ if not site.Params.env_bookshop_live }}
-                {{ $author = .Params }}
-              {{ else }}
-                {{ $author = . }}
-              {{ end }}
-
-              {{ range $byline }}
-                {{ $author = dict
-                  "name" $author.name
-                  "profileImage" $author.profile_image
-                  "role" .role
-                  "uuid" $author.uuid
-                  "alt" $author.alt_text
-                }}
-                {{ if eq .author $author.uuid }}
-                  {{ $authorList = $authorList | append $author }}
-                {{ end }}
-              {{ end }}
-            {{ end }}
-
-            {{ range $authorList }}
-
-              {{ $src := .profileImage }}
-
-              {{- if not site.Params.env_bookshop_live -}}
-                {{ $profileImage := "" }}
-                {{/*  Get the image, either from its remote or local source  */}}
-                {{ if hasPrefix $src "http"}}
-                  {{ $profileImage = resources.GetRemote .profileImage }}
-                {{ else }}
-                  {{ $profileImage = resources.Get .profileImage }}
-                {{ end }}
-
-                {{/* Resize images and add them to a variable  */}}
-                {{ if and $profileImage (ne $profileImage.MediaType.SubType "svg") }}
-                  {{ $src = ($profileImage.Fill (printf "%dx%d webp" 100 100)).RelPermalink }}
-                {{ end }}
-              {{- end -}}
-
-              <div>
-                {{ if .profileImage }}
-                  <div class="ratio ratio-1x1 d-inline-block me-3" style="height: 50px; width: 50px;">
-                    <img class="rounded-circle object-fit h-100 w-100" src="{{ $src }}" alt="{{ .alt }}" />
-                  </div>
-                {{ end }}
-                
-                <div class="d-inline-block h-100 text-start">
-                  <p class="small">
-                    <span class="d-block helvetica-neue-bold text-uppercase">{{ .name }}</span>
-                    <span class="d-block helvetica-neue-light text-uppercase">
-                      {{ .role }}
-                    </span>
-                  </p>
-                </div>
-              </div>
-            {{ end }}
-
+            {{ partial "bookshop" (slice "design-system/simple/byline" (dict "params" .params)) }}
           {{ end }}
         </div>
       </div>

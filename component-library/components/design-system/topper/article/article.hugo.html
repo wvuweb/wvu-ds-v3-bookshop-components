@@ -1,12 +1,10 @@
 {{ $alt := "" }}
 
-{{ $authorList := slice }}
-
 {{ $containerStyles := "" }}
 
 {{ $publishDate := .params.publishDate }}
 {{ $publishDate = time.AsTime $publishDate }}
-{{ $format := "Jan 2, 2006" }}
+{{ $format := "January 2, 2006" }}
 
 <header id="" aria-labelledby="" class="position-relative">
   <div class="container wvu-z-index-content pt-8 pb-4">
@@ -23,75 +21,7 @@
           {{ else if and (site.Params.env_bookshop_live) (not .topper.show_byline) }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Show Byline' is currently set to 'false' to speed up editing. To see the byline in the Live Editor, uncheck 'Show Byline'." ) ) }}
           {{ else }}
-
-            {{ $authorData := slice }}
-
-            {{ if not site.Params.env_bookshop_live }}
-              {{ $authorData = where site.RegularPages "Params._schema" "author-profile" }}
-            {{ else }}
-              {{ $authorData = where site.Data.people_data ".schema" "author-profile" }}
-            {{ end }}
-
-            {{ $byline := slice }}
-
-            {{ if .params.authors }}
-              {{ $byline = .params.authors }}
-            {{ end }}
-          
-            {{ range $authorData }}
-
-              {{ $author := "" }}
-
-              {{ if not site.Params.env_bookshop_live }}
-                {{ $author = .Params }}
-              {{ else }}
-                {{ $author = . }}
-              {{ end }}
-
-              {{ range $byline }}
-                {{ if eq .author $author.uuid }}
-                  {{ $authorList = $authorList | append $author }}
-                {{ end }}
-              {{ end }}
-            {{ end }}
-
-            {{ range $authorList }}
-
-              {{ $src := .profile_image }}
-
-              {{- if not site.Params.env_bookshop_live -}}
-                {{ $profileImage := "" }}
-                {{/*  Get the image, either from its remote or local source  */}}
-                {{ if hasPrefix $src "http"}}
-                  {{ $profileImage = resources.GetRemote .profile_image }}
-                {{ else }}
-                  {{ $profileImage = resources.Get .profile_image }}
-                {{ end }}
-
-                {{/* Resize images and add them to a variable  */}}
-                {{ if and $profileImage (ne $profileImage.MediaType.SubType "svg") }}
-                  {{ $src = ($profileImage.Fill (printf "%dx%d webp" 100 100)).RelPermalink }}
-                {{ end }}
-              {{- end -}}
-
-              <div>
-                {{ if .profile_image }}
-                  <div class="ratio ratio-1x1 d-inline-block me-3" style="height: 50px; width: 50px;">
-                    <img class="rounded-circle object-fit h-100 w-100" src="{{ $src }}" alt="{{ .image.alt }}" />
-                  </div>
-                {{ end }}
-                
-                <div class="d-inline-block h-100 text-start">
-                  <p class="small">
-                    <span class="d-block helvetica-neue-bold text-uppercase">{{ .name }}</span>
-                    <span class="d-block helvetica-neue-light text-uppercase">
-                      Role
-                    </span>
-                  </p>
-                </div>
-              </div>
-            {{ end }}
-
+            {{ partial "bookshop" (slice "design-system/simple/byline" (dict "params" .params)) }}
           {{ end }}
         </div>
       </div>
