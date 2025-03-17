@@ -34,29 +34,40 @@
   {{ end }}
 {{- end -}}
 
-<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} {{ $backgroundColor }} position-relative py-7">
-  <div class="container wvu-z-index-content {{ .topper.styles.container_margin }}">
-    <div class="row">
-      <div class="col-xl-12 mx-xl-auto">
-        {{ if .topper.heading }}
-          {{ if .title }}
-            <h1 class="vibe-label h6 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ .title }}</h1>
-          {{ end }}
-          <h2 id="" class="vibe-primary-heading display-4 text-{{ $headingColor }}">
-            {{ range .topper.heading }}
-              <span class="d-inline-block">{{ .text }} </span>
-            {{ end }}
-          </h2>
-        {{ else }}
-          <h1 id="" class="vibe-primary-heading display-3 text-{{ $headingColor }}">{{ .title }}</h1>
-        {{ end }}
-        <p class="vibe-subheading h4 mt-4">{{ .topper.subheading }}</p>
-        <div class="vibe-body mt-4">
-          {{ .topper.body_text | markdownify }}
+<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} {{ $backgroundColor }} position-relative">
+  <div class="position-absolute h-100 w-100">
+    <div class="container-fluid h-100 px-0">
+      <div class="row h-100 mx-0 gx-0">
+        <div class="col-xl-12 ms-xl-auto">
+          <div class="wvu-z-index-content h-100 w-100">
+            <div class="ratio ratio-3x2 d-xl-none"></div>
+            {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .topper.alt_text "styles" .topper.styles)) }}
+          </div>
         </div>
       </div>
-      <div class="col-xl-12">
-        {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .topper.alt_text "styles" .topper.styles)) }}
+    </div>
+  </div>
+  <div class="container wvu-z-index-content {{ .topper.styles.container_margin }}">
+    <div class="row">
+      <div class="col-xl-12 me-xl-auto">
+        <div class="py-7">
+          {{ if .topper.heading }}
+            {{ if .title }}
+              <h1 class="vibe-label h6 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ .title }}</h1>
+            {{ end }}
+            <h2 id="" class="vibe-primary-heading display-4 text-{{ $headingColor }}">
+              {{ range .topper.heading }}
+                <span class="d-inline-block">{{ .text }} </span>
+              {{ end }}
+            </h2>
+          {{ else }}
+            <h1 id="" class="vibe-primary-heading display-3 text-{{ $headingColor }}">{{ .title }}</h1>
+          {{ end }}
+          <p class="vibe-subheading h4 mt-4">{{ .topper.subheading }}</p>
+          <div class="vibe-body mt-4">
+            {{ .topper.body_text | markdownify }}
+          </div>
+        </div>
       </div>
     </div>
   </div>

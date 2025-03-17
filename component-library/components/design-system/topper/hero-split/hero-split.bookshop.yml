@@ -26,7 +26,7 @@ blueprint:
     heading_c:
     enable_blend: false
     enable_pattern: false
-    tint_opacity: "0.5"
+    tint_opacity: "0.0"
     container_margin:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -41,3 +41,5 @@ _inputs:
     options:
       values: _select_data.topper_margins
       value_key: class
+  tint_opacity:
+    hidden: true
