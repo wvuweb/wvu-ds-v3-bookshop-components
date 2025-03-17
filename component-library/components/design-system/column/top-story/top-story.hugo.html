@@ -18,6 +18,10 @@
 
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
+  {{ if .heading }}
+    <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
+  {{ end }}
+
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
   {{ else if and (site.Params.env_bookshop_live) (not .config.show_content) }}
@@ -27,10 +31,10 @@
 
     {{ if not site.Params.env_bookshop_live }}
       {{ $articles = where site.Pages "Section" "articles" }}
-      {{ $articles = where $articles "Params.tags" "intersect" $tags }}
+      {{ $articles = where $articles "Params.article_tags" "intersect" $tags }}
     {{ else }}
       {{ $articles = where site.Data.site_pages ".type" "articles" }}
-      {{ $articles = where $articles ".tags" "intersect" $tags }}
+      {{ $articles = where $articles ".article_tags" "intersect" $tags }}
     {{ end }}
 
     <div class="">
@@ -73,7 +77,6 @@
               </div>
 
               <div class="col-md-12 mt-3 mt-md-0">
-                <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ $heading }}</h2>
 
                 <h3 class="fs-4" itemprop="headline"><a class="newsletter-link" href="{{ $link }}">{{ $params.title }}</a></h3>
 
