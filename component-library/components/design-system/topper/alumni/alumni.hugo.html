@@ -47,15 +47,11 @@
 {{- end -}}
 
 <section class="py-6 {{ .topper.styles.background_c }} position-relative">
-  <div class="wvu-bg-img">
-    {{ if and .topper.styles .topper.styles.enable_pattern }}
-      <div class="{{ $pattern }} bg-white h-100 w-100" style="opacity: {{ $patternOpacity }}"></div>
-    {{ end }}
-  </div>
+  {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .alumni_profile_topper.alt_text "styles" .alumni_profile_topper.styles)) }}
   <div class="container mb-6 wvu-z-index-content">
     <div class="row gx-lg-0 align-items-center">
       <div class="col-lg-12">
-        <p class="wvu-shout wvu-text-letter-spacing-lg ms-lg-4 text-wvu-accent--yellow">Student Profile</p>
+        <p class="wvu-shout wvu-text-letter-spacing-lg ms-lg-4 text-wvu-accent--yellow">Alumni Profile</p>
         <div class="bg-white text-dark p-xl-5 me-xl-n5 wvu-z-index-content">
           {{ if .params.graduation_year }}
             <div class="mb-4">
