@@ -34,11 +34,10 @@
   {{ end }}
 {{- end -}}
 
-<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} {{ $backgroundColor }} position-relative py-7 text-center">
-  {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .topper.alt_text "styles" .topper.styles)) }}
+<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} {{ $backgroundColor }} position-relative py-7">
   <div class="container wvu-z-index-content {{ .topper.styles.container_margin }}">
     <div class="row">
-      <div class="col-xl-16 mx-xl-auto">
+      <div class="col-xl-12 mx-xl-auto">
         {{ if .topper.heading }}
           {{ if .title }}
             <h1 class="vibe-label h6 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ .title }}</h1>
@@ -56,14 +55,8 @@
           {{ .topper.body_text | markdownify }}
         </div>
       </div>
-    </div>
-    <div class="row justify-content-center mx-0 position-relative wvu-z-index-content">
-      <div class="col-md-12 mx-auto">
-        <div class="row">
-          <div class="col-md-24">
-            {{ partial "bookshop" (slice "design-system/simple/icon-bar-outlines" (dict "items" .topper.items "styles" .topper.styles)) }}
-          </div>
-        </div>
+      <div class="col-xl-12">
+        {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .topper.alt_text "styles" .topper.styles)) }}
       </div>
     </div>
   </div>
