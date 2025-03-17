@@ -21,7 +21,7 @@ blueprint:
     heading_c:
     enable_blend: true
     enable_pattern: false
-    tint_opacity: 0.5
+    tint_opacity: "0.5"
     margin:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
