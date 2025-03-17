@@ -1,7 +1,11 @@
 {{ if site.Params.env_bookshop_live }}
   <div class="c-collection-labels-tooltip alert alert-warning p-3 mb-3 text-start">
     <p class="mb-0">
-      ‘Show Content’ is currently set to ‘false’ in this component’s config in order to speed up editing. To show the content, check ‘Show Content’ box in the component’s config.
+      {{ if .text }}
+        {{ .text | safeHTML }}
+      {{ else }}
+        ‘Show Content’ is currently set to ‘false’ in this component’s config in order to speed up editing. To show the content, check the ‘Show Content’ box in the component’s config.
+      {{ end }}
     </p>
   </div>
 {{ end }}

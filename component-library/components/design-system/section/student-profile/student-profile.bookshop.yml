@@ -12,6 +12,7 @@ blueprint:
   student:
   config:
     edit_mode_only: false
+    show_content: false
   styles:
     color_palette:
     vibe:

@@ -15,7 +15,7 @@ blueprint:
   limit: 5
   config:
     edit_mode_only: false
-    hide_collection_pages: true
+    show_content: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

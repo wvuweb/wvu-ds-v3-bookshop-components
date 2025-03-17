@@ -16,9 +16,9 @@
   <section class="section-component py-7">
     <div class="container">
       {{ if not site.Data }}
-        {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
+        {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
       {{ else if and (site.Params.env_bookshop_live) (.config.hide_collection_pages) }}
-        {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Hide collection pages' is currently selected in this component to speed up the editing of other areas - to see the pages here uncheck 'hide collection pages'" ) ) }}
+        {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
       {{ else }}
 
         {{ $authorData := site.Data.people.authors }}

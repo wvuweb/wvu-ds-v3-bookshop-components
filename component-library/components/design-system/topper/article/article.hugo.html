@@ -20,9 +20,9 @@
         <p class="mt-4 mb-0 iowan-old-style text-uppercase">{{ $publishDate }}</p>
         <div class="d-flex mt-4 justify-content-center">
           {{ if not site.Data }}
-            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
           {{ else if and (site.Params.env_bookshop_live) (not .topper.show_byline) }}
-            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Show Byline' is currently set to 'false' to speed up editing. To see the byline in the Live Editor, uncheck 'Show Byline'." ) ) }}
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Show Byline' is currently set to 'false' to speed up editing. To see the byline, check the 'Show Byline' box in the topper config." ) ) }}
           {{ else }}
             {{ partial "bookshop" (slice "design-system/simple/byline" (dict "params" .params)) }}
           {{ end }}
