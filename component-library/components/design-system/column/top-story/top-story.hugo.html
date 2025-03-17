@@ -20,7 +20,7 @@
 
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
-  {{ else if and (site.Params.env_bookshop_live) (not .config.show_content) .student }}
+  {{ else if and (site.Params.env_bookshop_live) (not .config.show_content) }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Show Content' is currently set to 'false' in this component’s config in order to speed up editing. To show the content, check 'Show Content' box in the config." ) ) }}
   {{ else }}
     {{ $authorData := site.Data.people.authors }}
