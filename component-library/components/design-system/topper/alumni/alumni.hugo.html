@@ -55,11 +55,15 @@
         <div class="bg-white text-dark p-xl-5 me-xl-n5 wvu-z-index-content">
           {{ if .params.graduation_year }}
             <div class="mb-4">
-              <p class="oliviar-black text-uppercase"><span>Class of {{ .params.graduation_year }}</span></p>
+              <p class="oliviar-black text-uppercase"><span>{{ .params.graduation_year }} Graduate</span></p>
             </div>
           {{ end }}
 
           <h1 class="display-4 oliviar-black mb-4">{{ .params.name }}</h1>
+
+          {{ with .params.job_title }}
+            <p><span class="d-block">{{ range . }}{{ . }}{{ end }}</span></p>
+          {{ end }}
 
         </div>
       </div>
