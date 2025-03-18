@@ -4,7 +4,7 @@ spec:
     - author_profile_topper
   label: "Topper - Author Profile"
   description:
-  icon: crown
+  icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values

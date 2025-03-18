@@ -4,7 +4,7 @@ spec:
     - faculty_profile_topper
   label: "Topper - Faculty Profile"
   description:
-  icon: crown
+  icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values

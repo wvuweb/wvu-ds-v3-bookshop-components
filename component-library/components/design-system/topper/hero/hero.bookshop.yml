@@ -4,7 +4,7 @@ spec:
     - topper
   label: "Topper - Hero"
   description:
-  icon: crown
+  icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
@@ -35,6 +35,8 @@ preview:
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
   label:
+    hidden: true
+  highlight:
     hidden: true
   body_text:
     type: markdown
