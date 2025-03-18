@@ -32,7 +32,7 @@
 
           {{ if .params.files }}
             {{ range .params.files }}
-              <a class="btn btn-sm btn-primary" class="{{ .file }}">{{ .name }}{{ if .icon }} <span class="{{ .icon }}"></span>{{ end }}</a>
+              <a class="btn btn-sm btn-primary" class="{{ .file }}">{{ .name }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
             {{ end }}
           {{ end }}
         </div>
