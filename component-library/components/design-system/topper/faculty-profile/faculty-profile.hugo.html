@@ -13,8 +13,26 @@
           {{ end }}
 
           {{ if .params.position }}
-            {{ range .params.position }}
-              <p class="">{{ .title }}, {{ .organization }}</p>
+            <div class="mt-3">
+              {{ range .params.position }}
+                <p class="fs-5 lh-1">
+                  {{ if .title }}<span class="d-block helvetica-neue-bold">{{ .title }}</span>{{ end }}
+                  {{ if .organization }}<span class="d-block helvetica-neue-light">{{ .organization }}</span>{{ end }}
+                </p>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ if .params.staff_contact_info }}
+            <div class="mt-4">
+              {{ partial "bookshop_bindings" `.params.staff_contact_info` }}
+              {{ partial "bookshop_partial" (slice "page" .params.staff_contact_info) }}
+            </div>
+          {{ end }}
+
+          {{ if .params.files }}
+            {{ range .params.files }}
+              <a class="btn btn-sm btn-primary" class="{{ .file }}">{{ .name }}{{ if .icon }} <span class="{{ .icon }}"></span>{{ end }}</a>
             {{ end }}
           {{ end }}
         </div>
