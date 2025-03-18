@@ -4,7 +4,7 @@
 {{ if not site.Data }}
   {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This content will not display inside the bookshop browser." )) }}
 {{ else if and (site.Params.env_bookshop_live) (not .show_content) }}
-  {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
+  {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "title" .title)) }}
 {{ else }}
   {{ range site.Data.sitewide_components }}
     {{ $title := .title | urlize }}

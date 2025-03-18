@@ -1,5 +1,8 @@
 {{ if site.Params.env_bookshop_live }}
   <div class="c-collection-labels-tooltip alert alert-warning p-3 mb-3 text-start">
+    {{ if .title }}
+      <h2>{{ .title }}</h2>
+    {{ end }}
     <p class="mb-0">
       {{ if .text }}
         {{ .text | safeHTML }}
