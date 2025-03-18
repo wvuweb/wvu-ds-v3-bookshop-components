@@ -34,6 +34,8 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  label:
+    hidden: true
   body_text:
     type: markdown
   container_margin:
