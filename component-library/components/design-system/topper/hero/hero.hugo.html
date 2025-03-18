@@ -1,6 +1,11 @@
+{{ $vibe := "down-to-business" }}
 {{ $src := .topper.background_image }}
-{{ $backgroundColor := "bg-white text-dark" }}
-{{ $headingColor := "text-wvu-blue" }}
+{{ $backgroundColor := "bg-wvu-blue text-white" }}
+{{ $headingColor := "text-wvu-gold" }}
+
+{{ if and .topper.styles .topper.styles.vibe }}
+  {{ $vibe = .topper.styles.vibe }}
+{{ end }}
 
 {{ if .topper.background_image }}
   {{ $backgroundColor = "bg-dark text-white" }}
@@ -34,7 +39,7 @@
   {{ end }}
 {{- end -}}
 
-<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} {{ $backgroundColor }} position-relative py-7 text-center">
+<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ $vibe }} {{ $backgroundColor }} position-relative py-7 text-center">
   {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .topper.alt_text "styles" .topper.styles)) }}
   <div class="container wvu-z-index-content {{ .topper.styles.container_margin }}">
     <div class="row">
