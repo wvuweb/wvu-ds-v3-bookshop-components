@@ -59,10 +59,10 @@
             </div>
           {{ end }}
 
-          <h1 class="display-4 oliviar-black mb-4">{{ .params.name }}</h1>
+          <h1 class="display-4 oliviar-black">{{ .params.name }}</h1>
 
           {{ with .params.job_title }}
-            <p><span class="d-block">{{ range . }}{{ . }}{{ end }}</span></p>
+            <p class="oliviar-thin mt-2 fs-5"><span class="d-block">{{ range . }}{{ . }}{{ end }}</span></p>
           {{ end }}
 
         </div>
