@@ -1,3 +1,5 @@
+{{ $src := .params.image_lg }}
+
 {{ $image := "" }}
 {{ $alt := "" }}
 {{ $layerStyles := "" }}
@@ -42,6 +44,13 @@
     <div class="col-md-12 mx-auto">
       <div class="row">
         <div class="col-md-24">
+          {{ if .params.image_lg }}
+            <img class="img-fluid" src="{{ $src}}" alt="" />
+          {{ else }}
+            {{- if site.Params.env_bookshop_live -}}
+              <img class="img-fluid" src="https://placehold.co/1200x800" alt="Placeholder image." />
+            {{ end }}
+          {{ end }}
         </div>
       </div>
     </div>

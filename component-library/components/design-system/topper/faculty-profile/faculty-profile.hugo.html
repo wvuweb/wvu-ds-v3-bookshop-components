@@ -1,3 +1,5 @@
+{{ $src := .params.image_lg }}
+
 {{ $typography := slice }}
 {{ $stylesH1 := "" }}
 {{ $stylesHometown := "" }}
@@ -31,14 +33,22 @@
           {{ end }}
 
           {{ if .params.files }}
-            {{ range .params.files }}
-              <a class="btn btn-sm btn-primary" class="{{ .file }}">{{ .name }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
-            {{ end }}
+            <div class="mt-3">
+              {{ range .params.files }}
+                <a class="btn btn-sm btn-primary" class="{{ .file }}">{{ .name }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+              {{ end }}
+            </div>
           {{ end }}
         </div>
       </div>
       <div class="col-lg-12">
-        <img class="img-fluid" src="https://placehold.co/1200x800" />
+        {{ if .params.image_lg }}
+          <img class="img-fluid" src="{{ $src }}" alt="" />
+        {{ else }}
+          {{- if site.Params.env_bookshop_live -}}
+            <img class="img-fluid" src="https://placehold.co/1200x800" alt="Placeholder image." />
+          {{ end }}
+        {{ end }}
       </div>
     </div>
   </div>

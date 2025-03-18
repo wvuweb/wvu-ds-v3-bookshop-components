@@ -71,7 +71,9 @@
         {{ if .params.image_lg }}
           <img class="img-fluid" src="{{ $src}}" alt="" />
         {{ else }}
-          <img class="img-fluid" src="https://placehold.co/1200x800" alt="Placeholder image." />
+          {{- if site.Params.env_bookshop_live -}}
+            <img class="img-fluid" src="https://placehold.co/1200x800" alt="Placeholder image." />
+          {{ end }}
         {{ end }}
       </div>
     </div>

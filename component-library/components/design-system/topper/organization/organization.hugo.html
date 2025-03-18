@@ -57,7 +57,7 @@
   </div>
   <div class="container mb-6 wvu-z-index-content">
     <div class="row gx-lg-0 align-items-center">
-      <div class="col-lg-12">
+      <div class="col-lg-12 mx-auto">
         <p class="wvu-shout wvu-text-letter-spacing-lg ms-lg-4 text-wvu-accent--yellow">Clubs and Organizations</p>
         <div class="bg-white text-dark p-4 p-xl-5 me-xl-n5 wvu-z-index-content">
           <div class="row">
@@ -95,11 +95,19 @@
       </div>
       
       {{ if and .params.image (not .params.organization_topper.use_large_background) }}
-        <div class="col-lg-12">
-          <div class="ratio ratio-3x2">
-            <img class="img-fluid object-fit-cover" src="{{ $src}}" alt="" />
+        {{ if .params.image_lg }}
+          <div class="col-lg-12">
+            <div class="ratio ratio-3x2">
+              <img class="h-100 w-100 object-fit-cover" src="{{ $src}}" alt="" />
+            </div>
           </div>
-        </div>
+        {{ else }}
+          {{- if site.Params.env_bookshop_live -}}
+          <div class="col-lg-12">
+            <img class="img-fluid" src="https://placehold.co/1200x800" alt="Placeholder image." />
+          </div>
+          {{ end }}
+        {{ end }}
       {{ end }}
     </div>
   </div>
