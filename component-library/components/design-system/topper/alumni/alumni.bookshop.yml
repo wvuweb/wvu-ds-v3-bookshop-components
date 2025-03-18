@@ -12,14 +12,19 @@ blueprint:
   label:
   heading:
   subheading:
+  background_image:
+  alt_text:
   styles:
     vibe: down-to-business
     background_c:
+    gradient_1:
+    gradient_2:
+    gradient_3:
     heading_c:
     enable_blend: false
     enable_pattern: false
-    tint_opacity: 0.5
-    margin:
+    tint_opacity: "0.5"
+    container_margin:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
