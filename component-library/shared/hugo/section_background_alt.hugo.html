@@ -42,13 +42,13 @@
     {{ if or .styles.gradient_1 .styles.gradient_2 .styles.gradient_3 }}
       <div class="d-flex w-100 h-100 justify-content-between position-absolute" style="background:
         {{- if .styles.gradient_1 -}}
-          linear-gradient(200deg, rgba({{ .styles.gradient_1 }}, 0.8), transparent){{ if or .styles.gradient_2 .styles.gradient_3 }},{{ end }}
+          linear-gradient(200deg, rgba({{ .styles.gradient_1 }}, 1), transparent){{ if or .styles.gradient_2 .styles.gradient_3 }},{{ end }}
         {{- end }}
         {{ if .styles.gradient_2 }}
-          linear-gradient(300deg, rgba({{ .styles.gradient_2 }}, 0.8), transparent){{ if .styles.gradient_3 }},{{ end }}
+          linear-gradient(300deg, rgba({{ .styles.gradient_2 }}, 1), transparent){{ if .styles.gradient_3 }},{{ end }}
         {{ end }}
         {{ if .styles.gradient_3 }}
-          linear-gradient(100deg, rgba({{ .styles.gradient_3 }}, 0.8), transparent)
+          linear-gradient(100deg, rgba({{ .styles.gradient_3 }}, 1), transparent)
         {{ end }}
       ">  
       </div>
