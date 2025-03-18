@@ -11,6 +11,8 @@ blueprint:
   label:
   heading:
   subheading:
+  image:
+  alt_text:
   styles:
     vibe: down-to-business
     background_c:
