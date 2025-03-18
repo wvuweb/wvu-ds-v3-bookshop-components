@@ -1,6 +1,7 @@
 {{ $section := .sitewide_section }}
 {{ $backgroundColor := "bg-light" }}
 
+{{ $title := .sitewide_section | humanize }}
 {{ if not site.Data }}
   <section class="py-6 section-component">
     <div class="container">
@@ -10,7 +11,7 @@
 {{ else if and (site.Params.env_bookshop_live) (not .show_content) }}
   <section class="py-6 section-component">
     <div class="container">
-      {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "title" .title)) }}
+      {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "title" $title)) }}
     </div>
   </section>
 {{ else }}
