@@ -3,22 +3,19 @@ spec:
   structures:
     - content_blocks
   label: "Link Lists"
-  description:
-  icon:
+  description: Vertical list of lists.
+  icon: list
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  background_image:
-  alt_text:
   heading: Heading
   subheading:
   lists:
     - topic:
       description:
       items:
-        - site_page:
-          text:
+        - text:
           url:
   config:
     edit_mode_only: false

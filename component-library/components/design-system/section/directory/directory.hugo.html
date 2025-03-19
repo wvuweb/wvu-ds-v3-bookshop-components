@@ -1,4 +1,8 @@
-{{ $directoryData := where site.Data.people_data "dir_include" true }}
+{{ $directoryData := slice }}
+
+{{ if site.Data.people_data }}
+  {{ $directoryData = where site.Data.people_data "dir_include" true }}
+{{ end }}
 
 {{ $directory := sort $directoryData "last_name" "asc" }}
 
