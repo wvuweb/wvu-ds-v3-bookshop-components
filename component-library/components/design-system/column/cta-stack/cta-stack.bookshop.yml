@@ -19,3 +19,6 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  color:
+    options:
+      values: _select_data.brand_colors
