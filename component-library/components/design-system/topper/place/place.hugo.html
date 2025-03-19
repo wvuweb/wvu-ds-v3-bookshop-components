@@ -1,4 +1,4 @@
-{{ $src := .params.image }}
+{{ $src := .params.image_lg }}
 {{ $backgroundColor := "bg-white text-dark" }}
 {{ $headingColor := "text-wvu-blue" }}
 {{ $pattern := "" }}
@@ -31,9 +31,9 @@
   {{ $image := "" }}
   {{/*  Get the image, either from its remote or local source  */}}
   {{ if hasPrefix $src "http"}}
-    {{ $image = resources.GetRemote .params.image }}
+    {{ $image = resources.GetRemote .params.image_lg }}
   {{ else }}
-    {{ $image = resources.Get .params.image }}
+    {{ $image = resources.Get .params.image_lg }}
   {{ end }}
 
   {{/* Resize images and add them to a variable  */}}
@@ -55,16 +55,17 @@
   <div class="container mb-6 wvu-z-index-content">
     <div class="row gx-lg-0 align-items-center">
       <div class="col-lg-12 mx-auto">
-        <p class="wvu-shout wvu-text-letter-spacing-lg ms-lg-4 text-wvu-accent--yellow">Places and Spaces</p>
+        <p class="wvu-shout wvu-text-letter-spacing-lg ms-lg-4 text-wvu-accent--yellow">Student Profile</p>
         <div class="bg-white text-dark p-xl-5 me-xl-n5 wvu-z-index-content">
 
-          <h1 class="display-4 oliviar-black mb-4">{{ .params.title }}</h1>
+          <h1 class="display-4 oliviar-black mb-4">{{ .params.name }}</h1>
 
         </div>
       </div>
+      
       {{ if .params.image_lg }}
         <div class="col-lg-12">
-          <img class="img-fluid" src="{{ $src}}" alt="" />
+          <img class="img-fluid" src="{{ $src }}" alt="" />
         </div>
       {{ else }}
         {{- if site.Params.env_bookshop_live -}}
