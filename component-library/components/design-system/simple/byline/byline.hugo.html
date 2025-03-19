@@ -2,9 +2,9 @@
 {{ $authorList := slice }}
 
 {{ if not site.Params.env_bookshop_live }}
-  {{ $authorData = where site.RegularPages "Params._schema" "author-profile" }}
+  {{ $authorData = where site.RegularPages "Params._schema" "author" }}
 {{ else }}
-  {{ $authorData = where site.Data.people_data ".schema" "author-profile" }}
+  {{ $authorData = where site.Data.people_data ".schema" "author" }}
 {{ end }}
 
 {{ $byline := slice }}
