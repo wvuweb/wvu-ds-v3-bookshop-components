@@ -28,13 +28,13 @@
       <div class="row">
         <div class="col-24 col-xxl-18 mx-auto position-relative px-0">
           <div class="wvu-container-box-angle wvu-container-box-angle-wvu-accent--blue bg-wvu-blue">
+            <div class="wvu-bg-img">
+              {{ if $src }}
+                <img class="object-fit-cover h-100 w-100" src="{{ $src }}" />
+              {{ end }}
+            </div>
             <div class="row">
               <div class="col-lg-12">
-                <div class="wvu-bg-img">
-                  {{ if $src }}
-                    <img class="object-fit-cover h-100 w-100" src="{{ $src }}" />
-                  {{ end }}
-                </div>
                 <div class="p-5 wvu-z-index-content bg-wvu-blue text-white">
                   <div class="wvu-p-max-width">
                     <h2 id="{{ $ariaLabelledBy }}-label" class="display-4 wvu-shout wvu-bar mb-3" data-text="{{ range .heading }}{{ . }}{{ end }}">{{ range .heading }}<span class="d-block">{{ . }}</span>{{ end }}</h2>
