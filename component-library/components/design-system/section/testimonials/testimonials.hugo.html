@@ -9,6 +9,9 @@
       {{ with .heading }}
         <h2 class="wvu-shout wvu-text-letter-spacing-lg h6 mb-5">{{ . }}</h2>
       {{ end }}
+      {{ with .subheading }}
+        <p class="h4 helvetica-neue-light mb-5 mt-4">{{ . }}</p>   
+      {{ end }}
       <div class="row gx-4 justify-content-center">
         {{ range .testimonials }}
           <div class="col-6 text-center">
