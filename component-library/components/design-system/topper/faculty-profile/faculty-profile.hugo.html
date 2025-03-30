@@ -47,11 +47,10 @@
             </div>
           {{ end }}
 
-          {{ if .params.files }}
+          {{ if .params.faculty_files }}
             <div class="mt-3">
-              {{ range .params.files }}
-                <a class="btn btn-sm btn-primary" class="{{ .file }}">{{ .name }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
-              {{ end }}
+              {{ partial "bookshop_bindings" `.params.faculty_files` }}
+              {{ partial "bookshop_partial" (slice "page" .params.faculty_files) }}
             </div>
           {{ end }}
         </div>

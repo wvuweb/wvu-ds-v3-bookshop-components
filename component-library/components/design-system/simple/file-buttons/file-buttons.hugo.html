@@ -1,0 +1,3 @@
+{{ $file := resources.Get .file }}
+
+<a class="btn btn-primary btn-sm" href="{{ $file.RelPermalink }}">{{ .name }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
