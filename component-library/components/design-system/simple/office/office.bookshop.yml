@@ -10,8 +10,8 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  label:
-  location:
+  label: Office
+  location: 438 Woodburn Hall
   map_link:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
