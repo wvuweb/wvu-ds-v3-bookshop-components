@@ -2,7 +2,7 @@
 spec:
   structures:
     - faculty_files
-  label: "Email"
+  label: "Files"
   description:
   icon:
   tags: []
