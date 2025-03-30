@@ -1,0 +1,31 @@
+{{ if .topper._bookshop_name }}
+  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "title" .title)) }}
+{{ else }}
+  {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .title)) }}
+{{ end }}
+
+<main class="py-6 wvu-backpage-main wvu-z-index-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-5">
+        <div class="me-lg-n5">
+          {{ partial "bookshop" (slice "design-system/generic/blockquote" (dict "text" .quote "size" "fs-5")) }}
+        </div>
+      </div>
+      <div class="col-xl-14 ms-xl-auto">
+        <div class="bg-white p-6 mt-n9">
+          {{ range .detail_blocks }}
+            {{ partial "bookshop" . }}
+          {{ end }}
+        </div>
+      </div>
+      <div class="col-xl-5">
+        <div class="ms-lg-n5">
+          {{ range .profile_sidebar_blocks }}
+            {{ partial "bookshop" . }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
