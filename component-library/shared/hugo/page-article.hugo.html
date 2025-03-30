@@ -13,9 +13,11 @@
   <div class="container iowan-old-style {{ $containerMargin }}">
     <div class="row">
       <div class="col-xl-12 col-xxl-10 mx-xl-auto">
-        {{ range .article_blocks }}
-          {{ partial "bookshop" . }}
-        {{ end }}
+        <div class="bg-white p-5">
+          {{ range .article_blocks }}
+            {{ partial "bookshop" . }}
+          {{ end }}
+        </div>
       </div>
     </div>
   </div>
