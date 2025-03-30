@@ -1,8 +1,12 @@
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
   <section id="video-feature-1" aria-labelledby="video-feature-1-label" class="section-component py-6 bg-dark text-white text-center">  
-    <div class="container wvu-z-index-content">      
-      <h2 id="video-feature-1-label" class="h1 wvu-shout wvu-text-letter-spacing-lg">Video Feature Headline</h2>
-      <p class="h4 helvetica-neue-light mb-5 mt-4">Subhead goes here.</p>    
+    <div class="container wvu-z-index-content">
+      {{ if .heading }}
+        <h2 id="video-feature-1-label" class="h1 wvu-shout wvu-text-letter-spacing-lg">{{ .heading }}</h2>
+      {{ end }}
+      {{ if .subheading }}
+        <p class="h4 helvetica-neue-light mb-5 mt-4">{{ .subheading }}</p>
+      {{ end }}
       <div class="row">
         <div class="col-xxl-18 mx-xxl-auto">
           <div class="row gx-xxl-5">
