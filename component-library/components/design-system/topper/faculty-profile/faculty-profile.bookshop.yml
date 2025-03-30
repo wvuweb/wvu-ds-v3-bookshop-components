@@ -9,9 +9,6 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  label:
-  heading:
-  subheading:
   styles:
     vibe: down-to-business
     background_c:
