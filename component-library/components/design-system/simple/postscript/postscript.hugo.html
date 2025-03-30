@@ -1,7 +1,7 @@
 {{ .copy | markdownify }}
 
 <div class="mt-4">
-{{ range .postscript_links }}
-  {{ partial "bookshop" (slice "design-system/generic/button" .) }}
-{{ end }}
+  {{ range .postscript_links }}
+    {{ partial "bookshop" (slice "design-system/generic/button" .) }}
+  {{ end }}
 </div>
