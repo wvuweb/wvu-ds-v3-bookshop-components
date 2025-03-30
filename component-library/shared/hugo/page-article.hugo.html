@@ -1,0 +1,22 @@
+{{ $containerMargin := "" }}
+
+{{ if .topper._bookshop_name }}
+  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params)) }}
+  {{ if ne .topper._bookshop_name "design-system/topper/article" }}
+    {{ $containerMargin = "mt-n9" }}
+  {{ end }}
+{{ else }}
+  {{ partial "bookshop" (slice "design-system/topper/article" (dict "topper" .topper "title" .params.name)) }}
+{{ end }}
+
+<main class="py-6">
+  <div class="container iowan-old-style">
+    <div class="row">
+      <div class="col-xl-12 col-xxl-10 mx-xl-auto">
+        {{ range .article_blocks }}
+          {{ partial "bookshop" . }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</main>
