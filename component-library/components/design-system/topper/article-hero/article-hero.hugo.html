@@ -1,6 +1,6 @@
 {{ $alt := "" }}
 {{ $sectionMargin := "" }}
-{{ $src := .article_topper.background_image }}
+{{ $src := .topper.background_image }}
 {{ $containerStyles := "" }}
 {{ $publishDate := "" }}
 {{ $format := "January 2, 2006" }}
@@ -17,9 +17,9 @@
   {{/* Resize images and add them to a variable  */}}
   {{ if and $image (ne $image.MediaType.SubType "svg") }}
     {{ if eq .imageProcess "fit" }}
-      {{ $src = ($image.Fit (printf "%dx%d webp Lanczos" 1920 1080)).RelPermalink }}
+      {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
     {{ else }}
-      {{ $src = ($image.Fill (printf "%dx%d webp Lanczos" 1920 1080)).RelPermalink }}
+      {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
     {{ end }}
   {{ end }}
 {{- end -}}
@@ -31,7 +31,7 @@
 {{ end }}
 
 <header id="" aria-labelledby="" class="position-relative bg-light">
-  {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .alt_text "styles" .article_topper.styles)) }}
+  {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .topper.alt_text "styles" .topper.styles)) }}
   <div class="container wvu-z-index-content py-10">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto text-center">
