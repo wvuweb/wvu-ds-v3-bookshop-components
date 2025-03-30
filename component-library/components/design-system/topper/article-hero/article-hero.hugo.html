@@ -1,9 +1,27 @@
-{{ $alt := "" }}
-{{ $sectionMargin := "" }}
+{{ $vibe := "down-to-business" }}
 {{ $src := .topper.background_image }}
-{{ $containerStyles := "" }}
+{{ $backgroundColor := "bg-wvu-blue text-white" }}
+{{ $headingColor := "text-wvu-gold" }}
+
 {{ $publishDate := "" }}
 {{ $format := "January 2, 2006" }}
+
+{{ if and .topper.styles .topper.styles.vibe }}
+  {{ $vibe = .topper.styles.vibe }}
+{{ end }}
+
+{{ if .topper.background_image }}
+  {{ $backgroundColor = "bg-dark text-white" }}
+  {{ $headingColor = "text-wvu-gold" }}
+{{ end }}
+
+{{ if and .topper.styles .topper.styles.background_c }}
+  {{ $backgroundColor = .topper.styles.background_c }}
+{{ end }}
+
+{{ if and .topper.styles .topper.styles.heading_c }}
+  {{ $headingColor = .topper.styles.heading_c }}
+{{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
   {{ $image := "" }}
@@ -30,7 +48,7 @@
   {{ $publishDate = $publishDate.Format $format }}
 {{ end }}
 
-<header id="" aria-labelledby="" class="position-relative bg-light">
+<header id="" aria-labelledby="" class="vibe-{{ $vibe }} {{ $backgroundColor }} position-relative">
   {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .topper.alt_text "styles" .topper.styles)) }}
   <div class="container wvu-z-index-content py-10">
     <div class="row">
