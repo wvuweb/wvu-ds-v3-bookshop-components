@@ -69,10 +69,10 @@
             <p><span class="wvu-shout">Hometown:</span> {{ . }}</p>
           {{ end }}
           {{ with .params.majors }}
-            <p><span class="wvu-shout">Majors:</span> {{ range . }}{{ .title }};{{ end }}</p>
+            <p><span class="wvu-shout">Majors:</span> {{ range . }}{{ . }};{{ end }}</p>
           {{ end }}
           {{ with .params.minors }}
-            <p><span class="wvu-shout">Minors:</span> {{ range . }}{{ .title }};{{ end }}</p>
+            <p><span class="wvu-shout">Minors:</span> {{ range . }}{{ . }};{{ end }}</p>
           {{ end }}
         </div>
       </div>
