@@ -1,9 +1,3 @@
-{{ if .topper._bookshop_name }}
-  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "title" .title)) }}
-{{ else }}
-  {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .title)) }}
-{{ end }}
-
-{{ range .blocks }}
+{{ range . }}
   {{ partial "bookshop" . }}
 {{ end }}
