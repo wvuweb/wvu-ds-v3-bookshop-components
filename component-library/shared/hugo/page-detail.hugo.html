@@ -8,8 +8,8 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-5">
-        <h2 class="wvu-shout h6 wvu-text-letter-spacing-lg mb-4">{{ .Section | humanize }}</h2>
-        {{ partial "section-menu" . }}
+        <h2 class="wvu-shout h6 wvu-text-letter-spacing-lg mb-4">Section Menu</h2>
+        {{ partial "bookshop" "design-system/column_sm/section-menu" }}
       </div>
       <div class="col-xl-10 mx-xl-auto">
         {{ range .detail_blocks }}
