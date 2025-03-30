@@ -1,0 +1,5 @@
+{{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "title" .title)) }}
+
+{{ range .blocks }}
+  {{ partial "bookshop" . }}
+{{ end }}
