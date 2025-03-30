@@ -1,0 +1,26 @@
+{{ if .topper._bookshop_name }}
+  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "title" .title)) }}
+{{ else }}
+  {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .title)) }}
+{{ end }}
+
+<main class="py-6 wvu-backpage-main">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-5">
+        <h2 class="wvu-shout h6 wvu-text-letter-spacing-lg mb-4">{{ .Section | humanize }}</h2>
+        {{ partial "section-menu" . }}
+      </div>
+      <div class="col-xl-10 mx-xl-auto">
+        {{ range .detail_blocks }}
+          {{ partial "bookshop" . }}
+        {{ end }}
+      </div>
+      <div class="col-xl-5">
+        {{ range .sidebar_blocks }}
+          {{ partial "bookshop" . }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</main>
