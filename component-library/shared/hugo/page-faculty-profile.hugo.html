@@ -1,7 +1,7 @@
 {{ if .topper._bookshop_name }}
-  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "title" .title)) }}
+  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params)) }}
 {{ else }}
-  {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .title)) }}
+  {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "params" .params)) }}
 {{ end }}
 
 <main class="py-6 wvu-backpage-main wvu-z-index-content">
