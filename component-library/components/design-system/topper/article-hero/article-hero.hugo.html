@@ -61,7 +61,7 @@
         <div class="d-flex mt-4 justify-content-center">
           {{ if not site.Data }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
-          {{ else if and (site.Params.env_bookshop_live) (not .topper.show_byline) }}
+          {{ else if and (site.Params.env_bookshop_live) (ne .topper.show_byline true) }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Show Byline' is currently set to 'false' to speed up editing. To see the byline, check the 'Show Byline' box in the topper config." ) ) }}
           {{ else }}
             {{ partial "bookshop" (slice "design-system/simple/byline" (dict "params" .params)) }}

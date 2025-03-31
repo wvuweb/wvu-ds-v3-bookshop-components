@@ -1,4 +1,3 @@
-{{ $containerMargin := "" }}
 
 {{ if .topper._bookshop_name }}
   {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params)) }}
@@ -10,7 +9,7 @@
 {{ end }}
 
 <main class="py-6 position-relative">
-  <div class="container iowan-old-style {{ $containerMargin }}">
+  <div class="container iowan-old-style">
     <div class="row">
       <div class="col-xl-14 mx-xl-auto">
         <div class="bg-white p-5">
