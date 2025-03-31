@@ -6,7 +6,7 @@
     {{ $containerMargin = "mt-n9" }}
   {{ end }}
 {{ else }}
-  {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .params.name)) }}
+  {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .params.title)) }}
 {{ end }}
 
 <main class="py-6 wvu-backpage-main wvu-z-index-content">
