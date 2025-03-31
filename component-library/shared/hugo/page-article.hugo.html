@@ -6,7 +6,7 @@
     {{ $containerMargin = "mt-n9" }}
   {{ end }}
 {{ else }}
-  {{ partial "bookshop" (slice "design-system/topper/article" (dict "topper" .topper "params" .params "title" .params.name)) }}
+  {{ partial "bookshop" (slice "design-system/topper/article" (dict "topper" .topper "params" .params "title" .params.title)) }}
 {{ end }}
 
 <main class="py-6 position-relative">
