@@ -1,6 +1,7 @@
 {{ $alt := "" }}
 {{ $containerStyles := "" }}
 {{ $publishDate := "" }}
+{{ $showByline := false }}
 {{ $format := "January 2, 2006" }}
 
 {{ if .params.publishDate }}
@@ -9,11 +10,14 @@
   {{ $publishDate = $publishDate.Format $format }}
 {{ end }}
 
+{{ if and .topper .topper.show_byline }}
+  {{ $showByline = .topper.show_byline }}
+{{ end }}
+
 <header id="" aria-labelledby="" class="position-relative">
   <div class="container wvu-z-index-content pt-8 pb-4">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto text-center">
-        Show byline: {{ .topper.show_byline }}
         <h1 id="big-search-1-label" class="display-5 iowan-old-style mb-3">{{ if .params.title }}{{ .params.title }}{{ end }}</h1>
         {{ if .params.subheading }}
           <p class="helvetica-neue-light fs-4 mb-0">{{ .params.subheading }}</p>
@@ -22,7 +26,7 @@
         <div class="d-flex mt-4 justify-content-center">
           {{ if not site.Data }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
-          {{ else if and (site.Params.env_bookshop_live) (ne .topper.show_byline "true") }}
+          {{ else if and (site.Params.env_bookshop_live) (ne $showByline true) }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Show Byline' is currently set to 'false' to speed up editing. To see the byline, check the 'Show Byline' box in the topper config." ) ) }}
           {{ else }}
             {{ partial "bookshop" (slice "design-system/simple/byline" (dict "params" .params)) }}
