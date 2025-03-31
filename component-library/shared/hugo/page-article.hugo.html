@@ -1,7 +1,7 @@
 {{ $containerMargin := "" }}
 
 {{ if .topper._bookshop_name }}
-  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params)) }}
+  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params "title" .params.title)) }}
   {{ if ne .topper._bookshop_name "design-system/topper/article" }}
     {{ $containerMargin = "mt-n9" }}
   {{ end }}
