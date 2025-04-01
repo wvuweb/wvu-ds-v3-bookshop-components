@@ -1,6 +1,6 @@
 {{ $containerMargin := "" }}
 
-{{ if .topper._bookshop_name }}
+{{ if and .topper .topper._bookshop_name }}
   {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params)) }}
   {{ if ne .topper._bookshop_name "design-system/topper/default" }}
     {{ $containerMargin = "mt-n9" }}
