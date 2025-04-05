@@ -38,7 +38,7 @@
 {{ $imageClasses = printf "%s%s%s" $imageClasses " " $blendMode }}
 
 <div class="wvu-bg-img">
-  {{ if .styles.enable_blend }}
+  {{ if and .styles .styles.enable_blend }}
 
     {{ if and .styles.color_overlay (eq .styles.color_overlay._bookshop_name "design-system/simple/color-overlay") }}
       {{ partial "bookshop" (slice "design-system/simple/color-overlay" .styles.color_overlay) }}
@@ -60,7 +60,7 @@
 
   {{ end }}
 
-  {{ if and .styles.enable_pattern (ne $pattern "wvu-bg-texture") (not .image) }}
+  {{ if and .styles .styles.enable_pattern (ne $pattern "wvu-bg-texture") (not .image) }}
     <div class="{{ $pattern }} bg-white h-100 w-100" style="opacity: {{ $patternOpacity }}"></div>
   {{ end }}
 </div>

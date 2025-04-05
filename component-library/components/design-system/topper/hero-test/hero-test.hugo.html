@@ -3,8 +3,8 @@
 {{ $backgroundColor := "bg-wvu-blue text-white" }}
 {{ $headingColor := "text-wvu-gold" }}
 
-{{ if and .topper.styles .topper.styles.vibe }}
-  {{ $vibe = .topper.styles.vibe }}
+{{ if and .topper.test_styles .topper.test_styles.vibe }}
+  {{ $vibe = .topper.test_styles.vibe }}
 {{ end }}
 
 {{ if .topper.background_image }}
@@ -12,12 +12,12 @@
   {{ $headingColor = "text-wvu-gold" }}
 {{ end }}
 
-{{ if and .topper.styles .topper.styles.background_c }}
-  {{ $backgroundColor = .topper.styles.background_c }}
+{{ if and .topper.test_styles .topper.test_styles.background_c }}
+  {{ $backgroundColor = .topper.test_styles.background_c }}
 {{ end }}
 
-{{ if and .topper.styles .topper.styles.heading_c }}
-  {{ $headingColor = .topper.styles.heading_c }}
+{{ if and .topper.test_styles .topper.test_styles.heading_c }}
+  {{ $headingColor = .topper.test_styles.heading_c }}
 {{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
@@ -40,8 +40,8 @@
 {{- end -}}
 
 <header id="" class="c-topper-hero vibe-{{ $vibe }} {{ $backgroundColor }} position-relative py-7 text-center">
-  {{ partial "bookshop_partial" (slice "section_background_test" (dict "image" $src "alt" .topper.alt_text "styles" .topper.styles)) }}
-  <div class="container wvu-z-index-content {{ .topper.styles.container_margin }}">
+  {{ partial "bookshop_partial" (slice "section_background_test" (dict "image" $src "alt" .topper.alt_text "styles" .topper.test_styles)) }}
+  <div class="container wvu-z-index-content {{ .topper.test_styles.container_margin }}">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
         {{ if .topper.heading }}
