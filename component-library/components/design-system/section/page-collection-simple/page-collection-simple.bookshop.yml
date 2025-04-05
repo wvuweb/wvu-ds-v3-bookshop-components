@@ -33,7 +33,6 @@ blueprint:
     section_background_c:
     panels:
     item_headings:
-    margin:
   config:
     edit_mode_only: false
 
@@ -45,9 +44,8 @@ _inputs:
   section_background_c:
     label: Background Color
     type: select
-    values:
-      value: _select_data.brand_colors
-      value_key: class
+    values: _select_data.brand_colors
+    value_key: class
   postscript_ctas:
     type: object
     values:
