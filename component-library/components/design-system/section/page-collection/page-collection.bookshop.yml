@@ -15,12 +15,18 @@ blueprint:
     - title: Item 1 Title
       text: Item 1 text.
       url:
+      background_c:
     - title: Item 2 Title
       text: Item 2 text.
       url:
+      background_c:
     - title: Item 3 Title
       text: Item 3 text.
       url:
+      background_c:
+  postscript:
+    copy:
+    postscript_ctas:
   layout:
     margin:
   styles:
@@ -36,3 +42,7 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  postscript_ctas:
+    type: object
+    values:
+      value: _structures.postscript_ctas

@@ -23,7 +23,7 @@
             <div class="col-xl-12 mx-xl-auto">
               <h2 class="h1 helvetica-neue-condensed-black text-uppercase wvu-text-letter-spacing-lg">{{ .heading }}</h2>
               {{ if .subheading }}
-                <p class="lead text-wvu-accent--blue-dark">{{ .subheading }}</p>
+                <p class="lead">{{ .subheading }}</p>
               {{ end }}
             </div>
           </div>
@@ -31,7 +31,7 @@
         
         <div class="row gx-4 text-center">
           {{ range .items }}
-            <div class="{{ $gridClasses }}">
+            <div class="{{ $gridClasses }} {{ .background_c }}">
               <div class="position-relative px-5 py-6 h-100 {{ $panelStyles }}">
                 <h3 class="{{ $itemHeadingStyles }}">{{ .title }}</h3>
                 <p>{{ .text }}</p>
@@ -40,6 +40,16 @@
             </div>
           {{ end }}
         </div>
+
+        {{ with .postscript }}
+          <div class="text-center mt-5">
+            {{ .copy | markdownify }}
+
+            {{ with .postscript_ctas }}
+              {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" .buttons "size" "button-group-sm")) }}
+            {{ end }}
+          </div>
+        {{ end }}
       </div>
     </div>
   </section>
