@@ -38,8 +38,11 @@
             {{ end }}
 
             {{ with .ctas }}
-              {{ $buttons := . }}
-              {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" $buttons "size" "button-group-sm" "color" $backgroundColorSubtle)) }}
+              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                {{ range .}}
+                  <a class="btn btn-{{ $backgroundColorSubtle }}" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                {{ end }}
+              </div>
             {{ end }}
           </div>
         {{ end }}
