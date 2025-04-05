@@ -56,7 +56,7 @@
               {{ .copy | markdownify }}
 
               {{ with .postscript_ctas }}
-                {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" . "size" "button-group-sm")) }}
+                {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" .buttons "size" "button-group-sm")) }}
               {{ end }}
             </div>
           {{ end }}
