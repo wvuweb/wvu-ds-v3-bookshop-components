@@ -1,10 +1,10 @@
-{{ $backgroundColorSubtle := replace .styles.background_c " text-white" "-subtle" }}
+{{ $backgroundColorSubtle := replace .styles.section_background_c " text-white" "-subtle" }}
 
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
-  <section class="py-6 position-relative {{ .styles.background_c }}">
+  <section class="py-6 position-relative {{ .styles.section_background_c }}">
     <div class="container position-relative wvu-z-index-content">
-      <div class="{{ .styles.background_c }} pb-0 pb-xl-0">
+      <div class="{{ .styles.section_background_c }} pb-0 pb-xl-0">
         {{ if or .heading .subheading }}          
           <div class="row text-center mb-5">
             <div class="col-xl-12 mx-xl-auto">
