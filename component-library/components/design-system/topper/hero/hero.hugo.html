@@ -45,6 +45,7 @@
 {{- end -}}
 
 <header id="" class="c-topper-hero vibe-{{ $vibe }} {{ $backgroundColor }} position-relative py-7 text-center">
+  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src)) }}
   <div class="container wvu-z-index-content {{ .topper.layout.container_margin }}">
     <div class="row py-6">
       <div class="col-xl-16 {{ $placement }}">
