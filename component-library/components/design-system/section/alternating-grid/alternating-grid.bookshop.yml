@@ -31,7 +31,7 @@ preview:
 _inputs:
   copy:
     type: markdown
-  items_ctas:
+  item_ctas:
     type: object
     values:
       value: _structures.item_ctas
