@@ -16,6 +16,8 @@ blueprint:
       url: /url
   layout:
     margin:
+  styles:
+    background_c:
   config:
     edit_mode_only: false
 

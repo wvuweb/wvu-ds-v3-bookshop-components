@@ -1,13 +1,18 @@
+{{ $backgroundColor := "" }}
 {{ $margin := "" }}
+
+{{ if and .styles .styles.background_c }}
+  {{ $backgroundColor := .styles.background_c }}
+{{ end }}
 
 {{ if and .layout .layout.margin }}
   {{ $margin = .layout.margin }}
 {{ end }}
 
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-  <section class="section-component py-6 bg-wvu-neutral--warm-gray-light bg-opacity-25">
+  <section class="section-component py-6 {{ $backgroundColor }} bg-opacity-25">
     <div class="container wvu-z-index-content">
-      <div class="{{ $margin }} bg-white">
+      <div class="{{ $margin }} {{ $backgroundColor }}">
         <div class="row">
           <div class="col-xxl-8 position-relative">
             <h2 class="wvu-shout h1 d-inline-block wvu-text-letter-spacing-lg">
