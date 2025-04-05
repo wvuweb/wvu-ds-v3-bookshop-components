@@ -1,19 +1,15 @@
 {{ $backgroundColor := "" }}
 {{ $subtleColor := "" }}
 {{ $margin := "" }}
-{{ $itemColor := "bg-white-subtle-dark" }}
 
 {{ if and .styles .styles.background_c }}
   {{ $backgroundColor = .styles.background_c }}
   {{ $subtleColor = replace $backgroundColor "bg-" "" }}
   {{ if strings.Contains $subtleColor "text-white" }}
-    {{ $subtleColor = replace $subtleColor " text-white" "" }}
-    {{ $subtleColor = printf "%s%s" $subtleColor "-subtle-dark" }}
+    {{ $subtleColor = replace $subtleColor " text-white" "-subtle-dark" }}
   {{ else }}
-    {{ $subtleColor = replace $subtleColor " text-dark" "" }}
-    {{ $subtleColor = printf "%s%s" $subtleColor "-subtle" }}
+    {{ $subtleColor = replace $subtleColor " text-dark" "-subtle" }}
   {{ end }}
-  {{ $itemColor = $subtleColor }}
 {{ end }}
 
 {{ if and .layout .layout.margin }}
@@ -41,13 +37,14 @@
         
         <div class="row gx-4 text-center">
           {{ range .items }}
+            {{ $itemColor := $subtleColor }}
             {{ if .background_c }}
               {{ $itemColor = .background_c }}
             {{ else }}
               {{ $itemColor = printf "%s%s" "bg-" $itemColor }}
             {{ end }}
             <div class="{{ $gridClasses }}">
-              <div class="position-relative px-5 py-6 h-100 {{ $itemColor }} rounded-2">
+              <div class="position-relative px-5 py-6 h-100 {{ $itemColor }} rounded-2 shadow-sm">
                 <h3 class="{{ $itemHeadingStyles }}">{{ .title }}</h3>
                 <p>{{ .text }}</p>
                 <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 text-wvu-neutral--cream"></span></a>
