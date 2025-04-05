@@ -42,6 +42,9 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  background_c:
+    values:
+      value_key: class
   postscript_ctas:
     type: object
     values:
