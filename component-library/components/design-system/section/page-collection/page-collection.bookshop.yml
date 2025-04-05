@@ -24,6 +24,7 @@ blueprint:
   layout:
     margin:
   styles:
+    background_c:
     panels:
     item_headings:
     margin:
