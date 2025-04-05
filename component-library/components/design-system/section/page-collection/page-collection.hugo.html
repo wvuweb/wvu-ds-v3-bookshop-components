@@ -9,7 +9,6 @@
   {{ $margin = .layout.margin }}
 {{ end }}
 
-{{ $panelStyles := "bg-wvu-accent--blue-dark text-white rounded-2" }}
 {{ $gridClasses := "col-24 col-lg-12 col-xl-8 mb-5" }}
 {{ $itemHeadingStyles := "iowan-old-style h1" }}
 
@@ -32,7 +31,7 @@
         <div class="row gx-4 text-center">
           {{ range .items }}
             <div class="{{ $gridClasses }}">
-              <div class="position-relative px-5 py-6 h-100 {{ $panelStyles }} {{ .background_c }}">
+              <div class="position-relative px-5 py-6 h-100 {{ .background_c }} rounded-2">
                 <h3 class="{{ $itemHeadingStyles }}">{{ .title }}</h3>
                 <p>{{ .text }}</p>
                 <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 text-wvu-neutral--cream"></span></a>
