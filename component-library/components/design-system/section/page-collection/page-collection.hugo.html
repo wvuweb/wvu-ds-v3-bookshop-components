@@ -1,17 +1,19 @@
 {{ $backgroundColor := "" }}
-{{ $postscriptButtonColor := "" }}
+{{ $subtleColor := "" }}
 {{ $margin := "" }}
+{{ $itemColor := "bg-white-subtle-dark" }}
 
 {{ if and .styles .styles.background_c }}
   {{ $backgroundColor = .styles.background_c }}
-  {{ $postscriptButtonColor = replace $backgroundColor "bg-" "" }}
-  {{ if strings.Contains $postscriptButtonColor "text-white" }}
-    {{ $postscriptButtonColor = replace $postscriptButtonColor " text-white" "" }}
-    {{ $postscriptButtonColor = printf "%s%s" $postscriptButtonColor "-subtle-dark" }}
+  {{ $subtleColor = replace $backgroundColor "bg-" "" }}
+  {{ if strings.Contains $subtleColor "text-white" }}
+    {{ $subtleColor = replace $subtleColor " text-white" "" }}
+    {{ $subtleColor = printf "%s%s" $subtleColor "-subtle-dark" }}
   {{ else }}
-    {{ $postscriptButtonColor = replace $postscriptButtonColor " text-dark" "" }}
-    {{ $postscriptButtonColor = printf "%s%s" $postscriptButtonColor "-subtle" }}
+    {{ $subtleColor = replace $subtleColor " text-dark" "" }}
+    {{ $subtleColor = printf "%s%s" $subtleColor "-subtle" }}
   {{ end }}
+  {{ $itemColor = $subtleColor }}
 {{ end }}
 
 {{ if and .layout .layout.margin }}
@@ -39,8 +41,11 @@
         
         <div class="row gx-4 text-center">
           {{ range .items }}
+            {{ if .background_c }}
+              {{ $itemColor = .background_c }}
+            {{ end }}
             <div class="{{ $gridClasses }}">
-              <div class="position-relative px-5 py-6 h-100 {{ .background_c }} rounded-2">
+              <div class="position-relative px-5 py-6 h-100 {{ $itemColor }} rounded-2">
                 <h3 class="{{ $itemHeadingStyles }}">{{ .title }}</h3>
                 <p>{{ .text }}</p>
                 <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 text-wvu-neutral--cream"></span></a>
@@ -58,7 +63,7 @@
             {{ end }}
 
             {{ with .postscript_ctas }}
-              {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" .buttons "size" "button-group-sm" "color" $postscriptButtonColor)) }}
+              {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" .buttons "size" "button-group-sm" "color" $subtleColor)) }}
             {{ end }}
           </div>
         {{ end }}
