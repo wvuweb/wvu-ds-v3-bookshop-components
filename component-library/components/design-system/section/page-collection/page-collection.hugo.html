@@ -43,7 +43,11 @@
 
         {{ with .postscript }}
           <div class="text-center mt-5">
-            {{ .copy | markdownify }}
+            {{ with .copy }}
+              <div class="mb-5">
+                {{ .copy | markdownify }}
+              </div>
+            {{ end }}
 
             {{ with .postscript_ctas }}
               {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" .buttons "size" "button-group-sm")) }}
