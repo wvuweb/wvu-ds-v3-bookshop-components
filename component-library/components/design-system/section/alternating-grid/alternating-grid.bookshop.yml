@@ -19,7 +19,7 @@ blueprint:
       ctas:
   postscript:
     copy:
-    postscript_links:
+    postscript_ctas:
   config:
     edit_mode_only: false
 
@@ -30,3 +30,7 @@ preview:
 _inputs:
   copy:
     type: markdown
+  ctas:
+    type: object
+    values:
+      value: _structures.postscript_ctas
