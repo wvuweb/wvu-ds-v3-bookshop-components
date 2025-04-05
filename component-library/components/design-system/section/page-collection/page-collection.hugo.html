@@ -31,8 +31,8 @@
         
         <div class="row gx-4 text-center">
           {{ range .items }}
-            <div class="{{ $gridClasses }} {{ .background_c }}">
-              <div class="position-relative px-5 py-6 h-100 {{ $panelStyles }}">
+            <div class="{{ $gridClasses }}">
+              <div class="position-relative px-5 py-6 h-100 {{ $panelStyles }} {{ .background_c }}">
                 <h3 class="{{ $itemHeadingStyles }}">{{ .title }}</h3>
                 <p>{{ .text }}</p>
                 <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 text-wvu-neutral--cream"></span></a>
