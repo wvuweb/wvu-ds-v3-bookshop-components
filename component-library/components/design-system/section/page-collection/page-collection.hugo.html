@@ -45,7 +45,7 @@
               {{ $itemColor = .background_c }}
             {{ end }}
             <div class="{{ $gridClasses }}">
-              <div class="position-relative px-5 py-6 h-100 {{ $itemColor }} rounded-2">
+              <div class="position-relative px-5 py-6 h-100 bg-{{ $itemColor }} rounded-2">
                 <h3 class="{{ $itemHeadingStyles }}">{{ .title }}</h3>
                 <p>{{ .text }}</p>
                 <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 text-wvu-neutral--cream"></span></a>
