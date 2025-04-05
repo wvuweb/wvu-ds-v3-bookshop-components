@@ -44,7 +44,5 @@ _inputs:
   section_background_c:
     label: Background Color
     type: select
-    options:
-      values:
-        value: _select_data.brand_colors
-        value_key: class
+    values: _select_data.brand_colors
+    value_key: class
