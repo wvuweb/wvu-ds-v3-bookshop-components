@@ -28,6 +28,11 @@ blueprint:
     enable_pattern: false
     tint_opacity: "0.5"
     container_margin:
+  layout:
+    container_margin:
+    text_placement:
+  config:
+    show_label: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

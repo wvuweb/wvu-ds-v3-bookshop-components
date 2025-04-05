@@ -21,6 +21,8 @@ blueprint:
   postscript:
     copy:
     postscript_ctas:
+  layout:
+    margin:
   config:
     edit_mode_only: false
 

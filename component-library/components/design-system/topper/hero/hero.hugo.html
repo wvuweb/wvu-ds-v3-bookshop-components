@@ -2,6 +2,7 @@
 {{ $src := .topper.background_image }}
 {{ $backgroundColor := "bg-wvu-blue text-white" }}
 {{ $headingColor := "text-wvu-gold" }}
+{{ $placement := "mx-xl-auto text-center" }}
 
 {{ if and .topper.styles .topper.styles.vibe }}
   {{ $vibe = .topper.styles.vibe }}
@@ -18,6 +19,10 @@
 
 {{ if and .topper.styles .topper.styles.heading_c }}
   {{ $headingColor = .topper.styles.heading_c }}
+{{ end }}
+
+{{ if and .topper.layout .topper.layout.text_placement }}
+  {{ $placement = .topper.layout.text_placement }}
 {{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
@@ -43,10 +48,10 @@
   {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .topper.alt_text "styles" .topper.styles)) }}
   <div class="container wvu-z-index-content {{ .topper.styles.container_margin }}">
     <div class="row">
-      <div class="col-xl-16 mx-xl-auto">
+      <div class="col-xl-16 {{ $placement }}">
         {{ if .topper.heading }}
-          {{ if .title }}
-            <h1 class="vibe-label h6 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ .title }}</h1>
+          {{ if and .title .topper.config }}
+            <h1 class="vibe-label h6 mb-6 text-uppercase wvu-text-letter-spacing-lg {{ if and .topper.config (not .topper.config.show_label) }}visually-hidden{{ end }}">{{ .title }}</h1>
           {{ end }}
           <h2 id="" class="vibe-primary-heading display-4 text-{{ $headingColor }}">
             {{ range .topper.heading }}
