@@ -1,0 +1,57 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: "Page Collection Simple"
+  description:
+  icon:
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  heading: Heading
+  subheading: Subheading.
+  items:
+    - title: Item 1 Title
+      text: Item 1 text.
+      url:
+      background_c:
+    - title: Item 2 Title
+      text: Item 2 text.
+      url:
+      background_c:
+    - title: Item 3 Title
+      text: Item 3 text.
+      url:
+      background_c:
+  postscript:
+    copy:
+    postscript_ctas:
+  layout:
+    margin:
+  styles:
+    background_c:
+    panels:
+    item_headings:
+    margin:
+  config:
+    edit_mode_only: false
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  background_c:
+    type: select
+    values:
+      value:
+        - label: Accent - Blue
+          class: bg-wvu-accent--blue
+        - label: Accent - Sunset
+          class: bg-wvu-accent--sunset
+      value_key: class
+  postscript_ctas:
+    type: object
+    values:
+      value: _structures.postscript_ctas
