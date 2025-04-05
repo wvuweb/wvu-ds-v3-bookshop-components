@@ -1,0 +1,3 @@
+{{ range .buttons }}
+  <a class="btn btn-outline-dark" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+{{ end }}

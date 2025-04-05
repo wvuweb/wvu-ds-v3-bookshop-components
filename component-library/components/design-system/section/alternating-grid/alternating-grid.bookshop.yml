@@ -17,7 +17,7 @@ blueprint:
       image:
       alt_text:
       copy:
-      ctas:
+      item_ctas:
   postscript:
     copy:
     postscript_ctas:
@@ -31,7 +31,11 @@ preview:
 _inputs:
   copy:
     type: markdown
-  ctas:
+  items_ctas:
+    type: object
+    values:
+      value: _structures.item_ctas
+  postscript_ctas:
     type: object
     values:
       value: _structures.postscript_ctas

@@ -42,8 +42,8 @@
                     <div class="mb-3">
                       {{ .copy | markdownify }}
                     </div>
-                    {{ range .ctas }}
-                      {{ partial "bookshop" (slice "design-system/generic/button" .) }}
+                    {{ if and .item_ctas .item_ctas._bookshop_name }}
+                      {{ partial "bookshop" (slice .item_ctas._bookshop_name .item_ctas) }}
                     {{ end }}
                   </div>
                 </div>
