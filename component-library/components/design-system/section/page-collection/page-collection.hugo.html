@@ -1,8 +1,17 @@
 {{ $backgroundColor := "" }}
+{{ $postscriptButtonColor := "" }}
 {{ $margin := "" }}
 
 {{ if and .styles .styles.background_c }}
   {{ $backgroundColor = .styles.background_c }}
+  {{ $postscriptButtonColor = replace $backgroundColor "bg-" "" }}
+  {{ if strings.Contains $postscriptButtonColor "text-white" }}
+    {{ $postscriptButtonColor = replace $postscriptButtonColor " text-white" "" }}
+    {{ $postscriptButtonColor = printf "%s%s" $postscriptButtonColor "-subtle-dark" }}
+  {{ else }}
+    {{ $postscriptButtonColor = replace $postscriptButtonColor " text-dark" "" }}
+    {{ $postscriptButtonColor = printf "%s%s" $postscriptButtonColor "-subtle" }}
+  {{ end }}
 {{ end }}
 
 {{ if and .layout .layout.margin }}
@@ -16,7 +25,7 @@
 
   <section class="py-6 position-relative {{ $backgroundColor }}">
     <div class="container position-relative wvu-z-index-content">
-      <div class="{{ $backgroundColor }} {{ $margin }}">
+      <div class="{{ $backgroundColor }} {{ $margin }} pb-0 pb-xl-0">
         {{ if or .heading .subheading }}          
           <div class="row text-center mb-5">
             <div class="col-xl-12 mx-xl-auto">
@@ -41,15 +50,15 @@
         </div>
 
         {{ with .postscript }}
-          <div class="text-center mt-5">
+          <div class="text-center">
             {{ with .copy }}
-              <div class="mb-5">
+              <div class="mb-4">
                 {{ . | markdownify }}
               </div>
             {{ end }}
 
             {{ with .postscript_ctas }}
-              {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" .buttons "size" "button-group-sm")) }}
+              {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" .buttons "size" "button-group-sm" "color" $postscriptButtonColor)) }}
             {{ end }}
           </div>
         {{ end }}
