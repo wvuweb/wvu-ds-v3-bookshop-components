@@ -45,7 +45,7 @@
           <div class="text-center mt-5">
             {{ with .copy }}
               <div class="mb-5">
-                {{ .copy | markdownify }}
+                {{ . | markdownify }}
               </div>
             {{ end }}
 
