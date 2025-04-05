@@ -27,17 +27,22 @@ blueprint:
   postscript:
     copy:
     ctas:
-  layout:
-    margin:
-  styles:
-    section_background_c:
-    panels:
-    item_headings:
-  config:
-    edit_mode_only: false
+  settings:
+    layout:
+      margin:
+    styles:
+      section_background_c:
+      panels:
+      item_headings:
+    config:
+      edit_mode_only: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  layout_styles_config:
+    type: object
+    options:
+      subtype: tabbed
