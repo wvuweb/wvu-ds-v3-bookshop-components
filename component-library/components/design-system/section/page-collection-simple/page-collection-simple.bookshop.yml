@@ -30,7 +30,7 @@ blueprint:
   layout:
     margin:
   styles:
-    background_c:
+    section_background_c:
     panels:
     item_headings:
     margin:
@@ -42,8 +42,10 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  background_c:
+  section_background_c:
+    label: Background Color
     values:
+      value: _select_data.brand_colors
       value_key: class
   postscript_ctas:
     type: object

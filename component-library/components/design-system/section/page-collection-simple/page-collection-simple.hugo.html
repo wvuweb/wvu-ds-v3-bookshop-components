@@ -1,3 +1,5 @@
+{{ $backgroundColorSubtle := replace .styles.background_c " text-white" "-subtle" }}
+
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
   <section class="py-6 position-relative {{ .styles.background_c }}">
@@ -35,7 +37,7 @@
             {{ end }}
 
             {{ with .postscript_ctas }}
-              {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" .buttons "size" "button-group-sm" "color" .styles.section_background_c)) }}
+              {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" .buttons "size" "button-group-sm" "color" $backgroundColorSubtle)) }}
             {{ end }}
           </div>
         {{ end }}
