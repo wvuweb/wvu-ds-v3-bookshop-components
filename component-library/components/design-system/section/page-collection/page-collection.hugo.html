@@ -1,15 +1,17 @@
-{{ $backgroundColor := "" }}
+{{ $backgroundColor := "bg-white text-dark" }}
 {{ $subtleColor := "" }}
 {{ $margin := "" }}
 
 {{ if and .styles .styles.background_c }}
   {{ $backgroundColor = .styles.background_c }}
-  {{ $subtleColor = replace $backgroundColor "bg-" "" }}
-  {{ if strings.Contains $subtleColor "text-white" }}
-    {{ $subtleColor = replace $subtleColor " text-white" "-subtle-dark" }}
-  {{ else }}
-    {{ $subtleColor = replace $subtleColor " text-dark" "-subtle" }}
-  {{ end }}
+{{ end }}
+
+{{ $subtleColor = replace $backgroundColor "bg-" "" }}
+
+{{ if strings.Contains $subtleColor "text-white" }}
+  {{ $subtleColor = replace $subtleColor " text-white" "-subtle-dark" }}
+{{ else }}
+  {{ $subtleColor = replace $subtleColor " text-dark" "-subtle" }}
 {{ end }}
 
 {{ if and .layout .layout.margin }}
