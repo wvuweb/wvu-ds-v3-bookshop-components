@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   heading: Alternating Grid Heading
+  subheading: Subheading goes here.
   items:
     - heading: Item Heading
       image:
