@@ -21,12 +21,14 @@ blueprint:
     - title: Item 3 Title
       text: Item 3 text.
       url:
-  config:
-    edit_mode_only: false
+  layout:
+    margin:
   styles:
     panels:
     item_headings:
     margin:
+  config:
+    edit_mode_only: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

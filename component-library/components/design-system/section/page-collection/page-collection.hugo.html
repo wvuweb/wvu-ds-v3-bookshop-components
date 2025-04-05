@@ -1,19 +1,31 @@
-{{ $sectionMargin := "py-6" }}
+{{ $backgroundColor := "" }}
+{{ $margin := "" }}
+
+{{ if and .styles .styles.background_c }}
+  {{ $backgroundColor = .styles.background_c }}
+{{ end }}
+
+{{ if and .layout .layout.margin }}
+  {{ $margin = .layout.margin }}
+{{ end }}
+
 {{ $panelStyles := "bg-wvu-accent--blue-dark text-white rounded-2" }}
 {{ $gridClasses := "col-24 col-lg-12 col-xl-8 mb-5" }}
 {{ $itemHeadingStyles := "iowan-old-style h1" }}
 
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
-  <section class="py-6 position-relative">
-    <div class="container position-relative wvu-z-index-content {{ .styles.margin }}">
-      {{ if .heading }}
-        <div class="row text-center mb-5">
-          <div class="col-xl-12 mx-xl-auto">
-            <h2 class="h1 helvetica-neue-condensed-black text-uppercase wvu-text-letter-spacing-lg text-wvu-accent--blue-dark">{{ .heading }}</h2>
-            {{ if .subheading }}
-              <p class="lead text-wvu-accent--blue-dark">{{ .subheading }}</p>
-            {{ end }}
+  <section class="py-6 position-relative {{ $backgroundColor }}">
+    <div class="container position-relative wvu-z-index-content">
+      {{ if or .heading .subheading }}
+        <div class="{{ $backgroundColor }} {{ $margin }}">
+          <div class="row text-center mb-5">
+            <div class="col-xl-12 mx-xl-auto">
+              <h2 class="h1 helvetica-neue-condensed-black text-uppercase wvu-text-letter-spacing-lg text-wvu-accent--blue-dark">{{ .heading }}</h2>
+              {{ if .subheading }}
+                <p class="lead text-wvu-accent--blue-dark">{{ .subheading }}</p>
+              {{ end }}
+            </div>
           </div>
         </div>
       {{ end }}
