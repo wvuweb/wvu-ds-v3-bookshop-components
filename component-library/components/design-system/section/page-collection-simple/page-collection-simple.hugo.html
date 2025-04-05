@@ -36,8 +36,9 @@
               </div>
             {{ end }}
 
-            {{ with .postscript_ctas }}
-              {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" .buttons "size" "button-group-sm" "color" $backgroundColorSubtle)) }}
+            {{ with .ctas }}
+              {{ $buttons := . }}
+              {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" $buttons "size" "button-group-sm" "color" $backgroundColorSubtle)) }}
             {{ end }}
           </div>
         {{ end }}
