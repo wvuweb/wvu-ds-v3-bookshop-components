@@ -30,7 +30,7 @@ blueprint:
   layout:
     margin:
   styles:
-    background_c:
+    section_background_c:
     panels:
     item_headings:
     margin:
@@ -42,7 +42,8 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  background_c:
+  section_background_c:
+    name: Background Color
     type: select
     values:
       value:
