@@ -14,9 +14,10 @@ blueprint:
   links:
     - text: Text
       url: /url
+  layout:
+    margin:
   config:
     edit_mode_only: false
-  margin: ""
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
