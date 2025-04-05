@@ -17,7 +17,7 @@ blueprint:
       highlight:
   subheading: Subheading.
   body_text:
-  styles:
+  test_styles:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -35,16 +35,3 @@ _inputs:
     options:
       values: _select_data.topper_margins
       value_key: class
-  styles:
-    type: object
-    options:
-      values:
-        value:
-          - vibe
-          - background_c
-          - color_overlay
-          - heading_c
-          - enable_blend
-          - enable_pattern
-          - tint_opacity
-          - container_margin
