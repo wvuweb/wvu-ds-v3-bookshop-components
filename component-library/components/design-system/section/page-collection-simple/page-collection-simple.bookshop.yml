@@ -30,7 +30,7 @@ blueprint:
   layout:
     margin:
   styles:
-    section_background_c:
+    background_c:
     panels:
     item_headings:
     margin:
@@ -42,16 +42,6 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  section_background_c:
-    name: Background Color
-    type: select
-    values:
-      value:
-        - label: Accent - Blue
-          class: bg-wvu-accent--blue
-        - label: Accent - Sunset
-          class: bg-wvu-accent--sunset
-      value_key: class
   postscript_ctas:
     type: object
     values:
