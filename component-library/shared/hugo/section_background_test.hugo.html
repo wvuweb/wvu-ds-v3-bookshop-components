@@ -40,8 +40,8 @@
 <div class="wvu-bg-img">
   {{ if and .styles .styles.enable_blend }}
 
-    {{ if and .styles.color_overlay .styles.color_overlay._bookshop_name (eq .styles.color_overlay._bookshop_name "design-system/simple/color-overlay") }}
-      {{ partial "bookshop" (slice "design-system/simple/color-overlay" .styles.color_overlay) }}
+    {{ if and .styles.color_overlay .styles.color_overlay._bookshop_name (eq .styles.color_overlay._bookshop_name "design-system/simple/gradient-overlay") }}
+      {{ partial "bookshop" (slice "design-system/simple/gradient-overlay" .styles.color_overlay) }}
     {{ end }}
 
     {{ if .image }}
