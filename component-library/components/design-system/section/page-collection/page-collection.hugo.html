@@ -1,37 +1,17 @@
-{{ $backgroundColor := "bg-white text-dark" }}
-{{ $subtleColor := "" }}
-{{ $margin := "" }}
-
-{{ if and .styles .styles.background_c }}
-  {{ $backgroundColor = .styles.background_c }}
-{{ end }}
-
-{{ $subtleColor = replace $backgroundColor "bg-" "" }}
-
-{{ if strings.Contains $subtleColor "text-white" }}
-  {{ $subtleColor = replace $subtleColor " text-white" "-subtle-dark" }}
-{{ else }}
-  {{ $subtleColor = replace $subtleColor " text-dark" "-subtle" }}
-{{ end }}
-
-{{ if and .layout .layout.margin }}
-  {{ $margin = .layout.margin }}
-{{ end }}
-
-{{ $gridClasses := "col-24 col-lg-12 col-xl-8 mb-5" }}
-{{ $itemHeadingStyles := "iowan-old-style h1" }}
+{{ $backgroundColor := printf "%s%s" "bg-" .styles.section_background_c }}
+{{ $backgroundColorSubtle := printf "%s%s" .styles.section_background_c "-subtle" }}
 
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
   <section class="py-6 position-relative {{ $backgroundColor }}">
     <div class="container position-relative wvu-z-index-content">
-      <div class="{{ $backgroundColor }} {{ $margin }} pb-0 pb-xl-0">
+      <div class="{{ .styles.section_background_c }} pb-0 pb-xl-0">
         {{ if or .heading .subheading }}          
           <div class="row text-center mb-5">
             <div class="col-xl-12 mx-xl-auto">
               <h2 class="h1 helvetica-neue-condensed-black text-uppercase wvu-text-letter-spacing-lg">{{ .heading }}</h2>
-              {{ if .subheading }}
-                <p class="lead">{{ .subheading }}</p>
+              {{ with .subheading }}
+                <p class="lead">{{ . }}</p>
               {{ end }}
             </div>
           </div>
@@ -39,15 +19,9 @@
         
         <div class="row gx-4 text-center">
           {{ range .items }}
-            {{ $itemColor := $subtleColor }}
-            {{ if .background_c }}
-              {{ $itemColor = .background_c }}
-            {{ else }}
-              {{ $itemColor = printf "%s%s" "bg-" $itemColor }}
-            {{ end }}
-            <div class="{{ $gridClasses }}">
-              <div class="position-relative px-5 py-6 h-100 {{ $itemColor }} rounded-2 shadow-sm">
-                <h3 class="{{ $itemHeadingStyles }}">{{ .title }}</h3>
+            <div class="col-24 col-lg-12 col-xl-8 mb-5">
+              <div class="position-relative px-5 py-6 h-100 {{ if .background_c }}{{ .background_c }}{{ else }}bg-{{ $backgroundColorSubtle }}{{ end }} rounded-2 shadow-sm">
+                <h3 class="iowan-old-style h1">{{ .title }}</h3>
                 <p>{{ .text }}</p>
                 <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 text-wvu-neutral--cream"></span></a>
               </div>
@@ -63,8 +37,12 @@
               </div>
             {{ end }}
 
-            {{ with .postscript_ctas }}
-              {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" .buttons "size" "button-group-sm" "color" $subtleColor)) }}
+            {{ with .ctas }}
+              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                {{ range .}}
+                  <a class="btn btn-{{ $backgroundColorSubtle }}" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                {{ end }}
+              </div>
             {{ end }}
           </div>
         {{ end }}

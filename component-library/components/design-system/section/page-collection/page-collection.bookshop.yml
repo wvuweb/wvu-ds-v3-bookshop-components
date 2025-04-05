@@ -26,14 +26,13 @@ blueprint:
       background_c:
   postscript:
     copy:
-    postscript_ctas:
+    ctas:
   layout:
     margin:
   styles:
-    background_c:
+    section_background_c:
     panels:
     item_headings:
-    margin:
   config:
     edit_mode_only: false
 
@@ -42,7 +41,3 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  postscript_ctas:
-    type: object
-    values:
-      value: _structures.postscript_ctas
