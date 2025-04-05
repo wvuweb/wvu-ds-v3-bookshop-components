@@ -1,8 +1,9 @@
-{{ $backgroundColorSubtle := replace .styles.section_background_c " text-white" "-subtle" }}
+{{ $backgroundColor := printf "%s%s" "bg-" .styles.section_background_c }}
+{{ $backgroundColorSubtle := printf "%s%s" .styles.section_background_c "-subtle" }}
 
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
-  <section class="py-6 position-relative {{ .styles.section_background_c }}">
+  <section class="py-6 position-relative {{ $backgroundColor }}">
     <div class="container position-relative wvu-z-index-content">
       <div class="{{ .styles.section_background_c }} pb-0 pb-xl-0">
         {{ if or .heading .subheading }}          
@@ -19,7 +20,7 @@
         <div class="row gx-4 text-center">
           {{ range .items }}
             <div class="col-24 col-lg-12 col-xl-8 mb-5">
-              <div class="position-relative px-5 py-6 h-100 {{ .styles.section_background_c }} rounded-2 shadow-sm">
+              <div class="position-relative px-5 py-6 h-100 bg-{{ $backgroundColorSubtle }} rounded-2 shadow-sm">
                 <h3 class="iowan-old-style h1">{{ .title }}</h3>
                 <p>{{ .text }}</p>
                 <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 text-wvu-neutral--cream"></span></a>
