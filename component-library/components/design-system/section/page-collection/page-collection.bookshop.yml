@@ -44,5 +44,8 @@ preview:
 _inputs:
   layout_styles_config:
     type: object
+    preview:
+      text: Layout, styles, and config
+      icon: settings
     options:
       subtype: tabbed
