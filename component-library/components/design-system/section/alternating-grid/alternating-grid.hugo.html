@@ -42,7 +42,7 @@
               {{ end }}
 
               {{ $src := .image }}
-              
+
               {{- if not site.Params.env_bookshop_live -}}
                 {{ $image := "" }}
                 {{/*  Get the image, either from its remote or local source  */}}
@@ -74,7 +74,9 @@
                         {{ .copy | markdownify }}
                       </div>
                       {{ with .ctas }}
-                        <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                        {{ range . }}
+                          <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                        {{ end }}
                       {{ end }}
                     </div>
                   </div>
