@@ -12,7 +12,6 @@ blueprint:
   heading: Heading
   name: Firstname Lastname
   image:
-  is_cutout: false
   label:
     - Label
   info:
@@ -23,9 +22,13 @@ blueprint:
       icon:
     - text: Call to Action
       url:
-      icon: 
-  config:
-    edit_mode_only: false
+      icon:
+  settings:
+    layout:
+      is_cutout: false
+      margin:
+    config:
+      edit_mode_only: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -34,3 +37,5 @@ preview:
 _inputs:
   is_cutout:
     type: switch
+    label: Use Cutout
+    subtext: Choose this if you’ve cut your profile image from the background.
