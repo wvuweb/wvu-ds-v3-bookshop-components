@@ -4,6 +4,7 @@
 
 {{ $backgroundColor := replace $styles.background_c "bg-" "" }}
 {{ $backgroundColorSubtle := "" }}
+{{ $panelAccentColor := .styles.accent_c }}
 
 {{ if strings.Contains $backgroundColor "text-dark" }}
   {{ $backgroundColorSubtle = replace $backgroundColor " text-dark" "-subtle" }}
@@ -33,7 +34,7 @@
               <div class="position-relative px-5 py-6 h-100 {{ if .background_c }}{{ .background_c }}{{ else }}bg-{{ $backgroundColorSubtle }}{{ end }} rounded-2 shadow-sm">
                 <h3 class="iowan-old-style h1">{{ .title }}</h3>
                 <p>{{ .text }}</p>
-                <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 text-wvu-neutral--cream"></span></a>
+                <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 {{ if .accent_c }}text-{{ .accent_c }}{{ else }}text-{{ $panelAccentColor }}{{ end }}"></span></a>
               </div>
             </div>
           {{ end }}
@@ -49,8 +50,8 @@
 
             {{ with .ctas }}
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                {{ range .}}
-                  <a class="btn btn-{{ $backgroundColorSubtle }}" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                {{ range . }}
+                  <a class="btn btn-{{ $backgroundColorSubtle }} bg-opacity-10" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
                 {{ end }}
               </div>
             {{ end }}

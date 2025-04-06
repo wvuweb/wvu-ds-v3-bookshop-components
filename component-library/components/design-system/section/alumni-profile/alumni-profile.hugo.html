@@ -1,6 +1,26 @@
+{{ $src := .image }}
 {{ $vibe := "wvu-ds-vibe-student-experience-01"}}
 {{ $colorPalette := "wvu-ds-color-palette-01"}}
 {{ $imageClasses := "object-fit-contain" }}
+
+{{- if not site.Params.env_bookshop_live -}}
+  {{ $image := "" }}
+  {{/*  Get the image, either from its remote or local source  */}}
+  {{ if hasPrefix $src "http"}}
+    {{ $image = resources.GetRemote $src }}
+  {{ else }}
+    {{ $image = resources.Get $src }}
+  {{ end }}
+
+  {{/* Resize images and add them to a variable  */}}
+  {{ if and $image (ne $image.MediaType.SubType "svg") }}
+    {{ if eq .is_cutout "fit" }}
+      {{ $src = ($image.Fit (printf "%dx%d webp" 960 640)).RelPermalink }}
+    {{ else }}
+      {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{- end -}}
 
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
   <section class="section-component wvu-ds-student-profiles {{ $vibe }} {{ $colorPalette }} py-6">
@@ -21,11 +41,9 @@
                       </div>
                     {{ end }}
                     <div class="col-xxl-17 mx-xxl-auto d-flex justify-content-center align-items-end wvu-z-index-content">
-                      {{ if .image }}
-                        <div class="wvu-z-index-content">
-                          {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image "width" 960 "height" 640 "imageProcess" "fit" "classes" $imageClasses "alt" .alt_text)) }}
-                        </div>
-                      {{ end }}
+                      <div class="wvu-z-index-content">
+                        <img class="object-fit" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                      </div>
                     </div>
                   </div>
                 </div>

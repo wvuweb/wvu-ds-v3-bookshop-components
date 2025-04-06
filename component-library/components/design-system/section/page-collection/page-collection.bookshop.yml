@@ -16,14 +16,7 @@ blueprint:
       text: Item 1 text.
       url:
       background_c:
-    - title: Item 2 Title
-      text: Item 2 text.
-      url:
-      background_c:
-    - title: Item 3 Title
-      text: Item 3 text.
-      url:
-      background_c:
+      accent_c:
   postscript:
     copy:
     ctas:
@@ -32,8 +25,8 @@ blueprint:
       margin:
     styles:
       background_c:
-      panels:
-      item_headings:
+      panel_font:
+      accent_c:
     config:
       edit_mode_only: false
 
@@ -42,6 +35,12 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  accent_c:
+    type: select
+    options:
+      values: _select_data.brand_colors
+      value_key: class
+    label: Accent Color
   layout_styles_config:
     type: object
     options:
