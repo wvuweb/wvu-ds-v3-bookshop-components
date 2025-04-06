@@ -4,13 +4,11 @@
       <div class="row justify-content-center gx-xl-5">
         {{ if and .column_a .column_a._bookshop_name }}
           <div class="col-xl-12">
-            {{ partial "bookshop_bindings" `.column_a` }}
             {{ partial "bookshop" (slice .column_a._bookshop_name .column_a) }}
           </div>
         {{ end }}
         {{ if and .column_aa .column_aa._bookshop_name }}
           <div class="col-xl-12">
-            {{ partial "bookshop_bindings" `.column_aa` }}
             {{ partial "bookshop" (slice .column_aa._bookshop_name .column_aa) }}
           </div>
         {{ end }}
