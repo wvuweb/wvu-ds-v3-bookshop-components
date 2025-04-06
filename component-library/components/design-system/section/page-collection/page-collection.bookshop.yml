@@ -42,7 +42,7 @@ _inputs:
       values: _select_data.brand_colors
       value_key: class
     label: Accent Color
-  layout_styles_config:
+  settings:
     type: object
     options:
       subtype: tabbed
