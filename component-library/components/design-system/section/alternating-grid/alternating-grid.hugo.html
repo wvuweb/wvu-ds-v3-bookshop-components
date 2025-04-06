@@ -16,11 +16,11 @@
 
   {{ $order := "" }}
 
-  <section class="section-component py-6 py-xxl-7 position-relative">
+  <section class="section-component py-6 py-xxl-7 position-relative {{ $styles.background_c }}">
     <div class="container">      
       <div class="row justify-content-center">
         <div class="col-xl-24 col-xxl-20">
-          <div class="{{ $layout.margin }} bg-white">
+          <div class="{{ $layout.margin }} {{ $styles.background_c }}">
             {{ if or .heading .subheading }}
               <div class="mb-6 text-center text-wvu-blue">
                 {{ if .heading }}
