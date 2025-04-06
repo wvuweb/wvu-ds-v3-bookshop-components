@@ -20,8 +20,9 @@ blueprint:
       item_ctas:
   postscript:
     copy:
-    postscript_ctas:
+    ctas:
   layout:
+    butter:
     margin:
   config:
     edit_mode_only: false

@@ -26,6 +26,7 @@ blueprint:
   settings:
     layout:
       is_cutout: false
+      buffer:
       margin:
     config:
       edit_mode_only: false
