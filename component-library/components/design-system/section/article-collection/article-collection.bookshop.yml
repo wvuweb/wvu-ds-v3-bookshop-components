@@ -10,12 +10,20 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   heading: Article Collection Heading
+  subheading: Subheading goes here.
   article_tags:
     - featured
   limit: 5
-  config:
-    edit_mode_only: false
-    show_content: false
+  postscript:
+    copy:
+    ctas:
+  settings:
+    styles:
+    layout:
+      margin:
+    config:
+      edit_mode_only: false
+      show_content: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

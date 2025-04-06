@@ -12,7 +12,7 @@
   {{ $backgroundColorSubtle = replace $backgroundColor " text-white" "-subtle-dark" }}
 {{ end }}
 
-{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
+{{ if or site.Params.env_bookshop_live (ne $config.edit_mode_only true) }}
 
   <section class="section-component py-6 py-xxl-7 position-relative {{ $styles.background_c }}">
     <div class="container">      

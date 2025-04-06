@@ -20,9 +20,9 @@
         {{ if or .heading .subheading }}          
           <div class="row text-center mb-5">
             <div class="col-xl-12 mx-xl-auto">
-              <h2 class="h1 helvetica-neue-condensed-black text-uppercase wvu-text-letter-spacing-lg">{{ .heading }}</h2>
+              <h2 class="h1 helvetica-neue-condensed-black text-uppercase wvu-text-letter-spacing-lg">{{ .heading | markdownify }}</h2>
               {{ with .subheading }}
-                <p class="lead">{{ . }}</p>
+                <p class="lead">{{ . | markdownify }}</p>
               {{ end }}
             </div>
           </div>
