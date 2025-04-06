@@ -52,8 +52,8 @@
                 {{ end }}
               {{- end -}}
 
-              <div class="row gx-lg-5 mb-6">
-                <div class="col-lg-12 {{ $order }} mb-5 mb-lg-0">
+              <div class="row gx-lg-5 mb-6 alternating-grid">
+                <div class="col-lg-12 order-rotate mb-5 mb-lg-0">
                   {{ if .image }}
                     <div class="ratio ratio-3x2">
                       <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
