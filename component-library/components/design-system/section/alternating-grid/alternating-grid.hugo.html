@@ -33,13 +33,7 @@
               </div>
             {{ end }}
 
-            {{ range $i, $_ := .items }}
-
-              {{ if not ( modBool $i 2 ) }}
-                {{ $order = "order-lg-3" }}
-              {{ else }}
-                {{ $order = "order-lg-1" }}
-              {{ end }}
+            {{ range .items }}
 
               {{ $src := .image }}
 
