@@ -29,11 +29,11 @@
         <div class="row gx-0">
           <div class="col-12 ms-auto">
             <h2 class="wvu-text-vertical wvu-shout h6 small wvu-text-letter-spacing-lg text-wvu-accent--yellow h-100 wvu-z-index-max"><span class="d-block bg-wvu-accent--yellow text-wvu-accent--blue p-2">Alumni Profile</span></h2>
-            <div class="{{ if .is_cutout }}p-5{{ else }}pe-5{{ end }} w-100 h-100 position-relative">
+            <div class="{{ if .settings.config.is_cutout }}p-5{{ else }}pe-5{{ end }} w-100 h-100 position-relative">
               <div class="h-100 position-relative">
                 <div class="w-100 h-100">
                   <div class="row h-100">
-                    {{ if .is_cutout }}
+                    {{ if .settings.config.is_cutout }}
                       {{ $imageClasses = printf "%s%s" "mt-n6 mb-n5 " $imageClasses }}
                       <div class="wvu-bg-img">
                         <div class="wvu-bg-topo-map bg-wvu-accent--blue-light h-100 w-100" style="opacity: 1"></div>
