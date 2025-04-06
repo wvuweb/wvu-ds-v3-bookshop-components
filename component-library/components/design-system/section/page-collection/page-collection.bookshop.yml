@@ -31,7 +31,7 @@ blueprint:
     layout:
       margin:
     styles:
-      section_background_c:
+      background_c:
       panels:
       item_headings:
     config:

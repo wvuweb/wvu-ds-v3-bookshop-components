@@ -2,14 +2,20 @@
 {{ $styles := .settings.styles }}
 {{ $config := .settings.config }}
 
-{{ $backgroundColor := printf "%s%s" "bg-" $styles.section_background_c }}
-{{ $backgroundColorSubtle := printf "%s%s" $styles.section_background_c "-subtle" }}
+{{ $backgroundColor := replace $styles.background_c "bg-" "" }}
+{{ $backgroundColorSubtle := "" }}
+
+{{ if strings.Contains $backgroundColor "text-dark" }}
+  {{ $backgroundColorSubtle = replace $backgroundColor " text-dark" "-subtle" }}
+{{ else }}
+  {{ $backgroundColorSubtle = replace $backgroundColor " text-white" "-subtle-dark" }}
+{{ end }}
 
 {{ if or site.Params.env_bookshop_live (ne $config.edit_mode_only true) }}
 
-  <section class="py-6 position-relative {{ $backgroundColor }}">
+  <section class="py-6 position-relative {{ $styles.background_c }}">
     <div class="container position-relative wvu-z-index-content">
-      <div class="{{ $backgroundColor }} {{ $layout.margin }} pb-0 pb-xl-0">
+      <div class="bg-{{ $backgroundColor }} {{ $layout.margin }} pb-0 pb-xl-0">
         {{ if or .heading .subheading }}          
           <div class="row text-center mb-5">
             <div class="col-xl-12 mx-xl-auto">
