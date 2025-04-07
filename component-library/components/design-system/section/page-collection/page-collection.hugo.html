@@ -2,22 +2,12 @@
 {{ $styles := .settings.styles }}
 {{ $config := .settings.config }}
 
-{{ $backgroundColor := replace $styles.background_c "bg-" "" }}
-{{ $backgroundColorSubtle := "" }}
-{{ $panelAccentColor := .styles.accent_c }}
-
-{{ if strings.Contains $backgroundColor "text-dark" }}
-  {{ $backgroundColorSubtle = replace $backgroundColor " text-dark" "-subtle" }}
-{{ else }}
-  {{ $backgroundColorSubtle = replace $backgroundColor " text-white" "-subtle-dark" }}
-{{ end }}
-
 {{ if or site.Params.env_bookshop_live (ne $config.edit_mode_only true) }}
 
-  <section class="py-6 position-relative {{ $styles.background_c }}">
+  <section class="py-6 position-relative bg-{{ $styles.background_c }}">
     <div class="container position-relative wvu-z-index-content">
       <div class="{{ $layout.buffer }}">
-        <div class="bg-{{ $backgroundColor }} {{ $layout.margin }} pb-0 pb-xl-0">
+        <div class="bg-{{ $styles.background_c }} {{ $layout.margin }} pb-0 pb-xl-0">
           {{ if or .heading .subheading }}          
             <div class="row text-center mb-5">
               <div class="col-xl-12 mx-xl-auto">
@@ -32,10 +22,10 @@
           <div class="row gx-4 text-center">
             {{ range .items }}
               <div class="col-24 col-lg-12 col-xl-8 mb-5">
-                <div class="position-relative px-5 py-6 h-100 {{ if .background_c }}{{ .background_c }}{{ else }}bg-{{ $backgroundColorSubtle }}{{ end }} rounded-2 shadow-sm">
+                <div class="position-relative px-5 py-6 h-100 {{ if .background_c }}bg-{{ .background_c }}{{ else }}bg-{{ $styles.background_c }}-subtle{{ end }} rounded-2 shadow-sm">
                   <h3 class="iowan-old-style h1">{{ .title }}</h3>
                   <p>{{ .text }}</p>
-                  <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 {{ if .accent_c }}text-{{ .accent_c }}{{ else }}text-{{ $panelAccentColor }}{{ end }}"></span></a>
+                  <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 {{ if .accent_c }}text-{{ .accent_c }}{{ end }}"></span></a>
                 </div>
               </div>
             {{ end }}
@@ -52,7 +42,7 @@
               {{ with .ctas }}
                 <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                   {{ range . }}
-                    <a class="btn btn-{{ $backgroundColorSubtle }} bg-opacity-10" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                    <a class="btn btn-{{ $styles.background_c }} bg-{{ $styles.background_c }}-subtle" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
                   {{ end }}
                 </div>
               {{ end }}

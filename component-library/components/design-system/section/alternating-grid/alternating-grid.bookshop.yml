@@ -37,11 +37,3 @@ preview:
 _inputs:
   copy:
     type: markdown
-  item_ctas:
-    type: object
-    values:
-      value: _structures.item_ctas
-  postscript_ctas:
-    type: object
-    values:
-      value: _structures.postscript_ctas
