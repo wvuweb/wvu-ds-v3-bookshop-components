@@ -4,11 +4,11 @@
 
 {{ if or site.Params.env_bookshop_live (ne $config.edit_mode_only true) }}
 
-  <section class="section-component py-6 py-xxl-7 position-relative {{ $styles.background_c }}">
+  <section class="section-component py-6 py-xxl-7 position-relative bg-{{ $styles.background_c }}">
     <div class="container">      
       <div class="row justify-content-center">
         <div class="col-xl-24 col-xxl-20">
-          <div class="{{ $layout.margin }} {{ $styles.background_c }}">
+          <div class="{{ $layout.margin }} bg-{{ $styles.background_c }}">
             {{ if or .heading .subheading }}
               <div class="mb-6 text-center text-wvu-blue">
                 {{ if .heading }}
