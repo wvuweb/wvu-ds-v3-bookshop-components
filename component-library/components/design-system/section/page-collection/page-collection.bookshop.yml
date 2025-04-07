@@ -23,7 +23,7 @@ blueprint:
   settings:
     layout:
       buffer:
-      margin_no_bg:
+      margin:
     styles:
       background_c:
       panel_font:
@@ -42,8 +42,6 @@ _inputs:
       values: _select_data.brand_colors
       value_key: class
     label: Accent Color
-  margin_no_bg:
-    label: Margin
   settings:
     type: object
     options:
