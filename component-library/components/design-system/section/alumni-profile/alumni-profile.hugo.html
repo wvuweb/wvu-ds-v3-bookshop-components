@@ -25,7 +25,7 @@
 {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
   <section class="section-component wvu-ds-student-profiles {{ $vibe }} {{ $colorPalette }} py-6">
     <div class="container wvu-z-index-content">
-      <div class="wvu-ds-bg-primary text-white border border-2 border-dark wvu-shadow-hard-dark {{ .settings.layout.margin }}">
+      <div class="wvu-ds-bg-primary text-white border border-2 border-dark wvu-shadow-hard-dark {{ .settings.layout.margin_no_bg }}">
         <div class="row gx-0">
           <div class="col-12 ms-auto">
             <h2 class="wvu-text-vertical wvu-shout h6 small wvu-text-letter-spacing-lg text-wvu-accent--yellow h-100 wvu-z-index-max"><span class="d-block bg-wvu-accent--yellow text-wvu-accent--blue p-2">Alumni Profile</span></h2>

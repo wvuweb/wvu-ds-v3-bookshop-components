@@ -26,8 +26,7 @@ blueprint:
   settings:
     layout:
       is_cutout: false
-      buffer:
-      margin:
+      margin_no_bg:
     config:
       edit_mode_only: false
 
@@ -40,3 +39,5 @@ _inputs:
     type: switch
     label: Use Cutout
     subtext: Choose this if you’ve cut your profile image from the background.
+  margin_no_bg:
+    label: Margin
