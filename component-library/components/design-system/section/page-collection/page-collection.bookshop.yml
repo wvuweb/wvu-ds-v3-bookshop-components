@@ -26,6 +26,7 @@ blueprint:
       margin:
     styles:
       background_c:
+      tint_shade:
       panel_font:
       accent_c:
     config:

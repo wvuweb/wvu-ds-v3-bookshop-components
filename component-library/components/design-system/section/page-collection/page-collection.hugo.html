@@ -4,7 +4,7 @@
 
 {{ if or site.Params.env_bookshop_live (ne $config.edit_mode_only true) }}
 
-  <section class="py-6 position-relative bg-{{ $styles.background_c }}">
+  <section class="py-6 position-relative bg-{{ $styles.background_c }}{{ with $styles.tint_shade }}-{{ . }}{{ end }}">
     <div class="container position-relative wvu-z-index-content">
       <div class="{{ $layout.buffer }}">
         <div class="bg-{{ $styles.background_c }} {{ $layout.margin }} pb-0 pb-xl-0">
