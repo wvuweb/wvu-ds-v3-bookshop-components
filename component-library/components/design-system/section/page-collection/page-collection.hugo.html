@@ -42,7 +42,7 @@
               {{ with .ctas }}
                 <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                   {{ range . }}
-                    <a class="btn btn-{{ $styles.background_c }} bg-{{ $styles.background_c }}-subtle" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                    <a class="btn btn-{{ $styles.background_c }} {{ if not $styles.tint_shade }}bg-{{ $styles.background_c }}-subtle{{ end }}" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
                   {{ end }}
                 </div>
               {{ end }}
