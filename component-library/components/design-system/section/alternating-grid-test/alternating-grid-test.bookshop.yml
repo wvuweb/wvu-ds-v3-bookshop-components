@@ -2,19 +2,22 @@
 spec:
   structures:
     - content_blocks
-  label: "Page Collection Vertical - Sticky"
-  description:
-  icon:
+    - place_blocks
+  label: "Alternating Grid Test"
+  description: Alternating content blocks w/a photo, text call-to-action.
+  icon: sync_alt
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading: Heading
+  heading: Alternating Grid Heading
   subheading: Subheading goes here.
   items:
-    - title: Item 1 Title
-      text: Item 1 text.
-      url:
+    - heading: Item Heading
+      image:
+      alt_text:
+      copy:
+      ctas:
   postscript:
     copy:
     ctas:
@@ -22,8 +25,8 @@ blueprint:
     styles:
       background_c:
     layout:
+      butter:
       margin:
-      buffer:
     config:
       edit_mode_only: false
 
@@ -32,3 +35,5 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  copy:
+    type: markdown
