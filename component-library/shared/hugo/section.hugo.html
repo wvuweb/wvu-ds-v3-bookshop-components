@@ -1,10 +1,10 @@
-{{ $styles := .component.styles }}
+{{ $styles := .component.settings.styles }}
 
-<section class="section-component py-6 py-xxl-7 position-relative bg-{{ .component.styles.background_c }}">
+<section class="section-component py-6 py-xxl-7 position-relative bg-{{ .component.settings.styles.background_c }}">
   <div class="container">      
     <div class="row justify-content-center">
       <div class="col-xl-24 col-xxl-20">
-        <div class="{{ .component.layout.margin }} bg-{{ .component.styles.background_c }}">
+        <div class="{{ .component.settings.layout.margin }} bg-{{ .component.settings.styles.background_c }}">
           {{ if or .component.heading .component.subheading }}
             <div class="mb-6 text-center text-wvu-blue">
               {{ with .component.heading }}
