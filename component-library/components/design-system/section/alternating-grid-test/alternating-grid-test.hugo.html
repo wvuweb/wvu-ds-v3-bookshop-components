@@ -8,4 +8,6 @@
   "config" .settings.config
 }}
 
-{{ partial "bookshop_partial" (slice "section" (dict "name" "design-system/section-inner/alternating-grid" "component" $component)) }}
+{{ if or site.Params.env_bookshop_live (ne $config.edit_mode_only true) }}
+  {{ partial "bookshop_partial" (slice "section" (dict "name" "design-system/section-inner/alternating-grid" "component" $component)) }}
+{{ end }}
