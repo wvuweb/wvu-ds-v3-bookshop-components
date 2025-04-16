@@ -1,0 +1,53 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: "Page Collection Test"
+  description:
+  icon:
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  heading: Heading
+  subheading: Subheading.
+  items:
+    - title: Item 1 Title
+      text: Item 1 text.
+      url:
+      background_c:
+      accent_c:
+  postscript:
+    copy:
+    ctas:
+  settings:
+    layout:
+      buffer:
+      margin:
+    styles:
+      background_c:
+      tint_shade:
+      panel_font:
+      accent_c:
+    config:
+      edit_mode_only: false
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  accent_c:
+    type: select
+    options:
+      values: _select_data.brand_colors
+      value_key: class
+    label: Accent Color
+  settings:
+    type: object
+    options:
+      subtype: tabbed
+    preview:
+      text:
+        - Layout, styles, and config
+      icon: settings

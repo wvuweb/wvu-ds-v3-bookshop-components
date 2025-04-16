@@ -1,0 +1,13 @@
+{{ $styles := .settings.styles }}
+
+<div class="row gx-4 text-center">
+  {{ range .items }}
+    <div class="col-24 col-lg-12 col-xl-8 mb-5">
+      <div class="position-relative px-5 py-6 h-100 {{ if .background_c }}bg-{{ .background_c }}{{ else }}bg-{{ $styles.background_c }}{{ if not $styles.tint_shade }}-subtle{{ end }}{{ end }} rounded-2 shadow-sm">
+        <h3 class="iowan-old-style h1">{{ .title }}</h3>
+        <p>{{ .text }}</p>
+        <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 {{ if .accent_c }}text-{{ .accent_c }}{{ end }}"></span></a>
+      </div>
+    </div>
+  {{ end }}
+</div>
