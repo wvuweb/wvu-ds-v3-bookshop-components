@@ -17,7 +17,7 @@
             </div>
           {{ end }}
 
-          {{ partial "bookshop" (slice .name (dict "component" .component)) }}
+          {{ partial "bookshop" (slice .name .component) }}
 
           {{ with .component.postscript }}
             <div class="text-center">
