@@ -13,7 +13,6 @@ blueprint:
   subheading: Subheading goes here.
   article_tags:
     - featured
-  limit: 5
   postscript:
     copy:
     ctas:
@@ -23,6 +22,8 @@ blueprint:
       margin:
     config:
       edit_mode_only: false
+      include_heading_postscript: true
+      limit:
       show_content: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -30,3 +31,5 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  limit:
+    type: number

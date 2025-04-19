@@ -20,8 +20,8 @@
 
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $index }}" aria-expanded="false" aria-controls="collapse-{{ $index }}">
-          {{ .name }}
+        <button class="fs-1 lh-1 py-4 accordion-button collapsed border-start-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $index }}" aria-expanded="false" aria-controls="collapse-{{ $index }}">
+          <span class="ms-n1">{{ .name }}</span>
         </button>
       </h2>
       <div id="collapse-{{ $index }}" class="accordion-collapse collapse" data-bs-parent="#accordion">

@@ -1,31 +1,19 @@
-{{ $layout := .settings.layout }}
-{{ $styles := .settings.styles }}
-{{ $config := .settings.config }}
-
-{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-  <section class="py-6 section-component bg-{{ $styles.background_c }}">
-    <div class="container wvu-z-index-content">
-      <div class="{{ $layout.buffer }}">
-        <div class="bg-{{ $styles.background_c }} {{ $layout.margin }} pb-0 pb-xl-0">
-          <div class="row justify-content-center gx-xl-5">
-            {{ if and .column_a .column_a._bookshop_name }}
-              <div class="col-xl-12">
-                {{ partial "bookshop" (slice .column_a._bookshop_name .column_a) }}
-              </div>
-            {{ end }}
-            {{ if and .column_b .column_b._bookshop_name }}
-              <div class="col-24 col-lg-12 col-xl-6">
-                {{ partial "bookshop" (slice .column_b._bookshop_name .column_b) }}
-              </div>
-            {{ end }}
-            {{ if and .column_c .column_c._bookshop_name }}
-              <div class="col-24 col-lg-12 col-xl-6">
-                {{ partial "bookshop" (slice .column_c._bookshop_name .column_c) }}
-              </div>
-            {{ end }}
-          </div>
-        </div>
+{{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
+  <div class="row justify-content-center gx-xl-5">
+    {{ if and .column_a .column_a._bookshop_name }}
+      <div class="col-xl-12">
+        {{ partial "bookshop" (slice .column_a._bookshop_name .column_a) }}
       </div>
-    </div>
-  </section>
+    {{ end }}
+    {{ if and .column_b .column_b._bookshop_name }}
+      <div class="col-24 col-lg-12 col-xl-6">
+        {{ partial "bookshop" (slice .column_b._bookshop_name .column_b) }}
+      </div>
+    {{ end }}
+    {{ if and .column_c .column_c._bookshop_name }}
+      <div class="col-24 col-lg-12 col-xl-6">
+        {{ partial "bookshop" (slice .column_c._bookshop_name .column_c) }}
+      </div>
+    {{ end }}
+  </div>
 {{ end }}
