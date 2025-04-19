@@ -21,20 +21,23 @@
     {{- end -}}
 
     <div class="col-24 col-lg-12 col-xl-8 mb-5">
-      <div class="position-relative h-100">                    
+      <div class="h-100 {{ if .background_c }}bg-{{ .background_c }}{{ else }}bg-{{ $styles.background_c }}{{ if not $styles.tint_shade }}-subtle{{ end }}{{ end }} rounded-2 shadow-sm">
+        <div class="position-relative">                    
           {{ if .image }}
-            <img class="card-img-top img-fluid h-100 object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}">
+            <div class="ratio ratio-3x2">
+              <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
+            </div>
           {{ end }}
-        </a>
-      </div> 
-      <div class="position-relative p-5 h-100 {{ if .background_c }}bg-{{ .background_c }}{{ else }}bg-{{ $styles.background_c }}{{ if not $styles.tint_shade }}-subtle{{ end }}{{ end }} rounded-2 shadow-sm">
-        <h3 class="iowan-old-style h1">{{ .title }}</h3>
-        <p>{{ .text | markdownify }}</p>
-        {{ with .ctas }}
-          {{ range . }}
-            <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+        </div> 
+        <div class="position-relative p-4">
+          <h3 class="iowan-old-style h1">{{ .title }}</h3>
+          <p>{{ .text | markdownify }}</p>
+          {{ with .ctas }}
+            {{ range . }}
+              <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+            {{ end }}
           {{ end }}
-        {{ end }}
+        </div>
       </div>
     </div>
   {{ end }}
