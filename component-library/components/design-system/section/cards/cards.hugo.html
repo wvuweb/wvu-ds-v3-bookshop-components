@@ -1,0 +1,41 @@
+{{ $styles := .settings.styles }}
+
+<div class="row gx-4">
+  {{ range .items }}
+
+    {{ $src := .image }}
+
+    {{- if not site.Params.env_bookshop_live -}}
+      {{ $image := "" }}
+      {{/*  Get the image, either from its remote or local source  */}}
+      {{ if hasPrefix $src "http"}}
+        {{ $image = resources.GetRemote .image }}
+      {{ else }}
+        {{ $image = resources.Get .image }}
+      {{ end }}
+    
+      {{/* Resize images and add them to a variable  */}}
+      {{ if and $image (ne $image.MediaType.SubType "svg") }}
+        {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+      {{ end }}
+    {{- end -}}
+
+    <div class="col-24 col-lg-12 col-xl-8 mb-5">
+      <div class="position-relative h-100">                    
+          {{ if .image }}
+            <img class="card-img-top img-fluid h-100 object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}">
+          {{ end }}
+        </a>
+      </div> 
+      <div class="position-relative p-5 h-100 {{ if .background_c }}bg-{{ .background_c }}{{ else }}bg-{{ $styles.background_c }}{{ if not $styles.tint_shade }}-subtle{{ end }}{{ end }} rounded-2 shadow-sm">
+        <h3 class="iowan-old-style h1">{{ .title }}</h3>
+        <p>{{ .text | markdownify }}</p>
+        {{ with .ctas }}
+          {{ range . }}
+            <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+</div>

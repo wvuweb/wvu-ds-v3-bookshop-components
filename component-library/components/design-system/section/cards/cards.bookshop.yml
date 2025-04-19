@@ -2,37 +2,49 @@
 spec:
   structures:
     - content_blocks
-  label: "Article Collection"
+  label: "Cards"
   description:
-  icon: library_books
+  icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading: Article Collection Heading
-  subheading: Subheading goes here.
-  article_tags:
-    - featured
+  heading: Heading
+  subheading: Subheading.
+  items:
+    - title: Item 1 Title
+      image:
+      alt_text:
+      label:
+      badge:
+      text: Item 1 text.
+      ctas:
+      background_c:
+      accent_c:
   postscript:
     copy:
     ctas:
   settings:
+    layout:
+      buffer:
+      margin:
     styles:
       background_c:
-    layout:
-      margin:
-      buffer:
-      max_cols:
+      tint_shade:
+      panel_font:
+      accent_c:
     config:
       edit_mode_only: false
       include_heading_postscript: true
-      limit:
-      show_content: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  limit:
-    type: number
+  accent_c:
+    type: select
+    options:
+      values: _select_data.brand_colors
+      value_key: class
+    label: Accent Color
