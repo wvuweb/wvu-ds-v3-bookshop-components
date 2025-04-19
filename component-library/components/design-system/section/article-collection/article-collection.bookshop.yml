@@ -18,8 +18,10 @@ blueprint:
     ctas:
   settings:
     styles:
+      background_c:
     layout:
       margin:
+      buffer:
     config:
       edit_mode_only: false
       include_heading_postscript: true
