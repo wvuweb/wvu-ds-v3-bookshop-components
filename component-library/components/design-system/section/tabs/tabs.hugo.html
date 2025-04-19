@@ -1,0 +1,40 @@
+{{ $styles := .settings.styles }}
+<section class="section-component py-6 py-xxl-7 position-relative bg-{{ .settings.styles.background_c }}">
+  <div class="container">      
+    <div class="row">
+      <div class="col-xl-8">
+        {{ with .heading }}
+          <h2>{{ . }}</h2>
+        {{ end }}
+        <ul class="nav nav-underline flex-column mb-4" id="tabs" role="tablist">
+          {{ range $index, $element := .tabs }}
+            <li class="nav-item">
+              <a class="nav-link{{ if eq $index 0 }} active{{ end }} h2" data-bs-toggle="tab" href="#{{ .name | urlize }}-tab-pane">{{ .name }}</a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+      <div class="col-xl-16">
+        <div class="tab-content" id="myTabContent">
+          {{ range $index, $element := .tabs }}
+            <div class="tab-pane fade{{ if eq $index 0 }} show active{{ end }}" id="{{ .link | urlize }}-tab-pane" role="tabpanel" aria-labelledby="{{ .link | urlize }}-tab" tabindex="0">
+              {{ with .image }}
+                Image
+              {{ end }}
+              {{ with .label }}
+                <p>{{ . }}</p>
+              {{ end }}
+              <h3>{{ .heading }}</h3>
+              <div class="small">
+                {{ .text }}
+              </div>
+              {{ range .ctas }}
+                <a class="btn btn-primary" href="{{ .url }}">{{ .text }}</a>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
