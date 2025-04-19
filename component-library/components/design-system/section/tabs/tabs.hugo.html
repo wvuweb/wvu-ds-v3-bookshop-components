@@ -1,40 +1,61 @@
 {{ $styles := .settings.styles }}
-<section class="section-component py-6 py-xxl-7 position-relative bg-{{ .settings.styles.background_c }}">
-  <div class="container">      
-    <div class="row">
-      <div class="col-xl-8">
-        {{ with .heading }}
-          <h2>{{ . }}</h2>
-        {{ end }}
-        <ul class="nav nav-underline flex-column mb-4" id="tabs" role="tablist">
-          {{ range $index, $element := .tabs }}
-            <li class="nav-item">
-              <a class="nav-link{{ if eq $index 0 }} active{{ end }} h2" data-bs-toggle="tab" href="#{{ .name | urlize }}-tab-pane">{{ .name }}</a>
-            </li>
+   
+<div class="row">
+  <div class="col-xl-8">
+    {{ with .heading }}
+      <h2>{{ . }}</h2>
+    {{ end }}
+    <ul class="nav nav-underline flex-column mb-4" id="tabs" role="tablist">
+      {{ range $index, $element := .tabs }}
+        <li class="nav-item">
+          <a class="nav-link{{ if eq $index 0 }} active{{ end }} h2" data-bs-toggle="tab" href="#{{ .name | urlize }}-tab-pane">{{ .name }}</a>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+  <div class="col-xl-16">
+    <div class="tab-content" id="myTabContent">
+      {{ range $index, $element := .tabs }}
+
+        {{ $src := .image }}
+
+        {{- if not site.Params.env_bookshop_live -}}
+          {{ $image := "" }}
+          {{/*  Get the image, either from its remote or local source  */}}
+          {{ if hasPrefix $src "http"}}
+            {{ $image = resources.GetRemote .image }}
+          {{ else }}
+            {{ $image = resources.Get .image }}
           {{ end }}
-        </ul>
-      </div>
-      <div class="col-xl-16">
-        <div class="tab-content" id="myTabContent">
-          {{ range $index, $element := .tabs }}
-            <div class="tab-pane fade{{ if eq $index 0 }} show active{{ end }}" id="{{ .link | urlize }}-tab-pane" role="tabpanel" aria-labelledby="{{ .link | urlize }}-tab" tabindex="0">
-              {{ with .image }}
-                Image
-              {{ end }}
-              {{ with .label }}
-                <p>{{ . }}</p>
-              {{ end }}
-              <h3>{{ .heading }}</h3>
-              <div class="small">
-                {{ .text }}
-              </div>
-              {{ range .ctas }}
-                <a class="btn btn-primary" href="{{ .url }}">{{ .text }}</a>
+        
+          {{/* Resize images and add them to a variable  */}}
+          {{ if and $image (ne $image.MediaType.SubType "svg") }}
+            {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+          {{ end }}
+        {{- end -}}
+
+        <div class="tab-pane fade{{ if eq $index 0 }} show active{{ end }}" id="{{ .link | urlize }}-tab-pane" role="tabpanel" aria-labelledby="{{ .link | urlize }}-tab" tabindex="0">
+          {{ if .image }}
+            <div class="ratio ratio-3x2">
+              <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
+            </div>
+          {{ end }}
+          {{ with .label }}
+            <p>{{ . }}</p>
+          {{ end }}
+          <h3>{{ .heading }}</h3>
+          <div class="small">
+            {{ .text | markdownify }}
+          </div>
+          {{ with .ctas }}
+            <div class="mt-4">
+              {{ range . }}
+                <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
               {{ end }}
             </div>
           {{ end }}
         </div>
-      </div>
+      {{ end }}
     </div>
   </div>
-</section>
+</div>
