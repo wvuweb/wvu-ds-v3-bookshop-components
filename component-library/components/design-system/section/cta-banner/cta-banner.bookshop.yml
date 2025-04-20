@@ -2,7 +2,7 @@
 spec:
   structures:
     - content_blocks
-  label: "Page Collection Test"
+  label: "CTA Banner"
   description:
   icon:
   tags: []
@@ -10,44 +10,37 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   heading: Heading
-  subheading: Subheading.
-  items:
-    - title: Item 1 Title
-      text: Item 1 text.
+  subheading: Subheading goes here.
+  buttons:
+    - text:
       url:
-      background_c:
-      accent_c:
-  postscript:
-    copy:
-    ctas:
+      icon:
+      button_c:
   settings:
-    layout:
-      buffer:
-      margin:
     styles:
       background_c:
-      tint_shade:
-      panel_font:
-      accent_c:
+      buttons_c:
+    layout:
+      margin:
+      buffer:
     config:
       edit_mode_only: false
+      include_heading_postscript: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  accent_c:
+  button_c:
     type: select
     options:
       values: _select_data.brand_colors
       value_key: class
-    label: Accent Color
-  settings:
-    type: object
+    label: Button Color
+  buttons_c:
+    type: select
     options:
-      subtype: tabbed
-    preview:
-      text:
-        - Layout, styles, and config
-      icon: settings
+      values: _select_data.brand_colors
+      value_key: class
+    label: Button Color

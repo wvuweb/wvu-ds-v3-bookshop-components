@@ -12,8 +12,6 @@ blueprint:
   column_a:
   column_b:
   column_c:
-  config:
-    edit_mode_only: false
   settings:
     styles:
       background_c:
