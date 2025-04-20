@@ -1,36 +1,17 @@
-{{ $backgroundColor := "" }}
-{{ $margin := "" }}
-
-{{ if and .styles .styles.background_c }}
-  {{ $backgroundColor = .styles.background_c }}
-{{ end }}
-
-{{ if and .layout .layout.margin }}
-  {{ $margin = .layout.margin }}
-{{ end }}
-
-{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-  <section class="section-component py-6 {{ $backgroundColor }}">
-    <div class="container wvu-z-index-content">
-      <div class="{{ $margin }} {{ $backgroundColor }}">
-        <div class="row">
-          <div class="col-xxl-8 position-relative mb-5 mb-xxl-0">
-            <h2 class="wvu-shout h1 d-inline-block wvu-text-letter-spacing-lg">
-              {{ .heading }}
-            </h2>
-            {{ with .subheading }}
-              <p class="lead mt-3">{{ . }}</p>
-            {{ end }}
-          </div>
-          <div class="col-xxl-16">
-            <ul class="wvu-ul-chevrons wvu-column-count-lg-3">
-              {{ range .links }}
-                <li><a class="text-decoration-none" href="{{ .url }}">{{ .text }}</a></li></li>
-              {{ end }}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-{{ end }}
+<div class="row">
+  <div class="col-xxl-8 position-relative mb-5 mb-xxl-0">
+    <h2 class="wvu-shout h1 d-inline-block wvu-text-letter-spacing-lg">
+      {{ .heading }}
+    </h2>
+    {{ with .subheading }}
+      <p class="lead mt-3">{{ . }}</p>
+    {{ end }}
+  </div>
+  <div class="col-xxl-16">
+    <ul class="wvu-ul-chevrons wvu-column-count-lg-3">
+      {{ range .links }}
+        <li><a class="text-decoration-none" href="{{ .url }}">{{ .text }}</a></li></li>
+      {{ end }}
+    </ul>
+  </div>
+</div>

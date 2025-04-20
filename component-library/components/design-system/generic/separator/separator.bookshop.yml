@@ -1,47 +1,34 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
+    - column_blocks
+    - column_sm_blocks
     - content_blocks
-  label: "CTA Banner"
+    - detail_blocks
+  label: "Separator"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading: Heading
-  subheading: Subheading goes here.
-  text:
-  buttons:
-    - text:
-      url:
-      icon:
-      button_c:
+  separator_c:
   settings:
     styles:
-      background_c:
-      buttons_c:
+      background_c: transparent
     layout:
-      margin:
-      buffer:
+      margin: my-xl-n6 my-xxl-n7
     config:
-      edit_mode_only: false
-      include_heading_postscript: true
+      include_heading_postscript: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  button_c:
+  separator_c:
     type: select
     options:
       values: _select_data.brand_colors
       value_key: class
-    label: Button Color
-  buttons_c:
-    type: select
-    options:
-      values: _select_data.brand_colors
-      value_key: class
-    label: Button Color
+    label: Color

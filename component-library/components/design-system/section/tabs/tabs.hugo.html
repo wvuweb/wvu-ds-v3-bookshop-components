@@ -8,7 +8,7 @@
     <ul class="nav nav-underline flex-column mb-4" id="tabs" role="tablist">
       {{ range $index, $element := .tabs }}
         <li class="nav-item">
-          <a class="nav-link{{ if eq $index 0 }} active{{ end }} h2" data-bs-toggle="tab" href="#{{ .name | urlize }}-tab-pane">{{ .name }}</a>
+          <a class="nav-link{{ if eq $index 0 }} active{{ end }} fs-2" data-bs-toggle="tab" href="#{{ .name | urlize }}-tab-pane">{{ .name }}</a>
         </li>
       {{ end }}
     </ul>

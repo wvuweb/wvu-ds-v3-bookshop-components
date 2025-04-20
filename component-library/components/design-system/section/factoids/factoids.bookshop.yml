@@ -2,25 +2,22 @@
 spec:
   structures:
     - content_blocks
-  label: "CTA Banner"
+  label: "Factoids"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading: Heading
-  subheading: Subheading goes here.
-  text:
-  buttons:
-    - text:
-      url:
-      icon:
-      button_c:
+  heading: By the Numbers
+  items:
+    - pre:
+      stat:
+      post:
+      source:
   settings:
     styles:
       background_c:
-      buttons_c:
     layout:
       margin:
       buffer:
@@ -33,15 +30,3 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  button_c:
-    type: select
-    options:
-      values: _select_data.brand_colors
-      value_key: class
-    label: Button Color
-  buttons_c:
-    type: select
-    options:
-      values: _select_data.brand_colors
-      value_key: class
-    label: Button Color

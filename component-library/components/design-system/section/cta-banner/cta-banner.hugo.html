@@ -4,15 +4,17 @@
   {{ $color := .buttons_c }}
 {{ end }}
 
-{{ with .text }}
-  <div class="mb-4">
-    {{ . | markdownify }}
-  </div>
-{{ end }}
-
-{{ range .buttons }}
-  {{ if .button_c }}
-    {{ $color = .button_c }}
+<div class="text-center">
+  {{ with .text }}
+    <div class="mb-4">
+      {{ . | markdownify }}
+    </div>
   {{ end }}
-  <a class="btn btn-{{ $color }} btn-lg mb-1" href="{{ .url }}">{{ .text }}</a>
-{{ end }}
+
+  {{ range .buttons }}
+    {{ if .button_c }}
+      {{ $color = .button_c }}
+    {{ end }}
+    <a class="btn btn-{{ $color }} btn-lg mb-1" href="{{ .url }}">{{ .text }}</a>
+  {{ end }}
+</div>
