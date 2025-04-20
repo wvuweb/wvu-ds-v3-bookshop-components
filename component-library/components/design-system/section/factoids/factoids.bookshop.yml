@@ -10,11 +10,15 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   heading: By the Numbers
+  subheading: Subheading goes here.
   items:
     - pre:
       stat:
       post:
       source:
+  postscript:
+    copy:
+    ctas:
   settings:
     styles:
       background_c:
