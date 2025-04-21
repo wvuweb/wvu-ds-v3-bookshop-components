@@ -11,7 +11,7 @@
       {{ $faculty = where site.RegularPages "Params.type" "eq" "faculty-profile" }}
       {{ $faculty = where $faculty "Params.tags" "intersect" .tags }}
     {{ else }}
-      {{ $faculty = where site.Data.people_data ".type" "faculty-profile" }}
+      {{ $faculty = where site.Data.people_data ".type" "eq" "faculty-profile" }}
       {{ $faculty = where $faculty ".tags" "intersect" .tags }}
     {{ end }}
 
