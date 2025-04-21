@@ -12,7 +12,7 @@
       {{ $faculty = where site.RegularPages "Params.type" "eq" "faculty-profile" }}
       {{ $faculty = where $faculty "Params.tags" "intersect" .tags }}
     {{ else }}
-      {{ $peopleData = where site.Data.people_data ".type" "eq" "faculty-profile" }}
+      {{ $peopleData = where site.Data.people_data ".type" "faculty-profile" }}
       People Data: {{ $peopleData }}
       {{ range where $peopleData ".tags" "intersect" .tags }}
         {{ $faculty = $faculty | append . }}
