@@ -13,9 +13,11 @@
       {{ $faculty = where $faculty "Params.tags" "intersect" .tags }}
     {{ else }}
       {{ $peopleData = where site.Data.people_data ".type" "eq" "faculty-profile" }}
+      People Data: {{ $peopleData }}
       {{ range where $peopleData ".tags" "intersect" .tags }}
         {{ $faculty = $faculty | append . }}
       {{ end }}
+      Faculty: {{ $faculty }}
     {{ end }}
 
     {{ range $faculty }}
