@@ -6,14 +6,20 @@
 
 {{ range .blocks }}
 
+  {{ $padding := "py-6 py-xxl-7" }}
+
   {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
+
+    {{ if .settings.layout.padding }}
+      {{ $padding = .settings.layout.padding }}
+    {{ end }}
 
     {{ $styles := .settings.styles }}
     {{ $maxCols := "24" }}
     {{ if .settings.layout.max_cols }}
       {{ $maxCols = .settings.layout.max_cols }}
     {{ end }}
-    <section class="section-component py-6 py-xxl-7 position-relative bg-{{ .settings.styles.background_c }}">
+    <section class="section-component {{ $padding }} position-relative bg-{{ .settings.styles.background_c }}">
       <div class="container wvu-z-index-content">
         <div class="{{ .settings.layout.margin }} bg-{{ .settings.styles.background_c }}">
           <div class="{{ .settings.layout.buffer }}">

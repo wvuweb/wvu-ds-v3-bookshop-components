@@ -2,19 +2,16 @@
 spec:
   structures:
     - content_blocks
-  label: "YouTube Shorts"
+  label: "Faculty Members"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading: Shorts
-  subheading:
-  shorts:
-    - title:
-      video_id:
-      ratio: 9x16
+  heading: By the Numbers
+  subheading: Subheading goes here.
+  tags:
   postscript:
     copy:
     ctas:
@@ -27,6 +24,7 @@ blueprint:
     config:
       edit_mode_only: false
       include_heading_postscript: true
+      show_content: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
