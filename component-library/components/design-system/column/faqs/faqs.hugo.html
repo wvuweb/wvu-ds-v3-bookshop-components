@@ -1,20 +1,18 @@
-{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-  <div class="mt-4">
-    <ol class="mb-5">
-      {{ range .items }}
-        <li><a href="#{{ .question | urlize }}">{{ .question }}</a></li>
-      {{ end }}
-    </ol>
+<div class="mt-4">
+  <ol class="mb-5">
+    {{ range .items }}
+      <li><a href="#{{ .question | urlize }}">{{ .question }}</a></li>
+    {{ end }}
+  </ol>
 
-    <ol class="fs-2">
-      {{ range .items }}
-        <li>
-          <p class="mb-2" id="{{ .question | urlize }}"><strong>{{ .question }}</strong></p>
-          <div class="fs-6 fw-normal">
-            {{ .answer | markdownify }}
-          </div>
-        </li>
-      {{ end }}
-    </ol>
-  </div>
-{{ end }}
+  <ol class="fs-2">
+    {{ range .items }}
+      <li>
+        <p class="mb-2" id="{{ .question | urlize }}"><strong>{{ .question }}</strong></p>
+        <div class="fs-6 fw-normal">
+          {{ .answer | markdownify }}
+        </div>
+      </li>
+    {{ end }}
+  </ol>
+</div>

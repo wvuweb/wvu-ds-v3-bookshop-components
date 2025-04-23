@@ -1,0 +1,26 @@
+<section id="social-media-1" aria-labelledby="social-media-1-label" class="py-4 bg-{{ .settings.styles.background_c }}">  
+  <div class="container wvu-z-index-content">
+    <div class="{{ .settings.layout.margin }} bg-{{ .settings.styles.background_c }}">
+      <div class="{{ .settings.layout.buffer }}">
+        <div class="row text-center text-md-start">
+          <div class="col-md-4 mb-3 mb-md-0 d-md-flex align-items-center">        
+            <h2 id="social-media-1-label" class="helvetica-neue-light h1 mb-0">{{ .heading }}</h2>
+          </div>
+          <div class="col-md-8 align-self-center">
+            <ul class="list-inline float-md-end align-middle mb-0">
+              {{ range .items }}
+                {{ $class := .platform | urlize }}
+                <li class="list-inline-item">
+                  <a class="bg-{{ $class }} h4 mb-0 text-decoration-none d-flex align-items-center justify-content-center rounded-circle p-3" href="{{ .url }}">
+                    <span class="fab fa-{{ $class }} position-absolute" aria-hidden="true"></span>
+                    <span class="visually-hidden">{{ .platform }}</span>
+                  </a>
+                </li>          
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

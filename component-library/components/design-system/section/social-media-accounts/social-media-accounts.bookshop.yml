@@ -2,30 +2,27 @@
 spec:
   structures:
     - content_blocks
-  label: "Testimonials"
+  label: "Social Media Accounts"
   description:
-  icon:
+  icon: 
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading:
-  subheading:
-  testimonials:
-    - label:
-      name:
-      title:
-      image:
-      quote:
+  heading: Follow Us
+  items:
+    - social_media_platform:
+      username:
+      url:
   settings:
     styles:
-      background_c:
+      background_c: dark
     layout:
       margin:
       buffer:
     config:
       edit_mode_only: false
-      include_heading_postscript: true
+      include_heading_postscript: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
