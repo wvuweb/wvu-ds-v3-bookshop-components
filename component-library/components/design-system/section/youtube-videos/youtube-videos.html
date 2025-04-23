@@ -1,0 +1,11 @@
+<div class="row">
+  {{ range .videos }}
+    <div class="col-sm-12 col-lg-8 col-xxl-6">
+      <div class="ratio ratio-16x9">
+        <iframe src="https://www.youtube.com/embed/{{ .video_id }}" title="{{ .title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+      </div>
+      <h2>{{ .title }}</h2>
+      {{ .description | markdownify }}
+    </div>
+  {{ end }}
+</div>
