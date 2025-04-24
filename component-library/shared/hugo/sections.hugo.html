@@ -7,18 +7,21 @@
 {{ range .blocks }}
 
   {{ $padding := "py-6 py-xxl-7" }}
+  {{ $heading := "" }}
+  {{ $subheading := "" }}
+
+  {{ if .heading }}{{ $heading = .heading }}{{ end }}
+  {{ if .subheading }}{{ $subheading = .subheading }}{{ end }}
 
   {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
 
-    {{ if .settings.layout.padding }}
-      {{ $padding = .settings.layout.padding }}
-    {{ end }}
+    {{ if .settings.layout.padding }}{{ $padding = .settings.layout.padding }}{{ end }}
 
     {{ $styles := .settings.styles }}
     {{ $maxCols := "24" }}
-    {{ if .settings.layout.max_cols }}
-      {{ $maxCols = .settings.layout.max_cols }}
-    {{ end }}
+
+    {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
+
     <section class="section-component {{ $padding }} position-relative bg-{{ .settings.styles.background_c }}">
       <div class="container wvu-z-index-content">
         <div class="{{ .settings.layout.margin }} bg-{{ .settings.styles.background_c }}">
@@ -26,11 +29,11 @@
             {{ if .settings.config.include_heading_postscript }}
               {{ if or .heading .subheading }}
                 <div class="mb-5 text-center">
-                  {{ with .heading }}
+                  {{ with $heading }}
                     <h2 class="wvu-shout display-5 wvu-text-letter-spacing-lg mb-3">{{ . }}</h2>
                   {{ end }}
 
-                  {{ with .subheading }}
+                  {{ with $subheading }}
                     <p class="lead mb-3">{{ . }}</p>
                   {{ end }}
                 </div>
