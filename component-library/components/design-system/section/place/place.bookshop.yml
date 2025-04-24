@@ -9,9 +9,11 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading:
-  subheading:
-  text:
+  heading: Heading
+  subheading: Subheading goes here.
+  image:
+  alt_text:
+  text: Descriptive text goes here.
   ctas:
     - text: Call to Action
       url:
