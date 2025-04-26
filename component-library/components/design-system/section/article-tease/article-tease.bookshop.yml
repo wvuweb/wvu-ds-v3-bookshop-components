@@ -25,7 +25,7 @@ blueprint:
       max_cols:
     config:
       edit_mode_only: false
-      include_heading_postscript: true
+      include_heading_postscript: false
       show_content: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

@@ -6,104 +6,115 @@
   {{ $tags = .article_tags }}
 {{ end }}
 
-{{ if not site.Data }}
-  {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
-{{ else if and (site.Params.env_bookshop_live) (not .settings.config.show_content) }}
-  {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
-{{ else }}
+{{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
+  <section class="section-component py-6 position-relative bg-{{ .settings.styles.background_c }}">
+    <div class="container wvu-z-index-content">
+      <div class="{{ .settings.layout.margin }} bg-{{ .settings.styles.background_c }}">
+        <div class="{{ .settings.layout.buffer }}">
 
-  {{ $authorData := site.Data.people_data }}
+          {{ if not site.Data }}
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
+          {{ else if and (site.Params.env_bookshop_live) (not .settings.config.show_content) }}
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
+          {{ else }}
 
-  {{ if not site.Params.env_bookshop_live }}
-    {{ $articles = where site.Pages "Section" "articles" }}
-    {{ $articles = where $articles "Params.article_tags" "intersect" $tags }}
-  {{ else }}
-    {{ $articles = where site.Data.site_pages ".type" "articles" }}
-    {{ $articles = where $articles ".article_tags" "intersect" $tags }}
-  {{ end }}
+            {{ $authorData := site.Data.people_data }}
 
-  <div class="row">
-    {{ range first 1 $articles }}
+            {{ if not site.Params.env_bookshop_live }}
+              {{ $articles = where site.Pages "Section" "articles" }}
+              {{ $articles = where $articles "Params.article_tags" "intersect" $tags }}
+            {{ else }}
+              {{ $articles = where site.Data.site_pages ".type" "articles" }}
+              {{ $articles = where $articles ".article_tags" "intersect" $tags }}
+            {{ end }}
 
-      {{ $params := "" }}
-      {{ $link := "" }}
+            <div class="row">
+              {{ range first 1 $articles }}
 
-      {{ if not site.Params.env_bookshop_live }}
-        {{ $params = .Params }}
-        {{ $link = .RelPermalink }}
-      {{ else }}
-        {{ $params = . }}
-      {{ end }}
+                {{ $params := "" }}
+                {{ $link := "" }}
 
-      {{ $authors := slice }}
+                {{ if not site.Params.env_bookshop_live }}
+                  {{ $params = .Params }}
+                  {{ $link = .RelPermalink }}
+                {{ else }}
+                  {{ $params = . }}
+                {{ end }}
 
-      {{ if $params.authors }}
-        {{ $authors = $params.authors }}
-      {{ end }}
-      
-      {{ $authorList := slice }}
+                {{ $authors := slice }}
 
-      {{ range $authorData }}
-        {{ $author := . }}
-        {{ range $authors }}
-          {{ if eq .author $author.uuid }}
-            {{ $authorList = $authorList | append $author }}
-          {{ end }}
-        {{ end }}
-      {{ end }}
-      
-      {{ $src := $params.image }}
+                {{ if $params.authors }}
+                  {{ $authors = $params.authors }}
+                {{ end }}
+                
+                {{ $authorList := slice }}
 
-      {{- if not site.Params.env_bookshop_live -}}
-        {{ $image := "" }}
-        {{/*  Get the image, either from its remote or local source  */}}
-        {{ if hasPrefix $src "http"}}
-          {{ $image = resources.GetRemote $params.image }}
-        {{ else }}
-          {{ $image = resources.Get $params.image }}
-        {{ end }}
+                {{ range $authorData }}
+                  {{ $author := . }}
+                  {{ range $authors }}
+                    {{ if eq .author $author.uuid }}
+                      {{ $authorList = $authorList | append $author }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+                
+                {{ $src := $params.image }}
 
-        {{/* Resize images and add them to a variable  */}}
-        {{ if and $image (ne $image.MediaType.SubType "svg") }}
-          {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
-        {{ end }}
-      {{- end -}}
-      
-      <div class="col-12 mb-4">
-        {{ if $src }}
-          <div class="wvu-article__thumb mb-4">
-            <div class="ratio ratio-3x2 bg-light">
-              <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
-                <img class="h-100 w-100 object-fit-cover" src="{{ $src }}" alt="" />
-              </a>
-            </div>
-          </div>
-        {{ end }}
-      </div>
+                {{- if not site.Params.env_bookshop_live -}}
+                  {{ $image := "" }}
+                  {{/*  Get the image, either from its remote or local source  */}}
+                  {{ if hasPrefix $src "http"}}
+                    {{ $image = resources.GetRemote $params.image }}
+                  {{ else }}
+                    {{ $image = resources.Get $params.image }}
+                  {{ end }}
 
-      <div class="col-12">
-        <h2 class="fs-5" itemprop="headline"><a class="newsletter-link" href="{{ $link }}">{{ $params.title }}</a></h2>
+                  {{/* Resize images and add them to a variable  */}}
+                  {{ if and $image (ne $image.MediaType.SubType "svg") }}
+                    {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+                  {{ end }}
+                {{- end -}}
+                
+                <div class="col-12 mb-4">
+                  {{ if $src }}
+                    <div class="wvu-article__thumb mb-4">
+                      <div class="ratio ratio-3x2 bg-light">
+                        <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
+                          <img class="h-100 w-100 object-fit-cover" src="{{ $src }}" alt="" />
+                        </a>
+                      </div>
+                    </div>
+                  {{ end }}
+                </div>
 
-        {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
-          <p class="small d-block">
-            {{ if not $params.config.hide_author }}
-              {{ range $authorList }}
-                <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                  <span itemprop="name">
-                    {{ .name }}
-                  </span>
-                </span>
+                <div class="col-12">
+                  <h2 class="fs-5" itemprop="headline"><a class="newsletter-link" href="{{ $link }}">{{ $params.title }}</a></h2>
+
+                  {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
+                    <p class="small d-block">
+                      {{ if not $params.config.hide_author }}
+                        {{ range $authorList }}
+                          <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                            <span itemprop="name">
+                              {{ .name }}
+                            </span>
+                          </span>
+                        {{ end }}
+                      {{ end }}
+
+                      {{ if and (not $params.config.hide_author) ( $params.publishDate ) }} | {{ end }}
+
+                      {{ if $params.publishDate }}
+                        <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
+                      {{ end }}
+                    </p>
+                  {{ end }}
+                </div>
               {{ end }}
-            {{ end }}
-
-            {{ if and (not $params.config.hide_author) ( $params.publishDate ) }} | {{ end }}
-
-            {{ if $params.publishDate }}
-              <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
-            {{ end }}
-          </p>
-        {{ end }}
+            </div>
+          {{ end }}
+        </div>
       </div>
-    {{ end }}
-  </div>
+    </div>
+  </section>
 {{ end }}
