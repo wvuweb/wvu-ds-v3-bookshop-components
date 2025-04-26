@@ -14,8 +14,6 @@
       {{ $contactsData = where site.Data.people_data ".is_contact" "eq" true }}
     {{ end }}
 
-    {{ $contactsData }}
-
     {{ range .contacts }}
       {{ $uuid := .contact }}
       {{ $label := .label }}
