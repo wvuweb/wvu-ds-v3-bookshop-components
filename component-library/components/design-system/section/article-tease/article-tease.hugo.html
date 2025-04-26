@@ -17,10 +17,12 @@
   {{ if not site.Params.env_bookshop_live }}
     {{ $articles = where site.Pages "Section" "articles" }}
     {{ $articles = where $articles "Params.article_tags" "intersect" $tags }}
+    {{ $articles = sort $articles "Params.publishDate" "asc" }}
     {{ $authorData = where site.RegularPages "Params.type" "eq" "author" }}
   {{ else }}
     {{ $articles = where site.Data.site_pages ".type" "articles" }}
     {{ $articles = where $articles ".article_tags" "intersect" $tags }}
+    {{ $articles = sort $articles ".publishDate" "asc" }}
     {{ $authorData = where site.Data.people_data ".type" "author" }}
   {{ end }}
 
