@@ -10,6 +10,9 @@ spec:
 blueprint:
   heading: Heading
   subheading:
+  config:
+    is_main: true
+    section_id: directory
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
