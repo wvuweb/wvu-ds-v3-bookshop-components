@@ -11,7 +11,7 @@
       {{ $contactsData = where site.RegularPages "Section" "eq" "people" }}
       {{ $contactsData = where $contactsData "Params.is_contact" "eq" true }}
     {{ else }}
-      {{ $contactsData = where site.Data.people_data ".is_contact" "eq" "true" }}
+      {{ $contactsData = where site.Data.people_data ".is_contact" "eq" true }}
     {{ end }}
 
     {{ $contactsData }}
