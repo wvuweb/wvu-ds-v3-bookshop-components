@@ -12,14 +12,14 @@ blueprint:
   buttons:
     - text:
       url:
-      color:
+      button_c:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  color:
+  button_c:
     options:
       values: _select_data.brand_colors
       value_key: class
