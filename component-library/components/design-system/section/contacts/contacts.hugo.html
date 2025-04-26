@@ -29,8 +29,6 @@
           {{ $contact = . }}
         {{ end }}
 
-        {{ . }}
-
         {{ if eq $contact.uuid $uuid }}
           <div class="col-xxl-6 mb-4">
             {{ with $label }}<div class="mb-3 position-relative"><p class="helvetica-neue-bold p-1 small bg-wvu-accent--sunset d-inline-block">{{ . }}</p></div>{{ end }}
