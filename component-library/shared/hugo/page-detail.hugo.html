@@ -17,9 +17,11 @@
         {{ end }}
       </div>
       <div class="col-xl-5">
-        {{ range .sidebar_blocks }}
-          {{ partial "bookshop" . }}
-        {{ end }}
+        <div class="c-jump-links mb-5 pt-5 mt-n5 sticky-top">
+          {{ range .sidebar_blocks }}
+            {{ partial "bookshop" . }}
+          {{ end }}
+        </div>
       </div>
     </div>
   </div>
