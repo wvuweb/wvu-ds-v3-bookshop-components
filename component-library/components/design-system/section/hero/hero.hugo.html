@@ -1,46 +1,36 @@
 {{ $ariaLabelledBy := "" }}
 
-{{ if .background_image }}
-  {{ $image = .background_image }}
-{{ end }}
+<div class="row">
+  <div class="col col-md-14 col-xl-12">
+    <div class="wvu-z-index-content">
+      <h2 id="{{ $ariaLabelledBy }}-label" class="display-3 oliviar-black mb-3" data-text="{{ .heading }}">{{ .heading }}</h2>
 
-{{ if .alt_text }}
-  {{ $alt = .alt_text }}
-{{ end }}
+      {{ if .lead }}
+        <p class="py-1 lead">
+          {{ .lead | markdownify }}
+        </p>
+      {{ end }}
 
-<div class="py-8 py-xxl-9">
-  <div class="row">
-    <div class="col col-md-14 col-xl-12">
-      <div class="wvu-z-index-content">
-        <h2 id="{{ $ariaLabelledBy }}-label" class="oliviar-black mb-3" data-text="{{ .heading }}">{{ .heading }}</h2>
+      {{ if .copy }}
+        <div class="mb-4">
+          {{ .copy | markdownify }}
+        </div>
+      {{ end }}
 
-        {{ if .lead }}
-          <p class="py-1 lead">
-            {{ .lead }}
-          </p>
+      {{ if .ctas }}
+        {{ range .ctas }}
+          {{ partial "bookshop" (slice "design-system/generic/button" .) }}
         {{ end }}
+      {{ end }}
 
-        {{ if .body }}
-          <div class="mb-4">
-            {{ .body | markdownify }}
-          </div>
-        {{ end }}
-
-        {{ if .ctas }}
-          {{ range .ctas }}
-            {{ partial "bookshop" (slice "design-system/generic/button" .) }}
+      {{ if .postscript_links }}
+        <p class="mt-3">
+          {{- range $i, $l := .postscript_links }}
+            {{- if gt $i 0 }} | {{- end }}
+            <a class="text-white" href=".url">{{ .text }}{{ if .icon }} <span class="fa-solid fa-{{ .icon }}"></span>{{ end }}</a>
           {{ end }}
-        {{ end }}
-
-        {{ if .postscript_links }}
-          <p class="mt-3">
-            {{- range $i, $l := .postscript_links }}
-              {{- if gt $i 0 }} | {{- end }}
-              <a class="text-white" href=".url">{{ .text }}{{ if .icon }} <span class="fa-solid fa-{{ .icon }}"></span>{{ end }}</a>
-            {{ end }}
-          </p>
-        {{ end }}
-      </div>
+        </p>
+      {{ end }}
     </div>
   </div>
 </div>

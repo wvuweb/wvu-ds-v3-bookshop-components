@@ -1,20 +1,31 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-  label: "Hero List"
+    - content_blocks
+  label: "Hero - Split"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading:
-  body:
+  heading: Heading
+  background_image:
+  alt_text:
+  lead:
+  copy:
   ctas:
   postscript_links:
-  config:
-    edit_mode_only: false
-    is_main: true
+  settings:
+    styles:
+      background_c: dark
+    layout:
+      text_align:
+      margin:
+      buffer:
+    config:
+      edit_mode_only: false
+      include_heading_postscript: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
