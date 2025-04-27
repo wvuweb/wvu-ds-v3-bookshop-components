@@ -1,13 +1,13 @@
 <div class="row justify-content-center">
-  <div class="col-xxl-12">
-    <blockquote class="fs-2">
-      <span class="display-1 d-block mb-3 wvu-shout text-wvu-gold text-{{ .quotemark_c }}">“</span>
-      <span class="d-block">
+  <div class="col-lg-12 col-xl-9 col-xxl-8">
+    <blockquote class="fs-2 ms-0 me-0">
+      <span class="display-1 d-block wvu-shout text-wvu-gold text-{{ .quotemark_c }}">“</span>
+      <span class="d-block iowan-old-style">
         {{ .quote_text }}
       </span>
     </blockquote>
     <p>
-      {{ .author }}
+      <span class="helvetica-neue-bold d-block">{{ .quote_author }}</span>
       {{ with .title }}
         <span class="d-block">
           {{ . }}

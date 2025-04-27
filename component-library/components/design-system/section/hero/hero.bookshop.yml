@@ -9,26 +9,23 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
+  heading: Heading
+  subheading:
   background_image:
   alt_text:
-  heading: Heading
-  body:
-    - Lede.
-    - Body.
+  lead:
+  copy:
   ctas:
-    - text: Call to Action
-      url:
-      icon: arrow-circle-right
   postscript_links:
-  config:
-    edit_mode_only: false
-    id:
-  styles:
-    styles_section:
-    styles_h2:
-    styles_h2_label:
-    styles_lead:
-    styles_buttons:
+  settings:
+    styles:
+      background_c:
+    layout:
+      margin:
+      buffer:
+    config:
+      edit_mode_only: false
+      include_heading_postscript: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
