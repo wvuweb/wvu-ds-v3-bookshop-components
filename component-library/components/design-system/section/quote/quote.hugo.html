@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-xxl-12">
+    <blockquote class="fs-2">
+      <span class="d-block mb-3 wvu-shout text-wvu-gold text-{{ .quotemark_c }}">“</span>
+      <span class="d-block">
+        {{ .text }}
+      </span>
+    </blockquote>
+    <p>
+      {{ .author }}
+      {{ with .title }}
+        <span class="d-block">
+          {{ . }}
+        </span>
+      {{ end }}
+    </p>
+  </div>
+</div>
