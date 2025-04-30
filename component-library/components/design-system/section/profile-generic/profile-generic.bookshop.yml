@@ -19,7 +19,7 @@ blueprint:
   ctas:
   settings:
     styles:
-      audience:
+      audience: prospective_students
       background_c:
     layout:
       is_cutout: false
