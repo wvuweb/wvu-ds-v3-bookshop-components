@@ -45,6 +45,7 @@ _inputs:
   audience:
     type: select
     options:
+      allow_empty: false
       values:
         - label: General
           name: general
