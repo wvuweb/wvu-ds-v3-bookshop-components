@@ -1,3 +1,5 @@
+{{ $backgroundColor := .settings.styles.background_c }}
+
 <div class="accordion mb-4" id="accordion">
   {{ range $index, $panel := .panels }}
 
@@ -18,15 +20,15 @@
       {{ end }}
     {{- end -}}
 
-    <div class="accordion-item">
+    <div class="accordion-item border-2 border-dark rounded-0">
       <h2 class="accordion-header">
-        <button class="fs-1 lh-1 py-4 accordion-button collapsed border-start-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $index }}" aria-expanded="false" aria-controls="collapse-{{ $index }}">
+        <button class="fs-1 lh-1 py-4 rounded-0 accordion-button collapsed bg-{{ $backgroundColor }}-subtle iowan-old-style-black" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $index }}" aria-expanded="false" aria-controls="collapse-{{ $index }}" style="box-shadow: none;">
           <span class="ms-n1">{{ .name }}</span>
         </button>
       </h2>
       <div id="collapse-{{ $index }}" class="accordion-collapse collapse" data-bs-parent="#accordion">
-        <div class="accordion-body">
-          <div class="row">
+        <div class="accordion-body bg-{{ $backgroundColor }} p-5">
+          <div class="row gx-5">
             <div class="col-12">
               {{ if .image }}
                 <div class="ratio ratio-3x2">
@@ -35,14 +37,14 @@
               {{ end }}
             </div>
             <div class="col-12">
-              <h3>{{ .heading }}</h3>
-              <div class="small">
+              <h3 class="h1">{{ .heading }}</h3>
+              <div class="">
                 {{ .text | markdownify }}
               </div>
               {{ with .ctas }}
                 <div class="mt-4">
                   {{ range . }}
-                    <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+                    <a class="btn btn-outline-dark" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
                   {{ end }}
                 </div>
               {{ end }}
