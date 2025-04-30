@@ -16,13 +16,12 @@ blueprint:
     - Label
   info:
     - Morgantown, WV
+  copy:
   ctas:
   settings:
     styles:
       audience: general
-      background_c:
-      card_c:
-      accent_c:
+      color_palette: option_1
     layout:
       is_cutout: false
       margin_no_bg:
@@ -47,18 +46,27 @@ _inputs:
     options:
       allow_empty: false
       values:
-        - label: General
-          name: general
-        - label: Alumni
-          name: alumni
-        - label: Prospective Students
-          name: prospective_students
-      value_key: name
+        value:
+          - label: General
+            name: general
+          - label: Alumni
+            name: alumni
+          - label: Prospective Students
+            name: prospective_students
+        value_key: name
   card_c:
     type: select
     options:
       values: _select_data.brand_colors
       value_key: class
+  color_palette:
+    type: select
+    options:
+      values:
+        - option_1
+        - option_2
+  copy:
+    type: textarea
   is_cutout:
     type: switch
     label: Use Cutout
