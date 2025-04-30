@@ -19,13 +19,15 @@ blueprint:
   ctas:
   settings:
     styles:
-      audience: prospective_students
+      audience: general
       background_c:
+      card_c:
+      accent_c:
     layout:
       is_cutout: false
       margin_no_bg:
       buffer:
-      padding: py-0
+      padding:
     config:
       edit_mode_only: false
       include_heading_postscript: false
@@ -35,12 +37,27 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  accent_c:
+    type: select
+    options:
+      values: _select_data.brand_colors
+      value_key: class
   audience:
     type: select
     options:
       values:
-        - alumni
-        - prospective_students
+        - label: General
+          name: general
+        - label: Alumni
+          name: alumni
+        - label: Prospective Students
+          name: prospective_students
+      value_key: name
+  card_c:
+    type: select
+    options:
+      values: _select_data.brand_colors
+      value_key: class
   is_cutout:
     type: switch
     label: Use Cutout

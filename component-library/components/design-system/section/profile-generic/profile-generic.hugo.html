@@ -26,10 +26,10 @@
   {{ end }}
 {{- end -}}
 
-<div class="wvu-ds-bg-primary text-white border border-2 border-dark wvu-shadow-hard-dark {{ .settings.layout.margin_no_bg }}">
+<div class="bg-{{ $testStyles.card_c }} border border-2 border-dark wvu-shadow-hard-dark {{ .settings.layout.margin_no_bg }}">
   <div class="row gx-0">
     <div class="col-12 ms-auto">
-      <h2 class="wvu-text-vertical wvu-shout h6 small wvu-text-letter-spacing-lg text-wvu-accent--yellow h-100 wvu-z-index-max"><span class="d-block bg-wvu-accent--yellow text-wvu-accent--blue p-2">Alumni Profile</span></h2>
+      <h2 class="wvu-text-vertical wvu-shout h6 small wvu-text-letter-spacing-lg h-100 wvu-z-index-max"><span class="d-block bg-{{ .settings.styles.accent_c }} p-2">Alumni Profile</span></h2>
       <div class="{{ if .settings.layout.is_cutout }}p-5{{ else }}pe-5{{ end }} w-100 h-100 position-relative">
         <div class="h-100 position-relative">
           <div class="w-100 h-100">
@@ -61,7 +61,7 @@
         <div class="col-16">
           <div class="wvu-z-index-content position-relative px-3 py-6">
             {{ with .label }}
-              <div class="d-inline-block wvu-container-box-skewed-3 wvu-ds-bg-secondary p-3 pb-2 me-n3 ms-n4 mb-3 mt-n5" style="transform: rotate(-2deg)">
+              <div class="d-inline-block wvu-container-box-skewed-3 bg-wvu-gold p-3 pb-2 me-n3 ms-n4 mb-3 mt-n5" style="{{ $testStyles.label_style }}">
                 <p class="oliviar-black h5 text-uppercase">
                   {{ range . }}
                     <span class="d-block">{{ . }}</span>
@@ -69,7 +69,7 @@
                 </p>
               </div>
             {{ end }}
-            <h3 class="h1 {{ $testStyles.heading }} text-wvu-accent--yellow">{{ .name }}</h3>
+            <h3 class="h1 {{ $testStyles.heading }} text-{{ .settings.styles.accent_c }}">{{ .name }}</h3>
             {{ with .info }}
               <div class="fs-5 small">
                 {{ range . }}
