@@ -11,7 +11,7 @@ spec:
 blueprint:
   heading: Heading
   text: Text.
-  alert_type:
+  alert_type: Info
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -24,8 +24,7 @@ _inputs:
     type: select
     options:
       values:
-        value:
-          - Info
-          - Danger
-          - Warning
-          - Success
+        - Info
+        - Danger
+        - Warning
+        - Success
