@@ -17,10 +17,15 @@ blueprint:
       items:
         - text:
           url:
-  config:
-    edit_mode_only: false
-  styles:
-    margin:
+  settings:
+    styles:
+      background_c:
+    layout:
+      margin:
+      buffer:
+    config:
+      edit_mode_only: false
+      include_heading_postscript: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
