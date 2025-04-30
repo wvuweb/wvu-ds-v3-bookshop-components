@@ -1,8 +1,8 @@
 {{ $ariaLabelledBy := "" }}
 
 <div class="row">
-  <div class="col col-xl-12 mb-5 mb-xl-0">
-    <div class="wvu-z-index-content">
+  <div class="col col-xl-12 mb-5 mb-xl-0 d-xl-flex align-items-center">
+    <div class="wvu-z-index-content w-100">
       <h2 id="{{ $ariaLabelledBy }}-label" class="display-3 oliviar-black mb-3" data-text="{{ .heading }}">{{ .heading }}</h2>
 
       {{ if .lead }}
@@ -33,7 +33,9 @@
       {{ end }}
     </div>
   </div>
-  <div class="col-xl-12">
-    {{ .form | safeHTML }}
+  <div class="col-xl-12 d-xl-flex align-items-center">
+    <div class="wvu-z-index-content w-100">
+      {{ .form | safeHTML }}
+    </div>
   </div>
 </div>

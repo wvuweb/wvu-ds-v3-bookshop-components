@@ -17,6 +17,16 @@
           {{ range .article_blocks }}
             {{ partial "bookshop" . }}
           {{ end }}
+
+          {{ if not site.Data }}
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
+          {{ else if and (site.Params.env_bookshop_live) (not .show_author_bios) }}
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
+          {{ else }}
+            {{ range .params.authors }}
+              {{ partial "bookshop" (slice "design-system/column/author-bio" (dict "author" .author)) }}
+            {{ end }}
+          {{ end }}
         </div>
       </div>
     </div>
