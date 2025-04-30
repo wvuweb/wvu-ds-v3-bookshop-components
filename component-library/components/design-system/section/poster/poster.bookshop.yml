@@ -9,28 +9,22 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  name: poster-split
-  poster_image:
+  heading: Heading
+  subheading: Subheading goes here.
+  image:
   alt_text:
-  heading:
-    - Heading Line 1
-    - Heading Line 2
   body:
-    - Lede.
-    - Body.
   ctas:
-    - text: Call to Action
-      url:
-      icon: arrow-circle-right
   postscript_links:
-    - text: 
-      url:
-      icon:
-  config:
-    edit_mode_only: false
-    is_main: 
-    id:
-    aria_labelledby:
+  settings:
+    styles:
+      background_c:
+    layout:
+      margin:
+      buffer:
+    config:
+      edit_mode_only: false
+      include_heading_postscript: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
