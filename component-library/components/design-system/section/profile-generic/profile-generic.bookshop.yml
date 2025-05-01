@@ -52,7 +52,7 @@ _inputs:
           class: alumni
         - name: Prospective Students
           class: prospective_students
-      value_key: name
+      value_key: class
   card_c:
     type: select
     options:
