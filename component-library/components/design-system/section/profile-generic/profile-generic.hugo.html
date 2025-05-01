@@ -1,6 +1,4 @@
 {{ $src := .image }}
-{{ $vibe := "wvu-ds-vibe-student-experience-01"}}
-{{ $colorPalette := "wvu-ds-color-palette-01"}}
 {{ $imageClasses := "object-fit-contain" }}
 
 {{ $styleData := site.Data.component_styles.profile_generic }}
@@ -27,10 +25,10 @@
   {{ end }}
 {{- end -}}
 
-<div class="bg-{{ $colorPalette.card_c }} border border-2 border-dark wvu-shadow-hard-dark {{ .settings.layout.margin_no_bg }}">
+<div class="bg-{{ $colorPalette.card_c }} border border-2 border-dark wvu-shadow-hard-filter {{ .settings.layout.margin_no_bg }}">
   <div class="row gx-0">
     <div class="col-12 ms-auto">
-      <h2 class="wvu-text-vertical wvu-shout h6 small wvu-text-letter-spacing-lg h-100 wvu-z-index-max"><span class="d-block bg-{{ $colorPalette.accent_c }} p-2">Alumni Profile</span></h2>
+      <h2 class="wvu-text-vertical wvu-shout h6 small wvu-text-letter-spacing-lg h-100 wvu-z-index-max"><span class="d-block bg-{{ $colorPalette.accent_c }} p-2">Spotlight</span></h2>
       <div class="{{ if .settings.layout.is_cutout }}p-5{{ else }}pe-5{{ end }} w-100 h-100 position-relative">
         <div class="h-100 position-relative">
           <div class="w-100 h-100">
@@ -38,7 +36,7 @@
               {{ if .settings.layout.is_cutout }}
                 {{ $imageClasses = printf "%s%s" "mt-n6 mb-n5 " $imageClasses }}
                 <div class="wvu-bg-img">
-                  <div class="wvu-bg-topo-map bg-wvu-accent--blue-light h-100 w-100" style="opacity: 1"></div>
+                  <div class="wvu-bg-topo-map bg-{{ $colorPalette.pattern_c }} h-100 w-100" style="opacity: 1"></div>
                 </div>
                 <div class="col-xxl-17 mx-xxl-auto d-flex justify-content-center align-items-end wvu-z-index-content">
                   <div class="wvu-z-index-content">
@@ -62,8 +60,8 @@
         <div class="col-16">
           <div class="wvu-z-index-content position-relative px-3 py-6">
             {{ with .label }}
-              <div class="d-inline-block wvu-container-box-skewed-3 bg-wvu-gold p-3 pb-2 me-n3 ms-n4 mb-3 mt-n5" style="{{ $testStyles.label_style }}">
-                <p class="oliviar-black h5 text-uppercase">
+              <div class="{{ $testStyles.label }}">
+                <p class="">
                   {{ range . }}
                     <span class="d-block">{{ . }}</span>
                   {{ end }}
@@ -78,19 +76,30 @@
                 {{ end }}
               </div>
             {{ end }}
-            <div class="">
+            <div class="my-3">
               {{ .copy | markdownify }}
             </div>
+            <p><a href="" class="text-decoration-none text-{{ $colorPalette.accent_c }}"><span class="fa-solid fa-user-circle"></span> View Profile</a></p>
           </div>
         </div>
         <div class="col-8 d-flex align-items-center position-relative">
-          {{ if .ctas }}
-            <ul class="list-unstyled w-100 me-n4">
-              {{ range .ctas }}
-                <li><a class="d-flex w-100 justify-content-between align-items-center mb-1 bg-wvu-accent--sunset text-dark p-2 text-decoration-none" href="{{ .url }}"><span>{{ .text }}</span> <span class="fa-regular fa-arrow-circle-right"></span></a></li>
-              {{ end }}
-            </ul>
-          {{ end }}
+          <div class="my-6">
+            {{ if .ctas }}
+              <h2 class="text-uppercase small h6 wvu-text-letter-spacing-lg">See More</h2>
+              <ul class="list-unstyled w-100 me-n4 small mb-5">
+                {{ range .ctas }}
+                  <li class="border-bottom border-dotted border-wvu-accent--blue-subtle"><a class="d-flex w-100 justify-content-between align-items-center py-2 text-decoration-none" href="{{ .url }}">{{ .text }}</a></li>
+                {{ end }}
+              </ul>
+            {{ end }}
+            <div class="me-n6 mx-n3">
+              <div class="ratio ratio-16x9 bg-dark position-relative wvu-shadow-hard-filter">
+                <div class="text-{{ $colorPalette.accent_c }} d-flex w-100 h-100 align-items-center justify-content-center">
+                  <span class="small d-block me-2 mt-n1">Watch Video</span> <span class="d-block fa-regular fa-circle-play h2"></span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       

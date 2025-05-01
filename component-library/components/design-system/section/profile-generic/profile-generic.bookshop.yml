@@ -46,14 +46,13 @@ _inputs:
     options:
       allow_empty: false
       values:
-        value:
-          - label: General
-            name: general
-          - label: Alumni
-            name: alumni
-          - label: Prospective Students
-            name: prospective_students
-        value_key: name
+        - name: General
+          class: general
+        - name: Alumni
+          class: alumni
+        - name: Prospective Students
+          class: prospective_students
+      value_key: name
   card_c:
     type: select
     options:
@@ -63,8 +62,9 @@ _inputs:
     type: select
     options:
       values:
-        - option_1
-        - option_2
+        - subtle
+        - medium
+        - loud
   copy:
     type: textarea
   is_cutout:
