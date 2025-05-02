@@ -48,10 +48,18 @@ _inputs:
       values:
         - name: General
           class: general
-        - name: Alumni
-          class: alumni
+        - name: Current Students
+          class: current_students
+        - name: Faculty and Staff
+          class: faculty_staff
         - name: Prospective Students
           class: prospective_students
+        - name: Alumni
+          class: alumni
+        - name: Parents
+          class: parents
+        - name: State Leaders and Partners
+          class: state_leaders
       value_key: class
   card_c:
     type: select
@@ -62,9 +70,13 @@ _inputs:
     type: select
     options:
       values:
-        - subtle
-        - medium
-        - loud
+        - name: Subtle
+          class: subtle
+        - name: Medium
+          class: medium
+        - name: Loud
+          class: loud
+      value_key: class
   copy:
     type: textarea
   is_cutout:
