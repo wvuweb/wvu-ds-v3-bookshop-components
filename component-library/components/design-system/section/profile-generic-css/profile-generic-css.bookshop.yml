@@ -1,0 +1,89 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: "Profile - Generic CSS"
+  description:
+  icon: person
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  heading: Heading
+  name: Firstname Lastname
+  image:
+  super_heading:
+    - Label
+  info:
+    - Morgantown, WV
+  copy:
+  ctas:
+  settings:
+    styles:
+      audience: general
+      level: 1
+    layout:
+      is_cutout: false
+      margin_no_bg:
+      buffer:
+      padding:
+    config:
+      edit_mode_only: false
+      include_heading_postscript: false
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  accent_c:
+    type: select
+    options:
+      values: _select_data.brand_colors
+      value_key: class
+  audience:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        - name: General
+          class: general
+        - name: Current Students
+          class: current_students
+        - name: Faculty and Staff
+          class: faculty_staff
+        - name: Prospective Students
+          class: prospective_students
+        - name: Alumni
+          class: alumni
+        - name: Parents
+          class: parents
+        - name: State Leaders and Partners
+          class: state_leaders
+      value_key: class
+  card_c:
+    type: select
+    options:
+      values: _select_data.brand_colors
+      value_key: class
+  color_palette:
+    type: select
+    options:
+      values:
+        - name: Subtle
+          class: subtle
+        - name: Medium
+          class: medium
+        - name: Loud
+          class: loud
+      value_key: class
+  copy:
+    type: textarea
+  is_cutout:
+    type: switch
+    label: Use Cutout
+    subtext: Choose this if you’ve cut your profile image from the background.
+  level:
+    type: number
+  margin_no_bg:
+    label: Margin
