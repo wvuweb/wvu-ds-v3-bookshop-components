@@ -13,7 +13,8 @@ blueprint:
   subheading: Subheading.
   items:
     - title: Item 1 Title
-      icon:
+      image:
+      alt_text:
       label:
       badge:
       text: Item 1 text.
@@ -23,8 +24,8 @@ blueprint:
     ctas:
   settings:
     styles:
-      panel_font:
-      icon_c: wvu-blue
+      audience:
+      background_c:
     layout:
       buffer:
       margin:
@@ -37,9 +38,7 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  icon_c:
-    type: select
-    options:
-      values: _select_data.brand_colors
-      value_key: class
-    label: Icon Color
+  badge:
+    hidden: true
+  label:
+    hidden: true

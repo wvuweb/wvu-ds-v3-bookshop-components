@@ -20,25 +20,23 @@
       {{ end }}
     {{- end -}}
 
-    <div class="col-24 col-lg-12 col-xl-6 mb-5">
-      <div class="h-100 {{ if .background_c }}bg-{{ .background_c }}{{ else }}bg-{{ $styles.background_c }}{{ if not $styles.tint_shade }}-subtle{{ end }}{{ end }} rounded-2 shadow-sm">
-        <div class="position-relative">                    
-          {{ if .image }}
-            <div class="ratio ratio-3x2">
-              <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
-            </div>
-          {{ end }}
-        </div> 
-        <div class="position-relative p-4">
-          <h3 class="iowan-old-style h1">{{ .title }}</h3>
-          <p>{{ .text | markdownify }}</p>
-          {{ with .ctas }}
-            {{ range . }}
-              <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-            {{ end }}
-          {{ end }}
+    <div class="col-lg-12 col-xl-6 mb-4">
+      {{ if .image }}
+        <div class="mb-3">
+          <div class="ratio ratio-3x2">
+            <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
+          </div>
         </div>
-      </div>
+      {{ end }}
+
+      <h3 class="iowan-old-style h2">{{ .title }}</h3>
+      <p>{{ .text | markdownify }}</p>
+      {{ with .ctas }}
+        {{ range . }}
+          <a class="btn btn-primary btn-sm" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+        {{ end }}
+      {{ end }}
     </div>
+
   {{ end }}
 </div>

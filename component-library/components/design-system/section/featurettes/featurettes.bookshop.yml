@@ -20,14 +20,13 @@ blueprint:
       text: Item 1 text.
       ctas:
       background_c:
-      accent_c:
   postscript:
     copy:
     ctas:
   settings:
     styles:
-      panel_font:
-      accent_c:
+      audience:
+      background_c:
     layout:
       buffer:
       margin:
@@ -46,3 +45,7 @@ _inputs:
       values: _select_data.brand_colors
       value_key: class
     label: Accent Color
+  badge:
+    hidden: true
+  label:
+    hidden: true
