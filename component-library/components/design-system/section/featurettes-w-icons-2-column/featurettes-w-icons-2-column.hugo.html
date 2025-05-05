@@ -1,0 +1,26 @@
+{{ $styles := .settings.styles }}
+
+<div class="row gx-4">
+  {{ range .items }}
+    <div class="col-24 col-lg-12 col-xl-8 mb-5">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="mb-2 d-flex justify-items-center">
+            <div class="bg-wvu-{{ .settings.styles.icon_c }} h1 rounded-circle p-4 d-flex mx-auto align-items-center justify-content-center">
+              <span class="fa-solid fa-{{ .icon }} position-absolute" aria-hidden="true"></span>
+            </div>
+          </div> 
+        </div>
+        <div class="col-lg-18">
+          <h3 class="iowan-old-style h1">{{ .title }}</h3>
+          <p>{{ .text | markdownify }}</p>
+          {{ with .ctas }}
+            {{ range . }}
+              <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  {{ end }}
+</div>

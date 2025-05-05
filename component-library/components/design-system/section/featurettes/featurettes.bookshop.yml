@@ -2,24 +2,35 @@
 spec:
   structures:
     - content_blocks
-  label: "Icon Bar"
-  description: Horizontal icons with links.
-  icon: view_week
+  label: "Featurettes"
+  description:
+  icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  text: "Hello World!"
+  heading: Heading
+  subheading: Subheading.
   items:
-    - icon: book
-      text: Text
-      url:
+    - title: Item 1 Title
+      image:
+      alt_text:
+      label:
+      badge:
+      text: Item 1 text.
+      ctas:
+      background_c:
+      accent_c:
+  postscript:
+    copy:
+    ctas:
   settings:
     styles:
-      background_c:
+      panel_font:
+      accent_c:
     layout:
-      margin:
       buffer:
+      margin:
     config:
       edit_mode_only: false
       include_heading_postscript: true
@@ -29,3 +40,9 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  accent_c:
+    type: select
+    options:
+      values: _select_data.brand_colors
+      value_key: class
+    label: Accent Color

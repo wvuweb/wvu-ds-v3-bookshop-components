@@ -22,7 +22,7 @@
 
     {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
 
-    <section class="section-component {{ $padding }} position-relative bg-{{ .settings.styles.background_c }}">
+    <section class="c-{{ ._component_name }} section-component {{ $padding }} position-relative bg-{{ .settings.styles.background_c }}">
       <div class="container wvu-z-index-content">
         <div class="{{ .settings.layout.margin }} bg-{{ .settings.styles.background_c }}">
           <div class="{{ .settings.layout.buffer }}">

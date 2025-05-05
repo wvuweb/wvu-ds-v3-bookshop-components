@@ -13,8 +13,10 @@ blueprint:
   src:
   alt:
   caption:
-  config:
-    edit_mode_only: false
+  settings:
+    config:
+      edit_mode_only: false
+      include_heading_postscript: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

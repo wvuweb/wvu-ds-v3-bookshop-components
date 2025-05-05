@@ -9,6 +9,7 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
+  _component_name: profile-generic-css
   heading: Heading
   name: Firstname Lastname
   image:
@@ -22,6 +23,7 @@ blueprint:
     styles:
       audience: general
       level: 1
+      card_c:
     layout:
       is_cutout: false
       margin_no_bg:
@@ -63,19 +65,15 @@ _inputs:
       value_key: class
   card_c:
     type: select
-    options:
-      values: _select_data.brand_colors
-      value_key: class
-  color_palette:
-    type: select
+    label: Card Color
     options:
       values:
-        - name: Subtle
-          class: subtle
-        - name: Medium
-          class: medium
-        - name: Loud
-          class: loud
+        - name: Option 1
+          class: option-1
+        - name: Option 2
+          class: option-2
+        - name: Option 3
+          class: option-3
       value_key: class
   copy:
     type: textarea
