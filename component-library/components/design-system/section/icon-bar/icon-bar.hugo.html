@@ -1,13 +1,13 @@
-<div class="row justify-content-left">
+<div class="row justify-content-start text-center">
   {{ range .items }}       
     <div class="col-sm-12 col-lg">              
-      <div class="mb-2 d-flex justify-items-center">
-        <div class="mt-n2 h1 rounded-circle p-4 d-flex mx-auto align-items-center justify-content-center bg-wvu-blue mt-n2">
+      <div class="mb-2 d-flex justify-content-center">
+        <div class="mt-n2 h1 rounded-circle p-5 d-flex mx-auto align-items-center justify-content-center bg-wvu-blue mt-n2">
           <span class="fa-solid fa-{{ .icon }} position-absolute" aria-hidden="true"></span>
         </div>
       </div>            
       <h3 class="card-title mb-0" id="adipiscing-elit-sed-page-collection-icons-2-139980">
-        <a class="h6 text-decoration-none mt-n3 d-block" href="{{ .url }}">{{ .text }}</a>
+        <a class="h6 text-decoration-none mt-n1 d-block" href="{{ .url }}">{{ .text }}</a>
       </h3>
     </div>
   {{ end }}

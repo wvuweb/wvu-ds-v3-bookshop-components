@@ -37,9 +37,15 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  badge:
+    hidden: true
   icon_c:
     type: select
     options:
       values: _select_data.brand_colors
       value_key: class
     label: Icon Color
+  label:
+    hidden: true
+  text:
+    type: textarea
