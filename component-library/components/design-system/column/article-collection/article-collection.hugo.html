@@ -1,0 +1,118 @@
+{{ $articles := "" }}
+{{ $limit := 5 }}
+
+{{ if .settings.config.limit }}
+  {{ $limit = .setting.config.limit }}
+{{ end }}
+
+{{ $tags := slice }}
+
+{{ if .article_tags }}
+  {{ $tags = .article_tags }}
+{{ end }}
+
+{{ if not site.Data }}
+  {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
+{{ else if and (site.Params.env_bookshop_live) (not .settings.config.show_content) }}
+  {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
+{{ else }}
+
+  {{ $authorData := site.Data.people_data }}
+
+  {{ if not site.Params.env_bookshop_live }}
+    {{ $articles = where site.Pages "Section" "articles" }}
+    {{ $articles = where $articles "Params.article_tags" "intersect" $tags }}
+  {{ else }}
+    {{ $articles = where site.Data.site_pages ".type" "articles" }}
+    {{ $articles = where $articles ".article_tags" "intersect" $tags }}
+  {{ end }}
+
+  <div class="row">
+    {{ range first $limit $articles }}
+
+      {{ $params := "" }}
+      {{ $link := "" }}
+
+      {{ if not site.Params.env_bookshop_live }}
+        {{ $params = .Params }}
+        {{ $link = .RelPermalink }}
+      {{ else }}
+        {{ $params = . }}
+      {{ end }}
+
+      {{ $authors := slice }}
+
+      {{ if $params.authors }}
+        {{ $authors = $params.authors }}
+      {{ end }}
+      
+      {{ $authorList := slice }}
+
+      {{ range $authorData }}
+        {{ $author := . }}
+        {{ range $authors }}
+          {{ if eq .author $author.uuid }}
+            {{ $authorList = $authorList | append $author }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      
+      {{ $src := $params.image }}
+
+      {{- if not site.Params.env_bookshop_live -}}
+        {{ $image := "" }}
+        {{/*  Get the image, either from its remote or local source  */}}
+        {{ if hasPrefix $src "http"}}
+          {{ $image = resources.GetRemote $params.image }}
+        {{ else }}
+          {{ $image = resources.Get $params.image }}
+        {{ end }}
+
+        {{/* Resize images and add them to a variable  */}}
+        {{ if and $image (ne $image.MediaType.SubType "svg") }}
+          {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+        {{ end }}
+      {{- end -}}
+      
+      <div class="col-6">
+        <div class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
+
+          {{ if $src }}
+            <div class="wvu-article__thumb mb-4">
+              <div class="ratio ratio-3x2 bg-light">
+                <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
+                  <img class="h-100 w-100 object-fit-cover" src="{{ $src }}" alt="" />
+                </a>
+              </div>
+            </div>
+          {{ end }}
+
+          <div class="mt-3 mt-md-0">
+            <h2 class="fs-5" itemprop="headline"><a class="newsletter-link" href="{{ $link }}">{{ $params.title }}</a></h2>
+
+            {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
+              <p class="small d-block">
+                {{ if not $params.config.hide_author }}
+                  {{ range $authorList }}
+                    <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                      <span itemprop="name">
+                        {{ .name }}
+                      </span>
+                    </span>
+                  {{ end }}
+                {{ end }}
+
+                {{ if and (not $params.config.hide_author) ( $params.publishDate ) }} | {{ end }}
+
+                {{ if $params.publishDate }}
+                  <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
+                {{ end }}
+              </p>
+            {{ end }}
+          </div>
+
+        </div>
+      </div>
+    {{ end }}
+  </div>
+{{ end }}

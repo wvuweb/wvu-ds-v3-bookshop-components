@@ -1,0 +1,37 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - column_blocks
+  label: "Article Collection"
+  description:
+  icon: library_books
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  heading: Article Collection Heading
+  subheading: Subheading goes here.
+  article_tags:
+    - featured
+  postscript:
+    copy:
+    ctas:
+  settings:
+    styles:
+      background_c:
+    layout:
+      margin:
+      buffer:
+      max_cols:
+    config:
+      edit_mode_only: false
+      limit:
+      show_content: false
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  limit:
+    type: number
