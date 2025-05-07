@@ -11,6 +11,10 @@
   {{ $tags = .article_tags }}
 {{ end }}
 
+{{ if .heading }}
+  <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
+{{ end }}
+
 {{ if not site.Data }}
   {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
 {{ else if and (site.Params.env_bookshop_live) (not .settings.config.show_content) }}
@@ -74,18 +78,21 @@
         {{ end }}
       {{- end -}}
       
-      <div class="col-6">
+      <div class="col-8">
+        {{ if $src }}
+          <div class="wvu-article__thumb mb-4">
+            <div class="ratio ratio-3x2 bg-light">
+              <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
+                <img class="h-100 w-100 object-fit-cover" src="{{ $src }}" alt="" />
+              </a>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+      <div class="col-16">
         <div class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
 
-          {{ if $src }}
-            <div class="wvu-article__thumb mb-4">
-              <div class="ratio ratio-3x2 bg-light">
-                <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
-                  <img class="h-100 w-100 object-fit-cover" src="{{ $src }}" alt="" />
-                </a>
-              </div>
-            </div>
-          {{ end }}
+          
 
           <div class="mt-3 mt-md-0">
             <h2 class="fs-5" itemprop="headline"><a class="newsletter-link" href="{{ $link }}">{{ $params.title }}</a></h2>
