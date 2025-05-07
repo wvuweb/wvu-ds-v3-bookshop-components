@@ -42,3 +42,5 @@ _inputs:
     hidden: true
   label:
     hidden: true
+  text:
+    type: textarea
