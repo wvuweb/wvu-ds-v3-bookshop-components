@@ -5,12 +5,6 @@
 {{ end }}
 
 <div class="text-center">
-  {{ with .text }}
-    <div class="mb-4">
-      {{ . | markdownify }}
-    </div>
-  {{ end }}
-
   {{ range .buttons }}
     {{ if .button_c }}
       {{ $color = .button_c }}
