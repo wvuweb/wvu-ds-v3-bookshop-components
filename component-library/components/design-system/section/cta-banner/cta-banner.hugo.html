@@ -10,5 +10,6 @@
       {{ $color = .button_c }}
     {{ end }}
     <a class="btn btn-{{ $color }} btn-lg mb-1" href="{{ .url }}">{{ .text }}</a>
+    {{ $color := "primary" }}
   {{ end }}
 </div>

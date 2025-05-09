@@ -1,9 +1,8 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - column_blocks
-    - detail_blocks
-  label: "Poster"
+    - detail_sidebar_blocks
+  label: "Featurettes - Vertical"
   description:
   icon:
   tags: []
@@ -11,17 +10,18 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   heading: Heading
-  subheading: Subheading goes here.
-  image:
-  alt_text:
-  body:
-  ctas:
-  postscript_links:
+  subheading: Subheading.
+  items:
+    - title: Item 1 Title
+      image:
+      alt_text:
+      label:
+      badge:
+      url:
   settings:
     styles:
-      background_c:
+      audience:
     layout:
-      text_align:
     config:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -29,7 +29,13 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  badge:
+    hidden: true
   config:
     hidden: true
-  text_align:
+  layout:
     hidden: true
+  label:
+    hidden: true
+  text:
+    type: textarea

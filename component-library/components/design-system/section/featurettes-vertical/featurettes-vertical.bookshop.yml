@@ -25,7 +25,6 @@ blueprint:
   settings:
     styles:
       audience:
-      background_c:
     layout:
       buffer:
       margin:
