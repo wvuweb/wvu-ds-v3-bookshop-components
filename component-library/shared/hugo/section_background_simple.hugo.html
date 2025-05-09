@@ -2,7 +2,7 @@
 {{ $imageOpacity := "" }}
 {{ $imageClasses := "object-fit-cover h-100 w-100 position-relative" }}
 
-{{ if .styles.enable_blend }}
+{{ if and .styles .styles.enable_blend }}
   {{ $blendMode = "wvu-bg-blend-mode-luminosity" }}
   {{ $imageOpacity = "0.2" }}
 {{ end }}
@@ -10,7 +10,7 @@
 {{ $imageClasses = printf "%s%s%s" $imageClasses " " $blendMode }}
 
 <div class="wvu-bg-img">
-  {{ if .styles.gradient }}
+  {{ if and .styles .styles.gradient }}
     <div class="bg-gradient-{{ .styles.gradient }} d-flex w-100 h-100 justify-content-between position-absolute"></div>
   {{ end }}
   {{ if .image }}
