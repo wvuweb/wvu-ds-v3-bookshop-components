@@ -12,7 +12,6 @@ spec:
 blueprint:
   heading: Alternating Grid Heading
   subheading: Subheading goes here.
-  background_image:
   items:
     - heading: Item Heading
       image:
@@ -25,11 +24,6 @@ blueprint:
   settings:
     styles:
       background_c:
-      gradient:
-      heading_c:
-      enable_blend: false
-      enable_pattern: false
-      tint_opacity: "0.5"
     layout:
       butter:
       margin:

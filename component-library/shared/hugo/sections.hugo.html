@@ -6,32 +6,12 @@
 
 {{ range .blocks }}
 
-  {{ $src := .background_image }}
   {{ $padding := "py-6 py-xxl-7" }}
   {{ $heading := "" }}
   {{ $subheading := "" }}
 
   {{ if .heading }}{{ $heading = .heading }}{{ end }}
   {{ if .subheading }}{{ $subheading = .subheading }}{{ end }}
-
-  {{- if not site.Params.env_bookshop_live -}}
-    {{ $image := "" }}
-    {{/*  Get the image, either from its remote or local source  */}}
-    {{ if hasPrefix $src "http"}}
-      {{ $image = resources.GetRemote .topper.background_image }}
-    {{ else }}
-      {{ $image = resources.Get .topper.background_image }}
-    {{ end }}
-
-    {{/* Resize images and add them to a variable  */}}
-    {{ if and $image (ne $image.MediaType.SubType "svg") }}
-      {{ if eq .imageProcess "fit" }}
-        {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
-      {{ else }}
-        {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
-      {{ end }}
-    {{ end }}
-  {{- end -}}
 
   {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
 
@@ -43,7 +23,6 @@
     {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
 
     <section class="c-{{ ._component_name }} section-component {{ $padding }} position-relative bg-{{ .settings.styles.background_c }}">
-      {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles)) }}
       <div class="container wvu-z-index-content">
         <div class="{{ .settings.layout.margin }} bg-{{ .settings.styles.background_c }}">
           <div class="{{ .settings.layout.buffer }}">
