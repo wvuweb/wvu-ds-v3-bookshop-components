@@ -1,8 +1,41 @@
 {{ range .blocks }}
 
 
+            {{ $styles := .settings.styles }}
+            {{ if .settings.config.include_heading_postscript }}
+              {{ if or .heading .subheading }}
+                <div class="mb-6 text-center">
+                  {{ with .heading }}
+                    <h2 class="wvu-shout h1 wvu-text-letter-spacing-lg mb-3">{{ . }}</h2>
+                  {{ end }}
+
+                  {{ with .subheading }}
+                    <p class="lead mb-3">{{ . }}</p>
+                  {{ end }}
+                </div>
+              {{ end }}
 
               {{ partial "bookshop" . }}
 
+              {{ with .postscript }}
+                <div class="text-center">
+                  {{ with .copy }}
+                    <div class="mb-4">
+                      {{ . | markdownify }}
+                    </div>
+                  {{ end }}
+
+                  {{ with .ctas }}
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                      {{ range . }}
+                        <a class="btn btn-{{ $styles.background_c }} bg-{{ $styles.background_c }}-subtle" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+            {{ else }}
+              {{ partial "bookshop" . }}
+            {{ end }}
 
 {{ end }}
