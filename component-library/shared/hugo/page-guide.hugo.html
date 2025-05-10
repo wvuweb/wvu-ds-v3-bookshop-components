@@ -19,7 +19,7 @@
 
     {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
 
-    <section class="c-{{ ._component_name }} section-component {{ $padding }} position-relative bg-{{ $backgroundColor }}">
+    <section class="c- section-component {{ $padding }} position-relative bg-{{ $backgroundColor }}">
       <div class="container wvu-z-index-content">
         <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}bg-white shadow{{ end }}">
           <div class="{{ .settings.layout.buffer }}">
