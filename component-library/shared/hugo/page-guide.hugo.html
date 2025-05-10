@@ -6,6 +6,10 @@
 
             {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
 
+    <section class="c- section-component position-relative bg-">
+      <div class="container wvu-z-index-content">
+        <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}bg-white shadow{{ end }}">
+          <div class="{{ .settings.layout.buffer }}">
             {{ if .settings.config.include_heading_postscript }}
               {{ if or .heading .subheading }}
                 <div class="mb-6 text-center">
@@ -41,6 +45,10 @@
             {{ else }}
               {{ partial "bookshop" . }}
             {{ end }}
+          </div>
+        </div>
+      </div>
+    </section>
 
 
 {{ end }}
