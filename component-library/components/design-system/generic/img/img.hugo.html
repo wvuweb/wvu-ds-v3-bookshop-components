@@ -1,5 +1,4 @@
 {{- $src := .src -}}
-{{- $size := "960x640" -}}
 {{- $height := 640 }}
 {{- $width := 960 }}
 {{- $classes := "" -}}
@@ -13,18 +12,6 @@
 
 {{ if .height }}
   {{ $height = .height }}
-{{ end }}
-
-{{ if .classes }}
-  {{ $classes = .classes }}
-{{ end }}
-
-{{ if .opacity }}
-  {{ $opacity = .opacity }}
-{{ end }}
-
-{{ if .alt }}
-  {{ $alt = .alt }}
 {{ end }}
 
 {{ if .imageProcess }}
@@ -50,4 +37,4 @@
   {{ end }}
 {{- end -}}
 
-<img class="{{ $classes }}" src="{{ $src }}" style="opacity: {{ $opacity }}" alt="{{ $alt}}" />
+<img class="{{ .classes }}" src="{{ $src }}" alt="" />
