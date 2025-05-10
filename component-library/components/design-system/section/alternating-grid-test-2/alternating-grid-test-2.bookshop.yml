@@ -27,6 +27,7 @@ blueprint:
     layout:
       butter:
       margin:
+      padding: py-6 py-xxl-7
     config:
       edit_mode_only: false
       include_heading_postscript: true
@@ -39,4 +40,6 @@ _inputs:
   copy:
     type: markdown
   include_heading_postscript:
+    hidden: true
+  padding:
     hidden: true
