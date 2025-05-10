@@ -1,4 +1,3 @@
-{{ $src := .background_image }}
 {{ $backgroundColor := "bg-wvu-blue text-white" }}
 {{ $headingColor := "text-wvu-gold" }}
 {{ $placement := "mx-xl-auto text-center" }}
@@ -20,27 +19,7 @@
   {{ $placement = .settings.layout.text_placement }}
 {{ end }}
 
-{{- if not site.Params.env_bookshop_live -}}
-  {{ $image := "" }}
-  {{/*  Get the image, either from its remote or local source  */}}
-  {{ if hasPrefix $src "http"}}
-    {{ $image = resources.GetRemote .background_image }}
-  {{ else }}
-    {{ $image = resources.Get .background_image }}
-  {{ end }}
-
-  {{/* Resize images and add them to a variable  */}}
-  {{ if and $image (ne $image.MediaType.SubType "svg") }}
-    {{ if eq .imageProcess "fit" }}
-      {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
-    {{ else }}
-      {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
-    {{ end }}
-  {{ end }}
-{{- end -}}
-
 <header id="" class="c-topper-hero bg-{{ $backgroundColor }} position-relative py-7 text-center">
-  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles)) }}
   <div class="container wvu-z-index-content {{ .layout.container_margin }}">
     <div class="row py-6">
       <div class="col-xl-16 {{ $placement }}">
