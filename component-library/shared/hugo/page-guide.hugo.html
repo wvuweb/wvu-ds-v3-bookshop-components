@@ -1,6 +1,8 @@
 {{ range .blocks }}
 
-
+      <div class="container wvu-z-index-content">
+        <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}bg-white shadow{{ end }}">
+          <div class="{{ .settings.layout.buffer }}">
             {{ $styles := .settings.styles }}
             {{ if .settings.config.include_heading_postscript }}
               {{ if or .heading .subheading }}
@@ -37,5 +39,8 @@
             {{ else }}
               {{ partial "bookshop" . }}
             {{ end }}
+          </div>
+        </div>
+      </div>
 
 {{ end }}
