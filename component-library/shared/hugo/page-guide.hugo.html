@@ -1,11 +1,5 @@
 {{ range .blocks }}
 
-    {{ $backgroundColor := "" }}
-  
-
-            {{ $padding := "py-6 py-xxl-7" }}
-
-            {{ if .settings.layout.padding }}{{ $padding = .settings.layout.padding }}{{ end }}
 
             {{ $styles := .settings.styles }}
             {{ $maxCols := "24" }}
