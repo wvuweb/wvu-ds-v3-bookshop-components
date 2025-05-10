@@ -1,11 +1,10 @@
-
+Test: {{ . }}
+Blocks: {{ .blocks }}
 
 {{ range .blocks }}
 
-  {{ . }}
-
-  Test.
 
               {{ partial "bookshop" . }}
+
 
 {{ end }}
