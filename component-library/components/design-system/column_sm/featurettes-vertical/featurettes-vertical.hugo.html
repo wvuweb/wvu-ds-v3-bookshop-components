@@ -1,10 +1,8 @@
-{{ $styles := .settings.styles }}
-
 {{ if .heading }}
-  <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
+  <h2 class="h6 mb-3 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
 {{ end }}
 
-<div class="row gx-4">
+<div class="row gx-3">
   {{ range .items }}
 
     {{ $src := .image }}
@@ -20,23 +18,21 @@
     
       {{/* Resize images and add them to a variable  */}}
       {{ if and $image (ne $image.MediaType.SubType "svg") }}
-        {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+        {{ $src = ($image.Fill (printf "%dx%d webp" 100 100)).RelPermalink }}
       {{ end }}
     {{- end -}}
 
-    <div class="position-relative">
-      <div class="col-lg-6">
-        <div class="position-relative">
-          {{ if .image }}
-            <div class="ratio ratio-3x2">
-              <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
-            </div>
-          {{ end }}
-        </div> 
-      </div>
-      <div class="col-lg-18">
-        <h3 class="iowan-old-style h1"><a class="stretched-link" href="{{ .url }}">{{ .title }}</a></h3>
-      </div>
+    <div class="col-lg-6">
+      <div class="position-relative">
+        {{ if .image }}
+          <div class="ratio ratio-1x1">
+            <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
+          </div>
+        {{ end }}
+      </div> 
+    </div>
+    <div class="col-lg-18">
+      <h3 class="h5"><a class="text-decoration-none stretched-link" href="{{ .url }}">{{ .title }}</a></h3>
     </div>
   {{ end }}
 </div>

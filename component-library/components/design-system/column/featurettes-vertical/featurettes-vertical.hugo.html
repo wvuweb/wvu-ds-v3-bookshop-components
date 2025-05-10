@@ -1,7 +1,7 @@
 {{ $styles := .settings.styles }}
 
 {{ if .heading }}
-  <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
+  <h2 class="h6 mb-3 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
 {{ end }}
 
 <div class="row gx-4">
@@ -34,7 +34,7 @@
       </div> 
     </div>
     <div class="col-lg-18">
-      <h3 class="iowan-old-style h1">{{ .title }}</h3>
+      <h3 class="h2">{{ .title }}</h3>
       <p>{{ .text | markdownify }}</p>
       {{ with .ctas }}
         {{ range . }}
