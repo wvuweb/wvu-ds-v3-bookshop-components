@@ -1,7 +1,7 @@
 {{- $src := .src -}}
 {{- $size := "960x640" -}}
-{{- $height := 960 }}
-{{- $width := 640 }}
+{{- $height := 640 }}
+{{- $width := 960 }}
 {{- $classes := "" -}}
 {{- $opacity := "1" -}}
 {{- $alt := "" }}
@@ -43,9 +43,9 @@
   {{/* Resize images and add them to a variable  */}}
   {{ if and $image (ne $image.MediaType.SubType "svg") }}
     {{ if eq .imageProcess "fit" }}
-      {{ $src = ($image.Fit (printf "%dx%d webp Lanczos" $width $height)).RelPermalink }}
+      {{ $src = ($image.Fit (printf "%dx%d webp" $width $height)).RelPermalink }}
     {{ else }}
-      {{ $src = ($image.Fill (printf "%dx%d webp Lanczos" $width $height)).RelPermalink }}
+      {{ $src = ($image.Fill (printf "%dx%d webp" $width $height)).RelPermalink }}
     {{ end }}
   {{ end }}
 {{- end -}}
