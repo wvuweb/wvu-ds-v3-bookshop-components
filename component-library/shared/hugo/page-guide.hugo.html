@@ -1,13 +1,11 @@
 {{ range .blocks }}
 
-    {{ $padding := "py-6 py-xxl-7" }}
-
     {{ $styles := .settings.styles }}
     {{ $maxCols := "24" }}
 
     {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
 
-    <section class="c- section-component {{ .settings.layout.padding }} position-relative bg-">
+    <section class="c-{{ ._component_name }} section-component {{ .settings.layout.padding }} position-relative bg-">
       <div class="container wvu-z-index-content">
         <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}bg-white shadow{{ end }}">
           <div class="{{ .settings.layout.buffer }}">
