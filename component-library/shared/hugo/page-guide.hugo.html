@@ -50,7 +50,7 @@
 
     {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
 
-    <section class="c-{{ ._component_name }} section-component {{ .settings.layout.padding }} position-relative bg-">
+    <section class="c-{{ ._component_name }} section-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }}">
       {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles)) }}
 
       <div class="container wvu-z-index-content">

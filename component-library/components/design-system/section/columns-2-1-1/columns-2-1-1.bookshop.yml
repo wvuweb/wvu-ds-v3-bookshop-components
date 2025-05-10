@@ -30,6 +30,7 @@ blueprint:
       margin:
       buffer:
       text_placement:
+      padding: py-6 py-xxl-7
     config:
       show_label: true
       include_heading_postscript: true
