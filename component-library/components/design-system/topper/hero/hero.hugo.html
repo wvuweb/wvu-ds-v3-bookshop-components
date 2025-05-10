@@ -48,7 +48,7 @@
           {{ if and .title .topper.config }}
             <h1 class="vibe-label h6 mb-6 text-uppercase wvu-text-letter-spacing-lg {{ if and .topper.config (not .topper.config.show_label) }}visually-hidden{{ end }}">{{ .title }}</h1>
           {{ end }}
-          <h2 id="" class="config display-4 text-{{ .topper.settings.styles.heading_c }}">
+          <h2 id="" class="config display-3 text-{{ .topper.settings.styles.heading_c }}">
             {{ range .topper.heading }}
               <span class="d-inline-block">{{ .text }} </span>
             {{ end }}

@@ -24,13 +24,13 @@
 
     <section class="c-{{ ._component_name }} section-component {{ $padding }} position-relative bg-{{ .settings.styles.background_c }}">
       <div class="container wvu-z-index-content">
-        <div class="{{ .settings.layout.margin }} bg-{{ .settings.styles.background_c }}">
-          <div class="{{ .settings.layout.buffer }}">
+        <div class="{{ .settings.layout.margin }}">
+          <div class="{{ .settings.layout.buffer }} {{ if .settings.layout.margin }}bg-white shadow{{ end }}">
             {{ if .settings.config.include_heading_postscript }}
               {{ if or .heading .subheading }}
                 <div class="mb-6 text-center">
                   {{ with $heading }}
-                    <h2 class="wvu-shout display-5 wvu-text-letter-spacing-lg mb-3">{{ . }}</h2>
+                    <h2 class="wvu-shout h1 wvu-text-letter-spacing-lg mb-3">{{ . }}</h2>
                   {{ end }}
 
                   {{ with $subheading }}
