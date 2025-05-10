@@ -1,12 +1,12 @@
 {{ range .blocks }}
 
 
-            {{ $styles := .settings.styles }}
-            {{ $maxCols := "24" }}
+    {{ $styles := .settings.styles }}
+    {{ $maxCols := "24" }}
 
-            {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
+    {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
 
-    <section class="c- section-component position-relative bg-">
+    <section class="c- section-component {{ $padding }} position-relative bg-">
       <div class="container wvu-z-index-content">
         <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}bg-white shadow{{ end }}">
           <div class="{{ .settings.layout.buffer }}">
