@@ -3,6 +3,11 @@
   {{ $src := "" }}
   {{ $backgroundColor := "" }}
 
+  {{ if .background_image }}
+    {{ $src = .background_image }}
+    {{ $backgroundColor = "dark" }}
+  {{ end }}
+
   {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
 
     {{ $styles := .settings.styles }}
