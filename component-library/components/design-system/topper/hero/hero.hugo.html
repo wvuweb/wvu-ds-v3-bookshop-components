@@ -1,15 +1,5 @@
-{{ $backgroundColor := "bg-wvu-blue text-white" }}
 {{ $headingColor := "text-wvu-gold" }}
 {{ $placement := "mx-xl-auto text-center" }}
-
-{{ if .background_image }}
-  {{ $backgroundColor = "bg-dark text-white" }}
-  {{ $headingColor = "text-wvu-gold" }}
-{{ end }}
-
-{{ if .settings.styles.background_c }}
-  {{ $backgroundColor = .settings.styles.background_c }}
-{{ end }}
 
 {{ if and .settings.styles .settings.styles.heading_c }}
   {{ $headingColor = .settings.styles.heading_c }}
@@ -34,8 +24,6 @@
       <h2 id="" class="config display-3 text-{{ .settings.styles.heading_c }}">
         {{ .heading }}
       </h2>
-    {{ else }}
-      <h1 id="" class="vibe-primary-heading display-3 text-{{ $headingColor }}">{{ .title }}</h1>
     {{ end }}
     <p class="vibe-subheading h4 mt-4">{{ .subheading }}</p>
     <div class="vibe-body mt-4">
