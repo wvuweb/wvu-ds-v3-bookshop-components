@@ -1,5 +1,7 @@
 {{ range .blocks }}
 
+  {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
+
     {{ $styles := .settings.styles }}
     {{ $maxCols := "24" }}
 
@@ -49,5 +51,6 @@
       </div>
     </section>
 
+  {{ end }}
 
 {{ end }}
