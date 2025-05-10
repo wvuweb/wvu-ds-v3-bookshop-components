@@ -8,6 +8,20 @@
     {{ $backgroundColor = "dark" }}
   {{ end }}
 
+  {{ if .settings.styles.background_c }}
+    {{ $backgroundColor = .settings.styles.background_c }}
+  {{ end }}
+
+  
+
+  {{ $heading := "" }}
+  {{ $subheading := "" }}
+
+  {{ if .heading }}{{ $heading = .heading }}{{ end }}
+  {{ if .subheading }}{{ $subheading = .subheading }}{{ end }}
+
+
+
   {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
 
     {{ $styles := .settings.styles }}
