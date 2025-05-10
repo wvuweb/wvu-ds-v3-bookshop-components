@@ -1,11 +1,15 @@
-
-
 {{ range .blocks }}
 
   {{ $src := "" }}
+  {{ $backgroundColor := "" }}
 
   {{ if .background_image }}
     {{ $src := .background_image }}
+    {{ $backgroundColor = "bg-dark text-white" }}
+  {{ end }}
+
+  {{ if .settings.styles.background_c }}
+    {{ $backgroundColor = .settings.styles.background_c }}
   {{ end }}
 
   {{ $padding := "py-6 py-xxl-7" }}
@@ -43,7 +47,7 @@
 
     {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
 
-    <section class="c-{{ ._component_name }} section-component {{ $padding }} position-relative bg-{{ .settings.styles.background_c }}">
+    <section class="c-{{ ._component_name }} section-component {{ $padding }} position-relative bg-{{ $backgroundColor }}">
       {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles)) }}
       <div class="container wvu-z-index-content">
         <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}bg-white shadow{{ end }}">

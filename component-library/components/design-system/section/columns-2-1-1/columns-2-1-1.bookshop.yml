@@ -21,10 +21,17 @@ blueprint:
   settings:
     styles:
       background_c:
+      gradient:
+      heading_c:
+      enable_blend: false
+      enable_pattern: false
+      tint_opacity: "0.5"
     layout:
       margin:
+      buffer:
+      text_placement:
     config:
-      edit_mode_only: false
+      show_label: true
       include_heading_postscript: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
