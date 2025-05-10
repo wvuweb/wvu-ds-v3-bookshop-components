@@ -11,6 +11,7 @@ spec:
 blueprint:
   heading: Heading
   subheading: Subheading goes here.
+  background_image:
   column_a:
   column_b:
   column_c:
