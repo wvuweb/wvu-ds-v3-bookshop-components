@@ -1,5 +1,25 @@
 {{ range .blocks }}
 
+    {{ $backgroundColor := "" }}
+    
+    {{ if .background_image }}
+      {{ $backgroundColor = "dark" }}
+    {{ end }}
+
+    {{ if .settings.styles.background_c }}
+      {{ $backgroundColor = .settings.styles.background_c }}
+    {{ end }}
+
+    {{ $padding := "py-6 py-xxl-7" }}
+
+    {{ if .settings.layout.padding }}{{ $padding = .settings.layout.padding }}{{ end }}
+
+    {{ $styles := .settings.styles }}
+    {{ $maxCols := "24" }}
+
+    {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
+
+    <section class="c-{{ ._component_name }} section-component {{ $padding }} position-relative bg-{{ $backgroundColor }}">
       <div class="container wvu-z-index-content">
         <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}bg-white shadow{{ end }}">
           <div class="{{ .settings.layout.buffer }}">
@@ -42,5 +62,6 @@
           </div>
         </div>
       </div>
+    </section>
 
 {{ end }}
