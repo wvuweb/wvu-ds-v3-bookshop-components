@@ -12,7 +12,7 @@
     {{ $backgroundColor = .settings.styles.background_c }}
   {{ end }}
 
-  
+
 
   {{ $heading := "" }}
   {{ $subheading := "" }}
@@ -20,7 +20,24 @@
   {{ if .heading }}{{ $heading = .heading }}{{ end }}
   {{ if .subheading }}{{ $subheading = .subheading }}{{ end }}
 
+  {{- if not site.Params.env_bookshop_live -}}
+    {{ $image := "" }}
+    {{/*  Get the image, either from its remote or local source  */}}
+    {{ if hasPrefix $src "http"}}
+      {{ $image = resources.GetRemote .background_image }}
+    {{ else }}
+      {{ $image = resources.Get .background_image }}
+    {{ end }}
 
+    {{/* Resize images and add them to a variable  */}}
+    {{ if and $image (ne $image.MediaType.SubType "svg") }}
+      {{ if eq .imageProcess "fit" }}
+        {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+      {{ else }}
+        {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+      {{ end }}
+    {{ end }}
+  {{- end -}}
 
   {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
 
