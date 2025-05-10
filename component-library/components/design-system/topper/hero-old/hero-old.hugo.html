@@ -1,10 +1,10 @@
 {{ $src := .topper.background_image }}
-{{ $backgroundColor := "bg-wvu-blue text-white" }}
+{{ $backgroundColor := "wvu-blue" }}
 {{ $headingColor := "text-wvu-gold" }}
 {{ $placement := "mx-xl-auto text-center" }}
 
 {{ if .topper.background_image }}
-  {{ $backgroundColor = "bg-dark text-white" }}
+  {{ $backgroundColor = "dark" }}
   {{ $headingColor = "text-wvu-gold" }}
 {{ end }}
 
@@ -44,17 +44,18 @@
   <div class="container wvu-z-index-content {{ .topper.layout.container_margin }}">
     <div class="row py-6">
       <div class="col-xl-16 {{ $placement }}">
+        {{- if not site.Params.env_bookshop_live -}}
+          <h1 class="visually-hidden">{{ .Params.title }}</h1>
+        {{ end }}
+
+        {{ with .topper.label }}
+          <p class="vibe-label h6 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ . }}</p>
+        {{ end }}
+        
         {{ if .topper.heading }}
-          {{ if and .title .topper.config }}
-            <h1 class="vibe-label h6 mb-6 text-uppercase wvu-text-letter-spacing-lg {{ if and .topper.config (not .topper.config.show_label) }}visually-hidden{{ end }}">{{ .title }}</h1>
-          {{ end }}
-          <h2 id="" class="config display-3 text-{{ .topper.settings.styles.heading_c }}">
-            {{ range .topper.heading }}
-              <span class="d-inline-block">{{ .text }} </span>
-            {{ end }}
+          <h2 id="" class="config display-3 text-{{ .settings.styles.heading_c }}">
+            {{ .topper.heading }}
           </h2>
-        {{ else }}
-          <h1 id="" class="vibe-primary-heading display-3 text-{{ $headingColor }}">{{ .title }}</h1>
         {{ end }}
         <p class="vibe-subheading h4 mt-4">{{ .topper.subheading }}</p>
         <div class="vibe-body mt-4">
