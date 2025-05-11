@@ -1,0 +1,66 @@
+<div class="row">
+  {{ if not site.Data }}
+    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
+  {{ else if and (site.Params.env_bookshop_live) (not .settings.config.show_content) }}
+    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
+  {{ else }}
+
+    {{ $faculty := slice }}
+
+    {{ if not site.Params.env_bookshop_live }}
+      {{ $faculty = where site.RegularPages "Params.type" "eq" "faculty-profile" }}
+      {{ $faculty = where $faculty "Params.tags" "intersect" .tags }}
+    {{ else }}
+      {{ $faculty = where site.Data.people_data ".type" "eq" "faculty-profile" }}
+      {{ $faculty = where $faculty ".tags" "intersect" .tags }}
+    {{ end }}
+
+    {{ range $faculty }}
+
+      {{ $params := . }}
+
+      {{ if not site.Params.env_bookshop_live }}
+        {{ $params = .Params }}
+      {{ end }}
+
+      {{ $src := $params.profile_image }}
+
+      {{- if not site.Params.env_bookshop_live -}}
+        {{ $image := "" }}
+        {{/*  Get the image, either from its remote or local source  */}}
+        {{ if hasPrefix $src "http"}}
+          {{ $image = resources.GetRemote $src }}
+        {{ else }}
+          {{ $image = resources.Get $src }}
+        {{ end }}
+      
+        {{/* Resize images and add them to a variable  */}}
+        {{ if and $image (ne $image.MediaType.SubType "svg") }}
+          {{ $src = ($image.Fill (printf "%dx%d webp" 600 400)).RelPermalink }}
+        {{ end }}
+      {{- end -}}
+
+      <div class="col-sm-12 col-lg-6 col-xl-4">
+
+        <div class="ratio ratio-3x4 bg-light mb-3">
+          {{ if $params.profile_image }}
+            <img class="object-fit" src="{{ $src }}" alt="Portrait of {{ $params.name }}" />
+          {{ end }}
+        </div>
+
+        <h3 class="h5 mb-1">{{ $params.name }}</h3>
+
+        {{ with $params.position }}
+          <p class="small lh-1">
+            {{ range . }}
+              <span class="d-block helvetica-neue-bold">{{ .organization }}</span>
+              <span class="d-block">{{ .title }}</span>
+            {{ end }}
+          </p>
+        {{ end }}
+        <a class="text-decoration-none text-primary small" href="#">View Bio <span class="fa-regular fa-arrow-right"></span></a>
+      </div>
+
+    {{ end }}
+  {{ end }}
+</div>

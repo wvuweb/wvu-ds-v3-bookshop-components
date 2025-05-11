@@ -1,4 +1,6 @@
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
+  
+  {{ $contacts := slice }}
 
   {{ if .heading }}
     <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
@@ -9,18 +11,29 @@
   {{ else if and (site.Params.env_bookshop_live) (not .config.show_content) }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
   {{ else }}
-    {{ $contacts := site.Data.people_data }}
 
-    {{ $label := .label }}
+    {{ if not site.Params.env_bookshop_live }}
+      {{ $contacts = where site.RegularPages "Params.is_contact" true }}
+    {{ else }}
+      {{ $contacts = where site.Data.people_data ".is_contact" true }}
+    {{ end }}
+
     {{ range .people }}
-      {{ with $label }}<div class="mb-3 position-relative"><p class="helvetica-neue-bold mx-n2 my-n1 bg-wvu-accent--sunset d-inline-block">{{ . }}</p></div>{{ end }}
+      {{ with .label }}<div class="mb-3 position-relative"><p class="helvetica-neue-bold mx-n2 my-n1 bg-wvu-accent--sunset d-inline-block">{{ . }}</p></div>{{ end }}
       {{ $contact := .contact }}
       {{ range $contacts }}
-        {{ if eq .uuid $contact }}
-          <div class="row mb-4">
-            {{ if .profile_image }}
 
-              {{ $src := .profile_image }}
+        {{ $params := . }}
+
+        {{ if not site.Params.env_bookshop_live }}
+          {{ $params = .Params }}
+        {{ end }}
+
+        {{ if eq $params.uuid $contact }}
+          <div class="row gx-3 mb-4">
+            {{ if $params.profile_image }}
+
+              {{ $src := $params.profile_image }}
 
               {{- if not site.Params.env_bookshop_live -}}
                 {{ $image := "" }}
@@ -33,23 +46,23 @@
 
                 {{/* Resize images and add them to a variable  */}}
                 {{ if and $image (ne $image.MediaType.SubType "svg") }}
-                  {{ $src = ($image.Fill (printf "%dx%d webp" 100 100)).RelPermalink }}
+                  {{ $src = ($image.Fill (printf "%dx%d webp" 250 250)).RelPermalink }}
                 {{ end }}
               {{- end -}}
 
-              <div class="col-8">
+              <div class="col-6">
                 <div class="ratio ratio-1x1">
-                  <img class="object-fit" src="{{ $src }}" alt="{{ if .image.alt }}{{ .image.alt }}{{ else }}Portrait of {{ .name }}{{ end }}" />
+                  <img class="object-fit" src="{{ $src }}" alt="{{ if $params.image.alt }}{{ $params.image.alt }}{{ else }}Portrait of {{ $params.name }}{{ end }}" />
                 </div>
               </div>
             {{ end }}
             <div class="col">
-              <h3 class="h5">{{ .name }}</h3>
+              <h3 class="h5">{{ $params.name }}</h3>
               <p class="small">
-                {{ range .phone }}
+                {{ range $params.phone }}
                   <span class="fa-solid fa-phone"></span> <a href="tel:{{ .number }}">{{ .number }}</a><br>
                 {{ end }}
-                {{ range .email }}
+                {{ range $params.email }}
                   <span class="fa-solid fa-envelope"></span> <a href="mailto:{{ .email }}">{{ .email }}</a>
                 {{ end }}
               </p>

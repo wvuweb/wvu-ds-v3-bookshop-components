@@ -18,9 +18,8 @@
       {{ $contacts = where site.Data.people_data ".is_contact" true }}
     {{ end }}
 
-    {{ $label := .label }}
     {{ range .people }}
-      {{ with $label }}<div class="mb-3 position-relative"><p class="helvetica-neue-bold mx-n2 my-n1 bg-wvu-accent--sunset d-inline-block">{{ . }}</p></div>{{ end }}
+      {{ with .label }}<div class="mb-3 position-relative"><p class="helvetica-neue-bold mx-n2 my-n1 bg-wvu-accent--sunset d-inline-block">{{ . }}</p></div>{{ end }}
       {{ $contact := .contact }}
       {{ range $contacts }}
 
