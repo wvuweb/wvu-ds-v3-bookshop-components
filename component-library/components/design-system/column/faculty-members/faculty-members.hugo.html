@@ -1,7 +1,7 @@
 <div class="row">
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
-  {{ else if and (site.Params.env_bookshop_live) (not .settings.config.show_content) }}
+  {{ else if and (site.Params.env_bookshop_live) (not .config.show_content) }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
   {{ else }}
 
