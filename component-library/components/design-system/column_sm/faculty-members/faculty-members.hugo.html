@@ -44,13 +44,16 @@
         {{ end }}
       {{- end -}}
 
-      <div class="col-sm-8 col-lg-6">
+      <div class="col-6">
 
         <div class="ratio ratio-3x4 bg-light mb-3">
           {{ if $params.profile_image }}
             <img class="object-fit-cover" src="{{ $src }}" alt="Portrait of {{ $params.name }}" />
           {{ end }}
         </div>
+        
+      </div>
+      <div class="col-18">
 
         <h3 class="h5 mb-1">{{ $params.name }}</h3>
 
