@@ -22,13 +22,13 @@ blueprint:
   settings:
     styles:
       audience: general
-      level: 1
+      tone: 1
       card_c:
     layout:
       is_cutout: false
       margin_no_bg:
       buffer:
-      padding:
+      padding: py-6 py-xxl-7
     config:
       edit_mode_only: false
       include_heading_postscript: false

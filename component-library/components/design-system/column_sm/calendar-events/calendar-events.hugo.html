@@ -1,5 +1,5 @@
 {{ if .heading }}
-  <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
+  <h2 class="h6 mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
 {{ end }}
 {{ if site.Params.env_bookshop_live }}
   {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "Events will show on live site." ) ) }}

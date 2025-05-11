@@ -20,7 +20,7 @@
   {{ end }}
 {{- end -}}
 
-<div class="audience-{{ .settings.styles.audience }} level-{{ .settings.styles.level }} bg-{{ .settings.styles.card_c }} border border-2 border-dark wvu-shadow-hard-filter {{ .settings.layout.margin_no_bg }}">
+<div class="bg-{{ .settings.styles.card_c }} wvu-b-border wvu-shadow-hard-filter {{ .settings.layout.margin_no_bg }}">
   <div class="row gx-0">
     <div class="col-12 ms-auto">
       <h2 class="wvu-b-accent-bg wvu-text-vertical wvu-shout h6 small wvu-text-letter-spacing-lg h-100 wvu-z-index-max"><span class="d-block bg- p-2">Spotlight</span></h2>
@@ -63,7 +63,7 @@
                 </p>
               </div>
             {{ end }}
-            <h3 class="display-5 wvu-b-display-heading wvu-b-accent-text">{{ .name }}</h3>
+            <h3 class="display-5 wvu-b-display-heading wvu-b-accent-text" data-text="{{ .name }}">{{ .name }}</h3>
             {{ with .info }}
               <div class="fs-5 small">
                 {{ range . }}
