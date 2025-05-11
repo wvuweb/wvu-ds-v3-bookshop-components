@@ -13,9 +13,8 @@ blueprint:
   people:
     - label: "For Inquiries, Contact"
       contact:
-  settings:
-    config:
-      show_content: false
+  config:
+    show_content: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
