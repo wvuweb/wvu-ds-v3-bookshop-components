@@ -9,15 +9,10 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading: Heading
-  subheading: Subheading goes here.
   background_image:
   column_a:
   column_b:
   column_c:
-  postscript:
-    copy:
-    ctas:
   settings:
     styles:
       background_c:
@@ -30,10 +25,9 @@ blueprint:
       margin:
       buffer:
       text_placement:
-      padding: py-6 py-xxl-7
+      padding: py-5 py-xxl-6
     config:
       show_label: true
-      include_heading_postscript: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

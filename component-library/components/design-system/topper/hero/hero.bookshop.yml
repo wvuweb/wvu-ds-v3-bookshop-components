@@ -17,6 +17,9 @@ blueprint:
   body_text:
   settings:
     styles:
+      audience: prospective_students
+      tone: 1
+      color_palette: 3
       background_c:
       gradient:
       heading_c:

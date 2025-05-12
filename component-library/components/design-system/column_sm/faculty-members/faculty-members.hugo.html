@@ -1,8 +1,8 @@
 {{ if .heading }}
-  <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
+  <h2 class="h6 wvu-b-label mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
 {{ end }}
 
-<div class="row">
+<div class="row gx-3">
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
   {{ else if and (site.Params.env_bookshop_live) (not .config.show_content) }}
@@ -51,7 +51,7 @@
             <img class="object-fit-cover" src="{{ $src }}" alt="Portrait of {{ $params.name }}" />
           {{ end }}
         </div>
-        
+
       </div>
       <div class="col-18">
 

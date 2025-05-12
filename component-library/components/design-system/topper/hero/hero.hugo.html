@@ -39,7 +39,7 @@
   {{ end }}
 {{- end -}}
 
-<header id="" class="c-topper-hero bg-{{ $backgroundColor }} position-relative py-7 text-center">
+<header id="" class="c-topper-hero audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-option-{{ .topper.settings.styles.color_palette }} bg-{{ $backgroundColor }} position-relative py-7 text-center">
   {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles)) }}
   <div class="container wvu-z-index-content {{ .topper.layout.container_margin }}">
     <div class="row py-6">
@@ -53,7 +53,7 @@
         {{ end }}
         
         {{ if .topper.heading }}
-          <h2 id="" class="wvu-b-display-heading display-2 text-{{ .topper.settings.styles.heading_c }}">
+          <h2 id="" class="wvu-b-display-heading wvu-b-text-shadow wvu-b-text-outline display-2 text-{{ .topper.settings.styles.heading_c }}" data-text="{{ .topper.heading }}">
             {{ .topper.heading }}
           </h2>
         {{ end }}
