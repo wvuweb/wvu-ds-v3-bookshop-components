@@ -1,5 +1,5 @@
 {{ if and .topper .topper._bookshop_name }}
-  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "title" .title)) }}
+  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "title" .title "audience" .audience)) }}
 {{ else }}
   {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .title)) }}
 {{ end }}
@@ -54,7 +54,7 @@
       {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles)) }}
 
       <div class="container wvu-z-index-content">
-        <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}bg-white shadow{{ end }}">
+        <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}bg-white wvu-shadow-hard-filter{{ end }}">
           <div class="{{ .settings.layout.buffer }}">
             {{ if .settings.config.include_heading_postscript }}
               {{ if or .heading .subheading }}

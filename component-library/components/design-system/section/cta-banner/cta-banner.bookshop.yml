@@ -11,7 +11,6 @@ spec:
 blueprint:
   heading: Heading
   subheading: Subheading goes here.
-  text:
   buttons:
     - text:
       url:

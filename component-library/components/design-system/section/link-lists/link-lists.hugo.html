@@ -1,11 +1,10 @@
-<div class="row">
-  <div class="col-xxl-18 mx-xxl-auto">
-    <div class="p-5 p-xl-6 bg-white wvu-z-index-content" style="background-color: inherit;">
+
+    <div class="bg-white wvu-z-index-content mb-n5" style="background-color: inherit;">
       {{ range $index, $element := .lists }}
         <div class="{{ if ne $index 0 }}border-top border-1 border-dark-50 py-5{{ else }}pb-5{{ end }}">
           <div class="row">
             <div class="col-10 me-auto">
-              <h2 class="oliviar-black text-wvu-blue">{{ .topic }}</h2>
+              <h2 class="wvu-b-display-heading text-wvu-blue">{{ .topic }}</h2>
               <p class="mb-0">{{ .description }}</p>
             </div>
             <div class="col-12">
@@ -19,5 +18,3 @@
         </div>
       {{ end }}
     </div>
-  </div>
-</div>
