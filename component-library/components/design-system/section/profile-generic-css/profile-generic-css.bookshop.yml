@@ -23,7 +23,6 @@ blueprint:
     styles:
       audience: general
       tone: 1
-      color_palette:
       card_c:
     layout:
       is_cutout: false
@@ -64,6 +63,17 @@ _inputs:
         - name: State Leaders and Partners
           class: state_leaders
       value_key: class
+  tone:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        - name: Default
+          name: "1"
+        - name: Formal
+          class: "3"
+        - name: Fun
+          class: "3"
   card_c:
     type: select
     label: Card Color
