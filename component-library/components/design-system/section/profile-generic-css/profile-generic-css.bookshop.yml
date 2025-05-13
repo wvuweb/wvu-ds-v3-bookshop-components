@@ -23,6 +23,7 @@ blueprint:
     styles:
       audience: general
       tone: 1
+      color_palette:
       card_c:
     layout:
       is_cutout: false

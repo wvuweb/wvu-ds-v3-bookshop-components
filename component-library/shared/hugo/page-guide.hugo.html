@@ -1,3 +1,6 @@
+{{ $audience := .audience }}
+{{ $tone := .tone }}
+
 {{ if and .topper .topper._bookshop_name }}
   {{ partial "bookshop" (slice .topper._bookshop_name .) }}
 {{ end }}
@@ -6,6 +9,14 @@
 
   {{ $src := "" }}
   {{ $backgroundColor := "" }}
+
+  {{ if .settings.styles.audience }}
+    {{ $audience = .settings.styles.audience }}
+  {{ end }}
+
+  {{ if .settings.styles.tone }}
+    {{ $tone = .settings.styles.tone }}
+  {{ end }}
 
   {{ if .background_image }}
     {{ $src = .background_image }}
@@ -48,7 +59,7 @@
 
     {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
 
-    <section class="c-section-{{ ._component_name }} audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} section-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }}">
+    <section class="c-section-{{ ._component_name }} audience-{{ $audience }} tone-{{ $tone }} section-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }}">
       {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles)) }}
 
       <div class="container wvu-z-index-content">
