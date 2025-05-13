@@ -69,11 +69,12 @@ _inputs:
       allow_empty: false
       values:
         - name: Default
-          name: "1"
+          class: "1"
         - name: Formal
           class: "3"
         - name: Fun
           class: "3"
+      value_key: class
   card_c:
     type: select
     label: Card Color
