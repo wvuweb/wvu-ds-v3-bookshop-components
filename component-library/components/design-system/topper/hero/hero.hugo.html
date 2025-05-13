@@ -3,10 +3,20 @@
 {{ $headingColor := "text-wvu-gold" }}
 {{ $placement := "mx-xl-auto text-center" }}
 
-{{ $audience := .audience }}
+{{ $audienceOverride := "" }}
+{{ $toneOverride := "" }}
 
-{{ with .topper.settings.styles.audience }}
-  {{ $audience = . }}
+{{ if .topper.settings.styles.audience }}
+  {{ $audienceOverride = "override-audience-styles-site" }}
+{{ end }}
+
+{{ if .topper.settings.styles.tone }}
+  {{ $toneOverride = "override-tone-styles-site" }}
+{{ end }}
+
+{{ if .topper.background_image }}
+  {{ $backgroundColor = "dark" }}
+  {{ $headingColor = "text-wvu-gold" }}
 {{ end }}
 
 {{ if .topper.background_image }}
@@ -45,7 +55,7 @@
   {{ end }}
 {{- end -}}
 
-<header id="" class="c-topper-hero audience-{{ $audience }} tone-{{ .topper.settings.styles.tone}} bg-option-{{ .topper.settings.styles.color_palette }} bg-{{ $backgroundColor }} position-relative py-7 text-center">
+<header id="" class="c-topper-hero {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ .topper.settings.styles.color_palette }} position-relative py-7 text-center">
   {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles)) }}
   <div class="container wvu-z-index-content {{ .topper.layout.container_margin }}">
     <div class="{{ .topper.settings.layout.buffer }}">
@@ -60,7 +70,7 @@
           {{ end }}
           
           {{ if .topper.heading }}
-            <h2 id="" class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow wvu-b-text-outline display-2 text-{{ .topper.settings.styles.heading_c }}" data-text="{{ .topper.heading }}">
+            <h2 id="" class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow wvu-b-text-outline display-2" data-text="{{ .topper.heading }}">
               {{ .topper.heading }}
             </h2>
           {{ end }}

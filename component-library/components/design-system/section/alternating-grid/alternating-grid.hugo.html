@@ -1,91 +1,44 @@
-{{ $layout := .settings.layout }}
-{{ $styles := .settings.styles }}
-{{ $config := .settings.config }}
+{{ range .items }}
 
-{{ if or site.Params.env_bookshop_live (ne $config.edit_mode_only true) }}
+  {{ $src := .image }}
 
-  <section class="section-component py-6 py-xxl-7 position-relative bg-{{ $styles.background_c }}">
-    <div class="container">      
-      <div class="row justify-content-center">
-        <div class="col-xl-24 col-xxl-20">
-          <div class="{{ $layout.margin }} bg-{{ $styles.background_c }}">
-            {{ if or .heading .subheading }}
-              <div class="mb-6 text-center text-wvu-blue">
-                {{ if .heading }}
-                  <h2 class="wvu-shout display-5 wvu-text-letter-spacing-lg mb-3">{{ .heading }}</h2>
-                {{ end }}
+  {{- if not site.Params.env_bookshop_live -}}
+    {{ $image := "" }}
+    {{/*  Get the image, either from its remote or local source  */}}
+    {{ if hasPrefix $src "http"}}
+      {{ $image = resources.GetRemote .image }}
+    {{ else }}
+      {{ $image = resources.Get .image }}
+    {{ end }}
+  
+    {{/* Resize images and add them to a variable  */}}
+    {{ if and $image (ne $image.MediaType.SubType "svg") }}
+      {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+    {{ end }}
+  {{- end -}}
 
-                {{ if .subheading }}
-                  <p class="lead mb-3">{{ .subheading }}</p>
-                {{ end }}
-              </div>
-            {{ end }}
-
-            {{ range .items }}
-
-              {{ $src := .image }}
-
-              {{- if not site.Params.env_bookshop_live -}}
-                {{ $image := "" }}
-                {{/*  Get the image, either from its remote or local source  */}}
-                {{ if hasPrefix $src "http"}}
-                  {{ $image = resources.GetRemote .image }}
-                {{ else }}
-                  {{ $image = resources.Get .image }}
-                {{ end }}
-              
-                {{/* Resize images and add them to a variable  */}}
-                {{ if and $image (ne $image.MediaType.SubType "svg") }}
-                  {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
-                {{ end }}
-              {{- end -}}
-
-              <div class="row gx-lg-5 mb-6 alternating-grid">
-                <div class="col-lg-12 order-rotate mb-5 mb-lg-0">
-                  {{ if .image }}
-                    <div class="ratio ratio-3x2">
-                      <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
-                    </div>
-                  {{ end }}
-                </div>
-                <div class="col-lg-12 order-2">
-                  <div class="h-100 d-flex align-items-center">
-                    <div class="mt-lg-n5 fs-5">
-                      <h3 class="h1 oliviar-black text-wvu-blue">{{ .heading }}</h3>
-                      <div class="mb-3">
-                        {{ .copy | markdownify }}
-                      </div>
-                      {{ with .ctas }}
-                        {{ range . }}
-                          <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-                        {{ end }}
-                      {{ end }}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {{ end }}
-
-            {{ with .postscript }}
-              <div class="text-center">
-                {{ with .copy }}
-                  <div class="mb-4">
-                    {{ . | markdownify }}
-                  </div>
-                {{ end }}
-
-                {{ with .ctas }}
-                  <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                    {{ range . }}
-                    <a class="btn btn-{{ $styles.background_c }} bg-{{ $styles.background_c }}-subtle" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-                    {{ end }}
-                  </div>
-                {{ end }}
-              </div>
-            {{ end }}
+  <div class="row gx-lg-5 mb-6 alternating-grid">
+    <div class="col-lg-12 order-rotate mb-5 mb-lg-0">
+      {{ if .image }}
+        <div class="ratio ratio-3x2 wvu-b-border wvu-b-shadow">
+          <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
+        </div>
+      {{ end }}
+    </div>
+    <div class="col-lg-12 order-2">
+      <div class="h-100 d-flex align-items-center">
+        <div class="mt-lg-n5 fs-5">
+          <h3 class="h1 wvu-b-display-heading wvu-b-accent-text">{{ .heading }}</h3>
+          <div class="mb-3">
+            {{ .copy | markdownify }}
           </div>
+          {{ with .ctas }}
+            {{ range . }}
+              <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+            {{ end }}
+          {{ end }}
         </div>
       </div>
     </div>
-  </section>
+  </div>
 {{ end }}

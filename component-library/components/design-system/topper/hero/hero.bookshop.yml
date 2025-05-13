@@ -18,16 +18,13 @@ blueprint:
   settings:
     styles:
       audience:
-      tone: 1
-      color_palette: 3
-      background_c:
+      tone:
+      color_palette:
       gradient:
-      heading_c:
       enable_blend: false
       enable_pattern: false
       tint_opacity: "0.5"
     layout:
-      margin:
       buffer:
       text_placement:
     config:
