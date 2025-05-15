@@ -28,6 +28,7 @@ blueprint:
     layout:
       buffer:
       margin:
+      padding: py-6 py-xxl-7
     styles:
       background_c:
       tint_shade:
