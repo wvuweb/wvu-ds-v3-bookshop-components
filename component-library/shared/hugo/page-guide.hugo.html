@@ -18,13 +18,13 @@
   {{ $src := "" }}
   {{ $backgroundColor := "" }}
 
-  {{ if .background_image }}
-    {{ $src = .background_image }}
-    {{ $backgroundColor = "dark" }}
+  {{ if .settings.styles.color_palette }}
+    {{ $backgroundColor = .settings.styles.color_palette }}
   {{ end }}
 
-  {{ if .settings.styles.background_c }}
-    {{ $backgroundColor = .settings.styles.background_c }}
+  {{ if and .background_image (not .settings.styles.enable_blend) }}
+    {{ $src = .background_image }}
+    {{ $backgroundColor = "dark" }}
   {{ end }}
 
   {{ $heading := "" }}
@@ -59,22 +59,24 @@
 
     {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
 
-    <section class="c-section-{{ ._component_name }} {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} section-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }}">
+    <section class="c-section-{{ ._component_name }} {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }}">
       {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles)) }}
 
       <div class="container wvu-z-index-content">
-        <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}bg-white wvu-shadow-hard-filter{{ end }}">
+        <div class="{{ .settings.layout.margin }} bg-{{ $backgroundColor }} {{ if .settings.layout.margin }}xbg-white xwvu-shadow-hard-filter{{ end }}">
           <div class="{{ .settings.layout.buffer }}">
             {{ if .settings.config.include_heading_postscript }}
               {{ if or .heading .subheading }}
-                <div class="mb-6 text-center">
-                  {{ with .heading }}
-                    <h2 class="wvu-shout h1 wvu-text-letter-spacing-lg mb-3">{{ . }}</h2>
-                  {{ end }}
+                <div class="pb-3">
+                  <div class="mb-5 text-center">
+                    {{ with .heading }}
+                      <h2 class="wvu-shout h1 wvu-text-letter-spacing-lg mb-3">{{ . }}</h2>
+                    {{ end }}
 
-                  {{ with .subheading }}
-                    <p class="lead mb-3">{{ . }}</p>
-                  {{ end }}
+                    {{ with .subheading }}
+                      <p class="lead mb-3">{{ . }}</p>
+                    {{ end }}
+                  </div>
                 </div>
               {{ end }}
 

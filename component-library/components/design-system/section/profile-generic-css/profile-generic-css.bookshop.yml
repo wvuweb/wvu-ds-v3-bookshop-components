@@ -43,38 +43,6 @@ _inputs:
     options:
       values: _select_data.brand_colors
       value_key: class
-  audience:
-    type: select
-    options:
-      allow_empty: false
-      values:
-        - name: General
-          class: general
-        - name: Current Students
-          class: current_students
-        - name: Faculty and Staff
-          class: faculty_staff
-        - name: Prospective Students
-          class: prospective_students
-        - name: Alumni
-          class: alumni
-        - name: Parents
-          class: parents
-        - name: State Leaders and Partners
-          class: state_leaders
-      value_key: class
-  tone:
-    type: select
-    options:
-      allow_empty: false
-      values:
-        - name: Default
-          class: "1"
-        - name: Formal
-          class: "3"
-        - name: Fun
-          class: "3"
-      value_key: class
   card_c:
     type: select
     label: Card Color

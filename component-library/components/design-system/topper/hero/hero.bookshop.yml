@@ -48,3 +48,14 @@ _inputs:
       value_key: class
   enable_pattern:
     hidden: true
+  text_placement:
+    type: select
+    options:
+      values:
+        - name: Left
+          class: me-auto text-start
+        - name: Center
+          class: mx-auto text-center
+        - name: Right
+          class: ms-auto text-start
+      value_key: class

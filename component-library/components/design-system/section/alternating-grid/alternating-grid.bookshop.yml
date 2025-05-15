@@ -45,3 +45,5 @@ _inputs:
     hidden: true
   padding:
     hidden: true
+  margin:
+    hidden: true
