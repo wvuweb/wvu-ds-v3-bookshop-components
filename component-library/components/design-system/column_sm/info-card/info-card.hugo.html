@@ -1,0 +1,9 @@
+<div class="wvu-bg-shadow wvu-b-background option-{{ .card_c }}">
+  <div class="mb-4">
+    <h2>{{ .heading }}</h2>  
+    {{ with .subheading }}
+      <p>{{ . }}</p>
+    {{ end }}
+  </div>
+  {{ .copy | markdownify }}
+</div>

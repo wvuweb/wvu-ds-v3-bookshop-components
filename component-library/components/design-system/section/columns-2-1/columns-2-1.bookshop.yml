@@ -18,7 +18,9 @@ blueprint:
     ctas:
   settings:
     styles:
-      background_c:
+      audience:
+      tone:
+      color_palette:
     layout:
       margin:
       buffer:

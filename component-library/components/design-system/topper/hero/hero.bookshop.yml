@@ -26,7 +26,7 @@ blueprint:
       tint_opacity: "0.5"
     layout:
       buffer:
-      text_placement:
+      text_placement: mx-auto
     config:
       show_label: true
 

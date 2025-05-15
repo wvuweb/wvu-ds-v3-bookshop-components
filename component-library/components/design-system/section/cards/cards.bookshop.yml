@@ -28,6 +28,7 @@ blueprint:
     layout:
       buffer:
       margin:
+      pading: py-6 py-xxl-7
     styles:
       background_c:
       tint_shade:
@@ -48,3 +49,5 @@ _inputs:
       values: _select_data.brand_colors
       value_key: class
     label: Accent Color
+  padding:
+    hidden: true
