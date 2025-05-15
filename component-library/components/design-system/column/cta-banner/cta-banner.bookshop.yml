@@ -1,0 +1,44 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - conlumn_blocks
+  label: "CTA Banner"
+  description:
+  icon:
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  heading: Heading
+  subheading: Subheading goes here.
+  buttons:
+    - text:
+      url:
+      icon:
+      button_c:
+  settings:
+    styles:
+      background_c:
+      buttons_c:
+    layout:
+      margin:
+      buffer:
+    config:
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  button_c:
+    type: select
+    options:
+      values: _select_data.brand_colors
+      value_key: class
+    label: Button Color
+  buttons_c:
+    type: select
+    options:
+      values: _select_data.brand_colors
+      value_key: class
+    label: Button Color

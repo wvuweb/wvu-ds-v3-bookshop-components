@@ -1,0 +1,21 @@
+{{ $color := "primary" }}
+
+{{ if .buttons_c }}
+  {{ $color := .buttons_c }}
+{{ end }}
+
+<div class="text-center">
+  <div class="mb-4">
+    <h2 class="wvu-display-heading">{{ .heading }}</h2>
+    {{ with .subheading }}
+      <p class="lead">{{ . }}</p>
+    {{ end }}
+  </div>
+  {{ range .buttons }}
+    {{ if .button_c }}
+      {{ $color = .button_c }}
+    {{ end }}
+    <a class="btn btn-{{ $color }} btn-lg mb-1" href="{{ .url }}">{{ .text }}</a>
+    {{ $color := "primary" }}
+  {{ end }}
+</div>
