@@ -17,10 +17,9 @@ blueprint:
   body_text:
   settings:
     styles:
-      audience:
-      tone:
-      color_palette:
-      gradient:
+      audience: default
+      tone: 1
+      color_palette: option-1
       enable_blend: false
       enable_pattern: false
       tint_opacity: "0.5"

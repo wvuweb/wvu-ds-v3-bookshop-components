@@ -4,18 +4,20 @@
   {{ $color := .buttons_c }}
 {{ end }}
 
-<div class="text-center">
-  <div class="mb-4">
-    <h2 class="wvu-b-display-heading display-2 mb-0">{{ .heading }}</h2>
-    {{ with .subheading }}
-      <p class="lead">{{ . }}</p>
+<div class="text-center d-flex h-100 w-100 justify-content-center align-items-center">
+  <div>
+    <div class="mb-4">
+      <h2 class="wvu-b-display-heading display-2 mb-0">{{ .heading }}</h2>
+      {{ with .subheading }}
+        <p class="lead">{{ . }}</p>
+      {{ end }}
+    </div>
+    {{ range .buttons }}
+      {{ if .button_c }}
+        {{ $color = .button_c }}
+      {{ end }}
+      <a class="btn btn-{{ $color }} btn-lg mb-1" href="{{ .url }}">{{ .text }}</a>
+      {{ $color := "primary" }}
     {{ end }}
   </div>
-  {{ range .buttons }}
-    {{ if .button_c }}
-      {{ $color = .button_c }}
-    {{ end }}
-    <a class="btn btn-{{ $color }} btn-lg mb-1" href="{{ .url }}">{{ .text }}</a>
-    {{ $color := "primary" }}
-  {{ end }}
 </div>

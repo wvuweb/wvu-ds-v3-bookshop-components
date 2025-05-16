@@ -6,6 +6,7 @@
 
   {{ $audienceOverride := "" }}
   {{ $toneOverride := "" }}
+  {{ $bgSubtle := "" }}
 
   {{ if .settings.styles.audience }}
     {{ $audienceOverride = "override-audience-styles-site" }}
@@ -25,6 +26,10 @@
   {{ if and .background_image (not .settings.styles.enable_blend) }}
     {{ $src = .background_image }}
     {{ $backgroundColor = "dark" }}
+  {{ end }}
+
+  {{ if .settings.styles.bg_subtle }}
+    {{ $bgSubtle = "wvu-b-subtle" }}
   {{ end }}
 
   {{ $heading := "" }}
@@ -59,11 +64,11 @@
 
     {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
 
-    <section class="c-section-{{ ._component_name }} {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }}">
+    <section class="c-section-{{ ._component_name }} {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ $bgSubtle }}">
       {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles)) }}
 
       <div class="container wvu-z-index-content">
-        <div class="{{ .settings.layout.margin }} {{ if and .settings.layout.margin .heading }}bg-white wvu-shadow-hard-filter p-5 p-xl-6{{ end }}">
+        <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}bg-white wvu-b-shadow wvu-b-border p-5 p-xl-6{{ end }}">
           <div class="{{ .settings.layout.buffer }}">
             {{ if .settings.config.include_heading_postscript }}
               {{ if or .heading .subheading }}

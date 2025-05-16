@@ -11,6 +11,8 @@ spec:
 blueprint:
   heading: Heading
   subheading: Subheading goes here.
+  background_image:
+  alt_text:
   column_a:
   column_b:
   postscript:
@@ -21,6 +23,8 @@ blueprint:
       audience:
       tone:
       color_palette:
+      enable_blend: false
+      tint_opacity: '0.5'
     layout:
       margin:
       buffer:

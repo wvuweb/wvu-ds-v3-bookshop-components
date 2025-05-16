@@ -28,6 +28,7 @@ blueprint:
       audience:
       tone:
       color_palette:
+      bg_subtle:
     layout:
       buffer:
       margin:

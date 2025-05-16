@@ -14,12 +14,12 @@
   {{ $toneOverride = "override-tone-styles-site" }}
 {{ end }}
 
-{{ if .topper.background_image }}
-  {{ $backgroundColor = "dark" }}
-{{ end }}
-
 {{ if .topper.settings.styles.color_palette }}
   {{ $backgroundColor = .topper.settings.styles.color_palette }}
+{{ end }}
+
+{{ if and .topper.background_image (not .topper.settings.styles.enable_blend) }}
+  {{ $backgroundColor = "dark" }}
 {{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
