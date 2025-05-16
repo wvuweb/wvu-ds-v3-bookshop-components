@@ -2,34 +2,53 @@
 spec:
   structures:
     - content_blocks
-    - default_content_blocks
-  label: "Quicklinks"
-  description: A collection of relevant links.
+  label: "Featurettes - 2 Column"
+  description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading: Quicklinks
+  heading:
   subheading:
-  links:
-    - text: Text
-      url: /url
+  items:
+    - title: Item 1 Title
+      image:
+      alt_text:
+      label:
+      badge:
+      text: Item 1 text.
+      ctas:
+  postscript:
+    copy:
+    ctas:
   settings:
     styles:
       audience:
       tone:
       color_palette:
     layout:
-      margin:
       buffer:
+      margin:
       padding: py-6 py-xxl-7
     config:
       edit_mode_only: false
-      include_heading_postscript: false
+      include_heading_postscript: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  badge:
+    hidden: true
+  icon_c:
+    type: select
+    options:
+      values: _select_data.brand_colors
+      value_key: class
+    label: Icon Color
+  label:
+    hidden: true
+  text:
+    type: textarea

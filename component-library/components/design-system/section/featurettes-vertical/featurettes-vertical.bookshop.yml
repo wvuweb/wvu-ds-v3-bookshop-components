@@ -25,9 +25,12 @@ blueprint:
   settings:
     styles:
       audience:
+      tone:
+      color_palette:
     layout:
       buffer:
       margin:
+      padding: py-6 py-xxl-7
     config:
       edit_mode_only: false
       include_heading_postscript: true
