@@ -1,4 +1,4 @@
-<div class="row text-center">
+<div class="row text-center gx-xxl-6">
   {{ range .items }}
     <div class="col">
       <p class="text-wvu-blue">
@@ -6,10 +6,10 @@
           <span class="d-block helvetica-neue-bold">{{ .pre }}</span>
         {{ end }}
         
-        <span class="d-block wvu-b-display-heading display-2">{{ .stat }}</span>
+        <span class="d-block wvu-b-display-heading display-2 mb-4">{{ .stat }}</span>
         
         {{ if .post }}
-          <span class="d-block helvetica-neue-bold">{{ .post }}</span>
+          <span class="d-block helvetica-neue-bold fs-5">{{ .post }}</span>
         {{ end }}
   
         {{ if .source }}

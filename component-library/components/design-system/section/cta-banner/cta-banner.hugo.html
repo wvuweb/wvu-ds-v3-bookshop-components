@@ -5,6 +5,12 @@
 {{ end }}
 
 <div class="text-center">
+  <div class="mb-5">
+    <h2 class="wvu-b-display-heading display-5"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
+    {{ with .subheading }}
+      <p class="lead">{{ . }}</p>
+    {{ end }}
+  </div>
   {{ range .buttons }}
     {{ if .button_c }}
       {{ $color = .button_c }}

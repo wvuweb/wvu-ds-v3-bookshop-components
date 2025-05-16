@@ -1,11 +1,11 @@
-{{ $audienceOverride := "" }}
-{{ $toneOverride := "" }}
-
 {{ if and .topper .topper._bookshop_name }}
   {{ partial "bookshop" (slice .topper._bookshop_name .) }}
 {{ end }}
 
 {{ range .blocks }}
+
+  {{ $audienceOverride := "" }}
+  {{ $toneOverride := "" }}
 
   {{ if .settings.styles.audience }}
     {{ $audienceOverride = "override-audience-styles-site" }}
@@ -63,7 +63,7 @@
       {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles)) }}
 
       <div class="container wvu-z-index-content">
-        <div class="{{ .settings.layout.margin }} bg-{{ $backgroundColor }} {{ if .settings.layout.margin }}xbg-white xwvu-shadow-hard-filter{{ end }}">
+        <div class="{{ .settings.layout.margin }} {{ if and .settings.layout.margin .heading }}bg-white wvu-shadow-hard-filter p-5 p-xl-6{{ end }}">
           <div class="{{ .settings.layout.buffer }}">
             {{ if .settings.config.include_heading_postscript }}
               {{ if or .heading .subheading }}

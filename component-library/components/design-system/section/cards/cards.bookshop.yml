@@ -30,10 +30,10 @@ blueprint:
       margin:
       pading: py-6 py-xxl-7
     styles:
-      background_c:
+      audience:
+      vibe:
+      color_palette:
       tint_shade:
-      panel_font:
-      accent_c:
     config:
       edit_mode_only: false
       include_heading_postscript: true

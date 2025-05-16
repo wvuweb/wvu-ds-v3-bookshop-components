@@ -31,7 +31,7 @@
         </div> 
         <div class="position-relative p-5">
           <h3 class="wvu-b-display-heading h2 mb-3">{{ .title }}</h3>
-          <p>{{ .text | markdownify }}</p>
+          <p class="mb-3">{{ .text | markdownify }}</p>
           {{ with .ctas }}
             {{ range . }}
               <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
