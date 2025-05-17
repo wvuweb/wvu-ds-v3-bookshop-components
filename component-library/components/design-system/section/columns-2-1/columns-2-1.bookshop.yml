@@ -26,7 +26,6 @@ blueprint:
       enable_blend: false
       tint_opacity: '0.5'
     layout:
-      margin:
       buffer:
       padding: py-6 py-xxl-7
     config:

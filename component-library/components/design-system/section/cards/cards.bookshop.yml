@@ -33,7 +33,8 @@ blueprint:
       audience:
       vibe:
       color_palette:
-      tint_shade:
+      subtle:
+      remove_container_background: false
     config:
       edit_mode_only: false
       include_heading_postscript: true

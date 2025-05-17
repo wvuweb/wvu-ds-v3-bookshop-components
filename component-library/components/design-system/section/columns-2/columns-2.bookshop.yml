@@ -20,7 +20,6 @@ blueprint:
     styles:
       background_c:
     layout:
-      margin:
       buffer:
     config:
       edit_mode_only: false

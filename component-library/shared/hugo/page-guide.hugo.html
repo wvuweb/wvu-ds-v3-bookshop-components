@@ -68,10 +68,10 @@
       {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles)) }}
 
       <div class="container wvu-z-index-content">
-        <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}bg-white wvu-b-shadow wvu-b-border p-5 p-xl-6{{ end }}">
+        <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}bg-white p-5 p-xl-6{{ end }} wvu-b-shadow wvu-b-border{{ end }}">
           <div class="{{ .settings.layout.buffer }}">
             {{ if .settings.config.include_heading_postscript }}
-              {{ if or .heading .subheading }}
+              {{ if .heading }}
                 <div class="pb-3">
                   <div class="mb-5 text-center">
                     {{ with .heading }}

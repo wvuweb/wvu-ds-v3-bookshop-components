@@ -22,9 +22,7 @@ blueprint:
       enable_pattern: false
       tint_opacity: "0.5"
     layout:
-      margin:
       buffer:
-      text_placement:
       padding: py-5 py-xxl-6
     config:
       show_label: true
