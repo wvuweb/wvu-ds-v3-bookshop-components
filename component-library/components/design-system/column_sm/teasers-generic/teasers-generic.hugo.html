@@ -1,0 +1,48 @@
+{{ $pagesData := slice }}
+
+{{ if not site.Params.env_bookshop_live }}
+  {{ $pagesData = site.RegularPages }}
+{{ else }}
+  {{ $pagesData = site.Data.site_pages }}
+{{ end }}
+
+{{ range .items }}
+  {{ $pageLookup := slice }}
+
+  {{ if not site.Params.env_bookshop_live }}
+    {{ $pageLookup = where $pagesData "Params.article_tags" "intersect" .tags }}
+  {{ else }}
+    {{ $pageLookup = where $pagesData ".article_tags" "intersect" .article_tags }}
+  {{ end }}
+
+  <h2 class="h6 wvu-b-label border-top border-dark-50 pt-2 small mb-3"><span class="fa-solid fa-{{ .icon }}"></span> {{ .heading }}</h2>
+
+  {{ $page := "" }}
+
+  {{ if not site.Data }}
+    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
+  {{ else if and (site.Params.env_bookshop_live) (not .config.show_content) }}
+    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
+  {{ else }}
+
+    {{ range first 1 $pageLookup }}
+      {{ if not site.Params.env_bookshop_live }}
+        {{ $page = .Params }}
+      {{ else }}
+        {{ $page = . }}
+      {{ end }}
+
+      <h3 class="h6">{{ $page.title }}</h3>
+      {{ with $page.tease }}
+        <p>{{ . }}</p>
+      {{ end }}
+    {{ end }}
+
+  {{ end }}
+
+  {{ range .ctas }}
+    <ul class="list-inline small">
+      <li class="inline-item"><a class="text-decoration-none" href="{{ .url }}">{{ .text }} <span class="fa-solid fa-ear"></span></a></li>
+    </ul>
+  {{ end }}
+{{ end }}
