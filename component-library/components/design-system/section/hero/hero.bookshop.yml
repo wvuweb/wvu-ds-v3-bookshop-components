@@ -18,12 +18,15 @@ blueprint:
   postscript_links:
   settings:
     styles:
-      background_c: dark
+      audience:
+      tone:
+      color_palette:
+      tint_opacity: "0.5"
     layout:
       text_align:
       margin:
       buffer:
-      padding: py-6 py-xxl-7
+      padding: py-7 py-xxl-9
     config:
       edit_mode_only: false
       include_heading_postscript: false

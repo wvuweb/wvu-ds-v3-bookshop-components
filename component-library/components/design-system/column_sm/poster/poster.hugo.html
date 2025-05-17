@@ -1,11 +1,13 @@
-<div class="p-4 bg-wvu-blue text-white h-100">
-  <h2 class="wvu-shout text-wvu-gold">{{ .heading }}</h2>
-  <p class="helvetica-neue-light">{{ .subheading }}</p>
-  {{ .body | markdownify }}
-  
-  <ul class="wvu-ul-chevrons wvu-ul-chevrons-wvu-gold">
-    {{ range .ctas }}
-      <li><a href="{{ .url }}">{{ .text }}</a></li>
-    {{ end }}
-  </ul>
+<div class="p-4 bg-wvu-blue text-white h-100 d-flex flex-column justify-content-end">
+  <div class="mb-n3">
+    <h2 class="wvu-shout text-wvu-gold mt-8 h3">{{ .heading }} <span class="fa-solid fa-arrow-down-right"></span></h2>
+    <p class="helvetica-neue-bold">{{ .subheading }}</p>
+    {{ .body | markdownify }}
+    
+    <ul class="wvu-ul-chevrons wvu-ul-chevrons-wvu-gold">
+      {{ range .ctas }}
+        <li><a href="{{ .url }}">{{ .text }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
 </div>

@@ -79,21 +79,24 @@
             <p><a href="" class="text-decoration-none wvu-b-accent-text"><span class="fa-solid fa-user-circle"></span> View Profile</a></p>
           </div>
         </div>
-        <div class="col-8 d-flex align-items-center position-relative">
-          <div class="py-6 my-n3">
+        <div class="col-7 d-flex align-items-center position-relative">
+          <div class="py-6 my-n3 w-100 pe-4">
             {{ if .ctas }}
-              <h2 class="wvu-b-label small h6 wvu-text-letter-spacing-lg">See More</h2>
-              <ul class="list-unstyled w-100 me-n4 small mb-5">
-                {{ range .ctas }}
-                  <li class="border-bottom border-dotted border-wvu-accent--blue-subtle"><a class="d-flex w-100 justify-content-between align-items-center py-2 text-decoration-none" href="{{ .url }}">{{ .text }}</a></li>
-                {{ end }}
-              </ul>
+              <div class="">
+                <h2 class="wvu-b-label small h6 wvu-text-letter-spacing-lg">See More</h2>
+                <ul class="list-unstyled w-100 small mb-5">
+                  {{ range .ctas }}
+                    <li class="border-bottom border-dotted border-wvu-accent--blue-subtle"><a class="d-flex w-100 justify-content-between align-items-center py-2 text-decoration-none" href="{{ .url }}">{{ .text }}</a></li>
+                  {{ end }}
+                </ul>
+              </div>
             {{ end }}
-            <div class="w-100" style="content: ''"></div>
-            <div class="me-n6 mx-n3">
-              <div class="ratio ratio-16x9 bg-dark position-relative wvu-shadow-hard-filter">
-                <div class="wvu-b-accent-text d-flex w-100 h-100 align-items-center justify-content-center">
-                  <span class="small d-block me-2 mt-n1 text-white">Watch Video</span> <span class="d-block fa-regular fa-circle-play h2 text-white"></span>
+            <div class="ms-n3 me-n5">
+              <div class="me-n5">
+                <div class="ratio ratio-16x9 bg-dark position-relative wvu-shadow-hard-filter">
+                  <div class="wvu-b-accent-text d-flex w-100 h-100 align-items-center justify-content-center">
+                    <span class="small d-block me-2 mt-n1 text-white">Watch Video</span> <span class="d-block fa-regular fa-circle-play h2 text-white"></span>
+                  </div>
                 </div>
               </div>
             </div>
