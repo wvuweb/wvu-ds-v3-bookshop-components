@@ -1,35 +1,41 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - content_blocks
-  label: "Columns 2-1"
+    - column_sm_blocks
+  label: "Featurettes w/Icons - Vertical"
   description:
-  icon: doc_to_right
+  icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  column_a:
-  column_b:
-  postscript:
-    copy:
-    ctas:
+  heading: Heading
+  subheading: Subheading.
+  items:
+    - title: Item 1 Title
+      icon:
+      label:
+      badge:
+      text: Item 1 text.
+      ctas:
   settings:
     styles:
       audience:
-      tone:
-      color_palette:
-      enable_blend: false
-      tint_opacity: '0.5'
     layout:
-      buffer:
-      padding: py-6 py-xxl-7
     config:
-      edit_mode_only: false
-      include_heading_postscript: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  badge:
+    hidden: true
+  config:
+    hidden: true
+  layout:
+    hidden: true
+  label:
+    hidden: true
+  text:
+    type: textarea
