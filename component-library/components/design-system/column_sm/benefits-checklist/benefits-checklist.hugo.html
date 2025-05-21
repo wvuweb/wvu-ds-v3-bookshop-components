@@ -1,0 +1,26 @@
+{{ $styles := .settings.styles }}
+
+<div class="p-5 wvu-b-border wvu-b-shadow bg-">
+  {{ with .heading }}
+    <h2 class="display-5 mb-3 wvu-b-display-heading mb-5">{{ . }}</h2>
+  {{ end }}
+
+  <div class="row gx-4">
+    {{ range .items }}
+      <ul class="list-unstyled">
+        <li class>
+          <p class="h4 mb-0"><span class="fa-regular fa-check text-success"></span> {{ .title }}</p>
+          {{ with .text }}
+            <p class="mb-0">{{ . | markdownify }}</p>
+          {{ end }}
+        </li>
+      </ul>
+    {{ end }}
+
+    {{ with .ctas }}
+      {{ range . }}
+        <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+      {{ end }}
+    {{ end }}
+  </div>
+</div>

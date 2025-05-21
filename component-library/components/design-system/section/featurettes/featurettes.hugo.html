@@ -34,7 +34,7 @@
       <p>{{ .text | markdownify }}</p>
       {{ with .ctas }}
         {{ range . }}
-          <a class="btn btn-primary btn-sm" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+          <a class="btn wvu-b-btn btn-sm" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
         {{ end }}
       {{ end }}
     </div>

@@ -9,10 +9,11 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
+  name: profile-generic
   heading: Heading
   name: Firstname Lastname
   image:
-  label:
+  super_heading:
     - Label
   info:
     - Morgantown, WV
@@ -21,12 +22,13 @@ blueprint:
   settings:
     styles:
       audience: general
-      color_palette: option_1
+      tone: 1
+      card_c:
     layout:
       is_cutout: false
       margin_no_bg:
       buffer:
-      padding:
+      padding: py-6 py-xxl-7
     config:
       edit_mode_only: false
       include_heading_postscript: false
@@ -41,41 +43,17 @@ _inputs:
     options:
       values: _select_data.brand_colors
       value_key: class
-  audience:
-    type: select
-    options:
-      allow_empty: false
-      values:
-        - name: General
-          class: general
-        - name: Current Students
-          class: current_students
-        - name: Faculty and Staff
-          class: faculty_staff
-        - name: Prospective Students
-          class: prospective_students
-        - name: Alumni
-          class: alumni
-        - name: Parents
-          class: parents
-        - name: State Leaders and Partners
-          class: state_leaders
-      value_key: class
   card_c:
     type: select
-    options:
-      values: _select_data.brand_colors
-      value_key: class
-  color_palette:
-    type: select
+    label: Card Color
     options:
       values:
-        - name: Subtle
-          class: subtle
-        - name: Medium
-          class: medium
-        - name: Loud
-          class: loud
+        - name: Option 1
+          class: option-1
+        - name: Option 2
+          class: option-2
+        - name: Option 3
+          class: option-3
       value_key: class
   copy:
     type: textarea
@@ -83,5 +61,9 @@ _inputs:
     type: switch
     label: Use Cutout
     subtext: Choose this if you’ve cut your profile image from the background.
+  level:
+    type: number
   margin_no_bg:
     label: Margin
+  name:
+    hidden: true

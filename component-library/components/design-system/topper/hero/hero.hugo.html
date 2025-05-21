@@ -2,6 +2,7 @@
 {{ $backgroundColor := "wvu-blue" }}
 {{ $headingColor := "text-wvu-gold" }}
 {{ $placement := "mx-xl-auto text-center" }}
+{{ $buttonColor := "primary" }}
 
 {{ $audienceOverride := "" }}
 {{ $toneOverride := "" }}
@@ -46,13 +47,13 @@
   <div class="container wvu-z-index-content">
     <div class="{{ .topper.settings.layout.buffer }}">
       <div class="row py-6">
-        <div class="col-xl-14 {{ .topper.settings.layout.text_placement }}">
+        <div class="col-xl-16 col-xxl-12 {{ .topper.settings.layout.text_placement }}">
           {{- if not site.Params.env_bookshop_live -}}
             <h1 class="visually-hidden">{{ page.Params.title }}</h1>
           {{ end }}
 
           {{ with .topper.label }}
-            <p class="vibe-label h6 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ . }}</p>
+            <p class="h6 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ . }}</p>
           {{ end }}
           
           {{ if .topper.heading }}
@@ -60,10 +61,17 @@
               {{ .topper.heading }}
             </h2>
           {{ end }}
-          <p class="vibe-subheading h4 mt-4">{{ .topper.subheading }}</p>
-          <div class="vibe-body mt-4">
+          <p class="fs-3 mt-4 wvu-b-text">{{ .topper.subheading }}</p>
+          <div class="mt-4 wvu-b-text">
             {{ .topper.body_text | markdownify }}
           </div>
+          {{ range .topper.ctas }}
+            {{ if .button_c }}
+              {{ $buttonColor = .button_c }}
+            {{ end }}
+            <a class="btn btn-{{ $buttonColor }} btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+            {{ $buttonColor := "primary" }}
+          {{ end }}
         </div>
       </div>
     </div>

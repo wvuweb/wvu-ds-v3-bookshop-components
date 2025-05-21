@@ -1,0 +1,13 @@
+<div class="bg-wvu-neutral--off-white p-5 h-100">
+  {{ if .heading }}
+    <h2 class="fs-3 mb-4 wvu-b-label pt-2"><span class="fa-regular fa-calendar"></span> {{ .heading }}</h2>
+  {{ end }}
+  {{ if site.Params.env_bookshop_live }}
+    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "Events will show on live site." ) ) }}
+  {{ else }}
+    {{ .event_feed | safeHTML }}
+  {{ end }}
+  {{ if and .url .link_text }}
+    <a class="text-decoration-none small" href="{{ .url }}">{{ .link_text }} <span class="fa-regular fa-arrow-circle-right"></span></a>
+  {{ end }}
+</div>

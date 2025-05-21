@@ -64,11 +64,11 @@
 
     {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
 
-    <section class="c-section-{{ ._component_name }} {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ $bgSubtle }}">
-      {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles)) }}
+    <section class="c-section-{{ ._component_name }} {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ $bgSubtle }}">
+      {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
 
       <div class="container wvu-z-index-content">
-        <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}bg-white p-5 p-xl-6{{ end }} wvu-b-shadow wvu-b-border{{ end }}">
+        <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}bg-white p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
           <div class="{{ .settings.layout.buffer }}">
             {{ if .settings.config.include_heading_postscript }}
               {{ if .heading }}

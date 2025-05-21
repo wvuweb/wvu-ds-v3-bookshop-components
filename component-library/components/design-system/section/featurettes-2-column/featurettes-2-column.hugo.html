@@ -26,17 +26,17 @@
           <div class="position-relative">                    
             {{ if .image }}
               <div class="ratio ratio-3x2">
-                <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
+                <img leading="lazy" class="object-fit-cover wvu-b-border wvu-b-shadow" src="{{ $src }}" alt="{{ .alt_text }}" />
               </div>
             {{ end }}
           </div> 
         </div>
         <div class="col-lg-16">
-          <h3 class="iowan-old-style h1">{{ .title }}</h3>
+          <h3 class="wvu-b-display-heading h2">{{ .title }}</h3>
           <p>{{ .text | markdownify }}</p>
           {{ with .ctas }}
             {{ range . }}
-              <a class="btn btn-primary btn-sm mb-1" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+              <a class="btn wvu-b-btn btn-sm mb-1" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
             {{ end }}
           {{ end }}
         </div>

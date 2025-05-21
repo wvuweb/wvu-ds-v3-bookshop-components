@@ -3,7 +3,7 @@
 
 {{ if and .styles .styles.enable_blend }}
   {{ $blendMode = "wvu-bg-blend-mode-luminosity" }}
-  {{ $imageOpacity = "0.2" }}
+  {{ $imageOpacity = "0.08" }}
 {{ end }}
 
 <div class="wvu-bg-img">
@@ -14,8 +14,8 @@
       <div class="position-absolute wvu-bg-tint w-100 h-100" style="opacity: {{ .styles.tint_opacity }}"></div>
     {{ end }}
   {{ end }}
-  {{ if .include_in_count }}
-    <div class="display-0 config wvu-text-outline text-wvu-gold position-absolute" style="font-size: 30rem !important; bottom: 0;">
+  {{ if and .config .config.include_in_count }}
+    <div class="display-0 config-extra-bold-italic wvu-text-outline text-wvu-gold position-absolute" style="font-size: 30rem !important; bottom: 0;">
       <p class="ms-n4 mb-n5 is-count"></p>
     </div>
   {{ end }}

@@ -15,6 +15,11 @@ blueprint:
   heading: Heading
   subheading: Subheading.
   body_text:
+  ctas:
+    - text:
+      button_c:
+      icon:
+      url:
   settings:
     styles:
       audience: default
@@ -22,7 +27,7 @@ blueprint:
       color_palette: option-1
       enable_blend: false
       enable_pattern: false
-      tint_opacity: "0.5"
+      tint_opacity: "0.7"
     layout:
       buffer:
       text_placement: mx-auto text-start

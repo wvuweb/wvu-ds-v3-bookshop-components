@@ -16,11 +16,9 @@
   {{ $tags = .article_tags }}
 {{ end }}
 
-{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
+{{ $heading := .heading }}
 
-  {{ if .heading }}
-    <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
-  {{ end }}
+{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
@@ -37,7 +35,7 @@
       {{ $articles = where $articles ".article_tags" "intersect" $tags }}
     {{ end }}
 
-    <div class="">
+    <div class="bg-wvu-neutral--off-white p-4 h-100">
       {{ range first 1 $articles }}
 
         {{ $params := "" }}
@@ -64,21 +62,23 @@
           {{ end }}
         {{ end }}
 
-        <div class="wvu-articles">
-          <div class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
-            <div class="row">
+        <div class="wvu-articles h-100">
+          <div class="h-100" itemscope="" itemtype="http://schema.org/BlogPosting">
+            <div class="row h-100">
 
               <div class="wvu-article__thumb col-md-12">
-                <div class="ratio ratio-3x2 bg-light">
-                  <a class="wvu-article-link d-block w-100 h-100" href="{{ $link }}" aria-hidden="true" tabindex="-1">
-                    {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" $params.image "width" 960 "height" 640 "classes" "h-100 object-fit-cover" "alt" $params.alt_text)) }}
-                  </a>
-                </div>
+                <a class="wvu-article-link d-block w-100 h-100 text-center" href="{{ $link }}" aria-hidden="true" tabindex="-1">
+                  {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" $params.image "width" 960 "height" 640 "classes" "h-100 object-fit-cover" "alt" $params.alt_text)) }}
+                </a>
               </div>
 
               <div class="col-md-12 mt-3 mt-md-0">
 
-                <h3 class="fs-4" itemprop="headline"><a class="newsletter-link" href="{{ $link }}">{{ $params.title }}</a></h3>
+                {{ with $heading }}
+                  <h2 class="h6 oliviar-black mb-4 pt-2 wvu-b-label">{{ . }}</h2>
+                {{ end }}
+
+                <h3 class="fs-4" itemprop="headline"><a class="newsletter-link text-decoration-none" href="{{ $link }}">{{ $params.title }}</a></h3>
 
                 {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
                   <p class="small d-block">
