@@ -15,9 +15,9 @@ blueprint:
   column_c:
   settings:
     styles:
-      background_c:
-      gradient:
-      heading_c:
+      audience:
+      tone:
+      color_palette:
       enable_blend: false
       enable_pattern: false
       tint_opacity: "0.5"
