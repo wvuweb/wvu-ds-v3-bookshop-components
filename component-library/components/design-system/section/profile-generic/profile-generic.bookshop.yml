@@ -9,7 +9,7 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  name: profile-generic
+  component_name: profile-generic
   heading: Heading
   name: Firstname Lastname
   image:
