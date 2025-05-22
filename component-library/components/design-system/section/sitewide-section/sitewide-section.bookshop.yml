@@ -13,9 +13,12 @@ blueprint:
   show_content: false
   show: 2024-09-01
   hide: 2099-09-01
+  is_sitewide: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  is_sitewide:
+    hidden: true

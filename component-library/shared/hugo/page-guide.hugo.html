@@ -4,47 +4,65 @@
 
 {{ range .blocks }}
 
+  {{ $block := . }}
+  {{ $sitewideComponents := slice }}
+  {{ $sitewideComponent := "" }}
+
+  {{ if .is_sitewide }}
+    {{ if or .show_content (not site.Params.env_bookshop_live) }}
+      {{ $sitewideSection := .sitewide_section }}
+      {{ $sitewideComponents = site.Data.sitewide_components.sitewide_components.content_blocks }}
+      {{ range $sitewideComponents }}
+        {{ if eq .uuid $sitewideSection }}
+          {{ $block = . }}
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      Content hidden to speed up editing.
+    {{ end }}
+  {{ end }}
+
   {{ $audienceOverride := "" }}
   {{ $toneOverride := "" }}
   {{ $bgSubtle := "" }}
 
-  {{ if .settings.styles.audience }}
+  {{ if $block.settings.styles.audience }}
     {{ $audienceOverride = "override-audience-styles-site" }}
   {{ end }}
 
-  {{ if .settings.styles.tone }}
+  {{ if $block.settings.styles.tone }}
     {{ $toneOverride = "override-tone-styles-site" }}
   {{ end }}
 
   {{ $src := "" }}
   {{ $backgroundColor := "" }}
 
-  {{ if .settings.styles.color_palette }}
-    {{ $backgroundColor = .settings.styles.color_palette }}
+  {{ if $block.settings.styles.color_palette }}
+    {{ $backgroundColor = $block.settings.styles.color_palette }}
   {{ end }}
 
-  {{ if and .background_image (not .settings.styles.enable_blend) }}
-    {{ $src = .background_image }}
+  {{ if and $block.background_image (not $block.settings.styles.enable_blend) }}
+    {{ $src = $block.background_image }}
     {{ $backgroundColor = "dark" }}
   {{ end }}
 
-  {{ if .settings.styles.bg_subtle }}
+  {{ if $block.settings.styles.bg_subtle }}
     {{ $bgSubtle = "wvu-b-subtle" }}
   {{ end }}
 
   {{ $heading := "" }}
   {{ $subheading := "" }}
 
-  {{ if .heading }}{{ $heading = .heading }}{{ end }}
-  {{ if .subheading }}{{ $subheading = .subheading }}{{ end }}
+  {{ if $block.heading }}{{ $heading = $block.heading }}{{ end }}
+  {{ if $block.subheading }}{{ $subheading = $block.subheading }}{{ end }}
 
   {{- if not site.Params.env_bookshop_live -}}
     {{ $image := "" }}
     {{/*  Get the image, either from its remote or local source  */}}
     {{ if hasPrefix $src "http"}}
-      {{ $image = resources.GetRemote .background_image }}
+      {{ $image = resources.GetRemote $block.background_image }}
     {{ else }}
-      {{ $image = resources.Get .background_image }}
+      {{ $image = resources.Get $block.background_image }}
     {{ end }}
 
     {{/* Resize images and add them to a variable  */}}
@@ -57,85 +75,123 @@
     {{ end }}
   {{- end -}}
 
-  {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
+  {{ if or site.Params.env_bookshop_live (ne $block.settings.config.edit_mode_only true) }}
 
-    {{ $styles := .settings.styles }}
+    {{ $styles := $block.settings.styles }}
     {{ $maxCols := "24" }}
 
-    {{ if .settings.layout.max_cols }}{{ $maxCols = .settings.layout.max_cols }}{{ end }}
+    {{ if $block.settings.layout.max_cols }}{{ $maxCols = $block.settings.layout.max_cols }}{{ end }}
 
-    <section class="c-section-{{ ._component_name }} {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ $bgSubtle }}">
-      {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
+    <section class="c-section-{{ ._component_name }} {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .settings.styles.audience }} tone-{{ $block.settings.styles.tone }} wvu-b-text xsection-component {{ $block.settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ $bgSubtle }}">
+      {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" $block.settings.styles "config" $block.settings.config)) }}
 
       <div class="container wvu-z-index-content">
-        <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}bg-white p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
-          <div class="{{ .settings.layout.buffer }}">
-            {{ if .is_nested }}
-              <div class="row justify-content-center gx-xl-5">
-                <div class="col-xl-12 mb-5 mb-xl-0">
-                  {{ with .column_a }}
-                    {{ if not .is_dynamic }}
-                      {{ partial "bookshop" . }}
-                    {{ else }}
-                      Is dynamic.
-                    {{ end }}
-                  {{ end }}
-                </div>
-                <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
-                  {{ with .column_b }}
-                    {{ if not .is_dynamic }}
-                      {{ partial "bookshop" . }}
-                    {{ else }}
-                      Is dynamic.
-                    {{ end }}
-                  {{ end }}
-                </div>
-                <div class="col-24 col-lg-12 col-xl-6">
-                  {{ with .column_c }}
-                    {{ if not .is_dynamic }}
-                      {{ partial "bookshop" . }}
-                    {{ else }}
-                      Is dynamic.
-                    {{ end }}
-                  {{ end }}
-                </div>
-              </div>
-            {{ else if .settings.config.include_heading_postscript }}
-              {{ if .heading }}
-                <div class="pb-3">
-                  <div class="mb-5 text-center">
-                    {{ with .heading }}
-                      <h2 class="wvu-shout h1 wvu-text-letter-spacing-lg mb-3">{{ . }}</h2>
-                    {{ end }}
+        <div class="{{ $block.settings.layout.margin }} {{ if $block.settings.layout.margin }}{{ if not $block.settings.styles.remove_container_background }}bg-white p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
+          <div class="{{ $block.settings.layout.buffer }}">
+            {{ if not $block.is_nested }}
+              {{ if $block.settings.config.include_heading_postscript }}
+                {{ if $block.heading }}
+                  <div class="pb-3">
+                    <div class="mb-5 text-center">
+                      {{ with $block.heading }}
+                        <h2 class="wvu-shout h1 wvu-text-letter-spacing-lg mb-3">{{ . }}</h2>
+                      {{ end }}
 
-                    {{ with .subheading }}
-                      <p class="lead mb-3">{{ . }}</p>
-                    {{ end }}
-                  </div>
-                </div>
-              {{ end }}
-
-              {{ partial "bookshop" . }}
-
-              {{ with .postscript }}
-                <div class="text-center">
-                  {{ with .copy }}
-                    <div class="mb-4">
-                      {{ . | markdownify }}
-                    </div>
-                  {{ end }}
-
-                  {{ with .ctas }}
-                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                      {{ range . }}
-                        <a class="btn btn-{{ $styles.background_c }} bg-{{ $styles.background_c }}-subtle" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                      {{ with $block.subheading }}
+                        <p class="lead mb-3">{{ . }}</p>
                       {{ end }}
                     </div>
-                  {{ end }}
-                </div>
+                  </div>
+                {{ end }}
+
+                {{ partial "bookshop" $block }}
+
+                {{ with $block.postscript }}
+                  <div class="text-center">
+                    {{ with $block.copy }}
+                      <div class="mb-4">
+                        {{ . | markdownify }}
+                      </div>
+                    {{ end }}
+
+                    {{ with $block.ctas }}
+                      <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                        {{ range . }}
+                          <a class="btn btn-{{ $styles.background_c }} bg-{{ $styles.background_c }}-subtle" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              {{ else }}
+                {{ partial "bookshop" $block }}
               {{ end }}
             {{ else }}
-              {{ partial "bookshop" . }}
+              <div class="row justify-content-center gx-xl-5">
+                {{ with $block.column_a }}
+                  <div class="col-xl mb-5 mb-xl-0">
+                    {{ if not $block.is_dynamic }}
+                      {{ partial "bookshop" . }}
+                    {{ else }}
+                      Is dynamic.
+                    {{ end }}
+                  </div>
+                {{ end }}
+                {{ with $block.column_b }}
+                  <div class="col-xl mb-5 mb-xl-0">
+                    {{ if not .is_dynamic }}
+                      {{ partial "bookshop" . }}
+                    {{ else }}
+                      Is dynamic.
+                    {{ end }}
+                  </div>
+                {{ end }}
+                {{ with $block.column_c }}
+                  <div class="col-xl mb-5 mb-xl-0">
+                    {{ if not .is_dynamic }}
+                      {{ partial "bookshop" . }}
+                    {{ else }}
+                      Is dynamic.
+                    {{ end }}
+                  </div>
+                {{ end }}
+                {{ with $block.column_aa }}
+                  <div class="col-24 col-lg-10 col-xl-8 mb-5">
+                    {{ if not .is_dynamic }}
+                      {{ partial "bookshop" . }}
+                    {{ else }}
+                      Is dynamic.
+                    {{ end }}
+                  </div>
+                {{ end }}
+                {{ with $block.column_aaa }}
+                  <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
+                    {{ if not .is_dynamic }}
+                      {{ partial "bookshop" . }}
+                    {{ else }}
+                      Is dynamic.
+                    {{ end }}
+                  </div>
+                {{ end }}
+                {{ with $block.column_bbb }}
+                  <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
+                    {{ if not .is_dynamic }}
+                      {{ partial "bookshop" . }}
+                    {{ else }}
+                      Is dynamic.
+                    {{ end }}
+                  </div>
+                {{ end }}
+                {{ with $block.column_aaaa }}
+                  <div class="col-24 col-lg-6 col-xl-4 mb-5 mb-xl-0">
+                    {{ if not .is_dynamic }}
+                      {{ partial "bookshop" . }}
+                    {{ else }}
+                      Is dynamic.
+                    {{ end }}
+                  </div>
+                {{ end }}
+              </div>
             {{ end }}
           </div>
         </div>

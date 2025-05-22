@@ -12,7 +12,7 @@ blueprint:
   heading: Heading
   subheading: Subheading goes here.
   column_a:
-  column_aa:
+  column_b:
   postscript:
     copy:
     ctas:

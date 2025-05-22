@@ -11,8 +11,8 @@ spec:
 blueprint:
   background_image:
   column_a:
-  column_b:
-  column_c:
+  column_aaa:
+  column_bbb:
   settings:
     styles:
       audience:
