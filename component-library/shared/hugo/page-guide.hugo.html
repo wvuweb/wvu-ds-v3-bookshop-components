@@ -4,9 +4,7 @@
 
 {{ range .blocks }}
 
-  {{ if .is_sitewide }}
-    Is Sitewide
-  {{ end }}
+  {{ . }}
 
   {{ $audienceOverride := "" }}
   {{ $toneOverride := "" }}
