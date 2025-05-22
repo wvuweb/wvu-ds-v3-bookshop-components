@@ -71,38 +71,58 @@
         <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}bg-white p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
           <div class="{{ .settings.layout.buffer }}">
             {{ if .settings.config.include_heading_postscript }}
-              {{ if .heading }}
-                <div class="pb-3">
-                  <div class="mb-5 text-center">
-                    {{ with .heading }}
-                      <h2 class="wvu-shout h1 wvu-text-letter-spacing-lg mb-3">{{ . }}</h2>
+              {{ if .is_nested }}
+                <div class="row justify-content-center gx-xl-5">
+                  <div class="col-xl-12 mb-5 mb-xl-0">
+                    {{ with .column_a }}
+                      {{ partial "bookshop" . }}
                     {{ end }}
-
-                    {{ with .subheading }}
-                      <p class="lead mb-3">{{ . }}</p>
+                  </div>
+                  <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
+                    {{ with .column_b }}
+                      {{ partial "bookshop" . }}
+                    {{ end }}
+                  </div>
+                  <div class="col-24 col-lg-12 col-xl-6">
+                    {{ with .column_c }}
+                      {{ partial "bookshop" . }}
                     {{ end }}
                   </div>
                 </div>
-              {{ end }}
+              {{ else }}
+                {{ if .heading }}
+                  <div class="pb-3">
+                    <div class="mb-5 text-center">
+                      {{ with .heading }}
+                        <h2 class="wvu-shout h1 wvu-text-letter-spacing-lg mb-3">{{ . }}</h2>
+                      {{ end }}
 
-              {{ partial "bookshop" . }}
-
-              {{ with .postscript }}
-                <div class="text-center">
-                  {{ with .copy }}
-                    <div class="mb-4">
-                      {{ . | markdownify }}
-                    </div>
-                  {{ end }}
-
-                  {{ with .ctas }}
-                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                      {{ range . }}
-                        <a class="btn btn-{{ $styles.background_c }} bg-{{ $styles.background_c }}-subtle" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                      {{ with .subheading }}
+                        <p class="lead mb-3">{{ . }}</p>
                       {{ end }}
                     </div>
-                  {{ end }}
-                </div>
+                  </div>
+                {{ end }}
+
+                {{ partial "bookshop" . }}
+
+                {{ with .postscript }}
+                  <div class="text-center">
+                    {{ with .copy }}
+                      <div class="mb-4">
+                        {{ . | markdownify }}
+                      </div>
+                    {{ end }}
+
+                    {{ with .ctas }}
+                      <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                        {{ range . }}
+                          <a class="btn btn-{{ $styles.background_c }} bg-{{ $styles.background_c }}-subtle" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
               {{ end }}
             {{ else }}
               {{ partial "bookshop" . }}
