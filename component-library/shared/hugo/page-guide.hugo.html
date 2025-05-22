@@ -74,17 +74,29 @@
               <div class="row justify-content-center gx-xl-5">
                 <div class="col-xl-12 mb-5 mb-xl-0">
                   {{ with .column_a }}
-                    {{ partial "bookshop" . }}
+                    {{ if not .is_dynamic }}
+                      {{ partial "bookshop" . }}
+                    {{ else }}
+                      Is dynamic.
+                    {{ end }}
                   {{ end }}
                 </div>
                 <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
                   {{ with .column_b }}
-                    {{ partial "bookshop" . }}
+                    {{ if not .is_dynamic }}
+                      {{ partial "bookshop" . }}
+                    {{ else }}
+                      Is dynamic.
+                    {{ end }}
                   {{ end }}
                 </div>
                 <div class="col-24 col-lg-12 col-xl-6">
                   {{ with .column_c }}
-                    {{ partial "bookshop" . }}
+                    {{ if not .is_dynamic }}
+                      {{ partial "bookshop" . }}
+                    {{ else }}
+                      Is dynamic.
+                    {{ end }}
                   {{ end }}
                 </div>
               </div>
