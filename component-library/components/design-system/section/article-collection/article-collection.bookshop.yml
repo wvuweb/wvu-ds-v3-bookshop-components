@@ -34,6 +34,8 @@ blueprint:
       include_heading_postscript: true
       limit:
       show_content: false
+      show: 2024-09-01
+      hide: 2099-09-01
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

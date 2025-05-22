@@ -20,7 +20,7 @@ blueprint:
           text:
           ref:
       show: 2024-09-01
-      hide: 2030-09-01
+      hide: 2099-09-01
   config:
     edit_mode_only: false
 
