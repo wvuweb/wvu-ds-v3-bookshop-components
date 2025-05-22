@@ -1,0 +1,10 @@
+{{ if site.Params.env_bookshop_live }}
+  <div class="c-collection-labels-tooltip alert alert-warning p-3 mb-3 text-start">
+    {{ if .title }}
+      <h2>{{ .title }}</h2>
+    {{ end }}
+    <p class="mb-0">
+      This component uses dynamic content. "Show Content" is set to "false" in order to speed up editing. To see the content, set "Show Content" to "true" in the component’s configuration. Make sure to deselect "Show Content" after you’re done viewing.
+    </p>
+  </div>
+{{ end }}
