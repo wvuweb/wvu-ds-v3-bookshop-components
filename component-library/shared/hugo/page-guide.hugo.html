@@ -2,7 +2,30 @@
   {{ partial "bookshop" (slice .topper._bookshop_name .) }}
 {{ end }}
 
+{{ $blocks := slice }}
+{{ $block := "" }}
+{{ $sitewideComponents := slice }}
+{{ $sitewideComponent := "" }}
+
 {{ range .blocks }}
+  {{ if .is_sitewide }}
+    {{ if or .show_content (not site.Params.env_bookshop_live) }}
+      {{ $sitewideSection := .sitewide_section }}
+      {{ $sitewideComponents = site.Data.sitewide_components.sitewide_components.content_blocks }}
+      {{ range $sitewideComponents }}
+        {{ if eq .uuid $sitewideSection }}
+          {{ $blocks = $blocks | append . }}
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      Content hidden to speed up editing.
+    {{ end }}
+  {{ else }}
+    {{ $blocks = $blocks | append . }}
+  {{ end }}
+{{ end }}
+
+{{ range $blocks }}
 
   {{ $audienceOverride := "" }}
   {{ $toneOverride := "" }}
