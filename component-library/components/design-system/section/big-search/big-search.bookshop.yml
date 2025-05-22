@@ -15,10 +15,21 @@ blueprint:
   postscript:
     copy:
     postscript_links:
-  layout:
-    margin:
-  config:
-    edit_mode_only: false
+  settings:
+    styles:
+      audience:
+      tone:
+      color_palette:
+      is_subtle:
+      enable_blend: false
+      tint_opacity: '0.7'
+    layout:
+      butter:
+      margin:
+      padding: py-6 py-xxl-7
+    config:
+      edit_mode_only: false
+      include_heading_postscript: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

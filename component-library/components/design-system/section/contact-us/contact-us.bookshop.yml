@@ -16,10 +16,22 @@ blueprint:
   email:
   contacts:
     - contact:
-  config:
-    edit_mode_only: false
-    is_main: true
-    section_id: directory
+  settings:
+    styles:
+      audience:
+      tone:
+      color_palette:
+      is_subtle:
+      enable_blend: false
+      tint_opacity: '0.7'
+    layout:
+      butter:
+      margin:
+      padding: py-6 py-xxl-7
+    config:
+      edit_mode_only: false
+      is_main: true
+      section_id: directory
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

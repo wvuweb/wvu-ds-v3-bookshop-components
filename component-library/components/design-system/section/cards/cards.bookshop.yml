@@ -25,16 +25,18 @@ blueprint:
     copy:
     ctas:
   settings:
-    layout:
-      buffer:
-      margin:
-      pading: py-6 py-xxl-7
     styles:
       audience:
-      vibe:
+      tone:
       color_palette:
-      bg_subtle:
+      is_subtle:
+      enable_blend: false
+      tint_opacity: '0.7'
       remove_container_background: false
+    layout:
+      butter:
+      margin:
+      padding: py-6 py-xxl-7
     config:
       edit_mode_only: false
       include_heading_postscript: true

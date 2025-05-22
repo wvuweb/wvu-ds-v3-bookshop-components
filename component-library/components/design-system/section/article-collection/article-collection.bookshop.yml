@@ -18,10 +18,16 @@ blueprint:
     ctas:
   settings:
     styles:
-      background_c:
+      audience:
+      tone:
+      color_palette:
+      is_subtle:
+      enable_blend: false
+      tint_opacity: '0.7'
     layout:
+      butter:
       margin:
-      buffer:
+      padding: py-6 py-xxl-7
       max_cols:
     config:
       edit_mode_only: false

@@ -12,6 +12,7 @@ spec:
 blueprint:
   heading: Headline
   subheading:
+  image:
   body:
   ctas:
     - text:
