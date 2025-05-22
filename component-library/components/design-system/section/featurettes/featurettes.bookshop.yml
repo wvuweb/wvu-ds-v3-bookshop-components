@@ -29,8 +29,10 @@ blueprint:
       tone:
       color_palette:
       bg_subtle:
+      enable_blend: false
+      tint_opacity: '0.7'
     layout:
-      buffer:
+      butter:
       margin:
       padding: py-6 py-xxl-7
     config:

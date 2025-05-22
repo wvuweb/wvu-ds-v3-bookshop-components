@@ -21,7 +21,7 @@ blueprint:
       audience:
       tone:
       color_palette:
-      is_subtle:
+      bg_subtle:
     layout:
       butter:
       margin:

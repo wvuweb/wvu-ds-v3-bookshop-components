@@ -18,11 +18,13 @@ blueprint:
   postscript_links:
   settings:
     styles:
-      background_c:
+      audience:
+      tone:
+      color_palette:
+      bg_subtle:
     layout:
-      text_align:
+      butter:
       margin:
-      buffer:
       padding: py-0
     config:
       edit_mode_only: false

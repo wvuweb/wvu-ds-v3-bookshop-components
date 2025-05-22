@@ -24,10 +24,12 @@ blueprint:
       audience:
       tone:
       color_palette:
-      bg_subtle: false
+      bg_subtle:
+      enable_blend: false
+      tint_opacity: '0.7'
     layout:
+      butter:
       margin:
-      buffer:
       padding: py-6 py-xxl-7
     config:
       edit_mode_only: false

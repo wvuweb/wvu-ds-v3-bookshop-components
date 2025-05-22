@@ -10,15 +10,17 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   title: "Hello World!"
-  label_c:
-  background_c: bg-wvu-gold
-  text_c: text-wvu-blue
   items:
     - text:
       description:
       anchor:
-  config:
-    edit_mode_only: false
+  settings:
+    styles:
+      label_c:
+      background_c: bg-wvu-gold
+      text_c: text-wvu-blue
+    config:
+      edit_mode_only: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

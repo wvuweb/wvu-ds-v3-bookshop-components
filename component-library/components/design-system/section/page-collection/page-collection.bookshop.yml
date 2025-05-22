@@ -21,16 +21,20 @@ blueprint:
     copy:
     ctas:
   settings:
-    layout:
-      buffer:
-      margin:
     styles:
-      background_c:
-      tint_shade:
-      panel_font:
-      accent_c:
+      audience:
+      tone:
+      color_palette:
+      bg_subtle:
+      enable_blend: false
+      tint_opacity: '0.7'
+    layout:
+      butter:
+      margin:
+      padding: py-6 py-xxl-7
     config:
       edit_mode_only: false
+      include_heading_postscript: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
