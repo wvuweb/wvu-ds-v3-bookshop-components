@@ -19,8 +19,6 @@ blueprint:
       badge:
       text: Item 1 text.
       ctas:
-      background_c:
-      accent_c:
   postscript:
     copy:
     ctas:
@@ -56,3 +54,5 @@ _inputs:
     label: Accent Color
   padding:
     hidden: true
+  text:
+    type: textarea
