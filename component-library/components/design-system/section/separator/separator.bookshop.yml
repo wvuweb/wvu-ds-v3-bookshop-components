@@ -1,0 +1,55 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - column_blocks
+  label: "Separator"
+  description:
+  icon:
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  separator_c:
+  sticker:
+  settings:
+    styles:
+      background_c: transparent
+    layout:
+      margin: my-xl-n6 my-xxl-n7
+      padding: py-xl-0 py-xxl-0
+    config:
+      include_heading_postscript: false
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  separator_c:
+    type: select
+    options:
+      values: _select_data.brand_colors
+      value_key: class
+    label: Color
+  sticker:
+    type: select
+    options:
+      values:
+        - name: Black Bear
+          path: /uploads/sticker-black-bear.png
+        - name: Cardinal
+          path: /uploads/sticker-cardinal.png
+        - name: Coonskin Cap
+          path: /uploads/sticker-coonskin-cap.png
+        - name: Honey Bee
+          path: /uploads/sticker-honey-bee.png
+        - name: Mountaineer Statue
+          path: /uploads/sticker-mountaineer-statue.png
+        - name: PRT
+          path: /uploads/sticker-prt.png
+        - name: Trout
+          path: /uploads/sticker-trout.png
+        - name: Woodburn
+          path: /uploads/sticker-woodburn.png
+        - name: WVU Pennant
+          path: /uploads/sticker-wvu-pennant.png
