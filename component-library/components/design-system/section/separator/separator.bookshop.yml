@@ -53,3 +53,4 @@ _inputs:
           path: /uploads/sticker-woodburn.png
         - name: WVU Pennant
           path: /uploads/sticker-wvu-pennant.png
+      value_key: path
