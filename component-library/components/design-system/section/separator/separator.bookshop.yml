@@ -36,21 +36,21 @@ _inputs:
     options:
       values:
         - name: Black Bear
-          path: /uploads/sticker-black-bear.png
+          path: /uploads/sticker-black-bear.webp
         - name: Cardinal
-          path: /uploads/sticker-cardinal.png
+          path: /uploads/sticker-cardinal.webp
         - name: Coonskin Cap
-          path: /uploads/sticker-coonskin-cap.png
+          path: /uploads/sticker-coonskin-cap.webp
         - name: Honey Bee
-          path: /uploads/sticker-honey-bee.png
+          path: /uploads/sticker-honey-bee.webp
         - name: Mountaineer Statue
-          path: /uploads/sticker-mountaineer-statue.png
+          path: /uploads/sticker-mountaineer-statue.webp
         - name: PRT
-          path: /uploads/sticker-prt.png
+          path: /uploads/sticker-prt.webp
         - name: Trout
-          path: /uploads/sticker-trout.png
+          path: /uploads/sticker-trout.webp
         - name: Woodburn
-          path: /uploads/sticker-woodburn.png
+          path: /uploads/sticker-woodburn.webp
         - name: WVU Pennant
-          path: /uploads/sticker-wvu-pennant.png
+          path: /uploads/sticker-wvu-pennant.webp
       value_key: path
