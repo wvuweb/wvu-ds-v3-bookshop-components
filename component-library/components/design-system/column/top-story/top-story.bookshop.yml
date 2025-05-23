@@ -12,10 +12,8 @@ blueprint:
   heading: Top Story
   article_tags:
     - top-story
-  config:
-    edit_mode_only: false
-    hide_author: false
-    show_content: false
+  hide_author: false
+  show_content: false
   is_dynamic: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

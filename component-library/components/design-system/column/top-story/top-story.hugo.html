@@ -22,7 +22,7 @@
 
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
-  {{ else if and (site.Params.env_bookshop_live) (not .config.show_content) }}
+  {{ else if and (site.Params.env_bookshop_live) (not .show_content) }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
   {{ else }}
     {{ $authorData := site.Data.people.authors }}
@@ -80,9 +80,9 @@
 
                 <h3 class="fs-4" itemprop="headline"><a class="newsletter-link text-decoration-none" href="{{ $link }}">{{ $params.title }}</a></h3>
 
-                {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
+                {{ if or (not $params.hide_author) ( $params.publishDate ) }}
                   <p class="small d-block">
-                    {{ if not $params.config.hide_author }}
+                    {{ if not $params.hide_author }}
                       {{ range $authorList }}
                         <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                           <span itemprop="name">
@@ -92,7 +92,7 @@
                       {{ end }}
                     {{ end }}
 
-                    {{ if and (not $params.config.hide_author) ( $params.publishDate ) }} | {{ end }}
+                    {{ if and (not $params.hide_author) ( $params.publishDate ) }} | {{ end }}
 
                     {{ if $params.publishDate }}
                       <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
