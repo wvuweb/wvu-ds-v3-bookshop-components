@@ -29,7 +29,7 @@ blueprint:
       buffer:
       margin:
       padding:
-      text_placement: mx-auto text-center
+      text_placement: text-start
     config:
       edit_mode_only: false
       include_heading_postscript: false
