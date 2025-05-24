@@ -19,7 +19,6 @@ blueprint:
   settings:
     styles:
       background_c:
-      buttons_c:
     layout:
       margin:
       buffer:
@@ -30,15 +29,3 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  button_c:
-    type: select
-    options:
-      values: _select_data.brand_colors
-      value_key: class
-    label: Button Color
-  buttons_c:
-    type: select
-    options:
-      values: _select_data.brand_colors
-      value_key: class
-    label: Button Color

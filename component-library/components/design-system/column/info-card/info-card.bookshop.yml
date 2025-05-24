@@ -1,7 +1,8 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-  label: "People Grid"
+    - column_blocks
+  label: "Info Card"
   description:
   icon:
   tags: []
@@ -10,27 +11,13 @@ spec:
 blueprint:
   heading: Heading
   subheading:
-  people:
-    - person:
-  settings:
-    styles:
-      audience: general
-      tone: default
-      color_palette: option-1
-      bg_subtle:
-      enable_blend: false
-      tint_opacity: '0.7'
-    layout:
-      buffer:
-      margin:
-      padding: py-6 py-xxl-7
-    config:
-      edit_mode_only: false
-      include_heading_postscript: true
-      show_content: false
+  copy:
+  card_c:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  copy:
+    type: markdown

@@ -25,7 +25,7 @@ blueprint:
     layout:
       buffer:
       margin:
-      _padding: py-0
+      padding: py-0
     config:
       edit_mode_only: false
       include_heading_postscript: false
@@ -37,5 +37,5 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  _padding:
+  padding:
     hidden: true

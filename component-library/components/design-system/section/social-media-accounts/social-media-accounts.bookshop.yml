@@ -25,7 +25,7 @@ blueprint:
     layout:
       buffer:
       margin:
-      _padding: py-5
+      padding: py-5
     config:
       edit_mode_only: false
       include_heading_postscript: false

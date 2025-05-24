@@ -33,7 +33,7 @@ blueprint:
     layout:
       buffer:
       margin:
-      _padding: py-6 py-xxl-7
+      padding: py-6 py-xxl-7
       remove_container_background: false
     config:
       edit_mode_only: false
