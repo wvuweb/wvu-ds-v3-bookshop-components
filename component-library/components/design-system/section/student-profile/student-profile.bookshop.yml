@@ -23,28 +23,3 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  color_palette: option-1
-    type: select
-    options:
-      values:
-        - _select_data.brand_colors
-      value_key: class
-  vibe:
-    type: select
-    options:
-      values:
-        - name: Down to Business 1
-          class: wvu-ds-vibe-down-to-business-01
-        - name: Discovery 1
-          class: wvu-ds-vibe-discovery-01
-        - name: The WVU Experience 1
-          class: wvu-ds-vibe-wvu-experience-01
-        - name: Nostalgic 1
-          class: wvu-ds-vibe-nostalgic-01
-      value_key: class
-  volume:
-    type: range
-    options:
-      min: 1
-      max: 5
-      step: 1
