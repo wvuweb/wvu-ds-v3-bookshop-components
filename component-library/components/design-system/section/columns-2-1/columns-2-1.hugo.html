@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-xl-16">
-    {{ if and .column_a .column_a._bookshop_name }}
-      {{ partial "bookshop" (slice .column_a._bookshop_name .column_a) }}
+    {{ with .column_a }}
+      {{ partial "bookshop" . }}
     {{ end }}
   </div>
   <div class="col-8">
-    {{ if and .column_b .column_b._bookshop_name }}
-      {{ partial "bookshop" (slice .column_b._bookshop_name .column_b) }}
+    {{ with .column_aa }}
+      {{ partial "bookshop" . }}
     {{ end }}
   </div>
 </div>

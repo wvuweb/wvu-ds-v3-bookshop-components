@@ -34,7 +34,7 @@ blueprint:
       include_heading_postscript: true
       show: 2024-09-01
       hide: 2099-09-01
-  _is_nested: true
+  is_nested: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
