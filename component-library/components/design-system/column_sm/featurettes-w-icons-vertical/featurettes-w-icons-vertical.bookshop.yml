@@ -20,7 +20,7 @@ blueprint:
       ctas:
   settings:
     styles:
-      audience:
+      audience: general
     layout:
     config:
 

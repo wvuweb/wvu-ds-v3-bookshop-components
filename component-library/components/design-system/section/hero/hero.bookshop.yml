@@ -18,16 +18,16 @@ blueprint:
   postscript_links:
   settings:
     styles:
-      audience:
-      tone:
-      color_palette:
+      audience: general
+      tone: default
+      color_palette: option-1
       bg_subtle:
       enable_blend: false
       tint_opacity: '0.7'
     layout:
-      butter:
+      buffer:
       margin:
-      padding: py-6 py-xxl-7
+      _padding: py-6 py-xxl-7
       text_placement: mx-auto text-start
     config:
       edit_mode_only: false

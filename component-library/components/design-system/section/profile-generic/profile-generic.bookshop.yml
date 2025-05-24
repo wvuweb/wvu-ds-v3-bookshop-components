@@ -21,16 +21,17 @@ blueprint:
   ctas:
   settings:
     styles:
-      audience:
-      tone:
+      audience: general
+      tone: default
       card_c:
       bg_subtle:
       enable_blend: false
       tint_opacity: '0.7'
+      remove_container_background: false
     layout:
-      butter:
+      buffer:
       margin_no_bg:
-      padding: py-6 py-xxl-7
+      _padding: py-6 py-xxl-7
     config:
       edit_mode_only: false
       include_heading_postscript: false

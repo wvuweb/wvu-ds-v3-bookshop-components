@@ -18,7 +18,7 @@ blueprint:
       background_c: transparent
     layout:
       margin: my-xl-n6 my-xxl-n7
-      padding: py-xl-0 py-xxl-0
+      _padding: py-xl-0 py-xxl-0
     config:
       include_heading_postscript: false
 

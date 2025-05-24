@@ -23,14 +23,15 @@ blueprint:
     ctas:
   settings:
     styles:
-      audience:
-      tone:
-      color_palette:
+      audience: general
+      tone: default
+      color_palette: option-1
       bg_subtle:
     layout:
-      butter:
+      buffer:
       margin:
-      padding: py-6 py-xxl-7
+      _padding: py-6 py-xxl-7
+      remove_container_background: false
     config:
       edit_mode_only: false
       show: 2024-09-01
@@ -45,8 +46,6 @@ _inputs:
   copy:
     type: markdown
   include_heading_postscript:
-    hidden: true
-  padding:
     hidden: true
   margin:
     hidden: true

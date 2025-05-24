@@ -15,21 +15,23 @@ blueprint:
   column_aa:
   settings:
     styles:
-      audience:
-      tone:
-      color_palette:
+      audience: general
+      tone: default
+      color_palette: option-1
       bg_subtle:
       enable_blend: false
       tint_opacity: '0.7'
+      remove_container_background: false
     layout:
-      butter:
+      buffer:
       margin:
-      padding: py-6 py-xxl-7
+      _padding: py-6 py-xxl-7
     config:
       edit_mode_only: false
       include_heading_postscript: false
       show: 2024-09-01
       hide: 2099-09-01
+  _is_nested: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

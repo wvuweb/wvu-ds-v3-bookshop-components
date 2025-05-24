@@ -18,14 +18,14 @@ blueprint:
   postscript_links:
   settings:
     styles:
-      audience:
-      tone:
-      color_palette:
+      audience: general
+      tone: default
+      color_palette: option-1
       bg_subtle:
     layout:
-      butter:
+      buffer:
       margin:
-      padding: py-0
+      _padding: py-0
     config:
       edit_mode_only: false
       include_heading_postscript: false
@@ -37,5 +37,5 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  padding:
+  _padding:
     hidden: true

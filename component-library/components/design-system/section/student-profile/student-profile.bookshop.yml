@@ -14,7 +14,7 @@ blueprint:
     edit_mode_only: false
     show_content: false
   styles:
-    color_palette:
+    color_palette: option-1
     vibe:
     volume:
 
@@ -23,7 +23,7 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  color_palette:
+  color_palette: option-1
     type: select
     options:
       values:
