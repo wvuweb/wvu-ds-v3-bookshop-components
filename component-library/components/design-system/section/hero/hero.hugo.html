@@ -1,27 +1,4 @@
 {{ $src := .background_image }}
-{{ $backgroundColor := "wvu-blue" }}
-{{ $headingColor := "text-wvu-gold" }}
-{{ $placement := "mx-xl-auto text-center" }}
-{{ $buttonColor := "primary" }}
-
-{{ $audienceOverride := "" }}
-{{ $toneOverride := "" }}
-
-{{ if .settings.styles.audience }}
-  {{ $audienceOverride = "override-audience-styles-site" }}
-{{ end }}
-
-{{ if .settings.styles.tone }}
-  {{ $toneOverride = "override-tone-styles-site" }}
-{{ end }}
-
-{{ if .settings.styles.color_palette }}
-  {{ $backgroundColor = .settings.styles.color_palette }}
-{{ end }}
-
-{{ if and .background_image (not .settings.styles.enable_blend) }}
-  {{ $backgroundColor = "dark" }}
-{{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
   {{ $image := "" }}
@@ -42,7 +19,6 @@
   {{ end }}
 {{- end -}}
 
-
 <div class="row">
   <div class="col-xl-16 col-xxl-12 {{ .settings.layout.text_placement }}">
 
@@ -50,27 +26,35 @@
       <p class="h6 mb-6 wvu-b-label">{{ . }}</p>
     {{ end }}
     
-    {{ if .heading }}
-      <h2 id="" class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow wvu-b-text-outline display-3" data-text="{{ .heading }}">
-        <span class="wvu-b-font-adjust">{{ .heading }}</span>
+    {{ with .heading }}
+      <h2 id="" class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow wvu-b-text-outline display-3" data-text="{{ . }}">
+        <span class="wvu-b-font-adjust">{{ . }}</span>
       </h2>
     {{ end }}
     {{ with .subheading }}
       <p class="fs-3 mt-4 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ . }}</span></p>
     {{ end }}
-    <div class="mt-4 wvu-b-text">
-      {{ .body_text | markdownify }}
-    </div>
-    {{ range .ctas }}
-      {{ if .button_c }}
-        {{ $buttonColor = .button_c }}
-      {{ end }}
-      <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-      {{ $buttonColor := "primary" }}
+
+    {{ with .body_text }}
+      <div class="mt-4 wvu-b-text">
+        {{ . | markdownify }}
+      </div>
     {{ end }}
 
-    {{ range .postscript_links }}
-      <a href="{{ .url }}">{{ .text }}</a>
+    {{ with .ctas }}
+      {{ range . }}
+        {{ if .button_c }}
+          {{ $buttonColor = .button_c }}
+        {{ end }}
+        <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+        {{ $buttonColor := "primary" }}
+      {{ end }}
+    {{ end }}
+
+    {{ with .postscript_links }}
+      {{ range . }}
+        <a href="{{ .url }}">{{ .text }}</a>
+      {{ end }}
     {{ end }}
   </div>
 </div>
