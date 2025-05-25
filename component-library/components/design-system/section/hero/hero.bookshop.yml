@@ -21,14 +21,14 @@ blueprint:
     styles:
       audience: general
       tone: loud
-      color_palette: option-1
+      color_palette: option-2
       bg_subtle:
       enable_blend: false
       tint_opacity: '0.7'
     layout:
       buffer:
       padding: py-6 py-xxl-7
-      text_placement: text-start
+      text_placement: mx-auto text-center
     config:
       edit_mode_only: false
       include_heading_postscript: false
