@@ -1,6 +1,6 @@
 {{ $styles := .settings.styles }}
 
-<div class="row gx-4 gx-xl-5">
+<div class="row gx-5 mb-n5">
   {{ range .items }}
 
     {{ $src := .image }}
@@ -21,8 +21,8 @@
     {{- end -}}
 
     <div class="col-24 col-lg-12 mb-5">
-      <div class="row mb-n5">
-        <div class="col-lg-8 mb-5">
+      <div class="row">
+        <div class="col-xl-8 mb-4">
           <div class="position-relative">                    
             {{ if .image }}
               <div class="ratio ratio-3x2">
@@ -31,7 +31,7 @@
             {{ end }}
           </div> 
         </div>
-        <div class="col-lg-16">
+        <div class="col-xl-16">
           <h3 class="wvu-b-display-heading h2">{{ .title }}</h3>
           <p>{{ .text | markdownify }}</p>
           {{ with .ctas }}

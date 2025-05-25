@@ -71,5 +71,9 @@
       <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
       {{ $buttonColor := "primary" }}
     {{ end }}
+
+    {{ range .postscript_links }}
+      <a href="{{ .url }}">{{ .text }}</a>
+    {{ end }}
   </div>
 </div>

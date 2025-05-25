@@ -23,8 +23,8 @@ blueprint:
   settings:
     styles:
       audience: general
-      tone: default
-      color_palette: option-1
+      tone: loud
+      color_palette: option-2
       enable_blend: false
       enable_pattern: false
       tint_opacity: "0.7"

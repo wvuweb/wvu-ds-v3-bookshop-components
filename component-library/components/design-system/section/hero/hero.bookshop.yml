@@ -20,14 +20,13 @@ blueprint:
   settings:
     styles:
       audience: general
-      tone: default
+      tone: loud
       color_palette: option-1
       bg_subtle:
       enable_blend: false
       tint_opacity: '0.7'
     layout:
       buffer:
-      margin:
       padding:
       text_placement: text-start
     config:
