@@ -27,7 +27,7 @@ blueprint:
       tint_opacity: '0.7'
     layout:
       buffer:
-      padding:
+      padding: py-6 py-xxl-7
       text_placement: text-start
     config:
       edit_mode_only: false
