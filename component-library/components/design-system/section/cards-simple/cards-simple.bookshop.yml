@@ -50,3 +50,4 @@ _inputs:
     type: choice
     options:
       values: _select_data.color_palettes
+      value_key: class
