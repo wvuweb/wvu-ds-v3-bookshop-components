@@ -49,6 +49,6 @@ preview:
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
   card_c:
-    type: select
+    type: choice
     option:
       values: _select_data.color_palettes
