@@ -48,5 +48,5 @@ preview:
 _inputs:
   card_c:
     type: choice
-    option:
+    options:
       values: _select_data.color_palettes
