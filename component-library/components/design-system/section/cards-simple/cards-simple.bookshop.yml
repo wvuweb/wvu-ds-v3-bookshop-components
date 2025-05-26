@@ -19,8 +19,6 @@ blueprint:
       badge:
       text: Item 1 text.
       url:
-      background_c:
-      accent_c:
   postscript:
     copy:
     ctas:
