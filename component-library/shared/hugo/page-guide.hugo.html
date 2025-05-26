@@ -33,9 +33,11 @@
     {{ $backgroundColor = .settings.styles.color_palette }}
   {{ end }}
 
-  {{ if and .background_image (not .settings.styles.enable_blend) }}
+  {{ if and .background_image }}
     {{ $src = .background_image }}
-    {{ $backgroundColor = "dark" }}
+    {{ if not .settings.styles.enable_blend }}
+      {{ $backgroundColor = "dark" }}
+    {{ end }}
   {{ end }}
 
   {{ if .settings.styles.bg_subtle }}
