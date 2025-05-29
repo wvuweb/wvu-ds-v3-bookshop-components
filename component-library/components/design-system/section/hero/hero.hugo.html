@@ -27,36 +27,40 @@
     {{ end }}
     
     {{ with .heading }}
-      <h2 id="" class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow wvu-b-text-outline display-3" data-text="{{ . }}">
+      <h2 id="" class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow wvu-b-text-outline display-3 mb-n2" data-text="{{ . }}">
         <span class="wvu-b-font-adjust">{{ . }}</span>
       </h2>
     {{ end }}
   </div>
   <div class="col-xl-16 col-xxl-12 {{ .settings.layout.text_placement }}">
     {{ with .subheading }}
-      <p class="fs-3 mt-4 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ . }}</span></p>
+      <p class="fs-3 wvu-b-text wvu-b-subheading mt-4"><span class="xwvu-b-font-adjust">{{ . }}</span></p>
     {{ end }}
 
     {{ with .body_text }}
-      <div class="mt-4 wvu-b-text">
+      <div class="wvu-b-text mt-4">
         {{ . | markdownify }}
       </div>
     {{ end }}
 
     {{ with .ctas }}
-      {{ range . }}
-        {{ if .button_c }}
-          {{ $buttonColor = .button_c }}
+      <div class="mt-4">
+        {{ range . }}
+          {{ if .button_c }}
+            {{ $buttonColor = .button_c }}
+          {{ end }}
+          <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+          {{ $buttonColor := "primary" }}
         {{ end }}
-        <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-        {{ $buttonColor := "primary" }}
-      {{ end }}
+      </div>
     {{ end }}
 
     {{ with .postscript_links }}
-      {{ range . }}
-        <a href="{{ .url }}">{{ .text }}</a>
-      {{ end }}
+      <div class="mt-4">
+        {{ range . }}
+          <a href="{{ .url }}">{{ .text }}</a>
+        {{ end }}
+      </div>
     {{ end }}
   </div>
 </div>
