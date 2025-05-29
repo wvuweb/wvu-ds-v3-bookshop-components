@@ -47,11 +47,11 @@
 {{- end -}}
 
 <header id="" class="c-topper-hero {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7 text-center">
-  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles)) }}
+  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   <div class="container wvu-z-index-content">
     <div class="{{ .topper.settings.layout.buffer }}">
       <div class="row py-6">
-        <div class="col-xl-16 col-xxl-14 {{ .topper.settings.layout.text_placement }}">
+        <div class="col-xl-16 col-xxl-12 {{ .topper.settings.layout.text_placement }}">
           {{ with .topper.label }}
             <p class="h6 mb-6 wvu-b-label">{{ . }}</p>
           {{ end }}
@@ -61,8 +61,7 @@
               <span class="wvu-b-font-adjust">{{ . }}</span>
             </h2>
           {{ end }}
-        </div>
-        <div class="col-xl-16 col-xxl-12 {{ .topper.settings.layout.text_placement }}">
+
           <p class="fs-3 my-3 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ .topper.subheading }}</span></p>
 
           {{ with .topper.body_text }}
