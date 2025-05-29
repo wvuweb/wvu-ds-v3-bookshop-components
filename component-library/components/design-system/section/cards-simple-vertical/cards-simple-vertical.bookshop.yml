@@ -2,7 +2,7 @@
 spec:
   structures:
     - content_blocks
-  label: "Page Collection Vertical - Sticky"
+  label: "Cards - Simple - Vertical"
   description:
   icon:
   tags: []
@@ -28,11 +28,10 @@ blueprint:
       tint_opacity: '0.7'
     layout:
       buffer:
-      margin:
       padding: py-6 py-xxl-7
     config:
       edit_mode_only: false
-      include_heading_postscript: true
+      include_heading_postscript: false
       show: 2024-09-01
       hide: 2099-09-01
 
