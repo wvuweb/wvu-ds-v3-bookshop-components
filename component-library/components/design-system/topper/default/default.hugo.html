@@ -4,9 +4,9 @@
   {{ $subheading = .topper.subheading }}
 {{ end }}
 
-<header class="pt-6 pb-5 position-relative bg-light">
+<header class="pt-6 pb-5 position-relative">
   <div class="container wvu-z-index-content">
-    <h1 class="oliviar-black display-5 text-wvu-blue">{{ .title }}</h1>
+    <h1 class="config-extra-bold display-4 text-wvu-blue"><span class="wvu-b-font-adjust">{{ .title }}</span></h1>
     {{ with $subheading }}
       <p class="lead">{{ . }}</p>
     {{ end }}

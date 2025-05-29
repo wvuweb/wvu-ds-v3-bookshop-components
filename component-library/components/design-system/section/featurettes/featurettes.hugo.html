@@ -30,7 +30,7 @@
         </div>
       {{ end }}
 
-      <h3 class="wvu-b-display-heading h2">{{ .title }}</h3>
+      <h3 class="wvu-b-display-heading h2"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
       <p>{{ .text | markdownify }}</p>
       {{ with .ctas }}
         {{ range . }}
