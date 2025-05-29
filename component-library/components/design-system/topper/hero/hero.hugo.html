@@ -1,6 +1,5 @@
 {{ $src := .topper.background_image }}
-{{ $backgroundColor := "wvu-blue" }}
-{{ $headingColor := "text-wvu-gold" }}
+{{ $backgroundColor := "" }}
 {{ $headingSize := "display-2" }}
 {{ $placement := "mx-xl-auto text-center" }}
 {{ $buttonColor := "primary" }}
@@ -53,32 +52,33 @@
     <div class="{{ .topper.settings.layout.buffer }}">
       <div class="row py-6">
         <div class="col-xl-16 col-xxl-14 {{ .topper.settings.layout.text_placement }}">
-          {{- if not site.Params.env_bookshop_live -}}
-            <h1 class="visually-hidden">{{ page.Params.title }}</h1>
-          {{ end }}
-
           {{ with .topper.label }}
             <p class="h6 mb-6 wvu-b-label">{{ . }}</p>
           {{ end }}
           
-          {{ if .topper.heading }}
-            <h2 id="" class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }}" data-text="{{ .topper.heading }}">
-              <span class="wvu-b-font-adjust">{{ .topper.heading }}</span>
+          {{ with .topper.heading }}
+            <h2 id="" class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }}" data-text="{{ . }}">
+              <span class="wvu-b-font-adjust">{{ . }}</span>
             </h2>
           {{ end }}
         </div>
         <div class="col-xl-16 col-xxl-12 {{ .topper.settings.layout.text_placement }}">
           <p class="fs-3 my-3 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ .topper.subheading }}</span></p>
 
-          <div class="mt-4 wvu-b-text">
-            {{ .topper.body_text | markdownify }}
-          </div>
-          {{ range .topper.ctas }}
-            {{ if .button_c }}
-              {{ $buttonColor = .button_c }}
+          {{ with .topper.body_text }}
+            <div class="mt-4 wvu-b-text">
+              {{ . | markdownify }}
+            </div>
+          {{ end }}
+
+          {{ with .topper.ctas }}
+            {{ range . }}
+              {{ if .button_c }}
+                {{ $buttonColor = .button_c }}
+              {{ end }}
+              <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+              {{ $buttonColor := "primary" }}
             {{ end }}
-            <a class="btn btn-{{ $buttonColor }} btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-            {{ $buttonColor := "primary" }}
           {{ end }}
         </div>
       </div>
