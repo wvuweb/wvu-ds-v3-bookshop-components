@@ -1,6 +1,7 @@
 {{ $src := .topper.background_image }}
 {{ $backgroundColor := "wvu-blue" }}
 {{ $headingColor := "text-wvu-gold" }}
+{{ $headingSize := "display-2" }}
 {{ $placement := "mx-xl-auto text-center" }}
 {{ $buttonColor := "primary" }}
 
@@ -21,6 +22,10 @@
 
 {{ if and .topper.background_image (not .topper.settings.styles.enable_blend) }}
   {{ $backgroundColor = "dark" }}
+{{ end }}
+
+{{ with .topper.settings.styles.heading_size }}
+  {{ $headingSize = . }}
 {{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
@@ -47,7 +52,7 @@
   <div class="container wvu-z-index-content">
     <div class="{{ .topper.settings.layout.buffer }}">
       <div class="row py-6">
-        <div class="col-xl-16 col-xxl-12 {{ .topper.settings.layout.text_placement }}">
+        <div class="col-xl-16 col-xxl-14 {{ .topper.settings.layout.text_placement }}">
           {{- if not site.Params.env_bookshop_live -}}
             <h1 class="visually-hidden">{{ page.Params.title }}</h1>
           {{ end }}
@@ -57,13 +62,14 @@
           {{ end }}
           
           {{ if .topper.heading }}
-            <h2 id="" class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow wvu-b-text-outline display-2" data-text="{{ .topper.heading }}">
+            <h2 id="" class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }}" data-text="{{ .topper.heading }}">
               <span class="wvu-b-font-adjust">{{ .topper.heading }}</span>
             </h2>
           {{ end }}
-
+        </div>
+        <div class="col-xl-16 col-xxl-12 {{ .topper.settings.layout.text_placement }}">
           <p class="fs-3 my-3 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ .topper.subheading }}</span></p>
-          
+
           <div class="mt-4 wvu-b-text">
             {{ .topper.body_text | markdownify }}
           </div>

@@ -50,6 +50,16 @@ _inputs:
       value_key: class
   enable_pattern:
     hidden: true
+  heading_size:
+    type: select
+    options:
+      values:
+        - name: Large
+          class: display-2
+        - name: Medium
+          class: display-3
+        - name: Small
+          class: display-4
   text_placement:
     type: select
     options:

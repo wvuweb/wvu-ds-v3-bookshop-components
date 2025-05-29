@@ -80,7 +80,7 @@
       {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
 
       <div class="container wvu-z-index-content">
-        <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}bg-wvu-neutral--off-white p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
+        <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}bg-white p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
           <div class="{{ .settings.layout.buffer }}">
             {{ if not .is_nested }}
               {{ if .settings.config.include_heading_postscript }}
