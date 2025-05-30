@@ -4,7 +4,7 @@
   {{ range .items }}
     <div class="col-24 col-lg-12 col-xl-8 mb-5">
       <div class="position-relative px-5 py-6 h-100 bg-{{ $cardColor }} wvu-b-border wvu-b-shadow">
-        <h3 class="iowan-old-style h1 wvu-b-display-heading wvu-b-accent-text"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
+        <h3 class="h1 wvu-b-display-heading wvu-b-accent-text"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
         {{ with .text }}
           <div class="mb-3">
             {{ . | markdownify }}
