@@ -1,0 +1,20 @@
+{{ $styles := .settings.styles }}
+
+<div class="row gx-4">
+  {{ range .items }}
+    <div class="col-lg-6">
+      <div class="position-relative">                    
+        <div class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow is_count"></div>
+      </div> 
+    </div>
+    <div class="col-lg-18">
+      <h3 class="wvu-b-display-heading wvu-b-accent-text h1">{{ .title }}</h3>
+      <p>{{ .text | markdownify }}</p>
+      {{ with .ctas }}
+        {{ range . }}
+          <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+        {{ end }}
+      {{ end }}
+    </div>
+  {{ end }}
+</div>

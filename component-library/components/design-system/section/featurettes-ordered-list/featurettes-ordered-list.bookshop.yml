@@ -2,21 +2,26 @@
 spec:
   structures:
     - content_blocks
-  label: "Link Lists"
-  description: Vertical list of lists.
-  icon: list
+  label: "Featurettes - Vertical"
+  description:
+  icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
   heading: Heading
-  subheading:
-  lists:
-    - topic:
-      description:
-      items:
-        - text:
-          url:
+  subheading: Subheading.
+  items:
+    - title: Item 1 Title
+      image:
+      alt_text:
+      label:
+      badge:
+      text: Item 1 text.
+      ctas:
+  postscript:
+    copy:
+    ctas:
   settings:
     styles:
       audience: general
@@ -27,12 +32,12 @@ blueprint:
       tint_opacity: '0.7'
       remove_container_background: false
     layout:
-      margin:
       buffer:
+      margin:
       padding: py-6 py-xxl-7
     config:
       edit_mode_only: false
-      include_heading_postscript: false
+      include_heading_postscript: true
       show: 2024-09-01
       hide: 2099-09-01
 
@@ -41,7 +46,9 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  padding:
+  badge:
     hidden: true
-  container_bg_c:
-    type: checkbox
+  label:
+    hidden: true
+  text:
+    type: textarea
