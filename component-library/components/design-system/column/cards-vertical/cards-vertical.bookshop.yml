@@ -2,8 +2,7 @@
 spec:
   structures:
     - column_blocks
-    - column_blocks_sm
-  label: "Benefits Checklist"
+  label: "Cards - Vertical"
   description:
   icon:
   tags: []
@@ -14,31 +13,26 @@ blueprint:
   subheading: Subheading.
   items:
     - title: Item 1 Title
+      image:
+      alt_text:
+      label:
+      badge:
       text: Item 1 text.
-  benefits_icon: check
+      ctas:
+  postscript:
+    copy:
+    ctas:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  badge:
-    hidden: true
-  config:
-    hidden: true
-  layout:
-    hidden: true
-  label:
-    hidden: true
-  text:
-    type: markdown
-  benefits_icon:
-    label: Icon
+  accent_c:
     type: select
     options:
-      values:
-        - name: Checkmark
-          class: circle-check
-        - name: Arrow
-          class: arrow-circle-right
+      values: _select_data.brand_colors
       value_key: class
+    label: Accent Color
+  text:
+    type: markdown

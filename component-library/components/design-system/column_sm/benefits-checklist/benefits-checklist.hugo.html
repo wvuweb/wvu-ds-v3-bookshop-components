@@ -3,10 +3,10 @@
 
 <div class="p-5 wvu-b-border wvu-b-subtle wvu-b-shadow bg-">
   {{ with .heading }}
-    <h2 class="display-5 mb-3 wvu-b-display-heading mb-5">{{ . }}</h2>
+    <h2 class="display-5 mb-3 wvu-b-subheading mb-4">{{ . }}</h2>
   {{ end }}
 
-  <div class="row gx-4">
+  <div class="row gx-4 mb-n4">
     <ul class="list-unstyled">
       {{ range .items }}        
         <li class="d-flex mb-4">
@@ -22,11 +22,5 @@
         </li>
       {{ end }}
     </ul>
-
-    {{ with .ctas }}
-      {{ range . }}
-        <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-      {{ end }}
-    {{ end }}
   </div>
 </div>
