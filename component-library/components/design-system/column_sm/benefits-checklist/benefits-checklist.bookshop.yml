@@ -19,12 +19,7 @@ blueprint:
       badge:
       text: Item 1 text.
       ctas:
-  settings:
-    styles:
-      audience: general
-      icon:
-    layout:
-    config:
+  benefits_icon:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -42,6 +37,7 @@ _inputs:
   text:
     type: markdown
   benefits_icon:
+    label: Icon
     type: select
     options:
       values:
