@@ -79,6 +79,12 @@
               {{ $buttonColor := "primary" }}
             {{ end }}
           {{ end }}
+
+          {{ with .topper.postscript }}
+            <div class="mt-4">
+              {{ .copy | markdownify }}
+            </div>
+          {{ end }}
         </div>
       </div>
     </div>
