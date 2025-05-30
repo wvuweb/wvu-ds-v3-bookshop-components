@@ -150,7 +150,7 @@
                   </div>
                 {{ end }}
                 {{ with .column_aa }}
-                  <div class="col-24 col-lg-10 col-xl-8 mb-5">
+                  <div class="col-24 col-lg-10 col-xl-8">
                     {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
                       {{ partial "bookshop" . }}
                     {{ else }}

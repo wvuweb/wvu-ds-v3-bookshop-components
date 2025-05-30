@@ -1,5 +1,4 @@
 {{ $src := .image }}
-{{ $imageClasses := "object-fit-contain" }}
 
 {{- if not site.Params.env_bookshop_live -}}
   {{ $image := "" }}
@@ -21,22 +20,26 @@
 {{- end -}}
 
 <div class="bg-{{ .settings.styles.card_c }} wvu-b-border wvu-b-shadow {{ .settings.layout.margin_no_bg }}">
+  <div class="wvu-bg-img">
+    <div class="wvu-b-gradient d-flex w-100 h-100 justify-content-between position-absolute d-flex w-100 h-100 justify-content-between"></div>
+    <div class="wvu-b-pattern wvu-b-pattern-color h-100 w-100 position-absolute" style="opacity: .4"></div>
+  </div>
   <div class="row gx-0">
-    <div class="col-12 ms-auto">
+    <div class="col-xl-12 ms-auto order-2 order-xl-1">
       <h2 class="wvu-b-accent-bg wvu-text-vertical wvu-shout h6 small wvu-text-letter-spacing-lg h-100 m-0 wvu-z-index-max"><span class="d-block bg- p-2">Spotlight</span></h2>
       <div class="{{ if .settings.layout.is_cutout }}p-5{{ else }}pe-5{{ end }} w-100 h-100 position-relative">
         <div class="h-100 position-relative">
           <div class="w-100 h-100">
             <div class="row h-100">
               {{ if .settings.layout.is_cutout }}
-                {{ $imageClasses = printf "%s%s" "mt-n6 mb-n5 " $imageClasses }}
                 <div class="wvu-bg-img px-0 ps-4">
-                  <div class="wvu-bg-distressed-lines wvu-b-pattern wvu-b-pattern-color h-100 w-100 ms-4" style="opacity: 1"></div>
-                  <div class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} bg-{{ .settings.styles.card_c }} wvu-b-gradient-accent d-flex w-100 h-100 justify-content-between"></div>
+                  <div class="wvu-b-pattern wvu-bg-blue h-100 w-100 position-absolute" style="opacity: .5"></div>
                 </div>
                 <div class="col-xxl-17 mx-xxl-auto d-flex justify-content-center align-items-end wvu-z-index-content">
                   <div class="wvu-z-index-content">
-                    <img class="object-fit mb-n5 mt-n6" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                    <div class="overflow-hidden mb-n5 mt-n6">
+                      <img class="object-fit wvu-b-shadow" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                    </div>
                   </div>
                 </div>
               {{ else }}
@@ -51,10 +54,10 @@
         </div>
       </div>
     </div>
-    <div class="col-12 mx-auto">
+    <div class="col-xl-12 mx-auto order-1 order-xl-2">
       <div class="row">
-        <div class="col-16">
-          <div class="wvu-z-index-content position-relative px-3 py-6 my-n3">
+        <div class="col-md-16 col-xl-16">
+          <div class="wvu-z-index-content position-relative px-5 px-lg-3 py-5 py-xl-6 my-xl-n3">
             {{ with .super_heading }}
               <div class="wvu-b-superheading wvu-b-label">
                 <p class="">
@@ -64,7 +67,7 @@
                 </p>
               </div>
             {{ end }}
-            <h2 class="display-5 wvu-header-max-width wvu-b-display-heading wvu-b-display-heading-var wvu-b-display-heading-style wvu-b-accent-text wvu-b-text-shadow mb-3" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
+            <h2 class="display-5 wvu-header-max-width wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow mb-3" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
             <p class="wvu-b-subheading fs-2 mb-3">{{ .name }}</p>
             {{ with .info }}
               <div class="">
@@ -79,23 +82,29 @@
             <p><a href="" class="text-decoration-none wvu-b-accent-text"><span class="fa-solid fa-user-circle"></span> View Profile</a></p>
           </div>
         </div>
-        <div class="col-7 d-flex align-items-center position-relative">
+        <div class="col-md-7 col-xl-7 d-flex align-items-center position-relative">
           <div class="py-6 my-n3 w-100 pe-4">
-            {{ if .ctas }}
-              <div class="">
-                <h2 class="wvu-b-label small h6 wvu-text-letter-spacing-lg">See More</h2>
-                <ul class="list-unstyled w-100 small mb-5">
-                  {{ range .ctas }}
-                    <li class="border-bottom border-dotted border-wvu-accent--blue-subtle"><a class="d-flex w-100 justify-content-between align-items-center py-2 text-decoration-none" href="{{ .url }}">{{ .text }}</a></li>
-                  {{ end }}
-                </ul>
-              </div>
-            {{ end }}
-            <div class="ms-n3 me-n5">
-              <div class="me-n5">
-                <div class="ratio ratio-16x9 bg-dark position-relative wvu-shadow-hard-filter">
-                  <div class="wvu-b-accent-text d-flex w-100 h-100 align-items-center justify-content-center">
-                    <span class="small d-block me-2 mt-n1 text-white">Watch Video</span> <span class="d-block fa-regular fa-circle-play h2 text-white"></span>
+            <div class="row">            
+              {{ if .ctas }}
+                <div class="col-sm col-md-24">
+                  <div class="wvu-z-index-content">
+                    <h2 class="wvu-b-label small h6 wvu-text-letter-spacing-lg">See More</h2>
+                    <ul class="list-unstyled w-100 small mb-5">
+                      {{ range .ctas }}
+                        <li class="border-bottom border-dotted border-wvu-accent--blue-subtle"><a class="d-flex w-100 justify-content-between align-items-center py-2 text-decoration-none" href="{{ .url }}">{{ .text }}</a></li>
+                      {{ end }}
+                    </ul>
+                  </div>
+                </div>
+              {{ end }}
+              <div class="col-sm col-md-24">
+                <div class="ms-n3 me-n5 wvu-z-index-content">
+                  <div class="me-n5">
+                    <div class="ratio ratio-16x9 bg-dark position-relative wvu-shadow-hard-filter">
+                      <div class="wvu-b-accent-text d-flex w-100 h-100 align-items-center justify-content-center">
+                        <span class="small d-block me-2 mt-n1 text-white">Watch Video</span> <span class="d-block fa-regular fa-circle-play h2 text-white"></span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

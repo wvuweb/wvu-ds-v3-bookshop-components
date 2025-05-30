@@ -31,6 +31,7 @@ blueprint:
     layout:
       buffer:
       margin_no_bg:
+      is_cutout: true
       padding: py-6 py-xxl-7
     config:
       edit_mode_only: false
@@ -70,5 +71,5 @@ _inputs:
     type: number
   margin_no_bg:
     label: Margin
-  name:
+  component_name:
     hidden: true
