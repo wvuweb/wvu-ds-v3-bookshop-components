@@ -13,8 +13,6 @@ blueprint:
   subheading: Subheading.
   items:
     - title: Item 1 Title
-      image:
-      alt_text:
       label:
       badge:
       text: Item 1 text.
