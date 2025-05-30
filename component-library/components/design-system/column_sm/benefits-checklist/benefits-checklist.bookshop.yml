@@ -22,6 +22,7 @@ blueprint:
   settings:
     styles:
       audience: general
+      icon:
     layout:
     config:
 
@@ -39,4 +40,13 @@ _inputs:
   label:
     hidden: true
   text:
-    type: textarea
+    type: markdown
+  benefits_icon:
+    type: select
+    options:
+      values:
+        - name: Checkmark
+          class: check
+        - name: Arrow
+          class: arrow-right
+      value_key: class

@@ -1,21 +1,27 @@
 {{ $styles := .settings.styles }}
+{{ $icon := .settings.styles.icon }}
 
-<div class="p-5 wvu-b-border wvu-b-shadow bg-">
+<div class="p-5 wvu-b-border wvu-b-subtle wvu-b-shadow bg-">
   {{ with .heading }}
     <h2 class="display-5 mb-3 wvu-b-display-heading mb-5">{{ . }}</h2>
   {{ end }}
 
   <div class="row gx-4">
-    {{ range .items }}
-      <ul class="list-unstyled">
-        <li class>
-          <p class="h4 mb-0"><span class="fa-regular fa-check text-success"></span> {{ .title }}</p>
-          {{ with .text }}
-            <p class="mb-0">{{ . | markdownify }}</p>
-          {{ end }}
+    <ul class="list-unstyled">
+      {{ range .items }}        
+        <li class="d-flex mb-4">
+          <span class="h2 fa-solid fa-{{ $icon }} wvu-b-accent-text me-3 mt-1"></span>
+          <div>
+            {{ with .title }}
+              <h3 class="h4 mb-0">{{ .title }}</h3>
+            {{ end }}
+            {{ with .text }}
+              <p class="mb-0">{{ . | markdownify }}</p>
+            {{ end }}
+          </div>
         </li>
-      </ul>
-    {{ end }}
+      {{ end }}
+    </ul>
 
     {{ with .ctas }}
       {{ range . }}
