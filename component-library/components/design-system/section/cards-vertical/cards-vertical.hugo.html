@@ -1,47 +1,48 @@
 {{ $styles := .settings.styles }}
 
+<div class="mb-n5">
+  {{ range .items }}
+    <div class="row gx-0 mb-5">
 
-{{ range .items }}
-  <div class="row gx-0 mb-5">
+      {{ $src := .image }}
 
-    {{ $src := .image }}
-
-    {{- if not site.Params.env_bookshop_live -}}
-      {{ $image := "" }}
-      {{/*  Get the image, either from its remote or local source  */}}
-      {{ if hasPrefix $src "http"}}
-        {{ $image = resources.GetRemote .image }}
-      {{ else }}
-        {{ $image = resources.Get .image }}
-      {{ end }}
-    
-      {{/* Resize images and add them to a variable  */}}
-      {{ if and $image (ne $image.MediaType.SubType "svg") }}
-        {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
-      {{ end }}
-    {{- end -}}
-
-    <div class="col-24 col-lg-12">
-      <div class="position-relative">                    
-        {{ if .image }}
-          <div class="ratio ratio-3x2">
-            <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
-          </div>
+      {{- if not site.Params.env_bookshop_live -}}
+        {{ $image := "" }}
+        {{/*  Get the image, either from its remote or local source  */}}
+        {{ if hasPrefix $src "http"}}
+          {{ $image = resources.GetRemote .image }}
+        {{ else }}
+          {{ $image = resources.Get .image }}
         {{ end }}
-      </div> 
-    </div>
-    <div class="col-24 col-lg-12">
-      <div class="h-100 bg-white wvu-b-shadow wvu-b-border">
-        <div class="position-relative p-5">
-          <h3 class="wvu-b-display-heading h2 mb-3"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
-          <p class="mb-3">{{ .text | markdownify }}</p>
-          {{ with .ctas }}
-            {{ range . }}
-              <a class="btn wvu-b-btn" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-            {{ end }}
+      
+        {{/* Resize images and add them to a variable  */}}
+        {{ if and $image (ne $image.MediaType.SubType "svg") }}
+          {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+        {{ end }}
+      {{- end -}}
+
+      <div class="col-24 col-lg-12">
+        <div class="position-relative">                    
+          {{ if .image }}
+            <div class="h-100">
+              <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
+            </div>
           {{ end }}
+        </div> 
+      </div>
+      <div class="col-24 col-lg-12">
+        <div class="h-100 bg-white wvu-b-shadow wvu-b-border">
+          <div class="position-relative p-5">
+            <h3 class="wvu-b-display-heading h2 mb-3"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
+            <p class="mb-3">{{ .text | markdownify }}</p>
+            {{ with .ctas }}
+              {{ range . }}
+                <a class="btn wvu-b-btn" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+              {{ end }}
+            {{ end }}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-{{ end }}
+  {{ end }}
+</div>
