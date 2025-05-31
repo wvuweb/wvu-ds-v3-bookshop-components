@@ -5,27 +5,16 @@
 {{ $pattern := "" }}
 {{ $patternOpacity := "1" }}
 
-{{ if .params.image_lg }}
+{{ if .topper.settings.styles.color_palette }}
+  {{ $backgroundColor = .topper.settings.styles.color_palette }}
+{{ end }}
+
+{{ if and .topper.background_image (not .topper.settings.styles.enable_blend) }}
+  {{ $backgroundColor = "option-2" }}
+{{ end }}
+
+{{ if .topper.background_image }}
   {{ $backgroundColor = "bg-dark text-white" }}
-  {{ $headingColor = "text-wvu-gold" }}
-{{ end }}
-
-{{ if and .topper.styles .topper.styles.background_c }}
-  {{ $backgroundColor = .topper.styles.background_c }}
-{{ end }}
-
-{{ if and .topper.styles .topper.styles.heading_c }}
-  {{ $headingColor = .topper.styles.heading_c }}
-{{ end }}
-
-{{ $vibe := .topper.styles.vibe }}
-
-{{ if eq $vibe "down-to-business" }}
-  {{ $pattern = "wvu-bg-pattern-grid" }}
-  {{ $patternOpacity = "0.4" }}
-{{ else }}
-  {{ $pattern = "wvu-bg-topo-map" }}
-  {{ $patternOpacity = "0.1" }}
 {{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
@@ -64,39 +53,46 @@
   {{ end }}
 {{- end -}}
 
-<section class="py-6 {{ .topper.styles.background_c }} position-relative bg-light">
-  {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $bgSrc "alt" .topper.alt_text "styles" .topper.styles)) }}
-  <div class="container mb-6 wvu-z-index-content">
+<section class="audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7">
+  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $bgSrc "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
+  <div class="container mb-5 wvu-z-index-content">
     <div class="row gx-lg-0 align-items-center">
       <div class="col-lg-12">
-        <p class="wvu-shout wvu-text-letter-spacing-lg ms-lg-4 mt-n5">Alumni Profile</p>
-        <div class="wvu-shadow-hard-filter bg-white text-dark p-5 p-xl-5 me-lg-n5 wvu-z-index-content">
           {{ if or .params.graduation_year .params.majors }}
             <div class="mb-4">
-              <p class="oliviar-black text-uppercase">
-                {{ if .params.graduation_year }}<span>{{ .params.graduation_year }} Graduate</span>{{ end }}
-                {{ if .params.majors }}({{ range .params.majors }}{{ . }},{{ end }}){{ end }}
+              <p class="wvu-b-label text-uppercase">
+                <span>{{ with .params.graduation_years }}{{ range . }}<span class="wvu-comma-list-item">{{ . }}</span>{{ end }}</span> Graduate{{ end }}
+                {{ with .params.majors }}({{ range . }}<span class="wvu-comma-list-item">{{ . }}</span>{{ end }}){{ end }}
               </p>
             </div>
           {{ end }}
 
-          <h1 class="display-4 oliviar-black">{{ .params.name }}</h1>
+          <h1 class="display-3 wvu-b-display-heading">{{ .params.name }}</h1>
 
-          {{ with .params.job_title }}
-            <p class="oliviar-thin mt-2 fs-5">{{ range . }}<span class="d-block">{{ . }}</span>{{ end }}</p>
+          {{ if or .params.occupation .params.job_title }}
+            <div class="mb-4">
+              {{ with .params.occupation }}
+                <p class="antonia-bold mt-2 fs-4 mb-0">{{ . }}</p>
+              {{ end }}
+              {{ with .params.job_title }}
+                <p class="antonia-regular text-uppercase">{{ range . }}<span class="d-block">{{ . }}</span>{{ end }}</p>
+              {{ end }}
+            </div>
           {{ end }}
 
+          {{ with .params.honors }}
+            <ul class="list-unstyled mt-2">
+              {{ range . }}
+                <li class="d-flex"><span class="fa-solid fa-star wvu-b-accent-text me-2 mt-1"></span> {{ . }}</li>
+              {{ end }}
+            </ul>
+          {{ end }}
+      </div>
+      {{ if and .params.image_lg (not .params.background_image) }}
+        <div class="col-lg-12">
+          <img class="img-fluid wvu-shadow-filter border border-3 border-dark" src="{{ $src}}" alt="" />
         </div>
-      </div>
-      <div class="col-lg-12">
-        {{ if .params.image_lg }}
-          <img class="img-fluid" src="{{ $src}}" alt="" />
-        {{ else }}
-          {{- if site.Params.env_bookshop_live -}}
-            <img class="img-fluid" src="https://placehold.co/1200x800" alt="Placeholder image." />
-          {{ end }}
-        {{ end }}
-      </div>
+      {{ end }}
     </div>
   </div>
 </section>
