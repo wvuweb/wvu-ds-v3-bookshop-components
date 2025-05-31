@@ -9,10 +9,11 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
+  heading: Heading
+  subheading: Subheading.
   label:
   background_image:
   alt_text:
-  heading:
   body_text:
   show_byline: false
   styles:
@@ -32,8 +33,6 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  heading:
-    hidden: true
   label:
     hidden: true
   vibe:
