@@ -1,4 +1,5 @@
-{{ $src := .params.image_lg }}
+{{ $profileSrc := .params.profile_image }}
+{{ $lgSrc := .params.image_lg }}
 {{ $bgSrc := .topper.background_image }}
 {{ $backgroundColor := "bg-white text-dark" }}
 {{ $headingColor := "text-wvu-blue" }}
@@ -18,26 +19,35 @@
 {{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
-  {{ $image := "" }}
+  {{ $profileImage := "" }}
   {{/*  Get the image, either from its remote or local source  */}}
-  {{ if hasPrefix $src "http"}}
-    {{ $image = resources.GetRemote .params.image_lg }}
+  {{ if hasPrefix $profileSrc "http"}}
+    {{ $profileImage = resources.GetRemote .params.profile_image }}
   {{ else }}
-    {{ $image = resources.Get .params.image_lg }}
+    {{ $profileImage = resources.Get .params.profile_image }}
   {{ end }}
 
   {{/* Resize images and add them to a variable  */}}
-  {{ if and $image (ne $image.MediaType.SubType "svg") }}
-    {{ if eq .imageProcess "fit" }}
-      {{ $src = ($image.Fit (printf "%dx%d webp" 960 640)).RelPermalink }}
-    {{ else }}
-      {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
-    {{ end }}
+  {{ if and $profileImage (ne $profileImage.MediaType.SubType "svg") }}
+    {{ $profileSrc = ($profileImage.Fill (printf "%dx%d webp" 960 960)).RelPermalink }}
+  {{ end }}
+
+  {{ $lgImage := "" }}
+  {{/*  Get the image, either from its remote or local source  */}}
+  {{ if hasPrefix $lgSrc "http"}}
+    {{ $lgImage = resources.GetRemote .params.image_lg }}
+  {{ else }}
+    {{ $lgImage = resources.Get .params.image_lg }}
+  {{ end }}
+
+  {{/* Resize images and add them to a variable  */}}
+  {{ if and $lgImage (ne $lgImage.MediaType.SubType "svg") }}
+    {{ $lgSrc = ($lgImage.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
   {{ end }}
 
   {{ $bgImage := "" }}
   {{/*  Get the image, either from its remote or local source  */}}
-  {{ if hasPrefix $src "http"}}
+  {{ if hasPrefix $bgSrc "http"}}
     {{ $bgImage = resources.GetRemote .params.background_image }}
   {{ else }}
     {{ $bgImage = resources.Get .params.background_image }}
@@ -45,52 +55,61 @@
 
   {{/* Resize images and add them to a variable  */}}
   {{ if and $bgImage (ne $bgImage.MediaType.SubType "svg") }}
-    {{ if eq .imageProcess "fit" }}
-      {{ $bgSrc = ($bgImage.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
-    {{ else }}
-      {{ $bgSrc = ($bgImage.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
-    {{ end }}
+    {{ $bgSrc = ($bgImage.Fill (printf "%dx%d webp" 1920 1280)).RelPermalink }}
   {{ end }}
 {{- end -}}
 
 <section class="audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7">
   {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $bgSrc "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   <div class="container mb-5 wvu-z-index-content">
-    <div class="row gx-lg-0 align-items-center {{ if not .params.image_lg }}py-6{{ end }}">
-      <div class="col-lg-12">
-          {{ if or .params.graduation_year .params.majors }}
-            <div class="mb-4">
-              <p class="wvu-b-label text-uppercase">
-                <span>{{ with .params.graduation_years }}{{ range . }}<span class="wvu-comma-list-item">{{ . }}</span>{{ end }}</span> Graduate{{ end }}
-                {{ with .params.majors }}({{ range . }}<span class="wvu-comma-list-item">{{ . }}</span>{{ end }}){{ end }}
-              </p>
-            </div>
+    <div class="row gx-lg-0 align-items-center {{ if or .topper.background_image (not .params.image_lg) }}py-6{{ end }}">
+      <div class="col-lg-12 {{ if .topper.background_image }}{{ .topper.settings.layout.text_placement }}{{ else }}mx-auto{{ end }}">
+        <div class="row gx-4 gx-lg-5">
+          {{ if and .params.profile_image (not .topper.background_image) }}
+            {{ if not .params.image_lg }}
+              <div class="col-8">
+                <div class="ratio ratio-1x1">
+                  <img class="img-fluid h-100 w-100 rounded-circle" src="{{ $profileSrc }}" />
+                </div>
+              </div>
+            {{ end }}
           {{ end }}
+          <div class="col">
+            {{ if or .params.graduation_year .params.majors }}
+              <div class="mb-4">
+                <p class="wvu-b-label text-uppercase">
+                  <span>{{ with .params.graduation_years }}{{ range . }}<span class="wvu-comma-list-item">{{ . }}</span>{{ end }}</span> Graduate{{ end }}
+                  {{ with .params.majors }}({{ range . }}<span class="wvu-comma-list-item">{{ . }}</span>{{ end }}){{ end }}
+                </p>
+              </div>
+            {{ end }}
 
-          <h1 class="display-3 wvu-b-display-heading"><span class="wvu-b-font-adjust">{{ .params.name }}</span></h1>
+            <h1 class="display-3 wvu-b-display-heading"><span class="wvu-b-font-adjust">{{ .params.name }}</span></h1>
 
-          {{ if or .params.occupation .params.job_title }}
-            <div class="mb-4">
-              {{ with .params.occupation }}
-                <p class="antonia-bold mt-2 fs-4 mb-0">{{ . }}</p>
-              {{ end }}
-              {{ with .params.job_title }}
-                <p class="antonia-regular text-uppercase">{{ range . }}<span class="d-block">{{ . }}</span>{{ end }}</p>
-              {{ end }}
-            </div>
-          {{ end }}
+            {{ if or .params.occupation .params.job_title }}
+              <div class="mb-4">
+                {{ with .params.occupation }}
+                  <p class="antonia-bold mt-2 fs-4 mb-0">{{ . }}</p>
+                {{ end }}
+                {{ with .params.job_title }}
+                  <p class="antonia-regular text-uppercase">{{ range . }}<span class="d-block">{{ . }}</span>{{ end }}</p>
+                {{ end }}
+              </div>
+            {{ end }}
 
-          {{ with .params.honors }}
-            <ul class="list-unstyled mt-2">
-              {{ range . }}
-                <li class="d-flex"><span class="fa-solid fa-star wvu-b-accent-text me-2 mt-1"></span> {{ . }}</li>
-              {{ end }}
-            </ul>
-          {{ end }}
+            {{ with .params.honors }}
+              <ul class="list-unstyled mt-2">
+                {{ range . }}
+                  <li class="d-flex"><span class="fa-solid fa-star wvu-b-accent-text me-2 mt-1"></span> {{ . }}</li>
+                {{ end }}
+              </ul>
+            {{ end }}
+          </div>
+        </div>
       </div>
-      {{ if and .params.image_lg (not .params.background_image) }}
+      {{ if and .params.image_lg (not .topper.background_image) }}
         <div class="col-lg-12">
-          <img class="img-fluid wvu-shadow-filter border border-3 border-dark" src="{{ $src}}" alt="" />
+          <img class="img-fluid wvu-shadow-filter border border-3 border-dark" src="{{ $lgSrc}}" alt="" />
         </div>
       {{ end }}
     </div>
