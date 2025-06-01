@@ -56,7 +56,7 @@
 <section class="audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7">
   {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $bgSrc "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   <div class="container mb-5 wvu-z-index-content">
-    <div class="row gx-lg-0 align-items-center">
+    <div class="row gx-lg-0 align-items-center {{ if not .params.image_lg }}py-6{{ end }}">
       <div class="col-lg-12">
           {{ if or .params.graduation_year .params.majors }}
             <div class="mb-4">
@@ -67,7 +67,7 @@
             </div>
           {{ end }}
 
-          <h1 class="display-3 wvu-b-display-heading">{{ .params.name }}</h1>
+          <h1 class="display-3 wvu-b-display-heading"><span class="wvu-b-font-adjust">{{ .params.name }}</span></h1>
 
           {{ if or .params.occupation .params.job_title }}
             <div class="mb-4">
