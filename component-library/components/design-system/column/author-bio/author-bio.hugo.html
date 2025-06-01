@@ -22,7 +22,7 @@
         <div class="col-16 me-auto">
           <h2 class="helvetica-neue-light mb-2">{{ $author.name }}</h2>
           <p class="helvetica-neue-bold mb-3">{{ $author.title }}</p>
-          <p class="mb-3">{{ $author.description | markdownify }}</p>
+          <p class="mb-3">{{ $author.bio_text | markdownify }}</p>
           <a class="text-dark" href="">View {{ $author.name }}’s Bio Page <span class="fa-solid fa-arrow-right"></span></a>
         </div>
       </div>
