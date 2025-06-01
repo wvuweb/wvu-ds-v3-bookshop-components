@@ -1,10 +1,24 @@
-{{ $profileSrc := .params.profile_image }}
-{{ $lgSrc := .params.image_lg }}
-{{ $bgSrc := .topper.background_image }}
+{{ $src := "" }}
+{{ $imageSize := "" }}
 {{ $backgroundColor := "bg-white text-dark" }}
 {{ $headingColor := "text-wvu-blue" }}
 {{ $pattern := "" }}
 {{ $patternOpacity := "1" }}
+
+{{ with .params.profile_image }}
+  {{ $src = . }}
+  {{ $imageSize = "960x960" }}
+{{ end }}
+
+{{ with .params.image_lg }}
+  {{ $src = . }}
+  {{ $imageSize = "960x640" }}
+{{ end }}
+
+{{ with .topper.background_image }}
+  {{ $src = . }}
+  {{ $imageSize = "1920x1280" }}
+{{ end }}
 
 {{ if .topper.settings.styles.color_palette }}
   {{ $backgroundColor = .topper.settings.styles.color_palette }}
@@ -19,48 +33,22 @@
 {{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
-  {{ $profileImage := "" }}
+  {{ $image := "" }}
   {{/*  Get the image, either from its remote or local source  */}}
-  {{ if hasPrefix $profileSrc "http"}}
-    {{ $profileImage = resources.GetRemote .params.profile_image }}
+  {{ if hasPrefix $src "http"}}
+    {{ $image = resources.GetRemote $src }}
   {{ else }}
-    {{ $profileImage = resources.Get .params.profile_image }}
+    {{ $image = resources.Get $src }}
   {{ end }}
 
   {{/* Resize images and add them to a variable  */}}
-  {{ if and $profileImage (ne $profileImage.MediaType.SubType "svg") }}
-    {{ $profileSrc = ($profileImage.Fill (printf "%dx%d webp" 960 960)).RelPermalink }}
-  {{ end }}
-
-  {{ $lgImage := "" }}
-  {{/*  Get the image, either from its remote or local source  */}}
-  {{ if hasPrefix $lgSrc "http"}}
-    {{ $lgImage = resources.GetRemote .params.image_lg }}
-  {{ else }}
-    {{ $lgImage = resources.Get .params.image_lg }}
-  {{ end }}
-
-  {{/* Resize images and add them to a variable  */}}
-  {{ if and $lgImage (ne $lgImage.MediaType.SubType "svg") }}
-    {{ $lgSrc = ($lgImage.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
-  {{ end }}
-
-  {{ $bgImage := "" }}
-  {{/*  Get the image, either from its remote or local source  */}}
-  {{ if hasPrefix $bgSrc "http"}}
-    {{ $bgImage = resources.GetRemote .params.background_image }}
-  {{ else }}
-    {{ $bgImage = resources.Get .params.background_image }}
-  {{ end }}
-
-  {{/* Resize images and add them to a variable  */}}
-  {{ if and $bgImage (ne $bgImage.MediaType.SubType "svg") }}
-    {{ $bgSrc = ($bgImage.Fill (printf "%dx%d webp" 1920 1280)).RelPermalink }}
+  {{ if and $image (ne $image.MediaType.SubType "svg") }}
+    {{ $src = ($image.Fill (printf "%s webp" $imageSize)).RelPermalink }}
   {{ end }}
 {{- end -}}
 
 <section class="audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7">
-  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $bgSrc "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
+  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   <div class="container mb-5 wvu-z-index-content">
     <div class="row gx-lg-0 align-items-center {{ if or .topper.background_image (not .params.image_lg) }}py-6{{ end }}">
       <div class="col-lg-12 {{ if .topper.background_image }}{{ .topper.settings.layout.text_placement }}{{ else }}mx-auto{{ end }}">
@@ -69,7 +57,7 @@
             {{ if not .params.image_lg }}
               <div class="col-8">
                 <div class="ratio ratio-1x1">
-                  <img class="img-fluid h-100 w-100 rounded-circle" src="{{ $profileSrc }}" />
+                  <img class="img-fluid h-100 w-100 rounded-circle" src="{{ $src }}" />
                 </div>
               </div>
             {{ end }}
@@ -109,7 +97,7 @@
       </div>
       {{ if and .params.image_lg (not .topper.background_image) }}
         <div class="col-lg-12">
-          <img class="img-fluid wvu-shadow-filter border border-3 border-dark" src="{{ $lgSrc}}" alt="" />
+          <img class="img-fluid wvu-shadow-filter border border-3 border-dark" src="{{ $src}}" alt="" />
         </div>
       {{ end }}
     </div>
