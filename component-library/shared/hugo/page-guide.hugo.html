@@ -103,12 +103,10 @@
                         </div>
                       {{ end }}
 
-                      <div class="bg-light text-dark">Is Dynamic: {{ .is_dynamic }}<br>Show Content: {{ .settings.config.show_content }}</div>
-
-                      {{ if and (not .is_dynamic) .settings.config.show_content }}
-                        {{ partial "bookshop" . }}
-                      {{ else }}
+                      {{ if and .is_dynamic (not .settings.config.show_content) }}
                         Is dynamic.
+                      {{ else }}
+                        {{ partial "bookshop" . }}
                       {{ end }}
 
                       {{ with .postscript }}
@@ -129,7 +127,11 @@
                         </div>
                       {{ end }}
                     {{ else }}
-                      {{ partial "bookshop" . }}
+                      {{ if and (not .is_dynamic) .settings.config.show_content }}
+                        {{ partial "bookshop" . }}
+                      {{ else }}
+                        Is dynamic.
+                      {{ end }}
                     {{ end }}
                   {{ else }}
                     <div class="row justify-content-center gx-xl-5">
