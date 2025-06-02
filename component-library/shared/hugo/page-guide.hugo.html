@@ -127,10 +127,10 @@
                         </div>
                       {{ end }}
                     {{ else }}
-                      {{ if and (not .is_dynamic) .settings.config.show_content }}
-                        {{ partial "bookshop" . }}
-                      {{ else }}
+                      {{ if and .is_dynamic (not .settings.config.show_content) }}
                         Is dynamic.
+                      {{ else }}
+                        {{ partial "bookshop" . }}
                       {{ end }}
                     {{ end }}
                   {{ else }}
