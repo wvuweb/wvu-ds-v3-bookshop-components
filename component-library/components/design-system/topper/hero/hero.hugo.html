@@ -46,7 +46,7 @@
   {{ end }}
 {{- end -}}
 
-<header id="" class="c-topper-hero {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7 text-center">
+<header id="" class="c-topper-hero {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7">
   {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   <div class="container wvu-z-index-content">
     <div class="{{ .topper.settings.layout.buffer }}">
@@ -64,7 +64,7 @@
 
           <p class="fs-3 my-3 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ .topper.subheading }}</span></p>
 
-          {{ with .topper.body_text }}
+          {{ with .topper.markdown }}
             <div class="mt-5 wvu-b-text">
               {{ . | markdownify }}
             </div>
@@ -84,7 +84,7 @@
 
           {{ with .topper.postscript }}
             <div class="mt-4">
-              {{ .copy | markdownify }}
+              {{ .markdown | markdownify }}
             </div>
           {{ end }}
         </div>

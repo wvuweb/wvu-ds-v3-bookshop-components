@@ -8,7 +8,7 @@
       </h2>
       <div id="collapse-{{ $index }}" class="accordion-collapse collapse" data-bs-parent="#accordion">
         <div class="accordion-body">
-          {{ .panel_text | markdownify }}
+          {{ .markdown | markdownify }}
         </div>
       </div>
     </div>

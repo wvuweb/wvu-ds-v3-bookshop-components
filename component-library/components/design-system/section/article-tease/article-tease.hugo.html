@@ -1,5 +1,5 @@
+{{ $label := .label }}
 {{ $articles := "" }}
-
 {{ $tags := slice }}
 
 {{ if .article_tags }}
@@ -26,91 +26,96 @@
     {{ $authorData = where site.Data.people_data ".type" "author" }}
   {{ end }}
 
-  <div class="row gx-xxl-5">
-    {{ range first 1 $articles }}
+  <div class="wvu-b-border wvu-b-shadow">
+    <div class="row gx-0">
+      {{ range first 1 $articles }}
 
-      {{ $params := "" }}
-      {{ $link := "" }}
+        {{ $params := "" }}
+        {{ $link := "" }}
 
-      {{ if not site.Params.env_bookshop_live }}
-        {{ $params = .Params }}
-        {{ $link = .RelPermalink }}
-      {{ else }}
-        {{ $params = . }}
-      {{ end }}
-
-      {{ $authors := slice }}
-
-      {{ if $params.authors }}
-        {{ $authors = $params.authors }}
-      {{ end }}
-      
-      {{ $authorList := slice }}
-
-      {{ range $authorData }}
-        {{ $author := . }}
         {{ if not site.Params.env_bookshop_live }}
-          {{ $author = .Params }}
+          {{ $params = .Params }}
+          {{ $link = .RelPermalink }}
+        {{ else }}
+          {{ $params = . }}
         {{ end }}
-        {{ range $authors }}
-          {{ if eq .author $author.uuid }}
-            {{ $authorList = $authorList | append $author }}
+
+        {{ $authors := slice }}
+
+        {{ if $params.authors }}
+          {{ $authors = $params.authors }}
+        {{ end }}
+        
+        {{ $authorList := slice }}
+
+        {{ range $authorData }}
+          {{ $author := . }}
+          {{ if not site.Params.env_bookshop_live }}
+            {{ $author = .Params }}
+          {{ end }}
+          {{ range $authors }}
+            {{ if eq .author $author.uuid }}
+              {{ $authorList = $authorList | append $author }}
+            {{ end }}
           {{ end }}
         {{ end }}
-      {{ end }}
-      
-      {{ $src := $params.image }}
+        
+        {{ $src := $params.image }}
 
-      {{- if not site.Params.env_bookshop_live -}}
-        {{ $image := "" }}
-        {{/*  Get the image, either from its remote or local source  */}}
-        {{ if hasPrefix $src "http"}}
-          {{ $image = resources.GetRemote $params.image }}
-        {{ else }}
-          {{ $image = resources.Get $params.image }}
-        {{ end }}
+        {{- if not site.Params.env_bookshop_live -}}
+          {{ $image := "" }}
+          {{/*  Get the image, either from its remote or local source  */}}
+          {{ if hasPrefix $src "http"}}
+            {{ $image = resources.GetRemote $params.image }}
+          {{ else }}
+            {{ $image = resources.Get $params.image }}
+          {{ end }}
 
-        {{/* Resize images and add them to a variable  */}}
-        {{ if and $image (ne $image.MediaType.SubType "svg") }}
-          {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
-        {{ end }}
-      {{- end -}}
-      
-      <div class="col-12 mb-4">
-        {{ if $src }}
-          <div class="wvu-article__thumb mb-4">
-            <div class="ratio ratio-3x2 bg-light">
-              <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
-                <img class="h-100 w-100 object-fit-cover" src="{{ $src }}" alt="" />
-              </a>
+          {{/* Resize images and add them to a variable  */}}
+          {{ if and $image (ne $image.MediaType.SubType "svg") }}
+            {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+          {{ end }}
+        {{- end -}}
+        
+        <div class="col-lg-12">
+          {{ if $src }}
+            <div class="wvu-article__thumb h-100">
+              <img class="h-100 img-fluid object-fit-cover" src="{{ $src }}" alt="" />
             </div>
+          {{ end }}
+        </div>
+
+        <div class="col-lg-12">
+          <div class="position-relative h-100 wvu-b-subtle p-5 p-xxl-6">
+
+            {{ with $label }}
+              <p class="wvu-b-label">{{ . }}</p>
+            {{ end }}
+
+            <h2 class="display-5" itemprop="headline"><a class="wvu-b-display-heading stretched-link text-decoration-none" href="{{ $link }}"><span class="wvu-b-font-adjust">{{ $params.title }}</span></a></h2>
+
+            {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
+              <p class="small d-block">
+                {{ if not $params.config.hide_author }}
+                  {{ range $authorList }}
+                    <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                      <span itemprop="name">
+                        {{ .name }}
+                      </span>
+                    </span>
+                  {{ end }}
+                {{ end }}
+
+                {{ if and (not $params.config.hide_author) ( $params.publishDate ) }} | {{ end }}
+
+                {{ if $params.publishDate }}
+                  <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
+                {{ end }}
+              </p>
+            {{ end }}
           </div>
-        {{ end }}
-      </div>
-
-      <div class="col-12">
-        <h2 class="display-5" itemprop="headline"><a class="text-decoration-none" href="{{ $link }}">{{ $params.title }}</a></h2>
-
-        {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
-          <p class="small d-block">
-            {{ if not $params.config.hide_author }}
-              {{ range $authorList }}
-                <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                  <span itemprop="name">
-                    {{ .name }}
-                  </span>
-                </span>
-              {{ end }}
-            {{ end }}
-
-            {{ if and (not $params.config.hide_author) ( $params.publishDate ) }} | {{ end }}
-
-            {{ if $params.publishDate }}
-              <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
-            {{ end }}
-          </p>
-        {{ end }}
-      </div>
-    {{ end }}
+        </div>
+      {{ end }}
+    </div>
   </div>
 {{ end }}

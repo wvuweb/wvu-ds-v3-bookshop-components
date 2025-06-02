@@ -11,14 +11,12 @@ spec:
 blueprint:
   panels:
     - title: Panel 1 Title
-      panel_text: Panel 1 text.
+      markdown: Panel 1 text.
     - title: Panel 2 Title
-      panel_text: Panel 2 text.
+      markdown: Panel 2 text.
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  panel_text:
-    type: markdown

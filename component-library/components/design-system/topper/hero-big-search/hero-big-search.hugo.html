@@ -1,63 +1,112 @@
-{{ $topper := . }}
+{{ $src := .topper.background_image }}
 {{ $backgroundColor := "" }}
-{{ $image := "" }}
-{{ $alt := "" }}
-{{ $backgroundColor := "bg-dark" }}
-{{ $textColor := "text-white" }}
-{{ $layerStyles := "" }}
-{{ $sectionMargin := "" }}
-{{ $headingColor := "" }}
+{{ $headingSize := "display-2" }}
+{{ $placement := "mx-xl-auto text-center" }}
+{{ $buttonColor := "primary" }}
 
-{{ if $topper.styles.section.background_c }}{{ $backgroundColor = $topper.styles.section.background_c }}{{ end }}
-{{ if $topper.styles.section.text_c }}{{ $textColor = $topper.styles.section.text_c }}{{ end }}
-{{ if $topper.background_image }}{{ $image = $topper.background_image }}{{ end }}
-{{ if $topper.alt_text }}{{ $alt = $topper.alt_text }}{{ end }}
-{{ if $topper.styles.background_layers }}{{ $layerStyles = $topper.styles.background_layers }}{{ end }}
-{{ if $topper.styles.heading.c }}{{ $headingColor = $topper.styles.heading.c }}{{ end }}
+{{ $audienceOverride := "" }}
+{{ $toneOverride := "" }}
 
-<header id="big-search-1" aria-labelledby="big-search-1-label" class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} text-center {{ $backgroundColor }} {{ $textColor }} position-relative">
-  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
-  <div class="container wvu-z-index-content py-7">
-    <div class="row">
-      <div class="col-xl-16 mx-xl-auto">
-        {{ if .topper.heading }}
-          <h1 class="wvu-shout wvu-text-letter-spacing-lg mb-6">{{ .title }}</h1>
-        {{ end }}
-        <h2 id="big-search-1-label" class="display-5 oliviar-black {{ $headingColor }} text-uppercase mb-3">{{ if .topper.heading }}{{ .topper.heading  }}{{ else }}{{ .title }}{{ end }}</h2>
-        <p class="helvetica-neue-light h3 mb-0">{{ .topper.subheading }}</p>
-      </div>
-    </div>
-    <div class="row d-flex justify-content-center my-2">
-      <div class="col-md-12 mx-auto">
-        <div class="row mb-4">
-          <div class="col-md-24">
-            <form class="form-inline w-100" action="https://search.wvu.edu/search" method="get" role="search">
-              <input id="big-search-query" type="hidden" name="q" value="site:designsystem.wvu.edu">
-              <input id="big-search-sort" name="sort" type="hidden" value="date:D:L:d1">
-              <input id="big-search-output" name="output" type="hidden" value="xml_no_dtd">
-              <input id="big-search-ie" name="ie" type="hidden" value="UTF-8">
-              <input id="big-search-oe" name="oe" type="hidden" value="UTF-8">
-              <input id="big-search-proxystylesheet" name="proxystylesheet" type="hidden" value="default_frontend">
-              <input id="big-search-client" name="client" type="hidden" value="default_frontend">
-              <label id="big-search-label" for="big-search-input">
-                <span class="visually-hidden">Search</span>
-              </label>
-              <div class="input-group shadow-sm w-100">
-                <input id="big-search-input" class="form-control p-4 h1 mb-0" name="q" type="search" placeholder="Type in your search term.">
-                <button class="btn btn-primary px-4 px-lg-5" name="btnG" type="submit">
-                  <span class="d-block">
-                    <span class="h3 mb-0 fa-solid fa-magnifying-glass" aria-hidden="true"></span>
-                  </span>
-                  <span class="visually-hidden">Search</span>
-                </button>
+{{ if .topper.settings.styles.audience }}
+  {{ $audienceOverride = "override-audience-styles-site" }}
+{{ end }}
+
+{{ if .topper.settings.styles.tone }}
+  {{ $toneOverride = "override-tone-styles-site" }}
+{{ end }}
+
+{{ if .topper.settings.styles.color_palette }}
+  {{ $backgroundColor = .topper.settings.styles.color_palette }}
+{{ end }}
+
+{{ if and .topper.background_image (not .topper.settings.styles.enable_blend) }}
+  {{ $backgroundColor = "option-2" }}
+{{ end }}
+
+{{ with .topper.settings.styles.heading_size }}
+  {{ $headingSize = . }}
+{{ end }}
+
+{{- if not site.Params.env_bookshop_live -}}
+  {{ $image := "" }}
+  {{/*  Get the image, either from its remote or local source  */}}
+  {{ if hasPrefix $src "http"}}
+    {{ $image = resources.GetRemote .topper.background_image }}
+  {{ else }}
+    {{ $image = resources.Get .topper.background_image }}
+  {{ end }}
+
+  {{/* Resize images and add them to a variable  */}}
+  {{ if and $image (ne $image.MediaType.SubType "svg") }}
+    {{ if eq .imageProcess "fit" }}
+      {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+    {{ else }}
+      {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{- end -}}
+
+<header id="" class="c-topper-hero {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7">
+  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
+  <div class="container wvu-z-index-content">
+    <div class="{{ .topper.settings.layout.buffer }}">
+      <div class="row py-6">
+        <div class="col-xl-16 col-xxl-12 text-center mx-xl-auto">
+          {{ with .topper.label }}
+            <p class="h6 mb-6 wvu-b-label">{{ . }}</p>
+          {{ end }}
+          
+          {{ with .topper.heading }}
+            <h1 id="" class="wvu-b-display-heading wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }}" data-text="{{ . }}">
+              <span class="wvu-b-font-adjust">{{ . }}</span>
+            </h1>
+          {{ end }}
+
+          <p class="fs-3 my-3 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ .topper.subheading }}</span></p>
+
+          {{ with .topper.markdown }}
+            <div class="mt-5 wvu-b-text">
+              {{ . | markdownify }}
+            </div>
+          {{ end }}
+
+          <div class="row d-flex justify-content-center my-2">
+            <div class="col-md-24 mx-auto">
+              <div class="row mb-4">
+                <div class="col-md-24">
+                  <form class="form-inline w-100" action="https://search.wvu.edu/search" method="get" role="search">
+                    <input id="big-search-query" type="hidden" name="q" value="site:designsystem.wvu.edu">
+                    <input id="big-search-sort" name="sort" type="hidden" value="date:D:L:d1">
+                    <input id="big-search-output" name="output" type="hidden" value="xml_no_dtd">
+                    <input id="big-search-ie" name="ie" type="hidden" value="UTF-8">
+                    <input id="big-search-oe" name="oe" type="hidden" value="UTF-8">
+                    <input id="big-search-proxystylesheet" name="proxystylesheet" type="hidden" value="default_frontend">
+                    <input id="big-search-client" name="client" type="hidden" value="default_frontend">
+                    <label id="big-search-label" for="big-search-input">
+                      <span class="visually-hidden">Search</span>
+                    </label>
+                    <div class="input-group shadow-sm w-100">
+                      <input id="big-search-input" class="form-control p-4 h1 mb-0" name="q" type="search" placeholder="{{ .topper.placeholder }}">
+                      <button class="btn wvu-b-btn px-4 px-lg-5" name="btnG" type="submit">
+                        <span class="d-block">
+                          <span class="h3 mb-0 fa-solid fa-magnifying-glass" aria-hidden="true"></span>
+                        </span>
+                        <span class="visually-hidden">Search</span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
-            </form>
+            </div>
           </div>
+
+          {{ with .topper.postscript }}
+            <div class="mt-4">
+              {{ .markdown | markdownify }}
+            </div>
+          {{ end }}
         </div>
       </div>
-    </div>      
-    <p class="mb-0">Not sure what to search for? Browse our 
-      <a class="text-wvu-blue" href="#">categories</a>.
-    </p>  
+    </div>
   </div>
 </header>

@@ -8,27 +8,33 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
+  label:
   background_image:
   alt_text:
-  heading:
-    - text: Heading
+  heading: Heading
   subheading: Subheading.
-  placeholder:
-  vibe: down_to_business
-  background_c: bg-dark text-white
-  heading_c:
-  background_layers:
-    img_blend_mode:
-    img_opacity: .4
-    pattern: 
-    pattern_c: bg-white
-    pattern_opacity: .2
-    tint_opacity:
-    texture: false
+  placeholder: Type in your search term.
+  markdown:
+  postscript:
+    markdown:
+    ctas:
+  settings:
+    styles:
+      audience: general
+      tone: loud
+      color_palette: option-2
+      enable_blend: false
+      enable_pattern: false
+      tint_opacity: "0.7"
+      heading_size: display-2
+    layout:
+      buffer:
+      text_placement: mx-auto text-center
+    config:
+      show_label: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  placeholder:

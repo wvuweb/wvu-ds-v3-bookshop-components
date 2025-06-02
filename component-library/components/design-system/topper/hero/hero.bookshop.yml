@@ -14,14 +14,14 @@ blueprint:
   alt_text:
   heading: Heading
   subheading: Subheading.
-  body_text:
+  markdown:
   ctas:
     - text:
       button_c:
       icon:
       url:
   postscript:
-    copy:
+    markdown:
     ctas:
   settings:
     styles:
@@ -43,35 +43,5 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  highlight:
-    hidden: true
-  body_text:
-    type: markdown
-  container_margin:
-    type: select
-    options:
-      values: _select_data.topper_margins
-      value_key: class
   enable_pattern:
     hidden: true
-  heading_size:
-    type: select
-    options:
-      values:
-        - name: Large
-          class: display-2
-        - name: Medium
-          class: display-3
-        - name: Small
-          class: display-4
-  text_placement:
-    type: select
-    options:
-      values:
-        - name: Left
-          class: me-auto text-start
-        - name: Center
-          class: mx-auto text-center
-        - name: Right
-          class: ms-auto text-start
-      value_key: class
