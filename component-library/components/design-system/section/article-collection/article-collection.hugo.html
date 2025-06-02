@@ -98,7 +98,7 @@
           {{ end }}
 
           <div class="mt-3 mt-md-0">
-            <h2 class="fs-5" itemprop="headline"><a class="wvu-b-display-heading text-decoration-none stretched-link" href="{{ $link }}">{{ $params.title }}</a></h2>
+            <h2 class="h4" itemprop="headline"><a class="wvu-b-display-heading text-decoration-none stretched-link" href="{{ $link }}">{{ $params.title }}</a></h2>
 
             {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
               <p class="small d-block">
@@ -118,6 +118,10 @@
                   <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
                 {{ end }}
               </p>
+            {{ end }}
+
+            {{ with $params.teaser }}
+              <p>{{ . }}</p>
             {{ end }}
           </div>
 

@@ -1,5 +1,4 @@
 {{ $label := .label }}
-{{ $articles := "" }}
 {{ $tags := slice }}
 
 {{ if .article_tags }}
@@ -12,6 +11,8 @@
   {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
 {{ else }}
 
+  {{ $articles := slice }}
+  {{ $photoEssays := slice }}
   {{ $authorData := slice }}
 
   {{ if not site.Params.env_bookshop_live }}
@@ -20,13 +21,15 @@
     {{ $articles = sort $articles "Params.publishDate" "asc" }}
     {{ $authorData = where site.RegularPages "Params.type" "eq" "author" }}
   {{ else }}
-    {{ $articles = where site.Data.site_pages ".type" "articles" }}
+    {{ $articles = where site.Data.site_pages ".type" "eq" "articles" }}
+    {{ $photoEssays = where site.Data.site_pages ".type" "eq" "photo-essay" }}
+    {{ $articles = $articles | append $photoEssays }}
     {{ $articles = where $articles ".article_tags" "intersect" $tags }}
     {{ $articles = sort $articles ".publishDate" "asc" }}
     {{ $authorData = where site.Data.people_data ".type" "author" }}
   {{ end }}
 
-  <div class="wvu-b-border wvu-b-shadow">
+  <div class="wvu-b-border wvu-b-shadow wvu-b-subtle">
     <div class="row gx-0">
       {{ range first 1 $articles }}
 
@@ -113,6 +116,14 @@
                 {{ end }}
               </p>
             {{ end }}
+
+            {{ with $params.teaser }}
+              <p>{{ . }}</p>
+            {{ end }}
+
+            <div class="mt-4">
+              <span class="display-4 fa-thin fa-arrow-circle-right wvu-b-accent-text"></span>
+            </div>
           </div>
         </div>
       {{ end }}
