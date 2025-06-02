@@ -103,6 +103,8 @@
                         </div>
                       {{ end }}
 
+                      <div class="bg-light text-dark">Is Dynamic: {{ .is_dynamic }}<br>Show Content: {{ .settings.config.show_content }}</div>
+
                       {{ if and (not .is_dynamic) .settings.config.show_content }}
                         {{ partial "bookshop" . }}
                       {{ else }}
