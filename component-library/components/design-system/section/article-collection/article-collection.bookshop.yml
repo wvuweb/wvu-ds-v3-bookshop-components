@@ -37,6 +37,7 @@ blueprint:
       show_content: false
       show: 2024-09-01
       hide: 2099-09-01
+  is_dynamic: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

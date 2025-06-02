@@ -103,7 +103,11 @@
                         </div>
                       {{ end }}
 
-                      {{ partial "bookshop" . }}
+                      {{ if and (not .is_dynamic) .settings.config.show_content }}
+                        {{ partial "bookshop" . }}
+                      {{ else }}
+                        Is dynamic.
+                      {{ end }}
 
                       {{ with .postscript }}
                         <div class="text-center">
