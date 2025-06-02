@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mb-n5 justify-content-center wvu-justify-children text-center">
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
   {{ else if and (site.Params.env_bookshop_live) (not .settings.config.show_content) }}
@@ -28,8 +28,10 @@
         {{ end }}
 
         {{ if eq $contact.uuid $uuid }}
-          <div class="col-xxl-6 mb-4">
-            {{ with $label }}<div class="mb-3 position-relative"><p class="helvetica-neue-bold p-1 small bg-wvu-accent--sunset d-inline-block">{{ . }}</p></div>{{ end }}
+          <div class="col-xxl-6 mb-5 position-relative">
+            {{ with $label }}
+              <p class="wvu-b-label position-absolute mt-n4 w-100" style="top: 0; left: 0;"><span class="px-2 py-0 mb-2 small border border-2 d-inline-block">{{ . }}</span></p>
+            {{ end }}
 
             {{ if $contact.profile_image }}
 
@@ -49,14 +51,12 @@
                   {{ $src = ($image.Fill (printf "%dx%d webp" 960 960)).RelPermalink }}
                 {{ end }}
               {{- end -}}
-
-              <div class="col-8">
-                <div class="ratio ratio-1x1">
+              <div class="w-100 d-flex justify-content-center">
+                <div class="ratio ratio-1x1 mb-3 mt-3" style="max-width: 175px;">
                   <img class="object-fit rounded-circle" src="{{ $src }}" alt="Portrait of {{ $contact.name }}" />
                 </div>
               </div>
             {{ end }}
-            <div class="col">
               <h3 class="h5">{{ $contact.name }}</h3>
               {{ with $contact.staff_contact_info }}
                 <p class="small">
@@ -65,7 +65,6 @@
                   {{ end }}
                 </p>
               {{ end }}
-            </div>
           </div>
         {{ end }}
       {{ end }}

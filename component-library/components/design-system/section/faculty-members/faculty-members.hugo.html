@@ -36,14 +36,14 @@
       
         {{/* Resize images and add them to a variable  */}}
         {{ if and $image (ne $image.MediaType.SubType "svg") }}
-          {{ $src = ($image.Fill (printf "%dx%d webp" 600 400)).RelPermalink }}
+          {{ $src = ($image.Fill (printf "%dx%d webp" 400 600)).RelPermalink }}
         {{ end }}
       {{- end -}}
 
       <div class="col-sm-12 col-lg-6 col-xl-4">
 
         <div class="ratio ratio-3x4 bg-light mb-3">
-
+          <img class="img-fluid h-100 object-fit-cover" src="{{ $src }}" alt="" />
         </div>
 
         <h3 class="h5 mb-1">{{ $params.name }}</h3>
