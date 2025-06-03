@@ -1,27 +1,27 @@
 {{ $styles := .settings.styles }}
 
-{{ if .heading }}
-  <h2 class="h6 mb-3 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
-{{ end }}
-
-<div class="row gx-4">
+<div class="p-5 wvu-b-subtle h-100">
+  {{ if .heading }}
+    <h2 class="h6 mb-4 wvu-b-label">{{ .heading }}</h2>
+  {{ end }}
   {{ range .items }}
-
-    <div class="col-lg-6">
-      <div class="mb-2 d-flex justify-content-center">
-        <div class="bg-wvu-{{ .settings.styles.icon_c }} h1 rounded-circle p-4 d-flex mx-auto align-items-center justify-content-center">
-          <span class="fa-solid fa-{{ .icon }} position-absolute" aria-hidden="true"></span>
-        </div>
-      </div> 
-    </div>
-    <div class="col-lg-18">
-      <h3 class="h2">{{ .title }}</h3>
-      <p>{{ .text | markdownify }}</p>
-      {{ with .ctas }}
-        {{ range . }}
-          <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+    <div class="row gx-4 mb-4">
+      <div class="col-lg-4">
+        <div class="mb-2 d-flex justify-content-center">
+          <div class="bg-wvu-{{ .settings.styles.icon_c }} h1 rounded-circle p-4 d-flex mx-auto align-items-center justify-content-center">
+            <span class="fa-solid fa-{{ .icon }} position-absolute" aria-hidden="true"></span>
+          </div>
+        </div> 
+      </div>
+      <div class="col-lg-20">
+        <h3 class="h2 wvu-b-display-heading">{{ .title }}</h3>
+        <p>{{ .text | markdownify }}</p>
+        {{ with .ctas }}
+          {{ range . }}
+            <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+          {{ end }}
         {{ end }}
-      {{ end }}
+      </div>
     </div>
   {{ end }}
 </div>

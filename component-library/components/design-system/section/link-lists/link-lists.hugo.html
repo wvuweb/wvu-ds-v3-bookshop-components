@@ -9,9 +9,9 @@
               <p class="mb-0">{{ .description }}</p>
             </div>
             <div class="col-lg-10">
-              <ul class="wvu-ul-chevrons">
+              <ul class="wvu-ul-chevrons my-n4">
                 {{ range .items }}
-                  <li><a class="text-decoration-none" href="{{ .url }}">{{ .text }}</a></li>
+                  <li class="position-relative my-4"><a class="text-decoration-none stretched-link" href="{{ .url }}">{{ .text }}</a></li>
                 {{ end }}
               </ul>
             </div>
