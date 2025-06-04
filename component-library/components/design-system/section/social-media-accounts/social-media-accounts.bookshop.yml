@@ -11,7 +11,8 @@ spec:
 blueprint:
   heading: Follow Us
   items:
-    - social_media_platform:
+    - class:
+      platform:
       username:
       url:
   settings:

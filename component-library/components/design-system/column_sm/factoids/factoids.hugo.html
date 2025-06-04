@@ -1,23 +1,20 @@
-{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-  <div class="c-factoids">
-    <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
-    {{ range .items }}
-      <p class="">
-        {{ if .pre }}
-          <span class="d-block helvetica-neue-bold small">{{ .pre }}</span>
-        {{ end }}
-        
-        <span class="d-block oliviar-black display-4">{{ .stat }}</span>
-        
-        {{ if .post }}
-          <span class="d-block helvetica-neue-bold small">{{ .post }}</span>
-        {{ end }}
+<div class="c-factoids wvu-b-subtle p-5 h-100">
+  <h2 class="h6 wvu-b-label mb-4">{{ .heading }}</h2>
+  {{ range .items }}
+    <p class="mb-4">
+      {{ if .pre }}
+        <span class="d-block small">{{ .pre }}</span>
+      {{ end }}
+      
+      <span class="d-block wvu-b-display-heading display-4">{{ .stat }}</span>
+      
+      {{ if .post }}
+        <span class="d-block small">{{ .post }}</span>
+      {{ end }}
 
-        {{ if .source }}
-          <span class="d-block small"><em>{{ .source }}</em></span>
-        {{ end }}
-      </p>
-      <hr class="wvu-hr-dotted" />
-    {{ end }}
-  </div>
-{{ end }}
+      {{ if .source }}
+        <span class="d-block small"><em>{{ .source }}</em></span>
+      {{ end }}
+    </p>
+  {{ end }}
+</div>

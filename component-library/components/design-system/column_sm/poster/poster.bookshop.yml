@@ -12,16 +12,12 @@ spec:
 blueprint:
   heading: Headline
   subheading:
+  label: 
   image:
-  body:
-  ctas:
-    - text:
-      url:
+  url:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  body:
-    type: markdown

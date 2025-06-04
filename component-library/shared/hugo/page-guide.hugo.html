@@ -81,127 +81,125 @@
         {{ end }}
       {{ end }}
       <div class="{{ .settings.layout.buffer }}">
-        <div class="container wvu-z-index-content">
-          <div class="row">
-            <div class="container">
-              <div class="{{ with .settings.layout.max_cols }}col-xxl-{{ . }} mx-xxl-auto{{ end }}">            
-                <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}bg-option-1 p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
-                  
-                  {{ if not .is_nested }}
-                    {{ if .settings.config.include_heading_postscript }}
-                      {{ if .heading }}
-                        <div class="pb-3">
-                          <div class="mb-5 text-center">
-                            {{ with .heading }}
-                              <h2 class="wvu-b-label h1 mb-3">{{ . }}</h2>
-                            {{ end }}
+        <div class="container{{ with .settings.layout.full_bleed }}-fluid px-0{{ end }} wvu-z-index-content">
+          <div class="{{ if not .settings.layout.full_bleed }}row{{ end }}">
+            <div class="{{ with .settings.layout.max_cols }}col-xxl-{{ . }} mx-xxl-auto{{ end }}">            
+              <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}bg-option-1 p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
+                
+                {{ if not .is_nested }}
+                  {{ if .settings.config.include_heading_postscript }}
+                    {{ if .heading }}
+                      <div class="pb-3">
+                        <div class="mb-5 text-center">
+                          {{ with .heading }}
+                            <h2 class="wvu-b-label h1 mb-3">{{ . }}</h2>
+                          {{ end }}
 
-                            {{ with .subheading }}
-                              <p class="config-light fs-5 mb-3">{{ . }}</p>
+                          {{ with .subheading }}
+                            <p class="config-light fs-5 mb-3">{{ . }}</p>
+                          {{ end }}
+                        </div>
+                      </div>
+                    {{ end }}
+
+                    {{ if and site.Params.env_bookshop_live .is_dynamic (not .settings.config.show_content) }}
+                      Is dynamic.
+                    {{ else }}
+                      {{ partial "bookshop" . }}
+                    {{ end }}
+
+                    {{ with .postscript }}
+                      <div class="text-center">
+                        {{ with .copy }}
+                          <div class="mb-4">
+                            {{ . | markdownify }}
+                          </div>
+                        {{ end }}
+
+                        {{ with .ctas }}
+                          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                            {{ range . }}
+                              <a class="btn wvu-b-subtle" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
                             {{ end }}
                           </div>
-                        </div>
-                      {{ end }}
-
-                      {{ if and site.Params.env_bookshop_live .is_dynamic (not .settings.config.show_content) }}
-                        Is dynamic.
-                      {{ else }}
-                        {{ partial "bookshop" . }}
-                      {{ end }}
-
-                      {{ with .postscript }}
-                        <div class="text-center">
-                          {{ with .copy }}
-                            <div class="mb-4">
-                              {{ . | markdownify }}
-                            </div>
-                          {{ end }}
-
-                          {{ with .ctas }}
-                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                              {{ range . }}
-                                <a class="btn btn-{{ $styles.background_c }} bg-{{ $styles.background_c }}-subtle" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-                              {{ end }}
-                            </div>
-                          {{ end }}
-                        </div>
-                      {{ end }}
-                    {{ else }}
-                      {{ if and site.Params.env_bookshop_live .is_dynamic (not .settings.config.show_content) }}
-                        Is dynamic.
-                      {{ else }}
-                        {{ partial "bookshop" . }}
-                      {{ end }}
+                        {{ end }}
+                      </div>
                     {{ end }}
                   {{ else }}
-                    <div class="row justify-content-center gx-xl-5">
-                      {{ with .column_a }}
-                        <div class="col-xl mb-5 mb-xl-0">
-                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
-                            {{ partial "bookshop" . }}
-                          {{ else }}
-                            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
-                          {{ end }}
-                        </div>
-                      {{ end }}
-                      {{ with .column_b }}
-                        <div class="col-xl mb-5 mb-xl-0">
-                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
-                            {{ partial "bookshop" . }}
-                          {{ else }}
-                            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
-                          {{ end }}
-                        </div>
-                      {{ end }}
-                      {{ with .column_c }}
-                        <div class="col-xl mb-5 mb-xl-0">
-                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
-                            {{ partial "bookshop" . }}
-                          {{ else }}
-                            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
-                          {{ end }}
-                        </div>
-                      {{ end }}
-                      {{ with .column_aa }}
-                        <div class="col-24 col-lg-10 col-xl-8">
-                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
-                            {{ partial "bookshop" . }}
-                          {{ else }}
-                            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
-                          {{ end }}
-                        </div>
-                      {{ end }}
-                      {{ with .column_aaa }}
-                        <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
-                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
-                            {{ partial "bookshop" . }}
-                          {{ else }}
-                            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
-                          {{ end }}
-                        </div>
-                      {{ end }}
-                      {{ with .column_bbb }}
-                        <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
-                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
-                            {{ partial "bookshop" . }}
-                          {{ else }}
-                            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
-                          {{ end }}
-                        </div>
-                      {{ end }}
-                      {{ with .column_aaaa }}
-                        <div class="col-24 col-lg-6 col-xl-4 mb-5 mb-xl-0">
-                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
-                            {{ partial "bookshop" . }}
-                          {{ else }}
-                            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
-                          {{ end }}
-                        </div>
-                      {{ end }}
-                    </div>
+                    {{ if and site.Params.env_bookshop_live .is_dynamic (not .settings.config.show_content) }}
+                      Is dynamic.
+                    {{ else }}
+                      {{ partial "bookshop" . }}
+                    {{ end }}
                   {{ end }}
+                {{ else }}
+                  <div class="row justify-content-center gx-xl-5">
+                    {{ with .column_a }}
+                      <div class="col-xl mb-5 mb-xl-0">
+                        {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
+                          {{ partial "bookshop" . }}
+                        {{ else }}
+                          {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                    {{ with .column_b }}
+                      <div class="col-xl mb-5 mb-xl-0">
+                        {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
+                          {{ partial "bookshop" . }}
+                        {{ else }}
+                          {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                    {{ with .column_c }}
+                      <div class="col-xl mb-5 mb-xl-0">
+                        {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
+                          {{ partial "bookshop" . }}
+                        {{ else }}
+                          {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                    {{ with .column_aa }}
+                      <div class="col-24 col-lg-10 col-xl-8">
+                        {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
+                          {{ partial "bookshop" . }}
+                        {{ else }}
+                          {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                    {{ with .column_aaa }}
+                      <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
+                        {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
+                          {{ partial "bookshop" . }}
+                        {{ else }}
+                          {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                    {{ with .column_bbb }}
+                      <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
+                        {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
+                          {{ partial "bookshop" . }}
+                        {{ else }}
+                          {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                    {{ with .column_aaaa }}
+                      <div class="col-24 col-lg-6 col-xl-4 mb-5 mb-xl-0">
+                        {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
+                          {{ partial "bookshop" . }}
+                        {{ else }}
+                          {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                {{ end }}
 
-                </div>
               </div>
             </div>
           </div>

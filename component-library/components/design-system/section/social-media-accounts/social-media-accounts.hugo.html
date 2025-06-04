@@ -1,15 +1,14 @@
 <div class="row text-center text-md-start">
   <div class="col-md-8 mb-3 mb-md-0 d-md-flex align-items-center">        
-    <h2 id="social-media-1-label" class="helvetica-neue-light h1 mb-0">{{ .heading }}</h2>
+    <h2 id="social-media-1-label" class="wvu-b-display-heading h1 mb-0">{{ .heading }}</h2>
   </div>
   <div class="col-md-16 align-self-center">
     <ul class="list-inline float-md-end align-middle mb-0">
       {{ range .items }}
-        {{ $class := .social_media_platform | urlize }}
         <li class="list-inline-item">
-          <a class="bg-{{ $class }} h2 mb-0 text-decoration-none d-flex align-items-center justify-content-center rounded-circle p-5" href="{{ .url }}">
-            <span class="fab fa-{{ $class }} position-absolute" aria-hidden="true"></span>
-            <span class="visually-hidden">{{ .social_media_platform }}</span>
+          <a class="wvu-b-accent-bg h4 mb-0 text-decoration-none d-flex align-items-center justify-content-center rounded-circle p-4" href="{{ .url }}">
+            <span class="fab fa-{{ .icon }} position-absolute" aria-hidden="true"></span>
+            <span class="visually-hidden">{{ .platform }}</span>
           </a>
         </li>          
       {{ end }}

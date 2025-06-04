@@ -24,6 +24,7 @@ blueprint:
     layout:
       buffer:
       margin:
+      max_cols: 12
       padding: py-6 py-xxl-7
     config:
       edit_mode_only: false

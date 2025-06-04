@@ -1,5 +1,4 @@
-{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-  
+<div class="p-5 wvu-b-subtle h-100">
   {{ $contacts := slice }}
 
   {{ if .heading }}
@@ -72,5 +71,4 @@
       {{ end }}
     {{ end }}
   {{ end }}
-
-{{ end }}
+</div>
