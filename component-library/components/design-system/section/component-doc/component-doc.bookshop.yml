@@ -11,6 +11,9 @@ spec:
 blueprint:
   overview_markdown:
   when_to_use_markdown:
+  in_the_wild:
+    - text:
+      url:
   content_guidelines:
     - content:
       content_type:
@@ -20,9 +23,6 @@ blueprint:
   settings:
     layout:
       padding: py-6
-  in_the_wild:
-    - text:
-      url:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

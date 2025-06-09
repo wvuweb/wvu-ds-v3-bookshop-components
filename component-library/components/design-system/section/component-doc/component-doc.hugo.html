@@ -16,7 +16,7 @@
   {{ end }}
 </div>
 <div class="col-lg-12">
-  <h2 class="h5 text-uppercase">Content Guidelines</h2>
+  <h2 class="h5 wvu-b-label text-uppercase mb-3">Content Guidelines</h2>
   <table class="table">
     <thead>
       <tr>
@@ -30,7 +30,7 @@
       {{ range .content_guidelines }}
         <tr>
           <td>{{ .content }}{{ if .required }}*{{ end }}</td>
-          <td>{{ .content_type }}</td>
+          <td><pre>{{ .content_type }}</pre></td>
           <td>{{ .description }}</td>
           <td>{{ .max_chars }}</td>
         </tr>
