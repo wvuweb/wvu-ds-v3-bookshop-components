@@ -13,13 +13,16 @@ blueprint:
   when_to_use_markdown:
   content_guidelines:
     - content:
-      type:
+      content_type:
       description:
       max_chars:
       required:
   settings:
     layout:
       padding: py-6
+  in_the_wild:
+    - text:
+      url:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -28,11 +31,16 @@ preview:
 _inputs:
   max_chars:
     type: number
-  type:
+  content_type:
+    label: Type
     type: select
     options:
       values:
         - number
         - string
+  overview_markdown:
+    label: Overview
   required:
     type: checkbox
+  when_to_use_markdown:
+    label: When to Use

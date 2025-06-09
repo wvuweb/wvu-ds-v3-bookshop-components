@@ -1,9 +1,9 @@
 <div class="col-lg-12 mb-5 mb-lg-0">
-  {{ with .overview }}
+  {{ with .overview_markdown }}
     <h2>Overview</h2>
     {{ . | markdownify }}
   {{ end }}
-  {{ with .when_to_use }}
+  {{ with .when_to_use_markdown }}
     <h2>When to Use</h2>
     {{ . | markdownify }}
   {{ end }}
@@ -21,7 +21,7 @@
       {{ range .content_guidelines }}
         <tr>
           <td>{{ .content }}{{ if .required }}*{{ end }}</td>
-          <td>{{ .type }}</td>
+          <td>{{ .content_type }}</td>
           <td>{{ .description }}</td>
           <td>{{ .max_chars }}</td>
         </tr>
