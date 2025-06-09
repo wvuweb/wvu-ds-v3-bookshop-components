@@ -20,9 +20,6 @@ blueprint:
       description:
       max_chars:
       required:
-  settings:
-    layout:
-      padding: py-6
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
