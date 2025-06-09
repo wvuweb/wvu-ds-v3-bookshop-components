@@ -1,23 +1,19 @@
 <div class="wvu-z-index-content my-n4 my-lg-n5">
-  <div class="row">
-    <div class="col-xxl-16 mx-xxl-auto">
-      {{ range .lists }}
-        <div class="py-4 py-lg-5">
-          <div class="row gx-6 gx-xxl-6">
-            <div class="col-lg-14 mb-4 mb-lg-0">
-              <h2 class="display-6 wvu-b-display-heading wvu-b-accent-text wvu-text-shadow text-wvu-blue mb-3"><span class="wvu-b-font-adjust">{{ .topic }}</h2>
-              <p class="mb-0">{{ .description }}</p>
-            </div>
-            <div class="col-lg-10">
-              <ul class="wvu-ul-chevrons my-n4">
-                {{ range .items }}
-                  <li class="position-relative my-4"><a class="text-decoration-none stretched-link" href="{{ .url }}">{{ .text }}</a></li>
-                {{ end }}
-              </ul>
-            </div>
-          </div>
+  {{ range .lists }}
+    <div class="py-4 py-lg-5">
+      <div class="row gx-6 gx-xxl-6">
+        <div class="col-lg-14 mb-4 mb-lg-0">
+          <h2 class="display-6 wvu-b-display-heading wvu-b-accent-text wvu-text-shadow text-wvu-blue mb-3"><span class="wvu-b-font-adjust">{{ .topic }}</h2>
+          <p class="mb-0">{{ .description }}</p>
         </div>
-      {{ end }}
+        <div class="col-lg-10">
+          <ul class="wvu-ul-chevrons my-n4">
+            {{ range .items }}
+              <li class="position-relative my-4"><a class="text-decoration-none stretched-link" href="{{ .url }}">{{ .text }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
+  {{ end }}
 </div>

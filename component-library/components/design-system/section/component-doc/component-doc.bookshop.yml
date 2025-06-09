@@ -1,0 +1,37 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+  label: "Component Doc"
+  description:
+  icon:
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  overview_markdown:
+  when_to_use_markdown:
+  content_guidelines:
+    - content:
+      type:
+      description:
+      max_chars:
+      required:
+  settings:
+    layout:
+      padding: py-6
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  max_chars:
+    type: number
+  type:
+    type: select
+    options:
+      values:
+        - number
+        - string
+  required:
+    type: checkbox
