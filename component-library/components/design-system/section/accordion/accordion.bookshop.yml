@@ -27,6 +27,8 @@ blueprint:
       padding: py-6 py-xxl-7
       remove_container_background: false
     config:
+      name:
+      instance:
       edit_mode_only: false
       show: 2024-09-01
       hide: 2099-09-01

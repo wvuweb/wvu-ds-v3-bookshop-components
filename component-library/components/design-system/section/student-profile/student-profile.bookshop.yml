@@ -11,6 +11,8 @@ blueprint:
   heading:
   student:
   config:
+    name:
+    instance:
     edit_mode_only: false
     show_content: false
   styles:

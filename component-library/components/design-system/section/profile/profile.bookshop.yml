@@ -22,6 +22,8 @@ blueprint:
       show: 2024-09-01
       hide: 2099-09-01
   config:
+    name:
+    instance:
     edit_mode_only: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

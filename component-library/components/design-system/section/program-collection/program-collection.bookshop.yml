@@ -23,13 +23,16 @@ blueprint:
       site_page:
       url:
   lead: Lead text.
-  config:
-    edit_mode_only: false
-  layout:
-    margin_y:
-  styles:
-    item_headings:
-
+  settings:
+    styles:
+      item_headings:
+    layout:
+      margin_y:
+    config:
+      name:
+      instance:
+      edit_mode_only: false
+      
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 

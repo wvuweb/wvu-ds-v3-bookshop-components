@@ -27,6 +27,8 @@ blueprint:
       margin:
       padding: py-6 py-xxl-7
     config:
+      name:
+      instance:
       show_label: true
       include_heading_postscript: false
       show: 2024-09-01

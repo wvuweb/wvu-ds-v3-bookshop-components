@@ -6,6 +6,8 @@
   {{ partial "bookshop" . }}
 {{ end }}
 
+{{ $counter := 0 }}
+
 {{ range .blocks }}
 
   {{ if and .is_sitewide site.Params.env_bookshop_live }}
@@ -75,11 +77,13 @@
 
   {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
 
+    {{ $counter = add $counter 1 }}
+
     {{ $styles := .settings.styles }}
 
     <div class="bg-white pb-1">
       <div class="container">
-        <p><span class="wvu-b-label">Example x</span><br><code>audience-{{ .settings.styles.audience }}</code>, <code>tone-{{ .settings.styles.tone }}</code>{{ if not .background_image }}, <code>bg-{{ .settings.styles.color_palette }}</code>{{ end }}</p>
+        <p><span class="wvu-b-label">Example {{ $counter }}</span><br><code>audience-{{ .settings.styles.audience }}</code>, <code>tone-{{ .settings.styles.tone }}</code>{{ if not .background_image }}, <code>bg-{{ .settings.styles.color_palette }}</code>{{ end }}</p>
       </div>
     </div>
 
