@@ -11,8 +11,7 @@ spec:
 blueprint:
   heading: Article Collection Heading
   subheading: Subheading goes here.
-  article_tags:
-    - featured
+  article_tags: []
   postscript:
     copy:
     ctas:
