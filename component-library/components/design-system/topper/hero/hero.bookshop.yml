@@ -35,6 +35,7 @@ blueprint:
     layout:
       buffer:
       text_placement: mx-auto text-center
+      background_position:
     config:
       show_label: true
 
