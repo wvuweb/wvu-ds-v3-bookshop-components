@@ -1,0 +1,22 @@
+<div class="mb-6">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-18 col-xl-12 mx-lg-auto fs-5">
+        <blockquote class="fs-2 ms-0 me-0 mb-5">
+          <span class="display-1 d-block wvu-b-display-heading text-wvu-gold wvu-b-accent-text"><span class="wvu-b-font-adjust">“</span></span>
+          <span class="d-block wvu-b-subheading">
+            {{ .quote_text }}
+          </span>
+        </blockquote>
+        <p>
+          <span class="wvu-b-display-heading d-block"><span class="wvu-b-font-adjust">{{ .quote_author }}</span></span>
+          {{ with .title }}
+            <span class="d-block small">
+              {{ . }}
+            </span>
+          {{ end }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

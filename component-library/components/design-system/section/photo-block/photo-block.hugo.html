@@ -1,0 +1,41 @@
+{{ $image := "" }}
+
+<div class="section-component mb-6">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-18 col-xl-12 mx-lg-auto">
+        <div class="mb-n5">       
+          {{ range .photos }}
+            <div class="mb-5">
+              <div class="mx-xl-n6">
+                <div class="row gx-1">
+                  
+                    {{ $src := .image }}
+                    {{- if not site.Params.env_bookshop_live -}}
+                      {{/*  Get the image, either from its remote or local source  */}}
+                      {{ if hasPrefix $src "http"}}
+                        {{ $image = resources.GetRemote $src }}
+                      {{ else }}
+                        {{ $image = resources.Get $src }}
+                      {{ end }}
+                    
+                      {{/* Resize images and add them to a variable  */}}
+                      {{ if and $image (ne $image.MediaType.SubType "svg") }}
+                        {{ $src = $image.RelPermalink }}
+                      {{ end }}
+                    {{- end -}}
+                    
+                    <div class="col mb-1">
+                      <img class="h-100" loading="lazy" decoding="async" src="{{ $src }}" alt="{{ .alt_text }}" />
+                    </div>
+                  
+                </div>
+              </div>
+              <p class="small mt-3">{{ .caption }}</p>
+            </div>
+          {{ end }}
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>

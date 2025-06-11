@@ -28,16 +28,22 @@
   {{ $publishDate = $publishDate.Format $format }}
 {{ end }}
 
-<header id="" aria-labelledby="" class="position-relative bg-dark text-white">
+<header id="" aria-labelledby="" class="position-relative bg-dark text-white mb-6">
   {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   <div class="container wvu-z-index-content py-10">
     <div class="row">
       <div class="col-xl-12 {{ .topper.text_placement }}">
-        <h1 id="big-search-1-label" class="display-5 antonia-light mb-3">{{ .topper.heading }}</h1>
-        {{ with .topper.subheading }}
-          <p class="helvetica-neue-light fs-4 mb-0">{{ . }}</p>
+        {{ with .topper.label }}
+          <p class="h6 mb-6 wvu-b-label">{{ . }}</p>
         {{ end }}
-        <p class="mt-4 mb-0 iowan-old-style text-uppercase wvu-text-letter-spacing small">{{ $publishDate }}</p>
+
+        <h1 id="big-search-1-label" class="display-5 antonia-light mb-3">{{ .topper.heading }}</h1>
+
+        {{ with .topper.subheading }}
+          <p class="config-light fs-4 mb-0">{{ . }}</p>
+        {{ end }}
+
+        <p class="mt-4 mb-0 config-regular text-uppercase wvu-text-letter-spacing small">{{ $publishDate }}</p>
         <div class="d-flex mt-4 justify-content-center">
           {{ if not site.Data }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}

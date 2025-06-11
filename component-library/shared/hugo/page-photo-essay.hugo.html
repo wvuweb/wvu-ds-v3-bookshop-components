@@ -2,6 +2,8 @@
   {{ partial "bookshop" (slice .topper._bookshop_name .) }}
 {{ end }}
 
-{{ range .article_blocks }}
-  {{ partial "bookshop" . }}
-{{ end }}
+<main class="antonia-regular">
+  {{ range .article_blocks }}
+    {{ partial "bookshop" . }}
+  {{ end }}
+</main>

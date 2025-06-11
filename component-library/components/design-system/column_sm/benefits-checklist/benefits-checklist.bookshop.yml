@@ -14,7 +14,7 @@ blueprint:
   items:
     - title: Item 1 Title
       text: Item 1 text.
-  benefits_icon: check
+  benefits_icon: circle-check
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

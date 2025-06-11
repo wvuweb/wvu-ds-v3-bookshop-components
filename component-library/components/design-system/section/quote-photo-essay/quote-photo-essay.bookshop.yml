@@ -1,23 +1,22 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - detail_blocks
-  label: "Photo Block"
+    - photo_essay_blocks
+  label: "Quote"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  photos:
-    - image:
-      alt_text:
-      caption:
+  quote_text:
+  quote_author:
+  title:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  caption:
-    hidden: true
+  quote_text:
+    type: textarea

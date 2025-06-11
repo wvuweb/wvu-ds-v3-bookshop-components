@@ -19,7 +19,6 @@ blueprint:
       badge:
       text: Item 1 text.
       ctas:
-      background_c:
   postscript:
     copy:
     ctas:
