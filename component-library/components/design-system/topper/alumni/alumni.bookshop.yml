@@ -20,7 +20,6 @@ blueprint:
     layout:
       background_position:
       text_placement: mx-auto
-    config:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

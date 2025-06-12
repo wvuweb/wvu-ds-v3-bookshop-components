@@ -1,20 +1,17 @@
-{{ $containerMargin := "" }}
+{{ $containerMargin := "mt-n8" }}
 
 {{ if and .topper .topper._bookshop_name }}
   {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params)) }}
-  {{ if ne .topper._bookshop_name "design-system/topper/staff" }}
-    {{ $containerMargin = "mt-n8" }}
-  {{ end }}
 {{ else }}
-  {{ partial "bookshop" (slice "design-system/topper/staff" (dict "topper" .topper "title" .params.name)) }}
+  {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .params.name)) }}
 {{ end }}
 
 {{ if or .detail_blocks site.Params.env_bookshop_live }}
   <main class="py-6 wvu-backpage-main wvu-z-index-content">
     <div class="container">
-      <div class="row">
+      <div class="row gx-0">
         <div class="col-xl-14 ms-xl-auto">
-          <div class="bg-white p-6 {{ $containerMargin }}">
+          <div class="bg-wvu-neutral--off-white p-5 p-xl-6 {{ $containerMargin }}">
             {{ range .detail_blocks }}
               {{ partial "bookshop" . }}
             {{ end }}

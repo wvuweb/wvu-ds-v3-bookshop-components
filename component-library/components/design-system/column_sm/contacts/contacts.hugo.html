@@ -2,7 +2,7 @@
   {{ $contacts := slice }}
 
   {{ if .heading }}
-    <h2 class="h6 wvu-container-box-skewed-1">{{ .heading }}</h2>
+    <h2 class="wvu-b-label h6">{{ .heading }}</h2>
   {{ end }}
 
   {{ if not site.Data }}
@@ -18,7 +18,7 @@
     {{ end }}
 
     {{ range .people }}
-      {{ with .label }}<div class="mb-3 position-relative"><p class="helvetica-neue-bold mx-n2 my-n1 bg-wvu-accent--sunset d-inline-block">{{ . }}</p></div>{{ end }}
+      {{ with .label }}<div class="mb-3 position-relative"><p class="">{{ . }}</p></div>{{ end }}
       {{ $contact := .contact }}
       {{ range $contacts }}
 

@@ -70,7 +70,7 @@
           <div class="col">
             <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg mb-5">Staff</p>
     
-            <h1 class="display-3 wvu-b-display-heading text-wvu-blue">{{ .params.name }}</h1>
+            <h1 class="display-3 wvu-b-display-heading">{{ .params.name }}</h1>
 
             {{ if .params.position }}
               <div class="mt-3">
@@ -85,7 +85,6 @@
 
             {{ if .params.staff_contact_info }}
               <div class="mt-4">
-                {{ partial "bookshop_bindings" `.params.staff_contact_info` }}
                 {{ partial "bookshop_partial" (slice "page" .params.staff_contact_info) }}
               </div>
             {{ end }}

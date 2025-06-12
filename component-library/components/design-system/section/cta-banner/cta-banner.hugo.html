@@ -1,4 +1,4 @@
-{{ $color := "primary" }}
+{{ $color := "" }}
 
 {{ if .buttons_c }}
   {{ $color := .buttons_c }}
@@ -17,7 +17,7 @@
         {{ if .button_c }}
           {{ $color = .button_c }}
         {{ end }}
-        <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }}</a>
+        <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }}{{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
         {{ $color := "primary" }}
       {{ end }}
     </div>
