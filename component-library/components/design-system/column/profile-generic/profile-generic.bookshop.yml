@@ -9,14 +9,17 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  elements:
-    super_heading:
-      label:
-      text:
-    heading:
-    subheading:
-  config:
-    edit_mode_only: false
+  component_name: profile-generic
+  heading: Heading
+  name: Firstname Lastname
+  image:
+  is_cutout: false
+  super_heading:
+    - Label
+  info:
+    - Morgantown, WV
+  copy:
+  ctas:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

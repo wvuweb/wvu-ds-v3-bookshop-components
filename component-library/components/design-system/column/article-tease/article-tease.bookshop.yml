@@ -1,26 +1,20 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - column_blocks_sm
-    - detail_sidebar_blocks
-  label: "Info Card"
+    - column_blocks
+  label: "Article Tease"
   description:
-  icon:
+  icon: library_books
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading: Heading
-  subheading:
-  copy:
-  card_c:
+  label:
+  article_tags: []
+  is_dynamic: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  copy:
-    type: markdown
-  card_c:
-    hidden: true

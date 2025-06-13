@@ -5,10 +5,10 @@
 {{ end }}
 
 <div class="text-center d-flex h-100 w-100 justify-content-center align-items-center">
-  <div class="row">
+  <div class="row w-100">
     <div class="col-xxl-20 mx-xxl-auto">
       <div class="mb-4">
-        <h2 class="wvu-b-display-heading wvu-b-text-shadow display-3 mb-4"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
+        <h2 class="wvu-b-display-heading wvu-b-text-shadow display-4 mb-3"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
         {{ with .subheading }}
           <p class="lead mb-4">{{ . }}</p>
         {{ end }}
@@ -17,7 +17,7 @@
         {{ if .button_c }}
           {{ $color = .button_c }}
         {{ end }}
-        <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }}</a>
+        <a class="btn wvu-b-btn mb-1" href="{{ .url }}">{{ .text }}</a>
         {{ $color := "primary" }}
       {{ end }}
     </div>

@@ -11,7 +11,7 @@
 
   {{/* Resize images and add them to a variable  */}}
   {{ if and $image (ne $image.MediaType.SubType "svg") }}
-    {{ if .settings.layout.is_cutout }}
+    {{ if .is_cutout }}
       {{ $src = ($image.Fit (printf "%dx%d webp" 640 960)).RelPermalink }}
     {{ else }}
       {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
@@ -19,27 +19,21 @@
   {{ end }}
 {{- end -}}
 
-<div class="bg-{{ .settings.styles.card_c }} wvu-b-border wvu-b-shadow {{ .settings.layout.margin_no_bg }}">
-  {{ if and .settings.styles .settings.styles.tone (eq .settings.styles.tone "lets-go") }}
-    <div class="wvu-bg-img">
-      <div class="wvu-b-gradient d-flex w-100 h-100 justify-content-between position-absolute d-flex w-100 h-100 justify-content-between"></div>
-      <div class="wvu-b-pattern wvu-b-pattern-color h-100 w-100 position-absolute" style="opacity: .4"></div>
-    </div>
-  {{ end }}
+<div class="wvu-b-subtle wvu-b-border wvu-b-shadow {{ .settings.layout.margin_no_bg }}">
   <div class="row gx-0">
     <div class="col-xl-12 ms-auto order-2 order-xl-1">
-      <h2 class="wvu-b-accent-bg wvu-text-vertical wvu-shout h6 small wvu-text-letter-spacing-lg h-100 m-0 wvu-z-index-max"><span class="d-block bg- p-2">Spotlight</span></h2>
+      <h2 class="wvu-b-accent-text wvu-text-vertical wvu-b-label h6 small wvu-text-letter-spacing-lg h-100 m-0 wvu-z-index-max"><span class="d-block bg- p-2">Spotlight</span></h2>
       <div class="{{ if .settings.layout.is_cutout }}p-5{{ else }}pe-5{{ end }} w-100 h-100 position-relative">
         <div class="h-100 position-relative">
           <div class="w-100 h-100">
             <div class="row h-100">
-              {{ if .settings.layout.is_cutout }}
+              {{ if .is_cutout }}
                 <div class="wvu-bg-img px-0 ps-4">
                   <div class="wvu-b-pattern wvu-bg-blue h-100 w-100 position-absolute" style="opacity: .5"></div>
                 </div>
-                <div class="col-xxl-17 mx-xxl-auto d-flex justify-content-center align-items-end wvu-z-index-content">
+                <div class="col-xxl-18 mx-xxl-auto d-flex justify-content-center align-items-end wvu-z-index-content">
                   <div class="wvu-z-index-content">
-                    <div class="overflow-hidden mb-n5 mt-n6">
+                    <div class="overflow-hidden mt-n7">
                       <img class="object-fit wvu-b-shadow" src="{{ $src }}" alt="Portrait of {{ .name }}" />
                     </div>
                   </div>
@@ -69,8 +63,8 @@
                 </p>
               </div>
             {{ end }}
-            <h2 class="display-5 wvu-header-max-width wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow mb-3" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
-            <p class="wvu-b-subheading fs-2 mb-3">{{ .name }}</p>
+            <h2 class="wvu-header-max-width wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow mb-3" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
+            <p class="wvu-b-subheading fs-5 mb-3">{{ .name }}</p>
             {{ with .info }}
               <div class="">
                 {{ range . }}
@@ -100,7 +94,7 @@
                 </div>
               {{ end }}
               <div class="col-sm col-md-24">
-                <div class="ms-n3 me-n5 wvu-z-index-content">
+                <div class="ms-n3 me-n4 wvu-z-index-content">
                   <div class="me-n5">
                     <div class="ratio ratio-16x9 bg-dark position-relative wvu-shadow-hard-filter">
                       <div class="wvu-b-accent-text d-flex w-100 h-100 align-items-center justify-content-center">
@@ -114,15 +108,6 @@
           </div>
         </div>
       </div>
-      
-      <!-- <div class="bg-wvu-accent--yellow h-100 p-5 d-flex flex-column justify-content-center px-xxl-6">
-        <h2 class="h6 helvetica-neue-condensed-black wvu-text-letter-spacing-lg text-uppercase mb-4">WVU Experience</h2>
-        <blockquote class="ms-0 border-0 border-wvu-gold">
-          <span class="d-block wvu-shout wvu-text-outline text-wvu-gold display-1 mb-n3">“</span>
-          <p class="oliviar-thin fs-2 mb-0">My most valuable experience [at WVU] would be the relationships I’ve been able to make within the Davis College. I certainly don’t know everyone, but at the same time, I feel as if there aren’t any strangers here.</p>   
-        </blockquote>
-      </div> -->
-      
     </div>
   </div>
 </div>

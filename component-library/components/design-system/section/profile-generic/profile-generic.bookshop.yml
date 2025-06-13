@@ -31,7 +31,7 @@ blueprint:
     layout:
       buffer:
       margin_no_bg:
-      is_cutout: true
+      is_cutout: false
       padding: py-6 py-xxl-7
     config:
       name:
@@ -51,8 +51,10 @@ _inputs:
     options:
       values: _select_data.brand_colors
       value_key: class
+  bg_subtle:
+    hidden: true
   card_c:
-    type: select
+    type: multiselect
     label: Card Color
     options:
       values:
@@ -62,9 +64,17 @@ _inputs:
           class: option-2
         - name: Option 3
           class: option-3
+        - name: Option 4
+          class: option-4
+        - name: Option 5
+          class: option-5
+        - name: Option 6
+          class: option-6
       value_key: class
   copy:
     type: textarea
+  enable_blend:
+    hidden: true
   is_cutout:
     type: switch
     label: Use Cutout
@@ -74,4 +84,6 @@ _inputs:
   margin_no_bg:
     label: Margin
   component_name:
+    hidden: true
+  tint_opacity:
     hidden: true

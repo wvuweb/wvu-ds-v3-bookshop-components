@@ -11,115 +11,113 @@
   {{ $tags = .article_tags }}
 {{ end }}
 
-{{ if .heading }}
-  <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
-{{ end }}
-
-{{ if not site.Data }}
-  {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
-{{ else if and (site.Params.env_bookshop_live) (not .config.show_content) }}
-  {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
-{{ else }}
-
-  {{ $authorData := site.Data.people_data }}
-
-  {{ if not site.Params.env_bookshop_live }}
-    {{ $articles = where site.Pages "Section" "articles" }}
-    {{ $articles = where $articles "Params.article_tags" "intersect" $tags }}
-  {{ else }}
-    {{ $articles = where site.Data.site_pages ".type" "articles" }}
-    {{ $articles = where $articles ".article_tags" "intersect" $tags }}
+<div class="p-6 wvu-b-subtle h-100">
+  {{ if .heading }}
+    <h2 class="h4 wvu-b-label mb-5">{{ .heading }}</h2>
   {{ end }}
 
-  <div class="row">
-    {{ range first $limit $articles }}
+  {{ if not site.Data }}
+    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
+  {{ else if and (site.Params.env_bookshop_live) (not .config.show_content) }}
+    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
+  {{ else }}
 
-      {{ $params := "" }}
-      {{ $link := "" }}
+    {{ $authorData := site.Data.people_data }}
 
-      {{ if not site.Params.env_bookshop_live }}
-        {{ $params = .Params }}
-        {{ $link = .RelPermalink }}
-      {{ else }}
-        {{ $params = . }}
-      {{ end }}
+    {{ if not site.Params.env_bookshop_live }}
+      {{ $articles = where site.Pages "Section" "articles" }}
+      {{ $articles = where $articles "Params.article_tags" "intersect" $tags }}
+    {{ else }}
+      {{ $articles = where site.Data.site_pages ".type" "articles" }}
+      {{ $articles = where $articles ".article_tags" "intersect" $tags }}
+    {{ end }}
 
-      {{ $authors := slice }}
+    <div class="mb-n4">
+      {{ range first $limit $articles }}
+        <div class="row position-relative mb-4">
+          {{ $params := "" }}
+          {{ $link := "" }}
 
-      {{ if $params.authors }}
-        {{ $authors = $params.authors }}
-      {{ end }}
-      
-      {{ $authorList := slice }}
-
-      {{ range $authorData }}
-        {{ $author := . }}
-        {{ range $authors }}
-          {{ if eq .author $author.uuid }}
-            {{ $authorList = $authorList | append $author }}
+          {{ if not site.Params.env_bookshop_live }}
+            {{ $params = .Params }}
+            {{ $link = .RelPermalink }}
+          {{ else }}
+            {{ $params = . }}
           {{ end }}
-        {{ end }}
-      {{ end }}
-      
-      {{ $src := $params.image }}
 
-      {{- if not site.Params.env_bookshop_live -}}
-        {{ $image := "" }}
-        {{/*  Get the image, either from its remote or local source  */}}
-        {{ if hasPrefix $src "http"}}
-          {{ $image = resources.GetRemote $params.image }}
-        {{ else }}
-          {{ $image = resources.Get $params.image }}
-        {{ end }}
+          {{ $authors := slice }}
 
-        {{/* Resize images and add them to a variable  */}}
-        {{ if and $image (ne $image.MediaType.SubType "svg") }}
-          {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
-        {{ end }}
-      {{- end -}}
-      
-      <div class="col-8">
-        {{ if $src }}
-          <div class="wvu-article__thumb mb-4">
-            <div class="ratio ratio-3x2 bg-light">
-              <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
-                <img class="h-100 w-100 object-fit-cover" src="{{ $src }}" alt="" />
-              </a>
-            </div>
-          </div>
-        {{ end }}
-      </div>
-      <div class="col-16">
-        <div class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
-
+          {{ if $params.authors }}
+            {{ $authors = $params.authors }}
+          {{ end }}
           
+          {{ $authorList := slice }}
 
-          <div class="mt-3 mt-md-0">
-            <h2 class="fs-5" itemprop="headline"><a class="newsletter-link" href="{{ $link }}">{{ $params.title }}</a></h2>
+          {{ range $authorData }}
+            {{ $author := . }}
+            {{ range $authors }}
+              {{ if eq .author $author.uuid }}
+                {{ $authorList = $authorList | append $author }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+          
+          {{ $src := $params.image }}
 
-            {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
-              <p class="small d-block">
-                {{ if not $params.config.hide_author }}
-                  {{ range $authorList }}
-                    <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                      <span itemprop="name">
-                        {{ .name }}
-                      </span>
-                    </span>
-                  {{ end }}
-                {{ end }}
+          {{- if not site.Params.env_bookshop_live -}}
+            {{ $image := "" }}
+            {{/*  Get the image, either from its remote or local source  */}}
+            {{ if hasPrefix $src "http"}}
+              {{ $image = resources.GetRemote $params.image }}
+            {{ else }}
+              {{ $image = resources.Get $params.image }}
+            {{ end }}
 
-                {{ if and (not $params.config.hide_author) ( $params.publishDate ) }} | {{ end }}
-
-                {{ if $params.publishDate }}
-                  <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
-                {{ end }}
-              </p>
+            {{/* Resize images and add them to a variable  */}}
+            {{ if and $image (ne $image.MediaType.SubType "svg") }}
+              {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+            {{ end }}
+          {{- end -}}
+          
+          <div class="col-8">
+            {{ if $src }}
+              <div class="wvu-article__thumb">
+                <div class="ratio ratio-3x2 bg-light">
+                  <img class="h-100 w-100 object-fit-cover" src="{{ $src }}" alt="" />
+                </div>
+              </div>
             {{ end }}
           </div>
+          <div class="col-16">
+            <div class="" itemscope="" itemtype="http://schema.org/BlogPosting">
+              <div class="mt-3 mt-md-0">
+                <h2 class="h4" itemprop="headline"><a class="stretched-link text-decoration-none" href="{{ $link }}">{{ $params.title }}</a></h2>
 
+                {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
+                  <p class="small d-block">
+                    {{ if not $params.config.hide_author }}
+                      {{ range $authorList }}
+                        <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                          <span itemprop="name">
+                            {{ .name }}
+                          </span>
+                        </span>
+                      {{ end }}
+                    {{ end }}
+
+                    {{ if and (not $params.config.hide_author) ($params.author) ( $params.publishDate ) }} | {{ end }}
+
+                    {{ if $params.publishDate }}
+                      <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
+                    {{ end }}
+                  </p>
+                {{ end }}
+              </div>
+
+            </div>
+          </div>
         </div>
-      </div>
-    {{ end }}
-  </div>
-{{ end }}
+      {{ end }}
+    </div>
+  {{ end }}
+</div>

@@ -82,8 +82,10 @@
     {{ $styles := .settings.styles }}
 
     <div class="audience-general tone-default bg-option-1 wvu-b-subtle pb-1 pt-5">
-      <div class="container">
-        <p><span class="wvu-b-label">Example {{ $counter }}</span><br><code>audience-{{ .settings.styles.audience }}</code>, <code>tone-{{ .settings.styles.tone }}</code>{{ if not .background_image }}, <code>bg-{{ .settings.styles.color_palette }}</code>{{ end }}</p>
+      <div class="{{ if .settings.layout.margin }}pb-5{{ end }}">
+        <div class="container">
+          <p><span class="wvu-b-label">Example {{ $counter }}</span><br><code>audience-{{ .settings.styles.audience }}</code>, <code>tone-{{ .settings.styles.tone }}</code>{{ if not .background_image }}, <code>bg-{{ .settings.styles.color_palette }}</code>{{ end }}</p>
+        </div>
       </div>
     </div>
 

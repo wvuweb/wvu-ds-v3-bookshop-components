@@ -30,8 +30,9 @@ blueprint:
       remove_container_background: false
     layout:
       buffer:
-      margin:
+      margin_no_bg:
       padding: py-6 py-xxl-7
+      max_cols: 20
     config:
       name:
       instance:
@@ -45,3 +46,5 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  margin_no_bg:
+    label: Margin

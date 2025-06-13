@@ -13,52 +13,48 @@
   {{ if and $image (ne $image.MediaType.SubType "svg") }}{{ $src = ($image.Fill "960x640 webp").RelPermalink }}{{ end }}
 {{ end }}
 
-<div class="row">
-  <div class="col-24 mx-auto position-relative">
-    <div class="row gx-0">
-      <div class="col-lg-12">
-        <div class="p-5 wvu-z-index-content bg-{{ .settings.styles.card_c }} h-100">
-          <div class="wvu-p-max-width wvu-z-index-content p-3">
-            <h2 id="-label" class="display-5 wvu-b-display-heading wvu-b-accent-text" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
+<div class="row gx-0">
+  <div class="col-lg-12">
+    <div class="p-5 wvu-z-index-content wvu-b-subtle bg-{{ .settings.styles.card_c }} h-100">
+      <div class="wvu-p-max-width wvu-z-index-content p-3">
+        <h2 id="-label" class="display-5 wvu-b-display-heading wvu-b-accent-text" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
 
-            {{ with .subheading }}
-              <p class="lead py-1">
-                {{ . }}
-              </p>
-            {{ end }}
-    
-            {{ with .body }}
-              <div class="mb-4">
-                {{ . | markdownify }}
-              </div>
-            {{ end }}
-    
-            {{ with .ctas }}
-              {{ range . }}
-                <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-              {{ end }}
-            {{ end }}
+        {{ with .subheading }}
+          <p class="wvu-b-subheading fs-5 py-1">
+            {{ . }}
+          </p>
+        {{ end }}
 
-            {{ with .postscript_links }}
-              <p class="mt-3">
-                {{- range $i, $l := . }}
-                  {{- if gt $i 0 }} | {{- end }}
-                  <a class="text-white" href=".url">{{ .text }}{{ if .icon }} <span class="fa-solid fa-{{ .icon }}"></span>{{ end }}</a>
-                {{ end }}
-              </p>
-            {{ end }}
+        {{ with .body }}
+          <div class="mb-4">
+            {{ . | markdownify }}
           </div>
-        </div>
+        {{ end }}
+
+        {{ with .ctas }}
+          {{ range . }}
+            <a class="btn wvu-b-btn mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+          {{ end }}
+        {{ end }}
+
+        {{ with .postscript_links }}
+          <p class="mt-3">
+            {{- range $i, $l := . }}
+              {{- if gt $i 0 }} | {{- end }}
+              <a class="text-white" href=".url">{{ .text }}{{ if .icon }} <span class="fa-solid fa-{{ .icon }}"></span>{{ end }}</a>
+            {{ end }}
+          </p>
+        {{ end }}
       </div>
-      <div class="col-lg-12">
-        <div class="position-relative wvu-z-index-content h-100">
-          <div class="ratio ratio-16x9"></div>
-          <div class="wvu-bg-img">
-            {{ if $src }}
-              <img class="object-fit-cover h-100 w-100" src="{{ $src }}" />
-            {{ end }}
-          </div>
-        </div>
+    </div>
+  </div>
+  <div class="col-lg-12">
+    <div class="position-relative wvu-z-index-content h-100">
+      <div class="ratio ratio-16x9"></div>
+      <div class="wvu-bg-img">
+        {{ if $src }}
+          <img class="object-fit-cover h-100 w-100" src="{{ $src }}" />
+        {{ end }}
       </div>
     </div>
   </div>

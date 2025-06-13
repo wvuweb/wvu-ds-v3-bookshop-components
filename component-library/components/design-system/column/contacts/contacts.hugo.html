@@ -1,9 +1,8 @@
-{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-  
+<div class="p-6 wvu-b-subtle">
   {{ $contacts := slice }}
 
   {{ if .heading }}
-    <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
+    <h2 class="wvu-b-label mb-5">{{ .heading }}</h2>
   {{ end }}
 
   {{ if not site.Data }}
@@ -19,8 +18,11 @@
     {{ end }}
 
     {{ range .people }}
-      {{ with .label }}<div class="mb-3 position-relative"><p class="helvetica-neue-bold mx-n2 my-n1 bg-wvu-accent--sunset d-inline-block">{{ . }}</p></div>{{ end }}
       {{ $contact := .contact }}
+      {{ $label := "" }}
+      {{ with .label }}
+        {{ $label = . }}
+      {{ end }}
       {{ range $contacts }}
 
         {{ $params := . }}
@@ -30,7 +32,7 @@
         {{ end }}
 
         {{ if eq $params.uuid $contact }}
-          <div class="row mb-4">
+          <div class="row mb-5">
             {{ if $params.profile_image }}
 
               {{ $src := $params.profile_image }}
@@ -50,13 +52,15 @@
                 {{ end }}
               {{- end -}}
 
-              <div class="col-6">
+              <div class="col-5">
                 <div class="ratio ratio-1x1">
-                  <img class="object-fit" src="{{ $src }}" alt="{{ if $params.image.alt }}{{ $params.image.alt }}{{ else }}Portrait of {{ $params.name }}{{ end }}" />
+                  <img class="object-fit rounded-circle" src="{{ $src }}" alt="{{ if $params.image.alt }}{{ $params.image.alt }}{{ else }}Portrait of {{ $params.name }}{{ end }}" />
                 </div>
               </div>
             {{ end }}
             <div class="col">
+              {{ with $label }}<p class="wvu-b-label small d-inline-block border border-1 p-1">{{ . }}</p>{{ end }}
+
               <h3 class="h5">{{ $params.name }}</h3>
               <p class="small">
                 {{ range $params.phone }}
@@ -72,5 +76,4 @@
       {{ end }}
     {{ end }}
   {{ end }}
-
-{{ end }}
+</div>
