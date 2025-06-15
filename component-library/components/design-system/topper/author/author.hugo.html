@@ -1,7 +1,35 @@
-{{ $src := .params.profile_image }}
+{{ $src := "" }}
+{{ $imageSize := "" }}
+{{ $backgroundColor := "bg-white text-dark" }}
+{{ $headingColor := "text-wvu-blue" }}
+{{ $pattern := "" }}
+{{ $patternOpacity := "1" }}
+
+{{ with .params.profile_image }}
+  {{ $src = . }}
+  {{ $imageSize = "960x960" }}
+{{ end }}
+
+{{ with .params.image_lg }}
+  {{ $src = . }}
+  {{ $imageSize = "960x640" }}
+{{ end }}
+
+{{ with .topper.background_image }}
+  {{ $src = . }}
+  {{ $imageSize = "1920x1280" }}
+{{ end }}
 
 {{ if .topper.settings.styles.color_palette }}
   {{ $backgroundColor = .topper.settings.styles.color_palette }}
+{{ end }}
+
+{{ if and .topper.background_image (not .topper.settings.styles.enable_blend) }}
+  {{ $backgroundColor = "option-2" }}
+{{ end }}
+
+{{ if .topper.background_image }}
+  {{ $backgroundColor = "bg-dark text-white" }}
 {{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
@@ -15,41 +43,41 @@
 
   {{/* Resize images and add them to a variable  */}}
   {{ if and $image (ne $image.MediaType.SubType "svg") }}
-    {{ $src = ($image.Fill (printf "%d%d webp" 960 960 )).RelPermalink }}
+    {{ $src = ($image.Fill (printf "%s webp" $imageSize)).RelPermalink }}
   {{ end }}
 {{- end -}}
 
-<section class="audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ .topper.settings.styles.color_palette }} position-relative py-7">
-  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" "" "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
+<section class="audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7">
+  {{ if not .topper.background_image }}
+    {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" "" "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
+  {{ else }}
+    {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
+  {{ end }}
   <div class="container mb-5 wvu-z-index-content">
-    <div class="row gx-lg-0 align-items-center">
-      <div class="col-lg-12 mx-auto">
+    <div class="row gx-lg-0 align-items-center {{ if or .topper.background_image (not .params.image_lg) }}py-6{{ end }}">
+      <div class="col-lg-12 {{ if .topper.background_image }}{{ .topper.settings.layout.text_placement }}{{ else }}mx-auto{{ end }}">
         <div class="row gx-4 gx-lg-5">
-          {{ if and .params.profile_image }}
-            <div class="col-8">
-              <div class="ratio ratio-1x1">
-                <img class="img-fluid h-100 w-100 rounded-circle" src="{{ $src }}" />
+          {{ if and .params.profile_image (not .topper.background_image) }}
+            {{ if not .params.image_lg }}
+              <div class="col-8">
+                <div class="ratio ratio-1x1">
+                  <img class="img-fluid h-100 w-100 rounded-circle" src="{{ $src }}" />
+                </div>
               </div>
-            </div>
+            {{ end }}
           {{ end }}
           <div class="col">
 
             <h1 class="display-3 wvu-b-display-heading"><span class="wvu-b-font-adjust">{{ .params.name }}</span></h1>
 
-            {{ if or .params.occupation .params.job_title }}
-              <div class="mb-4">
-                {{ with .params.occupation }}
-                  <p class="antonia-bold mt-2 fs-4 mb-0">{{ . }}</p>
-                {{ end }}
-                {{ with .params.job_title }}
-                  <p class="antonia-regular text-uppercase">{{ range . }}<span class="d-block">{{ . }}</span>{{ end }}</p>
-                {{ end }}
-              </div>
-            {{ end }}
-
           </div>
         </div>
       </div>
+      {{ if and .params.image_lg (not .topper.background_image) }}
+        <div class="col-lg-12">
+          <img class="img-fluid wvu-shadow-filter border border-3 border-dark" src="{{ $src}}" alt="" />
+        </div>
+      {{ end }}
     </div>
   </div>
 </section>

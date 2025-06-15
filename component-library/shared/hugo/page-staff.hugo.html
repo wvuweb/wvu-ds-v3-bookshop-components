@@ -1,7 +1,10 @@
-{{ $containerMargin := "mt-n8" }}
+{{ $containerMargin := "" }}
 
 {{ if and .topper .topper._bookshop_name }}
   {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params)) }}
+  {{ if ne .topper._bookshop_name "design-system/topper/default" }}
+    {{ $containerMargin = "mt-n8" }}
+  {{ end }}
 {{ else }}
   {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .params.name)) }}
 {{ end }}
@@ -12,17 +15,25 @@
       <div class="row gx-0">
         <div class="col-xl-14 ms-xl-auto">
           <div class="bg-wvu-neutral--off-white p-5 p-xl-6 {{ $containerMargin }}">
+            {{ if or .params.heading .params.subheading }}
+              <div class="mb-5">
+                {{ with .params.heading }}
+                  <h2 class="display-4 config-bold">{{ . }}</h2>
+                {{ end }}
+                {{ with .params.subheading }}
+                  <p class="antonia-light h3 mt-3">{{ . }}</p>
+                {{ end }}
+              </div>
+            {{ end }}
             {{ range .detail_blocks }}
               {{ partial "bookshop" . }}
             {{ end }}
           </div>
         </div>
         <div class="col-xl-5">
-          <div class="ms-lg-n5">
-            {{ range .sidebar_blocks }}
-              {{ partial "bookshop" . }}
-            {{ end }}
-          </div>
+          {{ range .sidebar_blocks }}
+            {{ partial "bookshop" . }}
+          {{ end }}
         </div>
       </div>
     </div>

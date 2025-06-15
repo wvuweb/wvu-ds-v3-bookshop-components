@@ -9,20 +9,17 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  label:
-  heading:
-  subheading:
-  styles:
-    vibe: down-to-business
-    background_c:
-    gradient_1:
-    gradient_2:
-    gradient_3:
-    heading_c:
-    enable_blend: false
-    enable_pattern: false
-    tint_opacity: "0.5"
-    margin:
+  background_image:
+  alt_text:
+  settings:
+    styles:
+      audience:
+      tone: default
+      color_palette: option-2
+      tint_opacity: "0.7"
+    layout:
+      background_position:
+      text_placement: mx-auto
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
