@@ -87,11 +87,14 @@
                     <h2 class="config-extra-bold text-uppercase h6 mt-5 mb-4">Contact(s)</h2>
                     {{ range . }}
                       <p class="mb-4">
-                        {{ with .name }}
+                        {{ with .contact }}
                           <span class="d-flex w-100 position-relative">
                             <span class="fa-regular fa-user position-absolute" style="top: 0px;"></span>
                             <strong class="d-block ms-4">{{ . }}</strong>
                           </span>
+                        {{ end }}
+                        {{ with .title }}
+                          <span class="d-block ms-4 small mb-2 text-uppercase">{{ . }}</span>
                         {{ end }}
                         {{ with .phone }}
                           <span class="d-flex w-100 position-relative">

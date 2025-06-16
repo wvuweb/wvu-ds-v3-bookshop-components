@@ -67,13 +67,8 @@
             {{ end }}
           {{ end }}
           <div class="col">
-            {{ if or .params.graduation_year .params.majors }}
-              <div class="mb-4">
-                <p class="wvu-b-label text-uppercase">
-                  <span>{{ with .params.graduation_years }}{{ range . }}<span class="wvu-comma-list-item">{{ . }}</span>{{ end }}</span> Graduate{{ end }}
-                  {{ with .params.majors }}({{ range . }}<span class="wvu-comma-list-item">{{ . }}</span>{{ end }}){{ end }}
-                </p>
-              </div>
+            {{ with .label }}
+              <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg mb-5">{{ . }}</p>
             {{ end }}
 
             <h1 class="display-3 wvu-b-display-heading"><span class="wvu-b-font-adjust">{{ .params.name }}</span></h1>

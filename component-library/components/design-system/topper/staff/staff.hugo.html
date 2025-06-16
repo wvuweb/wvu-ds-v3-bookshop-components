@@ -68,8 +68,10 @@
             {{ end }}
           {{ end }}
           <div class="col">
-            <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg mb-5">Staff</p>
-    
+            {{ with .label }}
+              <p class="wvu-b-label text-uppercase wvu-text-letter-spacing-lg mb-5">{{ . }}</p>
+            {{ end }}
+
             <h1 class="display-3 wvu-b-display-heading">{{ .params.name }}</h1>
 
             {{ if .params.position }}

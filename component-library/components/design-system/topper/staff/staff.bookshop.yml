@@ -9,6 +9,7 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
+  label: Staff
   background_image:
   alt_text:
   settings:
