@@ -5,7 +5,7 @@
 {{ $pattern := "" }}
 {{ $patternOpacity := "1" }}
 
-{{ with .params.image_lg }}
+{{ with .params.image }}
   {{ $src = . }}
   {{ $imageSize = "960x640" }}
 {{ end }}
@@ -49,28 +49,53 @@
     {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   {{ end }}
   <div class="container mb-5 wvu-z-index-content">
-    <div class="row gx-lg-0 align-items-center {{ if or .topper.background_image (not .params.image_lg) }}py-6{{ end }}">
+    <div class="row gx-lg-0 align-items-center {{ if or .topper.background_image (not .params.image) }}py-6{{ end }}">
       <div class="col-lg-12 {{ if .topper.background_image }}{{ .topper.settings.layout.text_placement }}{{ else }}mx-auto{{ end }}">
         <div class="row gx-4 gx-lg-5">
           <div class="col">
-            {{ if .params.location }}
+            {{ with .topper.label }}
               <div class="mb-4">
-                <p class="wvu-b-label"><span class="fa-regular fa-location-dot"></span> <span>{{ .params.location }}</span></p>
+                <p class="wvu-b-label">{{ . }}</p>
               </div>
             {{ end }}
 
             <h1 class="display-3 wvu-b-display-heading"><span class="wvu-b-font-adjust">{{ .params.name }}</span></h1>
 
-            {{ with .params.contacts }}
-              <h2 class="config-heavy h6 mt-5">Contact</h2>
-              <p>
-                {{ range . }}
-                  <span class="d-block"><span class="d-inline-block me-3"><span class="fa-regular fa-user"></span> {{ .name }}</span> {{ with .phone }}<span class="d-inline-block me-3"><span class="fa-regular fa-phone"></span> <a href="tel:{{ . }}">{{ . }}</a></span>{{ end }} {{ with .email }}<span class="d-inline-block"><span class="fa-regular fa-envelope"></span> <a href="mailto:{{ . }}">{{ . }}</a></span>{{ end }}</span>
+            {{ if or .params.contacts .params.location }}
+              <div class="row">
+                {{ with .params.location }}
+                  <div class="col-md mb-5 mb-md-0">
+                    <h2 class="config-extra-bold h6 mt-5">Location</h2>
+                    {{ range . }}
+                      <div class="d-flex w-100">
+                        <span class="fa-regular fa-location-dot"></span>
+                        <p>
+                          {{ with .name }}<strong class="d-block">{{ . }}</strong>{{ end }}
+                          {{ range .lines }}
+                            <span class="block">{{ . }}</span>
+                          {{ end }}
+                          {{ with .map_link }}
+                            <a class="d-block text-decoration-none" href="{{ . }}">View on Map</a>
+                          {{ end }}
+                        </p>
+                      </div>
+                    {{ end }}
+                  </div>
                 {{ end }}
-              </p>
+                {{ with .params.contacts }}
+                  <div class="col-md">
+                    <h2 class="config-extra-bold h6 mt-5">Contacts</h2>
+                    <p>
+                      {{ range . }}
+                        <span class="d-block"><span class="d-block me-3"><span class="fa-regular fa-user"></span> {{ .name }}</span> {{ with .phone }}<span class="d-block me-3"><span class="fa-regular fa-phone"></span> <a class="text-decoration-none" href="tel:{{ . }}">{{ . }}</a></span>{{ end }} {{ with .email }}<span class="d-block"><span class="fa-regular fa-envelope"></span> <a class="text-decoration-none" href="mailto:{{ . }}">{{ . }}</a></span>{{ end }}</span>
+                      {{ end }}
+                    </p>
+                  </div>
+                {{ end }}
+              </div>
             {{ end }}
             {{ with .params.social_media_accounts }}
-              <h2 class="wvu-shout h6 mt-5">Follow</h2>
+              <h2 class="config-extra-bold h6 mt-5">Follow</h2>
               <ul class="list-inline">
                 {{ range . }}
                   <li class="list-inline-item"><a class="text-decoration-none" href="{{ .url }}"><span class="fa-brands fa-facebook"></span> {{ .platform }}</a></li>
@@ -80,7 +105,7 @@
           </div>
         </div>
       </div>
-      {{ if and .params.image_lg (not .topper.background_image) }}
+      {{ if and .params.image (not .topper.background_image) }}
         <div class="col-lg-12">
           <img class="img-fluid wvu-shadow-filter border border-3 border-dark" src="{{ $src}}" alt="" />
         </div>
