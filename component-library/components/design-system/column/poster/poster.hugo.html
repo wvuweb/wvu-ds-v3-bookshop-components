@@ -13,7 +13,7 @@
   {{ if and $image (ne $image.MediaType.SubType "svg") }}{{ $src = ($image.Fill "960x640 webp").RelPermalink }}{{ end }}
 {{ end }}
 
-<div class="h-100 bg-wvu-blue">
+<div class="h-100 bg-wvu-blue position-relative">
   <div class="wvu-bg-img">
     {{ if $src }}
       <img class="object-fit-cover h-100 w-100" src="{{ $src }}" />
@@ -32,7 +32,7 @@
       </div>
       <div class="p-5 wvu-z-index-content text-white">
         <div class="wvu-p-max-width">
-          <h2 id="-label" class="display-4 wvu-shout wvu-bar mb-3" data-text="{{ .heading }}">{{ .heading }}</h2>
+          <h2 id="-label" class="display-4 wvu-b-display-heading mb-3" data-text="{{ .heading }}">{{ .heading }}</h2>
 
           {{ with .subheading }}
             <p class="lead py-1">

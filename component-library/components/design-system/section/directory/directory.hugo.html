@@ -1,29 +1,62 @@
 {{ $directoryData := slice }}
+{{ $directory := slice }}
 
-{{ if site.Data.people_data }}
-  {{ $directoryData = where site.Data.people_data "dir_include" true }}
+{{- if not site.Params.env_bookshop_live -}}
+  {{ $directoryData = where site.RegularPages "Section" "eq" "people" }}
+  {{ $directoryData = where $directoryData "Params.dir_include" true }}
+  {{ $directory = sort $directoryData "Params.last_name" "asc" }}
+{{ else }}
+  {{ if site.Data.people_data }}
+    {{ $directoryData = where site.Data.people_data "dir_include" true }}
+    {{ $directory = sort $directoryData "last_name" "asc" }}
+  {{ end }}
 {{ end }}
-
-{{ $directory := sort $directoryData "last_name" "asc" }}
 
 <!-- Loop By: sort_order -->
 <section id="wvu-main-content" class="py-6">  
   <div class="container wvu-z-index-content">
     <ul class="list-unstyled">
       {{ range $directory }}
+
+        {{ $contact := "" }}
+
+        {{ if not site.Params.env_bookshop_live }}
+          {{ $contact = .Params }}
+        {{ else }}
+          {{ $contact = . }}
+        {{ end }}
+
+        {{ $src := $contact.profile_image }}
+
+        {{- if not site.Params.env_bookshop_live -}}
+          {{ $image := "" }}
+          {{/*  Get the image, either from its remote or local source  */}}
+          {{ if hasPrefix $src "http"}}
+            {{ $image = resources.GetRemote $src }}
+          {{ else }}
+            {{ $image = resources.Get $src }}
+          {{ end }}
+
+          {{/* Resize images and add them to a variable  */}}
+          {{ if and $image (ne $image.MediaType.SubType "svg") }}
+            {{ $src = ($image.Fill (printf "%dx%d webp" 960 960)).RelPermalink }}
+          {{ end }}
+        {{- end -}}
         <li class="border-bottom border-1 border-black-50 pt-4 pb-4 pb-sm-4">
           <div class="row">
             <div class="col-24 col-sm-8 mb-2 mb-sm-0">
               <div class="row">
                 <div class="col-lg-8 col-xxl-6 my-2 my-lg-0">
-                  <div class="ratio ratio-1x1">
-                    <img class="rounded-circle shadow w-100 h-100 object-fit" src="/files/5e0fcbad-8922-44ed-8940-70932b454951/200x200.webp?cb=b947a06916753b1c88fd93634e54f588" alt="Firstname Lastname headshot">
-                  </div>
+                  {{ if $contact.profile_image }}
+                    <div class="ratio ratio-1x1">
+                      <img class="rounded-circle shadow w-100 h-100 object-fit" src="{{ $src }}" alt="Firstname Lastname headshot">
+                    </div>
+                  {{ end }}
                 </div>
                 <div class="col-lg-16 col-xxl-18 d-sm-none d-lg-block">
                   <p class="mb-0 py-2">
-                    <strong class="d-block">{{ .name }}</strong>
-                    {{ range .position }}
+                    <strong class="d-block">{{ $contact.name }}</strong>
+                    {{ range $contact.position }}
                       <span class="d-block">{{ .title }}, {{ .organization }}</span>
                     {{ end }}
                   </p>
@@ -34,7 +67,7 @@
               <div class="row">
                 <div class="col-12">
                   <p class="mb-0 py-2">
-                    {{ range .staff_contact_info }}
+                    {{ range $contact.staff_contact_info }}
                       {{ if eq ._bookshop_name "design-system/simple/phone" }}
                         <a href="tel:{{ .phone_n }}">{{ .phone_n }}</a><br>
                       {{ end }}
