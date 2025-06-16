@@ -49,9 +49,9 @@
     {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   {{ end }}
   <div class="container mb-5 wvu-z-index-content">
-    <div class="row gx-lg-0 align-items-center {{ if or .topper.background_image (not .params.image) }}py-6{{ end }}">
+    <div class="row align-items-center {{ if or .topper.background_image (not .params.image) }}py-6{{ end }}">
       <div class="col-lg-12 {{ if .topper.background_image }}{{ .topper.settings.layout.text_placement }}{{ else }}mx-auto{{ end }}">
-        <div class="row gx-4 gx-lg-5">
+        <div class="row gx-5 gx-lg-5">
           <div class="col">
             {{ with .topper.label }}
               <div class="mb-4">
@@ -64,18 +64,18 @@
             {{ if or .params.contacts .params.location }}
               <div class="row">
                 {{ with .params.location }}
-                  <div class="col-md mb-5 mb-md-0">
-                    <h2 class="config-extra-bold h6 mt-5">Location</h2>
+                  <div class="col-md mb-5 mb-md-n4">
+                    <h2 class="config-extra-bold text-uppercase h6 mt-5 mb-4">Location(s)</h2>
                     {{ range . }}
                       <div class="d-flex w-100">
-                        <span class="fa-regular fa-location-dot"></span>
-                        <p>
+                        <span class="fa-regular fa-location-dot position-absolute"></span>
+                        <p class="ms-4 mb-4">
                           {{ with .name }}<strong class="d-block">{{ . }}</strong>{{ end }}
                           {{ range .lines }}
-                            <span class="block">{{ . }}</span>
+                            <span class="d-block">{{ . }}</span>
                           {{ end }}
                           {{ with .map_link }}
-                            <a class="d-block text-decoration-none" href="{{ . }}">View on Map</a>
+                            <a class="d-block text-decoration-none small mt-2" href="{{ . }}">View on Map <span class="fa-regular fa-arrow-right"></span></a>
                           {{ end }}
                         </p>
                       </div>
@@ -83,22 +83,39 @@
                   </div>
                 {{ end }}
                 {{ with .params.contacts }}
-                  <div class="col-md">
-                    <h2 class="config-extra-bold h6 mt-5">Contacts</h2>
-                    <p>
-                      {{ range . }}
-                        <span class="d-block"><span class="d-block me-3"><span class="fa-regular fa-user"></span> {{ .name }}</span> {{ with .phone }}<span class="d-block me-3"><span class="fa-regular fa-phone"></span> <a class="text-decoration-none" href="tel:{{ . }}">{{ . }}</a></span>{{ end }} {{ with .email }}<span class="d-block"><span class="fa-regular fa-envelope"></span> <a class="text-decoration-none" href="mailto:{{ . }}">{{ . }}</a></span>{{ end }}</span>
-                      {{ end }}
-                    </p>
+                  <div class="col-md mb-md-n4">
+                    <h2 class="config-extra-bold text-uppercase h6 mt-5 mb-4">Contact(s)</h2>
+                    {{ range . }}
+                      <p class="mb-4">
+                        {{ with .name }}
+                          <span class="d-flex w-100 position-relative">
+                            <span class="fa-regular fa-user position-absolute" style="top: 0px;"></span>
+                            <strong class="d-block ms-4">{{ . }}</strong>
+                          </span>
+                        {{ end }}
+                        {{ with .phone }}
+                          <span class="d-flex w-100 position-relative">
+                            <span class="fa-regular fa-phone position-absolute" style="top: 4px;"></span>
+                            <a class="text-decoration-none d-block ms-4" href="tel:{{ . }}">{{ . }}</a>
+                          </span>
+                        {{ end }}
+                        {{ with .email }}
+                          <span class="d-flex w-100 position-relative">
+                            <span class="fa-regular fa-envelope position-absolute" style="top: 4px;"></span>
+                            <a class="text-decoration-none d-block ms-4" href="mailto:{{ . }}">{{ . }}</a>
+                          </span>
+                        {{ end }}
+                      </p>
+                    {{ end }}
                   </div>
                 {{ end }}
               </div>
             {{ end }}
             {{ with .params.social_media_accounts }}
-              <h2 class="config-extra-bold h6 mt-5">Follow</h2>
+              <h2 class="config-extra-bold text-uppercase h6 mt-5 mb-4">Follow</h2>
               <ul class="list-inline">
                 {{ range . }}
-                  <li class="list-inline-item"><a class="text-decoration-none" href="{{ .url }}"><span class="fa-brands fa-facebook"></span> {{ .platform }}</a></li>
+                  <li class="list-inline-item"><a class="text-decoration-none" href="{{ .url }}"><span class="fa-brands fa-{{ .icon }}"></span> {{ .platform }}</a></li>
                 {{ end }}
               </ul>
             {{ end }}

@@ -54,7 +54,7 @@
     {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   {{ end }}
   <div class="container mb-5 wvu-z-index-content">
-    <div class="row gx-lg-0 align-items-center {{ if or .topper.background_image (not .params.image_lg) }}py-6{{ end }}">
+    <div class="row align-items-center {{ if or .topper.background_image (not .params.image_lg) }}py-6{{ end }}">
       <div class="col-lg-12 {{ if .topper.background_image }}{{ .topper.settings.layout.text_placement }}{{ else }}mx-auto{{ end }}">
         <div class="row gx-4 gx-lg-5">
           {{ if and .params.profile_image (not .topper.background_image) }}
