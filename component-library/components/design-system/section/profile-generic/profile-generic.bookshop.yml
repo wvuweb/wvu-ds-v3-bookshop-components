@@ -18,12 +18,16 @@ blueprint:
   info:
     - Morgantown, WV
   copy:
+  add_quotemark: false
+  profile_url:
+  video_url:
+  video_image:
   ctas:
   settings:
     styles:
       audience: general
       tone: default
-      card_c:
+      card_c: option-1
       bg_subtle:
       enable_blend: false
       tint_opacity: '0.7'

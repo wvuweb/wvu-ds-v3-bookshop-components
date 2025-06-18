@@ -19,7 +19,24 @@
   {{ end }}
 {{- end -}}
 
-<div class="bg-{{ .settings.styles.card_c }} wvu-b-border wvu-b-shadow {{ .settings.layout.margin_no_bg }}">
+{{ $videoSrc := .video_image }}
+
+{{- if not site.Params.env_bookshop_live -}}
+  {{ $videoImage := "" }}
+  {{/*  Get the image, either from its remote or local source  */}}
+  {{ if hasPrefix $videoSrc "http"}}
+    {{ $videoImage = resources.GetRemote $videoSrc }}
+  {{ else }}
+    {{ $videoImage = resources.Get $videoSrc }}
+  {{ end }}
+
+  {{/* Resize images and add them to a variable  */}}
+  {{ if and $videoImage (ne $videoImage.MediaType.SubType "svg") }}
+    {{ $videoSrc = ($videoImage.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+  {{ end }}
+{{- end -}}
+
+<div class="bg-{{ .settings.styles.card_c }} wvu-b-subtle wvu-b-border wvu-b-shadow {{ .settings.layout.margin_no_bg }}">
   {{ if and .settings.styles .settings.styles.tone (eq .settings.styles.tone "lets-go") }}
     <div class="wvu-bg-img">
       <div class="wvu-b-gradient d-flex w-100 h-100 justify-content-between position-absolute d-flex w-100 h-100 justify-content-between"></div>
@@ -78,10 +95,15 @@
                 {{ end }}
               </div>
             {{ end }}
-            <div class="my-3">
+            <div class="my-3 position-absolute">
+              {{ if .add_quotemark }}
+                <span class="display-3 wvu-b-accent position-absolute ms-n5 mt-n2 wvu-b-display-heading" style="top:0;">“</span>
+              {{ end }}
               {{ .copy | markdownify }}
             </div>
-            <p><a href="" class="text-decoration-none wvu-b-accent-text"><span class="fa-solid fa-user-circle"></span> View Profile</a></p>
+            {{ with .profile_url }}
+              <p><a href="{{ . }}" class="text-decoration-none wvu-b-accent-text"><span class="fa-solid fa-user-circle"></span> View Profile</a></p>
+            {{ end }}
           </div>
         </div>
         <div class="col-md-7 col-xl-7 d-flex align-items-center position-relative">
@@ -99,30 +121,27 @@
                   </div>
                 </div>
               {{ end }}
-              <div class="col-sm col-md-24">
-                <div class="ms-n3 me-n5 wvu-z-index-content">
-                  <div class="me-n5">
-                    <div class="ratio ratio-16x9 bg-dark position-relative wvu-shadow-hard-filter">
-                      <div class="wvu-b-accent-text d-flex w-100 h-100 align-items-center justify-content-center">
-                        <span class="small d-block me-2 mt-n1 text-white">Watch Video</span> <span class="d-block fa-regular fa-circle-play h2 text-white"></span>
+              {{ if and .video_url .video_image }}
+                <div class="col-sm col-md-24">
+                  <div class="ms-n3 me-n5 wvu-z-index-content">
+                    <div class="me-n5">
+                      <div class="ratio ratio-16x9 bg-dark position-relative wvu-shadow-hard-filter">
+                        <div class="wvu-bg-image">
+                          <img class="position-absolute h-100 w-100 object-fit-cover" src="{{ $videoSrc }}" alt="" />
+                          <div class="position-absolute wvu-bg-tint w-100 h-100" style="opacity: 0.7;"></div>
+                        </div>
+                        <div class="wvu-b-accent-text d-flex w-100 h-100 align-items-center justify-content-center">
+                          <a class="small d-block me-2 mt-n1 text-white text-decoration-none stretched-link">Watch Video</a> <span class="d-block fa-regular fa-circle-play h2 text-white"></span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              {{ end }}
             </div>
           </div>
         </div>
       </div>
-      
-      <!-- <div class="bg-wvu-accent--yellow h-100 p-5 d-flex flex-column justify-content-center px-xxl-6">
-        <h2 class="h6 helvetica-neue-condensed-black wvu-text-letter-spacing-lg text-uppercase mb-4">WVU Experience</h2>
-        <blockquote class="ms-0 border-0 border-wvu-gold">
-          <span class="d-block wvu-shout wvu-text-outline text-wvu-gold display-1 mb-n3">“</span>
-          <p class="oliviar-thin fs-2 mb-0">My most valuable experience [at WVU] would be the relationships I’ve been able to make within the Davis College. I certainly don’t know everyone, but at the same time, I feel as if there aren’t any strangers here.</p>   
-        </blockquote>
-      </div> -->
-      
     </div>
   </div>
 </div>
