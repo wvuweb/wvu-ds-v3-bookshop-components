@@ -10,36 +10,39 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   label:
-  background_image:
+  image:
   alt_text:
-  heading:
-    - text: Heading
-      highlight:
+  heading: Heading
   subheading: Subheading.
-  body_text:
-  styles:
-    vibe: down-to-business
-    background_c:
-    gradient_1:
-    gradient_2:
-    gradient_3:
-    heading_c:
-    enable_blend: false
-    enable_pattern: false
-    tint_opacity: "0.0"
-    container_margin:
+  markdown:
+  ctas:
+    - text:
+      button_c:
+      icon:
+      url:
+  postscript:
+    markdown:
+    ctas:
+  settings:
+    styles:
+      audience: general
+      tone: loud
+      color_palette: option-2
+      enable_blend: false
+      enable_pattern: false
+      tint_opacity: "0.7"
+      heading_size: display-2
+    layout:
+      buffer:
+      text_placement: mx-auto text-center
+      background_position:
+    config:
+      show_label: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  body_text:
-    type: markdown
-  container_margin:
-    type: select
-    options:
-      values: _select_data.topper_margins
-      value_key: class
-  tint_opacity:
+  enable_pattern:
     hidden: true

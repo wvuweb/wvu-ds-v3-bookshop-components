@@ -1,27 +1,39 @@
-{{ $src := .topper.background_image }}
-{{ $backgroundColor := "bg-white text-dark" }}
-{{ $headingColor := "text-wvu-blue" }}
+{{ $src := .topper.image }}
+{{ $backgroundColor := "" }}
+{{ $headingSize := "display-2" }}
+{{ $placement := "mx-xl-auto text-center" }}
+{{ $buttonColor := "primary" }}
 
-{{ if .topper.background_image }}
-  {{ $backgroundColor = "bg-dark text-white" }}
-  {{ $headingColor = "text-wvu-gold" }}
+{{ $audienceOverride := "" }}
+{{ $toneOverride := "" }}
+
+{{ if .topper.settings.styles.audience }}
+  {{ $audienceOverride = "override-audience-styles-site" }}
 {{ end }}
 
-{{ if and .topper.styles .topper.styles.background_c }}
-  {{ $backgroundColor = .topper.styles.background_c }}
+{{ if .topper.settings.styles.tone }}
+  {{ $toneOverride = "override-tone-styles-site" }}
 {{ end }}
 
-{{ if and .topper.styles .topper.styles.heading_c }}
-  {{ $headingColor = .topper.styles.heading_c }}
+{{ if .topper.settings.styles.color_palette }}
+  {{ $backgroundColor = .topper.settings.styles.color_palette }}
+{{ end }}
+
+{{ if and .topper.image (not .topper.settings.styles.enable_blend) }}
+  {{ $backgroundColor = "option-2" }}
+{{ end }}
+
+{{ with .topper.settings.styles.heading_size }}
+  {{ $headingSize = . }}
 {{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
   {{ $image := "" }}
   {{/*  Get the image, either from its remote or local source  */}}
   {{ if hasPrefix $src "http"}}
-    {{ $image = resources.GetRemote .topper.background_image }}
+    {{ $image = resources.GetRemote .topper.image }}
   {{ else }}
-    {{ $image = resources.Get .topper.background_image }}
+    {{ $image = resources.Get .topper.image }}
   {{ end }}
 
   {{/* Resize images and add them to a variable  */}}
@@ -34,7 +46,7 @@
   {{ end }}
 {{- end -}}
 
-<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} {{ $backgroundColor }} position-relative">
+<header id="" class="c-topper-hero {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7">
   <div class="position-absolute h-100 w-100">
     <div class="container-fluid h-100 px-0">
       <div class="row h-100 mx-0 gx-0">
@@ -47,26 +59,45 @@
       </div>
     </div>
   </div>
-  <div class="container wvu-z-index-content {{ .topper.styles.container_margin }}">
-    <div class="row">
-      <div class="col-xl-12 me-xl-auto">
-        <div class="py-7">
-          {{ if .topper.heading }}
-            {{ if .title }}
-              <h1 class="vibe-label h6 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ .title }}</h1>
-            {{ end }}
-            <h2 id="" class="vibe-primary-heading display-4 text-{{ $headingColor }}">
-              {{ range .topper.heading }}
-                <span class="d-inline-block">{{ .text }} </span>
-              {{ end }}
-            </h2>
-          {{ else }}
-            <h1 id="" class="vibe-primary-heading display-3 text-{{ $headingColor }}">{{ .title }}</h1>
+  <div class="container wvu-z-index-content">
+    <div class="{{ .topper.settings.layout.buffer }}">
+      <div class="row py-6">
+        <div class="col-xl-12 me-auto">
+          {{ with .topper.label }}
+            <p class="h6 mb-6 wvu-b-label">{{ . }}</p>
           {{ end }}
-          <p class="vibe-subheading h4 mt-4">{{ .topper.subheading }}</p>
-          <div class="vibe-body mt-4">
-            {{ .topper.body_text | markdownify }}
-          </div>
+          
+          {{ with .topper.heading }}
+            <h1 id="" class="wvu-b-display-heading wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }}" data-text="{{ . }}">
+              <span class="wvu-b-font-adjust">{{ . }}</span>
+            </h1>
+          {{ end }}
+
+          <p class="fs-3 my-3 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ .topper.subheading }}</span></p>
+
+          {{ with .topper.markdown }}
+            <div class="mt-5 wvu-b-text">
+              {{ . | markdownify }}
+            </div>
+          {{ end }}
+
+          {{ with .topper.ctas }}
+            <div class="mt-4">
+              {{ range . }}
+                {{ if .button_c }}
+                  {{ $buttonColor = .button_c }}
+                {{ end }}
+                <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                {{ $buttonColor := "primary" }}
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with .topper.postscript }}
+            <div class="mt-4">
+              {{ .markdown | markdownify }}
+            </div>
+          {{ end }}
         </div>
       </div>
     </div>
