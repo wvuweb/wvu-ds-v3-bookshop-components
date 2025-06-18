@@ -30,7 +30,7 @@ blueprint:
       color_palette: option-2
       enable_blend: false
       enable_pattern: false
-      tint_opacity: "0.7"
+      tint_opacity: "0.0"
       heading_size: display-2
     layout:
       buffer:
@@ -45,4 +45,6 @@ preview:
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
   enable_pattern:
+    hidden: true
+  tint_opacity:
     hidden: true
