@@ -10,7 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   heading: Top Story
-  article_tags:
+  tags:
     - top-story
   hide_author: false
   show_content: false

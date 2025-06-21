@@ -7,8 +7,8 @@
 
 {{ $tags := slice }}
 
-{{ if .article_tags }}
-  {{ $tags = .article_tags }}
+{{ if .tags }}
+  {{ $tags = .tags }}
 {{ end }}
 
 {{ if not site.Data }}
@@ -23,14 +23,14 @@
 
   {{ if not site.Params.env_bookshop_live }}
     {{ $articles = where site.Pages "Section" "articles" }}
-    {{ $articles = where $articles "Params.article_tags" "intersect" $tags }}
+    {{ $articles = where $articles "Params.tags" "intersect" $tags }}
     {{ $articles = sort $articles "Params.publishDate" "asc" }}
     {{ $authorData = where site.RegularPages "Params.type" "eq" "author" }}
   {{ else }}
     {{ $articles = where site.Data.site_pages ".type" "eq" "articles" }}
     {{ $photoEssays = where site.Data.site_pages ".type" "eq" "photo-essay" }}
     {{ $articles = $articles | append $photoEssays }}
-    {{ $articles = where $articles ".article_tags" "intersect" $tags }}
+    {{ $articles = where $articles ".tags" "intersect" $tags }}
     {{ $articles = sort $articles ".publishDate" "asc" }}
     {{ $authorData = where site.Data.people_data ".type" "author" }}
   {{ end }}

@@ -1,6 +1,6 @@
 {{ $src := .topper.image }}
 {{ $backgroundColor := "" }}
-{{ $headingSize := "display-2" }}
+{{ $headingSize := "display-3" }}
 {{ $placement := "mx-xl-auto text-center" }}
 {{ $buttonColor := "primary" }}
 
@@ -61,42 +61,47 @@
   </div>
   <div class="container wvu-z-index-content">
     <div class="row py-7">
-      <div class="col-xl-12 me-auto">
-        {{ with .topper.label }}
-          <p class="h6 mb-6 wvu-b-label">{{ . }}</p>
-        {{ end }}
-        
-        {{ with .topper.heading }}
-          <h1 id="" class="wvu-b-display-heading wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }}" data-text="{{ . }}">
-            <span class="wvu-b-font-adjust">{{ . }}</span>
-          </h1>
-        {{ end }}
+      <div class="col-xl-12 me-auto d-flex align-items-center">
+        <div class="w-100">
+          {{ with .topper.label }}
+            <p class="h6 mb-6 wvu-b-label">{{ . }}</p>
+          {{ end }}
+          
+          {{ with .topper.heading }}
+            <h1 id="" class="wvu-b-display-heading wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }}" data-text="{{ . }}">
+              <span class="wvu-b-font-adjust">{{ . }}</span>
+            </h1>
+          {{ end }}
 
-        <p class="fs-3 my-3 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ .topper.subheading }}</span></p>
+          <p class="fs-3 my-3 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ .topper.subheading }}</span></p>
 
-        {{ with .topper.markdown }}
-          <div class="mt-5 wvu-b-text">
-            {{ . | markdownify }}
-          </div>
-        {{ end }}
+          {{ with .topper.markdown }}
+            <div class="mt-5 wvu-b-text">
+              {{ . | markdownify }}
+            </div>
+          {{ end }}
 
-        {{ with .topper.ctas }}
-          <div class="mt-4">
-            {{ range . }}
-              {{ if .button_c }}
-                {{ $buttonColor = .button_c }}
+          {{ with .topper.ctas }}
+            <div class="mt-4">
+              {{ range . }}
+                {{ if .button_c }}
+                  {{ $buttonColor = .button_c }}
+                {{ end }}
+                <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                {{ $buttonColor := "primary" }}
               {{ end }}
-              <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-              {{ $buttonColor := "primary" }}
-            {{ end }}
-          </div>
-        {{ end }}
+            </div>
+          {{ end }}
 
-        {{ with .topper.postscript }}
-          <div class="mt-4">
-            {{ .markdown | markdownify }}
-          </div>
-        {{ end }}
+          {{ with .topper.postscript }}
+            <div class="mt-4">
+              {{ .markdown | markdownify }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+      <div class="d-none d-xl-block col-xl-12">
+        <div class="ratio ratio-16x9"></div>
       </div>
     </div>
   </div>

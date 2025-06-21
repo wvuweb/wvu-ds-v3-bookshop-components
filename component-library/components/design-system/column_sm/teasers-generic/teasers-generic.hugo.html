@@ -11,9 +11,9 @@
     {{ $pageLookup := slice }}
 
     {{ if not site.Params.env_bookshop_live }}
-      {{ $pageLookup = where $pagesData "Params.article_tags" "intersect" .tags }}
+      {{ $pageLookup = where $pagesData "Params.tags" "intersect" .tags }}
     {{ else }}
-      {{ $pageLookup = where $pagesData ".article_tags" "intersect" .article_tags }}
+      {{ $pageLookup = where $pagesData ".tags" "intersect" .tags }}
     {{ end }}
 
     <h2 class="h6 wvu-b-label pt-2 small mb-3"><span class="fa-solid fa-{{ .icon }}"></span> {{ .heading }}</h2>

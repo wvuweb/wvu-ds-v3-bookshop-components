@@ -12,8 +12,8 @@
 
 {{ $tags := slice }}
 
-{{ if .article_tags }}
-  {{ $tags = .article_tags }}
+{{ if .tags }}
+  {{ $tags = .tags }}
 {{ end }}
 
 {{ $heading := .heading }}
@@ -29,10 +29,10 @@
 
     {{ if not site.Params.env_bookshop_live }}
       {{ $articles = where site.Pages "Section" "articles" }}
-      {{ $articles = where $articles "Params.article_tags" "intersect" $tags }}
+      {{ $articles = where $articles "Params.tags" "intersect" $tags }}
     {{ else }}
       {{ $articles = where site.Data.site_pages ".type" "articles" }}
-      {{ $articles = where $articles ".article_tags" "intersect" $tags }}
+      {{ $articles = where $articles ".tags" "intersect" $tags }}
     {{ end }}
 
     <div class="bg-wvu-neutral--off-white p-4 h-100">

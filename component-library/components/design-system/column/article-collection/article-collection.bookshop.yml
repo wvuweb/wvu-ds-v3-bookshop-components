@@ -10,7 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   heading: Article Collection Heading
-  article_tags:
+  tags:
     - featured
   postscript:
     copy:
