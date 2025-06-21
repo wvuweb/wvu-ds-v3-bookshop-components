@@ -1,12 +1,14 @@
 {{ $containerMargin := "" }}
 
-{{ if and .topper .topper._bookshop_name }}
-  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params "title" .params.title)) }}
-  {{ if ne .topper._bookshop_name "design-system/topper/article" }}
-    {{ $containerMargin = "mt-n9" }}
+{{ if not site.Params.env_bookshop_live }}
+  {{ if and .topper .topper._bookshop_name }}
+    {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params "title" .params.title)) }}
+    {{ if ne .topper._bookshop_name "design-system/topper/article" }}
+      {{ $containerMargin = "mt-n9" }}
+    {{ end }}
+  {{ else }}
+    {{ partial "bookshop" (slice "design-system/topper/article" (dict "topper" .topper "params" .params "title" .params.title)) }}
   {{ end }}
-{{ else }}
-  {{ partial "bookshop" (slice "design-system/topper/article" (dict "topper" .topper "params" .params "title" .params.title)) }}
 {{ end }}
 
 <main class="py-6 position-relative audience-general tone-default wvu-b-subtle">
@@ -14,7 +16,7 @@
     <div class="row">
       <div class="col-xl-14 mx-xl-auto">
         <div class="bg-option-1 p-5">
-          <div class="antonia-regular fs-5 ">
+          <div class="antonia-regular text-dark fs-5 ">
             {{ range .article_blocks }}
               {{ partial "bookshop" . }}
             {{ end }}
