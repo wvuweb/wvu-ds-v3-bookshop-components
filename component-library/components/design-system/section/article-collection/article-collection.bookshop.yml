@@ -36,6 +36,7 @@ blueprint:
       include_heading_postscript: true
       limit:
       show_content: false
+      hide_thumbnails: false
       show: 2024-09-01
       hide: 2099-09-01
   is_dynamic: true

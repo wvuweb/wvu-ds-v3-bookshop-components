@@ -1,3 +1,9 @@
+{{ $mainCols := "col-xl-10 mx-xl-auto" }}
+
+{{ if .hide_section_menu }}
+  {{ $mainCols = "col-xl-15 me-xl-auto" }}
+{{ end }}
+
 {{ if and .topper .topper._bookshop_name }}
   {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "title" .title "params" .params)) }}
 {{ else }}
@@ -7,11 +13,13 @@
 <main class="py-6 wvu-backpage-main tone-default bg-option-1 wvu-b-subtle">
   <div class="container text-dark">
     <div class="row">
-      <div class="col-xl-5">
-        <h2 class="wvu-b-label h6 mb-4">Section Menu</h2>
-        {{ partial "bookshop" (slice "design-system/column_sm/section-menu" (dict "current_page" .current_page "section_pages" .section_pages)) }}
-      </div>
-      <div class="col-xl-10 mx-xl-auto">
+      {{ if not .hide_section_menu }}
+        <div class="col-xl-5">
+          <h2 class="wvu-b-label h6 mb-4">Section Menu</h2>
+          {{ partial "bookshop" (slice "design-system/column_sm/section-menu" (dict "current_page" .current_page "section_pages" .section_pages)) }}
+        </div>
+      {{ end }}
+      <div class="{{ $mainCols }}">
         {{ range .detail_blocks }}
           {{ partial "bookshop" . }}
         {{ end }}

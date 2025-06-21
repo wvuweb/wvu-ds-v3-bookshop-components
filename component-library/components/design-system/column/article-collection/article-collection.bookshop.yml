@@ -18,6 +18,7 @@ blueprint:
   config:
     limit:
     show_content: false
+    hide_thumbnails: false
     is_dynamic: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

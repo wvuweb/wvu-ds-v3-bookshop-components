@@ -1,8 +1,13 @@
 {{ $articles := "" }}
 {{ $limit := 5 }}
+{{ $hideThumbnails := "" }}
 
 {{ if .settings.config.limit }}
   {{ $limit = .settings.config.limit }}
+{{ end }}
+
+{{ with .config.hide_thumbnails }}
+  {{ $hideThumbnails = . }}
 {{ end }}
 
 {{ $tags := slice }}
@@ -22,18 +27,28 @@
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
   {{ else }}
 
-    {{ $authorData := site.Data.people_data }}
+    {{ $articles := slice }}
+    {{ $photoEssays := slice }}
+    {{ $authorData := slice }}
 
     {{ if not site.Params.env_bookshop_live }}
       {{ $articles = where site.Pages "Section" "articles" }}
       {{ $articles = where $articles "Params.tags" "intersect" $tags }}
+      {{ $articles = sort $articles "Params.publishDate" "asc" }}
+      {{ $authorData = where site.Pages "Section" "people" }}
+      {{ $authorData = where $authorData "Params.type" "eq" "author" }}
     {{ else }}
-      {{ $articles = where site.Data.site_pages ".type" "articles" }}
+      {{ $articles = where site.Data.site_pages ".type" "eq" "articles" }}
+      {{ $photoEssays = where site.Data.site_pages ".type" "eq" "photo-essay" }}
+      {{ $articles = $articles | append $photoEssays }}
       {{ $articles = where $articles ".tags" "intersect" $tags }}
+      {{ $articles = sort $articles ".publishDate" "asc" }}
+      {{ $authorData = where site.Data.people_data ".type" "author" }}
     {{ end }}
 
-    <div class="row gx-3 position-relative">
-      {{ range first $limit $articles }}
+    
+    {{ range first $limit $articles }}
+      <div class="row gx-3 position-relative">
 
         {{ $params := "" }}
         {{ $link := "" }}
@@ -55,6 +70,9 @@
 
         {{ range $authorData }}
           {{ $author := . }}
+          {{ if not site.Params.env_bookshop_live }}
+            {{ $author = .Params }}
+          {{ end }}
           {{ range $authors }}
             {{ if eq .author $author.uuid }}
               {{ $authorList = $authorList | append $author }}
@@ -79,8 +97,8 @@
           {{ end }}
         {{- end -}}
         
-        <div class="col-8">
-          {{ if $src }}
+        {{ if and $src (not $hideThumbnails) }}
+          <div class="col-8">
             <div class="wvu-article__thumb mb-4">
               <div class="ratio ratio-1x1 bg-light">
                 <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
@@ -88,9 +106,9 @@
                 </a>
               </div>
             </div>
-          {{ end }}
-        </div>
-        <div class="col-16">
+          </div>
+        {{ end }}
+        <div class="col">
           <div class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
 
             <div class="mt-3 mt-md-0">
@@ -108,7 +126,7 @@
                     {{ end }}
                   {{ end }}
 
-                  {{ if and (not $params.config.hide_author) ($params.author) ($params.publishDate) }} | {{ end }}
+                  {{ if and $authorList (not $params.config.hide_author) ($params.author) ($params.publishDate) }} | {{ end }}
 
                   {{ if $params.publishDate }}
                     <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
@@ -119,7 +137,7 @@
 
           </div>
         </div>
-      {{ end }}
-    </div>
+      </div>
+    {{ end }}
   {{ end }}
 </div>
