@@ -9,20 +9,20 @@
   {{ partial "bookshop" (slice "design-system/topper/article" (dict "topper" .topper "params" .params "title" .params.title)) }}
 {{ end }}
 
-<main class="py-6 position-relative">
-  <div class="container antonia-regular {{ $containerMargin }}">
+<main class="py-6 position-relative audience-general tone-default wvu-b-subtle">
+  <div class="container antonia-regular fs-5 {{ $containerMargin }}">
     <div class="row">
       <div class="col-xl-14 mx-xl-auto">
-        <div class="bg- p-5">
+        <div class="bg-option-1 p-5">
           {{ range .article_blocks }}
             {{ partial "bookshop" . }}
           {{ end }}
 
           {{ if not site.Data }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
-          {{ else if and (site.Params.env_bookshop_live) (not .show_author_bios) }}
+          {{ else if and (site.Params.env_bookshop_live) (not .params.show_author_bios) }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
-          {{ else }}
+          {{ else if .params.show_author_bios }}
             {{ range .params.authors }}
               {{ partial "bookshop" (slice "design-system/column/author-bio" (dict "author" .author)) }}
             {{ end }}

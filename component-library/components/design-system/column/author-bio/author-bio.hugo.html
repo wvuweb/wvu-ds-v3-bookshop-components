@@ -12,7 +12,7 @@
 {{ range $authorData }}
   {{ $author := .Params }}
   {{ if eq $uuid $author.uuid }}
-    <div class="bg-light p-4 p-sm-5 mb-4">
+    <div class="wvu-b-subtle mt-5 p-4 p-sm-5 mb-4">
       <div class="row">
         <div class="col-6">
           <div class="ratio ratio-1x1" style="max-width: 250px;">
@@ -20,10 +20,10 @@
           </div>
         </div>
         <div class="col-16 me-auto">
-          <h2 class="helvetica-neue-light mb-2">{{ $author.name }}</h2>
-          <p class="helvetica-neue-bold mb-3">{{ $author.title }}</p>
+          <h2 class="config-light mb-2">{{ $author.name }}</h2>
+          <p class="config-extra-bold mb-3">{{ $author.title }}</p>
           <p class="mb-3">{{ $author.bio_text | markdownify }}</p>
-          <a class="text-dark" href="">View {{ $author.name }}’s Bio Page <span class="fa-solid fa-arrow-right"></span></a>
+          <a class="text-dark small text-decoration-none" href="{{ .RelPermalink }}">View {{ $author.name }}’s Bio Page <span class="fa-solid fa-arrow-right"></span></a>
         </div>
       </div>
     </div>
