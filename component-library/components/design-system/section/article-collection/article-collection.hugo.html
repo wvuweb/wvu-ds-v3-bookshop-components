@@ -86,7 +86,7 @@
           {{ end }}
         {{- end -}}
         
-        <div class="col-6">
+        <div class="col-lg-12 col-xl-6">
           <div class="mb-4 position-relative" itemscope="" itemtype="http://schema.org/BlogPosting">
 
             {{ if $src }}
@@ -130,6 +130,14 @@
           </div>
         </div>
       {{ end }}
+      <div class="mt-5 d-flex align-items-center">
+        <h3 class="h6 d-inline-block me-2">View All:</h3>
+        <p class="d-inline-block">
+          {{ range $tags }}
+            <a class="border border-1 py-2 px-3 rounded-pill small text-decoration-none" href="/tags/{{ . | urlize }}/">{{ . }}</a>
+          {{ end }}
+        </p>
+      </div>
     {{ end }}
   </div>
 {{ end }}
