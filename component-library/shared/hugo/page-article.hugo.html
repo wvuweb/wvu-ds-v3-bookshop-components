@@ -24,7 +24,7 @@
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
           {{ else if and (site.Params.env_bookshop_live) (not .params.show_author_bios) }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Show Author Bios' is currently set to 'false' in the article’s config to speed up editing. To see the bios, check the 'Show Author Bios' box in the article’s config.")) }}
-          {{ else if .params.show_author_bios }}
+          {{ else if and .params.authors .params.show_author_bios }}
             {{ range .params.authors }}
               {{ partial "bookshop" (slice "design-system/column/author-bio" (dict "author" .author)) }}
             {{ end }}
