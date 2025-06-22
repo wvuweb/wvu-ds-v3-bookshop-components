@@ -1,0 +1,34 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - article_topper
+  label: "Topper - Article Hero Test"
+  description:
+  icon:
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  heading: Heading
+  subheading: Subheading.
+  label:
+  background_image:
+  alt_text:
+  body_text:
+  show_byline: false
+  settings:
+    styles:
+      tint_opacity: "0.7"
+    layout:
+      text_placement: text-center mx-auto
+      background_position:
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  label:
+    hidden: true
+  vibe:
+    hidden: true

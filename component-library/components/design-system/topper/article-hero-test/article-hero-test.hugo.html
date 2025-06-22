@@ -1,0 +1,59 @@
+{{ $src := .image }}
+
+{{ $publishDate := "" }}
+{{ $format := "January 2, 2006" }}
+
+{{- if not site.Params.env_bookshop_live -}}
+  {{ $image := "" }}
+  {{/*  Get the image, either from its remote or local source  */}}
+  {{ if hasPrefix $src "http"}}
+    {{ $image = resources.GetRemote .image }}
+  {{ else }}
+    {{ $image = resources.Get .image }}
+  {{ end }}
+
+  {{/* Resize images and add them to a variable  */}}
+  {{ if and $image (ne $image.MediaType.SubType "svg") }}
+    {{ if eq .imageProcess "fit" }}
+      {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+    {{ else }}
+      {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{- end -}}
+
+{{ with .publish_date }}
+  {{ $publishDate = . }}
+  {{ $publishDate = time.AsTime $publishDate }}
+  {{ $publishDate = $publishDate.Format $format }}
+{{ end }}
+
+<header id="" aria-labelledby="" class="position-relative bg-dark text-white mb-6">
+  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
+  <div class="container wvu-z-index-content py-10">
+    <div class="row">
+      <div class="col-xl-12 {{ .topper.settings.layout.text_placement }}">
+        {{ with .topper.label }}
+          <p class="h6 mb-6 wvu-b-label">{{ . }}</p>
+        {{ end }}
+
+        <h1 id="big-search-1-label" class="display-5 antonia-light mb-3">{{ .title }}</h1>
+
+        {{ with .subheading }}
+          <p class="config-light fs-4 mb-0">{{ . }}</p>
+        {{ end }}
+
+        <p class="mt-4 mb-0 config-regular text-uppercase wvu-text-letter-spacing small">{{ $publishDate }}</p>
+        <div class="d-flex mt-4 justify-content-center">
+          {{ if not site.Data }}
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
+          {{ else if and (site.Params.env_bookshop_live) (not .topper.show_byline) }}
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Show Byline' is currently set to 'false' to speed up editing. To see the byline, check the 'Show Byline' box in the topper config." ) ) }}
+          {{ else }}
+            {{ partial "bookshop" (slice "design-system/simple/byline-test" (dict "authors" .authors)) }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

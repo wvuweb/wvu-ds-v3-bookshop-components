@@ -1,0 +1,81 @@
+{{ $authorData := slice }}
+{{ $authorList := slice }}
+
+{{ if not site.Params.env_bookshop_live }}
+  {{ $authorData = where site.RegularPages "Params._schema" "author" }}
+{{ else }}
+  {{ $authorData = where site.Data.people_data ".schema" "author" }}
+{{ end }}
+
+{{ $byline := slice }}
+
+{{ with .authors }}
+  {{ $byline = . }}
+{{ end }}
+
+{{ range $authorData }}
+
+  {{ $author := "" }}
+
+  {{ if not site.Params.env_bookshop_live }}
+    {{ $author = .Params }}
+  {{ else }}
+    {{ $author = . }}
+  {{ end }}
+
+  {{ range $byline }}
+    {{ $role := "" }}
+    
+    {{ if .article_role }}
+      {{ $role = .article_role }}
+    {{ end }}
+
+    {{ $author = dict
+      "name" $author.name
+      "profileImage" $author.profile_image
+      "role" $role
+      "uuid" $author.uuid
+      "alt" $author.alt_text
+    }}
+    {{ if eq .author $author.uuid }}
+      {{ $authorList = $authorList | append $author }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ range $authorList }}
+
+  {{ $src := .profileImage }}
+
+  {{- if not site.Params.env_bookshop_live -}}
+    {{ $profileImage := "" }}
+    {{/*  Get the image, either from its remote or local source  */}}
+    {{ if hasPrefix $src "http"}}
+      {{ $profileImage = resources.GetRemote .profileImage }}
+    {{ else }}
+      {{ $profileImage = resources.Get .profileImage }}
+    {{ end }}
+
+    {{/* Resize images and add them to a variable  */}}
+    {{ if and $profileImage (ne $profileImage.MediaType.SubType "svg") }}
+      {{ $src = ($profileImage.Fill (printf "%dx%d webp" 100 100)).RelPermalink }}
+    {{ end }}
+  {{- end -}}
+
+  <div class="d-flex align-items-center mx-4">
+    {{ if .profileImage }}
+      <div class="ratio ratio-1x1 d-inline-block me-2" style="height: 50px; width: 50px;">
+        <img class="rounded-circle object-fit h-100 w-100" src="{{ $src }}" alt="{{ .alt }}" />
+      </div>
+    {{ end }}
+    
+    <div class="d-inline-block text-start">
+      <p class="small lh-1 mb-0">
+        <span class="d-block helvetica-neue-bold text-uppercase">{{ .name }}</span>
+        <span class="d-block helvetica-neue-light text-uppercase">
+          {{ .role }}
+        </span>
+      </p>
+    </div>
+  </div>
+{{ end }}
