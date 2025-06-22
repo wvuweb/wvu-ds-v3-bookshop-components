@@ -45,7 +45,6 @@
       {{ $articles = sort $articles ".publishDate" "asc" }}
       {{ $authorData = where site.Data.people_data ".type" "author" }}
     {{ end }}
-
     
     {{ range first $limit $articles }}
       <div class="row gx-3 position-relative">
@@ -117,12 +116,14 @@
               {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
                 <p class="small d-block">
                   {{ if not $params.config.hide_author }}
-                    {{ range $authorList }}
-                      <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                        <span itemprop="name">
-                          {{ .name }}
+                    {{ with $authorList }}
+                      {{ range . }}
+                        <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                          <span itemprop="name">
+                            {{ .name }}
+                          </span>
                         </span>
-                      </span>
+                      {{ end }}
                     {{ end }}
                   {{ end }}
 
