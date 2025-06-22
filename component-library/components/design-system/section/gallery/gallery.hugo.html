@@ -1,7 +1,4 @@
-<div class="container parvus-gallery__container">
-  {{ partial "bookshop" (slice "generic/heading" (dict "text" .heading "name" (print .name "-label") "hierarchy" "h2" "classes" "display-3 wvu-shout text-wvu-blue") ) }}
-  <p class="h3 helvetica-neue-light text-wvu-blue mb-4">{{ .subheading }}</p>
-  
+<div class="container parvus-gallery__container">  
   <ul class="parvus-gallery__row row list-unstyled">
     {{ range .images }}
 
