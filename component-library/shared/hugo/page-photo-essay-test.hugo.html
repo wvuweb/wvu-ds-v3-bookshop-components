@@ -1,5 +1,5 @@
-{{ if and .Params.article_topper .Params.article_topper._bookshop_name }}
-  {{ partial "bookshop" (slice .Params.article_topper._bookshop_name (dict "image" .image "title" .title "publish_date" .publish_date "authors" .authors "topper" .topper)) }}
+{{ if and .topper .topper._bookshop_name }}
+  {{ partial "bookshop" (slice .topper._bookshop_name (dict "image" .image "title" .title "publish_date" .publish_date "authors" .authors "topper" .topper)) }}
 {{ end }}
 
 <main class="antonia-regular">
