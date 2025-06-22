@@ -59,6 +59,10 @@
             {{ $params = . }}
           {{ end }}
 
+          {{ with $params.alternate_url }}
+            {{ $link = . }}
+          {{ end }}
+
           {{ $authors := slice }}
 
           {{ if $params.authors }}
@@ -113,12 +117,14 @@
                 {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
                   <p class="small d-block">
                     {{ if not $params.config.hide_author }}
-                      {{ range $authorList }}
-                        <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                          <span itemprop="name">
-                            {{ .name }}
+                      {{ with $authorList }}
+                        {{ range . }}
+                          <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                            <span itemprop="name">
+                              {{ .name }}
+                            </span>
                           </span>
-                        </span>
+                        {{ end }}
                       {{ end }}
                     {{ end }}
 

@@ -11,7 +11,6 @@ spec:
 blueprint:
   heading: Article Collection Heading
   tags:
-    - featured
   postscript:
     copy:
     ctas:

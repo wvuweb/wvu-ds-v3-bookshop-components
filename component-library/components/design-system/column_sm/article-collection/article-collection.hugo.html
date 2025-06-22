@@ -59,6 +59,10 @@
           {{ $params = . }}
         {{ end }}
 
+        {{ with $params.alternate_url }}
+          {{ $link = . }}
+        {{ end }}
+
         {{ $authors := slice }}
 
         {{ if $params.authors }}

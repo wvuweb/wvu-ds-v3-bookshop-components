@@ -19,7 +19,8 @@
     {{ $articles = where site.Pages "Section" "articles" }}
     {{ $articles = where $articles "Params.tags" "intersect" $tags }}
     {{ $articles = sort $articles "Params.publishDate" "asc" }}
-    {{ $authorData = where site.RegularPages "Params.type" "eq" "author" }}
+    {{ $authorData = where site.Pages "Section" "people" }}
+    {{ $authorData = where $authorData "Params.type" "eq" "author" }}
   {{ else }}
     {{ $articles = where site.Data.site_pages ".type" "eq" "articles" }}
     {{ $photoEssays = where site.Data.site_pages ".type" "eq" "photo-essay" }}
@@ -41,6 +42,10 @@
           {{ $link = .RelPermalink }}
         {{ else }}
           {{ $params = . }}
+        {{ end }}
+
+        {{ with $params.alternate_url }}
+          {{ $link = . }}
         {{ end }}
 
         {{ $authors := slice }}
@@ -100,16 +105,18 @@
             {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
               <p class="small d-block">
                 {{ if not $params.config.hide_author }}
-                  {{ range $authorList }}
-                    <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                      <span itemprop="name">
-                        {{ .name }}
+                  {{ with $authorList }}
+                    {{ range $authorList }}
+                      <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                        <span itemprop="name">
+                          {{ .name }}
+                        </span>
                       </span>
-                    </span>
+                    {{ end }}
                   {{ end }}
                 {{ end }}
 
-                {{ if and (not $params.config.hide_author) ( $params.publishDate ) }} | {{ end }}
+                {{ if and $authorList (not $params.config.hide_author) ($params.author) ($params.publishDate) }} | {{ end }}
 
                 {{ if $params.publishDate }}
                   <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
