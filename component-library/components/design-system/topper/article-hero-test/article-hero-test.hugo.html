@@ -1,8 +1,5 @@
 {{ $src := .image }}
 
-{{ $publishDate := "" }}
-{{ $format := "January 2, 2006" }}
-
 {{- if not site.Params.env_bookshop_live -}}
   {{ $image := "" }}
   {{/*  Get the image, either from its remote or local source  */}}
@@ -22,19 +19,13 @@
   {{ end }}
 {{- end -}}
 
-{{ with .publish_date }}
-  {{ $publishDate = . }}
-  {{ $publishDate = time.AsTime $publishDate }}
-  {{ $publishDate = $publishDate.Format $format }}
-{{ end }}
-
 <header id="" aria-labelledby="" class="position-relative bg-dark text-white mb-6">
   <div class="container wvu-z-index-content py-10">
     <div class="row">
       <div class="col-xl-12 {{ .topper.settings.layout.text_placement }}">
 
-        Test.
-        
+        <h2>{{ .title }}</h2>
+
       </div>
     </div>
   </div>
