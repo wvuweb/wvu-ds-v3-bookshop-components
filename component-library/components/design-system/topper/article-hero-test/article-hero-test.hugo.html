@@ -1,4 +1,12 @@
 {{ $src := .image }}
+{{ $publishDate := .publish_date }}
+{{ $format := "January 2, 2006" }}
+
+{{ if and (not site.Params.env_bookshop_live) .publish_date }}
+  {{ $publishDate = .publish_date }}
+  {{ $publishDate = time.AsTime $publishDate }}
+  {{ $publishDate = $publishDate.Format $format }}
+{{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
   {{ $image := "" }}
@@ -32,6 +40,10 @@
 
         {{ with .subheading }}
           <p class="config-light fs-4 mb-0">{{ . }}</p>
+        {{ end }}
+
+        {{ if not site.Params.env_bookshop_live }}
+          <p class="mt-4 mb-0 config-light text-uppercase wvu-text-letter-spacing">{{ $publishDate }}</p>
         {{ end }}
 
         <div class="d-flex mt-4 justify-content-center">
