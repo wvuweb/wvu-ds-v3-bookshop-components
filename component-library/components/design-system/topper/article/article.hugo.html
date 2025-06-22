@@ -1,10 +1,10 @@
 {{ $alt := "" }}
 {{ $containerStyles := "" }}
-{{ $publishDate := "" }}
+{{ $publishDate := .params.publishDate }}
 {{ $showByline := false }}
 {{ $format := "January 2, 2006" }}
 
-{{ if .params.publishDate }}
+{{ if and (not site.Params.env_bookshop_live) .params.publishDate }}
   {{ $publishDate = .params.publishDate }}
   {{ $publishDate = time.AsTime $publishDate }}
   {{ $publishDate = $publishDate.Format $format }}
