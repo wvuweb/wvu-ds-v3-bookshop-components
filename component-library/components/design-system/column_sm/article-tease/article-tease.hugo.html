@@ -1,0 +1,139 @@
+{{ $label := .label }}
+{{ $tags := slice }}
+
+{{ if .tags }}
+  {{ $tags = .tags }}
+{{ end }}
+
+{{ if not site.Data }}
+  {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
+{{ else if and (site.Params.env_bookshop_live) (not .settings.config.show_content) }}
+  {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
+{{ else }}
+
+  {{ $articles := slice }}
+  {{ $photoEssays := slice }}
+  {{ $authorData := slice }}
+
+  {{ if not site.Params.env_bookshop_live }}
+    {{ $articles = where site.Pages "Section" "articles" }}
+    {{ $articles = where $articles "Params.tags" "intersect" $tags }}
+    {{ $articles = sort $articles "Params.publishDate" "asc" }}
+    {{ $authorData = where site.Pages "Section" "people" }}
+    {{ $authorData = where $authorData "Params.type" "eq" "author" }}
+  {{ else }}
+    {{ $articles = where site.Data.site_pages ".type" "eq" "articles" }}
+    {{ $photoEssays = where site.Data.site_pages ".type" "eq" "photo-essay" }}
+    {{ $articles = $articles | append $photoEssays }}
+    {{ $articles = where $articles ".tags" "intersect" $tags }}
+    {{ $articles = sort $articles ".publishDate" "asc" }}
+    {{ $authorData = where site.Data.people_data ".type" "author" }}
+  {{ end }}
+
+  <div class="wvu-b-border wvu-b-shadow wvu-b-subtle position-relative">
+    <div class="row gx-0">
+      {{ range first 1 $articles }}
+
+        {{ $params := "" }}
+        {{ $link := "" }}
+
+        {{ if not site.Params.env_bookshop_live }}
+          {{ $params = .Params }}
+          {{ $link = .RelPermalink }}
+        {{ else }}
+          {{ $params = . }}
+        {{ end }}
+
+        {{ with $params.alternate_url }}
+          {{ $link = . }}
+        {{ end }}
+
+        {{ $authors := slice }}
+
+        {{ if $params.authors }}
+          {{ $authors = $params.authors }}
+        {{ end }}
+        
+        {{ $authorList := slice }}
+
+        {{ range $authorData }}
+          {{ $author := . }}
+          {{ if not site.Params.env_bookshop_live }}
+            {{ $author = .Params }}
+          {{ end }}
+          {{ range $authors }}
+            {{ if eq .author $author.uuid }}
+              {{ $authorList = $authorList | append $author }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        
+        {{ $src := $params.image }}
+
+        {{- if not site.Params.env_bookshop_live -}}
+          {{ $image := "" }}
+          {{/*  Get the image, either from its remote or local source  */}}
+          {{ if hasPrefix $src "http"}}
+            {{ $image = resources.GetRemote $params.image }}
+          {{ else }}
+            {{ $image = resources.Get $params.image }}
+          {{ end }}
+
+          {{/* Resize images and add them to a variable  */}}
+          {{ if and $image (ne $image.MediaType.SubType "svg") }}
+            {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+          {{ end }}
+        {{- end -}}
+        
+        <div class="col-lg-12">
+          {{ if $src }}
+            <div class="wvu-article__thumb h-100">
+              <img class="h-100 img-fluid object-fit-cover" src="{{ $src }}" alt="" />
+            </div>
+          {{ end }}
+        </div>
+
+        <div class="col-lg-12">
+          <div class="h-100 p-5 p-xxl-6">
+
+            {{ with $label }}
+              <p class="wvu-b-label">{{ . }}</p>
+            {{ end }}
+
+            <h2 class="display-5" itemprop="headline"><a class="wvu-b-display-heading stretched-link text-decoration-none" href="{{ $link }}"><span class="wvu-b-font-adjust">{{ $params.title }}</span></a></h2>
+
+            {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
+              <p class="small d-block">
+                {{ if not $params.config.hide_author }}
+                  {{ with $authorList }}
+                    {{ range $authorList }}
+                      <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                        <span itemprop="name">
+                          {{ .name }}
+                        </span>
+                      </span>
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+
+                {{ if and $authorList (not $params.config.hide_author) ($params.author) ($params.publishDate) }} | {{ end }}
+
+                {{ if $params.publishDate }}
+                  <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
+                {{ end }}
+              </p>
+            {{ end }}
+
+            {{ with $params.teaser }}
+              <p>{{ . }}</p>
+            {{ end }}
+
+            <div class="mt-4">
+              <span class="display-4 fa-thin fa-arrow-circle-right wvu-b-accent-text"></span>
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

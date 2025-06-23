@@ -1,22 +1,17 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - column_blocks
-  label: "Place"
+    - column_blocks_sm
+  label: "Article Tease"
   description:
-  icon:
+  icon: library_books
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading: Heading
-  image:
-  label: Places and Spaces
-  alt_text:
-  text: Descriptive text goes here.
-  ctas:
-    - text: Call to Action
-      url:
+  label:
+  tags: []
+  is_dynamic: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

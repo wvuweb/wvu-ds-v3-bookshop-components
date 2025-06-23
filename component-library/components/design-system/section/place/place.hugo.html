@@ -1,4 +1,9 @@
 {{ $src := .image }}
+{{ $color := "" }}
+
+{{ with .settings.styles.color_palette }}
+  {{ $color = . }}
+{{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
   {{ $image := "" }}
@@ -36,16 +41,18 @@
       </div>
     </div>
     <div class="col-xl-8 ms-xxl-auto pe-5 mt-n1 d-flex flex-column">
-      <div class="mt-n2 position-absolute bg-{{ .settings.styles.color_palette }} mt-n4 mt-xl-n2">
-        <p class="h6 wvu-b-label text-dark wvu-text-letter-spacing-lg p-4 mb-0 ms-n4 mt-xl-n5 mb-xl-3 d-inline-block" style="background-color: inherit;">Places and Spaces</p>
-      </div>
+      {{ with .label }}
+        <div class="mt-n2 position-absolute bg-{{ $color }} mt-n4 mt-xl-n2">
+          <p class="h6 wvu-b-label text-dark wvu-text-letter-spacing-lg p-4 mb-0 ms-n4 mt-xl-n5 mb-xl-3 d-inline-block">{{ . }}</p>
+        </div>
+      {{ end }}
       <div class="flex-grow-1 d-flex align-items-center">
         <div class="ms-5 me-5 mt-6 mb-5 mb-xl-6 ms-xl-0">
-          <h2 class="display-4 wvu-b-display-heading mb-4">{{ .heading }}</h2>
-          <p class="wvu-b-label h3 wvu-container-box-skewed wvu-container-box-skewed-1 wvu-container-box-skewed-wvu-gold text-wvu-blue wvu-text-spacing-wide wvu-tilt-left"><span>{{ .subheading }}</span></p>
-          <p class="mt-3">{{ .text }}</p>
+          <h2 class="h1 wvu-b-display-heading mb-3"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
+          <p class="wvu-b-subheading h4"><span class="wvu-b-font-adjust">{{ .subheading }}</span></p>
+          <p class="mt-3 mb-4">{{ .text }}</p>
           {{ range .ctas }}
-            <a class="btn btn-wvu-accent--blue-light" href="#">Call to Action <span class="fa-regular fa-arrow-circle-right"></span></a>
+            <a class="btn wvu-b-btn" href="{{ .url }}">{{ .text }} <span class="fa-regular fa-arrow-circle-right"></span></a>
           {{ end }}
         </div>
       </div>
