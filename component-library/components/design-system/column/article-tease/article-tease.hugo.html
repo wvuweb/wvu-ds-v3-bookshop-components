@@ -85,15 +85,15 @@
           {{ end }}
         {{- end -}}
         
-        <div class="col-lg-12">
-          {{ if $src }}
+        {{ if $src }}
+          <div class="col-lg-12">
             <div class="wvu-article__thumb h-100">
               <img class="h-100 img-fluid object-fit-cover" src="{{ $src }}" alt="" />
             </div>
-          {{ end }}
-        </div>
+          </div>
+        {{ end }}
 
-        <div class="col-lg-12">
+        <div class="col-lg">
           <div class="h-100 p-5 p-xxl-6">
 
             {{ with $label }}

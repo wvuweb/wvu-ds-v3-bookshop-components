@@ -1,15 +1,30 @@
 {{ $ariaLabelledBy := "" }}
+{{ $src := .image }}
 
-{{ if .background_image }}
-  {{ $image = .background_image }}
-{{ end }}
+{{- if not site.Params.env_bookshop_live -}}
+  {{ $image := "" }}
+  {{/*  Get the image, either from its remote or local source  */}}
+  {{ if hasPrefix $src "http"}}
+    {{ $image = resources.GetRemote .background_image }}
+  {{ else }}
+    {{ $image = resources.Get .background_image }}
+  {{ end }}
 
+  {{/* Resize images and add them to a variable  */}}
+  {{ if and $image (ne $image.MediaType.SubType "svg") }}
+    {{ if eq .imageProcess "fit" }}
+      {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+    {{ else }}
+      {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{- end -}}
 {{ if .alt_text }}
   {{ $alt = .alt_text }}
 {{ end }}
 
 <div class="row ms-0 me-0">  
-  <div class="py-6 py-md-0 col-md-12 wvu-bg-size-cover wvu-bg-position-center" style="background-image: url(https://designsystem.wvu.edu/files/78c1993d-3c7d-417d-bf20-8aaa9e3b178e/1780x1780.webp?cb=2fca806bf9fff6ba3a114d9c3e5d36c5)"></div>    
+  <div class="py-6 py-md-0 col-md-12 wvu-bg-size-cover wvu-bg-position-center" style="background-image: url('{{ $src }}')"></div>    
   <div class="col-md-12 me-auto py-6 wvu-z-index-content">      
     <h2 id="action-hero-split-1-label" class="bg-{{ .settings.styles.color_palette }} wvu-header-max-width mb-0 p-4 p-md-5 wvu-b-display-heading display-3 text-wvu-accent--blue ms-md-n6"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
     <div class="ps-4">
