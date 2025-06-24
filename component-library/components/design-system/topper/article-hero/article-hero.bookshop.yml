@@ -2,7 +2,7 @@
 spec:
   structures:
     - article_topper
-  label: "Topper - Article Hero Test"
+  label: "Topper - Article Test"
   description:
   icon:
   tags: []
