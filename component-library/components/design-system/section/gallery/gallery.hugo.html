@@ -37,7 +37,7 @@
           {{ end }}
 
           <li class="parvus-gallery__item px-2 mb-4">
-            <a href="{{ $src }}" data-group="gallery" {{ if .image_caption }}data-caption="{{ .image_caption }}"{{ end }} class="js-parvus-lightbox parvus-gallery__link parvus-zoom parvus-trigger lightbox" data-srcset="{{ $1920 }} 1920w, {{ $1366 }} 1366w, {{ $960 }} 960w, {{ $450 }} 450w ">
+            <a href="{{ $src }}" data-group="gallery" {{ if .image_caption }}data-caption="{{ .image_caption }}"{{ end }} class="js-parvus-lightbox parvus-gallery__link parvus-zoom" data-srcset="{{ $1920 }} 1920w, {{ $1366 }} 1366w, {{ $960 }} 960w, {{ $450 }} 450w ">
               <img class="parvus-gallery__thumbnail" src="{{ $src }}" alt="{{ .image_alt }}" loading="lazy" decoding="async">
             </a>
           </li>
