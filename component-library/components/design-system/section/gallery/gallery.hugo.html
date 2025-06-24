@@ -3,9 +3,10 @@
     <ul class="parvus-gallery__row list-unstyled">
       <div class="d-sm-flex">
         {{ $imageCount := 0 }}
-
-        {{ range .images }}
-          {{ $imageCount = add $imageCount 1 }}
+        {{ if not site.Params.env_bookshop_live }}
+          {{ range .images }}
+            {{ $imageCount = add $imageCount 1 }}
+          {{ end }}
         {{ end }}
 
         {{ range $index, $value := .images }}
@@ -31,7 +32,7 @@
               {{ $1366 = ($image.Fit "1366x911 webp").RelPermalink }}
               {{ $450 = ($image.Fit "450x300 webp").RelPermalink }}
               {{ $960 = ($image.Fit "960x640 webp").RelPermalink }}
-              {{ $src = $1920 }}
+              {{ $src = $960 }}
             {{ end }}
           {{ end }}
 
@@ -41,15 +42,17 @@
             </a>
           </li>
           
-          {{ if or (eq $imageCount 6) (eq $imageCount 7) }}
-            {{ if eq $index 3 }}
-              </div>
-              <div class="d-sm-flex">
-            {{ end }}
-          {{ else if or (eq $imageCount 8) (eq $imageCount 9) }}
-            {{ if eq $index 4 }}
-              </div>
-              <div class="d-sm-flex">
+          {{ if not site.Params.env_bookshop_live }}
+            {{ if or (eq $imageCount 6) (eq $imageCount 7) }}
+              {{ if eq $index 3 }}
+                </div>
+                <div class="d-sm-flex">
+              {{ end }}
+            {{ else if or (eq $imageCount 8) (eq $imageCount 9) }}
+              {{ if eq $index 4 }}
+                </div>
+                <div class="d-sm-flex">
+              {{ end }}
             {{ end }}
           {{ end }}
         {{ end }}
