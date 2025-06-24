@@ -18,9 +18,12 @@
         {{ end }}
       {{- end -}}
       
-      <div class="col mb-1">
+      <figure class="col mb-1">
         <img class="h-100" loading="lazy" decoding="async" src="{{ $src }}" alt="{{ .alt_text }}" />
-      </div>
+        {{ with .caption }}
+          <figcaption class="mt-3">{{ . }}</figcaption>
+        {{ end }}
+      </figure>
     {{ end }}
   </div>
 </div>
