@@ -13,23 +13,10 @@
   {{ if and $image (ne $image.MediaType.SubType "svg") }}{{ $src = ($image.Fill "960x640 webp").RelPermalink }}{{ end }}
 {{ end }}
 
-<div class="h-100 bg-wvu-blue position-relative">
-  <div class="wvu-bg-img">
-    {{ if $src }}
-      <img class="object-fit-cover h-100 w-100" src="{{ $src }}" />
-    {{ end }}
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="wvu-bg-img">
-        <div class="row position-relative">
-          <div class="col-lg-12 position-relative">
-            <div class="w-100 h-100 position-relative">
-              <div class="position-absolute wvu-bg-tint w-100 h-100" style="opacity: .3"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="h-100 audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} bg-{{ .settings.styles.card_c }} position-relative">
+  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
+  <div class="row h-100">
+    <div class="col-lg-12 d-flex align-items-center h-100">
       <div class="p-5 wvu-z-index-content text-white">
         <div class="wvu-p-max-width">
           <h2 id="-label" class="display-4 wvu-b-display-heading mb-3" data-text="{{ .heading }}">{{ .heading }}</h2>
@@ -46,15 +33,21 @@
             </div>
           {{ end }}
   
-          {{ if .ctas }}
-            {{ range .ctas }}
-              {{ partial "bookshop" (slice "design-system/generic/button" .) }}
-            {{ end }}
+          {{ with .ctas }}
+            <div class="mt-4">
+              {{ range . }}
+                {{ if .button_c }}
+                  {{ $buttonColor = .button_c }}
+                {{ end }}
+                <a class="btn wvu-b-btn mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                {{ $buttonColor := "primary" }}
+              {{ end }}
+            </div>
           {{ end }}
 
-          {{ if .postscript_links }}
+          {{ with .postscript_links }}
             <p class="mt-3">
-              {{- range $i, $l := .postscript_links }}
+              {{- range $i, $l := . }}
                 {{- if gt $i 0 }} | {{- end }}
                 <a class="text-white" href=".url">{{ .text }}{{ if .icon }} <span class="fa-solid fa-{{ .icon }}"></span>{{ end }}</a>
               {{ end }}

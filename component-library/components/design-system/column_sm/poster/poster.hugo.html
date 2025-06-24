@@ -1,12 +1,30 @@
-<div class="p-4 wvu-b-accent-bg h-100 d-flex flex-column position-relative">
-  {{ with .label }}
-    <p class="wvu-b-label align-self-start">{{ . }}</p>
+{{ $src := .image }}
+
+{{ if not site.Params.env_bookshop_live }}
+  {{ $image := "" }}
+  {{/*  Get the image, either from its remote or local source  */}}
+  {{ if hasPrefix $src "http"}}
+    {{ $image = resources.GetRemote .image }}
+  {{ else }}
+    {{ $image = resources.Get .image }}
   {{ end }}
-  <div class="d-flex flex-grow-1">
-    <div class="mb-n2 align-self-end">
-      <h2 class="wvu-b-display-heading text-uppercase mt-8 h3"><span class="wvu-b-font-adjust"><a href="{{ .url }}" class="stretched-link text-decoration-none">{{ .heading }}</a> <span class="fa-regular fa-arrow-down-right"></span></span></h2>
-      <p class="wvu-b-subheading">{{ .subheading }}</p>
-      {{ .body | markdownify }}
+
+  {{/* Resize images and add them to a variable  */}}
+  {{ if and $image (ne $image.MediaType.SubType "svg") }}{{ $src = ($image.Fill "960x640 webp").RelPermalink }}{{ end }}
+{{ end }}
+
+<div class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} bg-{{ .settings.styles.card_c }} h-100 position-relative">
+  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
+  <div class="p-4 wvu-z-index-content d-flex flex-column">
+    {{ with .label }}
+      <p class="wvu-b-label align-self-start">{{ . }}</p>
+    {{ end }}
+    <div class="d-flex flex-grow-1">
+      <div class="mb-n2 align-self-end">
+        <h2 class="wvu-b-display-heading text-uppercase mt-8 h3"><span class="wvu-b-font-adjust"><a href="{{ .url }}" class="stretched-link text-decoration-none">{{ .heading }}</a> <span class="fa-regular fa-arrow-down-right"></span></span></h2>
+        <p class="wvu-b-subheading">{{ .subheading }}</p>
+        {{ .body | markdownify }}
+      </div>
     </div>
   </div>
 </div>
