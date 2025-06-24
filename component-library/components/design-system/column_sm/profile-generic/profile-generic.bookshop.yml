@@ -2,34 +2,28 @@
 spec:
   structures:
     - column_blocks_sm
-  label: "Generic Profile"
+  label: "Column Profile"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  label: Profile
-  thumbnail:
-  superheading:
-    - Superheading Line 1
-  heading: Firstname Lastname
-  subheading:
-    - Subheading Line 1
-  lists:
-    - label: Majors
-      items:
-        - Engineering
-  cta:
-    - text: View Profile
-      url: 
-  config:
-    edit_mode_only: false
+  component_name: profile-generic
+  label: Spotlight
+  heading: Heading
+  name: Firstname Lastname
+  image:
+  is_cutout: false
+  super_heading:
+    - Label
+  info:
+    - Morgantown, WV
+  copy:
+  ctas:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  thumbnail:
-    type: image

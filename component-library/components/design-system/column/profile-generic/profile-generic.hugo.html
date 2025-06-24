@@ -22,7 +22,9 @@
 <div class="wvu-b-subtle wvu-b-border wvu-b-shadow {{ .settings.layout.margin_no_bg }}">
   <div class="row gx-0">
     <div class="col-xl-12 ms-auto order-2 order-xl-1">
-      <h2 class="wvu-b-accent-text wvu-text-vertical wvu-b-label h6 small wvu-text-letter-spacing-lg h-100 m-0 wvu-z-index-max"><span class="d-block bg- p-2">Spotlight</span></h2>
+      {{ with .label }}
+        <h2 class="wvu-b-accent-text wvu-text-vertical wvu-b-label h6 small wvu-text-letter-spacing-lg h-100 m-0 wvu-z-index-max"><span class="d-block bg- p-2">{{ . }}</span></h2>
+      {{ end }}
       <div class="{{ if .settings.layout.is_cutout }}p-5{{ else }}pe-5{{ end }} w-100 h-100 position-relative">
         <div class="h-100 position-relative">
           <div class="w-100 h-100">

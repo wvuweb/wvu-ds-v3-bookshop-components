@@ -1,56 +1,105 @@
-{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-  {{ if .heading }}
-    <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
-  {{ end }}
-  <div class="">
-    <div class="row gx-0">
-      <div class="col-9">
-        <div class="">
-          <div class="ratio ratio-1x1 bg-light">
-            {{ if .thumbnail }}
-              {{ $src := .thumbnail }}
-              {{- if not site.Params.env_bookshop_live -}}
-                {{ $image := "" }}
-                {{/*  Get the image, either from its remote or local source  */}}
-                {{ if hasPrefix $src "http"}}
-                  {{ $image = resources.GetRemote .thumbnail }}
-                {{ else }}
-                  {{ $image = resources.Get .thumbnail }}
-                {{ end }}
+{{ $src := .image }}
 
-                {{/* Resize images and add them to a variable  */}}
-                {{ if and $image (ne $image.MediaType.SubType "svg") }}
-                  {{ $src = ($image.Fill (printf "%dx%d webp" 100 100)).RelPermalink }}
-                {{ end }}
-              {{- end -}}
-              <img src="{{ $src }}" alt="Portrait of {{ .heading }}" />
-            {{ end }}
-          </div>
-        </div>
-      </div>
-      <div class="col-15">
-        {{ with .superheading }}
-          <div class="">
-            <p>
-              {{ range . }}
-                <span class="d-block">{{ . }}</span>
+{{- if not site.Params.env_bookshop_live -}}
+  {{ $image := "" }}
+  {{/*  Get the image, either from its remote or local source  */}}
+  {{ if hasPrefix $src "http"}}
+    {{ $image = resources.GetRemote $src }}
+  {{ else }}
+    {{ $image = resources.Get $src }}
+  {{ end }}
+
+  {{/* Resize images and add them to a variable  */}}
+  {{ if and $image (ne $image.MediaType.SubType "svg") }}
+    {{ if .is_cutout }}
+      {{ $src = ($image.Fit (printf "%dx%d webp" 640 960)).RelPermalink }}
+    {{ else }}
+      {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{- end -}}
+
+<div class="wvu-b-subtle wvu-b-border wvu-b-shadow {{ .settings.layout.margin_no_bg }}">
+  <div class="row gx-0">
+    <div class="col-xl-12 ms-auto order-2 order-xl-1">
+      <div class="{{ if not .is_cutout }}p-5{{ end }} w-100 h-100 position-relative">
+        <div class="h-100 position-relative">
+          <div class="w-100 h-100">
+            <div class="row h-100">
+              {{ if .is_cutout }}
+                <div class="wvu-bg-img px-0">
+                  <div class="wvu-b-pattern wvu-bg-blue h-100 w-100 position-absolute" style="opacity: .5"></div>
+                </div>
+                <div class="col-24 mx-xxl-auto d-flex justify-content-center align-items-end wvu-z-index-content">
+                  <div class="wvu-z-index-content">
+                    <div class="overflow-hidden mt-n7">
+                      <img class="object-fit wvu-b-shadow" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                    </div>
+                  </div>
+                </div>
+              {{ else }}
+                <div class="w-100 h-100 d-flex justify-content-center align-items-end wvu-z-index-content">
+                  <div class="wvu-z-index-content">
+                    <img class="object-fit" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                  </div>
+                </div>
               {{ end }}
-            </p>
+            </div>
           </div>
-        {{ end }}
-        <div class="">
-          <h3 class="wvu-shout">{{ .heading }}</h3>
-          {{ with .subheading }}
-            <p class="fs-5">{{ range . }}<span class="d-block">{{ . }}</span>{{ end }}</p>
-          {{ end }}
         </div>
       </div>
-      <div class="col-24 p-4">
-        {{ range .lists }}
-          <p><span class="wvu-shout text-wvu-accent--yellow">{{ .label }}:</span> {{ range .items }}{{ . }}; {{ end }}</p>
-        {{ end }}
+    </div>
+    <div class="col-xl-12 order-1 order-xl-2">
+      <div class="row">
+        <div class="col-24">
+          <div class="wvu-z-index-content position-relative py-4">
+            {{ with .label }}
+              <h2 class="wvu-b-accent-text wvu-b-label h6 small wvu-text-letter-spacing-lg m-0 wvu-z-index-max"><span class="d-block bg- p-2">{{ . }}</span></h2>
+            {{ end }}
+            {{ with .super_heading }}
+              <div class="wvu-b-superheading wvu-b-label">
+                <p class="">
+                  {{ range . }}
+                    <span class="d-block">{{ . }}</span>
+                  {{ end }}
+                </p>
+              </div>
+            {{ end }}
+            <h2 class="h4 wvu-header-max-width wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow mb-3" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
+            <p class="wvu-b-subheading mb-3">{{ .name }}</p>
+            {{ with .info }}
+              <div class="small">
+                {{ range . }}
+                  <p class="mb-0">{{ . }}</p>
+                {{ end }}
+              </div>
+            {{ end }}
+            <div class="my-3 small">
+              {{ .copy | markdownify }}
+            </div>
+            <p class="mb-0 small"><a href="" class="text-decoration-none wvu-b-accent-text"><span class="fa-solid fa-user-circle"></span> View Profile</a></p>
+            <p class="mb-0 small"><a href="" class="text-decoration-none wvu-b-accent-text"><span class="fa-solid fa-circle-play"></span> Watch Video</a></p>
+          </div>
+        </div>
+        <div class="col-24 d-flex align-items-center position-relative">
+          <div class="w-100">
+            <div class="row">            
+              {{ if .ctas }}
+                <div class="col-sm col-md-24">
+                  <div class="wvu-z-index-content">
+                    <h2 class="wvu-b-label small h6 wvu-text-letter-spacing-lg">See More</h2>
+                    <ul class="list-unstyled w-100 small mb-5">
+                      {{ range .ctas }}
+                        <li class=""><a class="d-flex w-100 justify-content-between align-items-center py-1 text-decoration-none" href="{{ .url }}">{{ .text }}</a></li>
+                      {{ end }}
+                    </ul>
+                  </div>
+                </div>
+              {{ end }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-{{ end }}
+</div>
