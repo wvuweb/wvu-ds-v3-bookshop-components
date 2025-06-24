@@ -66,7 +66,9 @@
               </div>
             {{ end }}
             <h2 class="h4 wvu-header-max-width wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow mb-3" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
-            <p class="wvu-b-subheading mb-3">{{ .name }}</p>
+            {{ with .name }}
+              <p class="wvu-b-subheading mb-3">{{ . }}</p>
+            {{ end }}
             {{ with .info }}
               <div class="small">
                 {{ range . }}

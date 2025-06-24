@@ -1,15 +1,20 @@
-{{ $src := .topper.background_image }}
-
-{{ $publishDate := "" }}
+{{ $src := .image }}
+{{ $publishDate := .publish_date }}
 {{ $format := "January 2, 2006" }}
+
+{{ if and (not site.Params.env_bookshop_live) .publish_date }}
+  {{ $publishDate = .publish_date }}
+  {{ $publishDate = time.AsTime $publishDate }}
+  {{ $publishDate = $publishDate.Format $format }}
+{{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
   {{ $image := "" }}
   {{/*  Get the image, either from its remote or local source  */}}
   {{ if hasPrefix $src "http"}}
-    {{ $image = resources.GetRemote .article_topper.background_image }}
+    {{ $image = resources.GetRemote .image }}
   {{ else }}
-    {{ $image = resources.Get .article_topper.background_image }}
+    {{ $image = resources.Get .image }}
   {{ end }}
 
   {{/* Resize images and add them to a variable  */}}
@@ -22,12 +27,6 @@
   {{ end }}
 {{- end -}}
 
-{{ if .params.publishDate }}
-  {{ $publishDate := .params.publishDate }}
-  {{ $publishDate = time.AsTime $publishDate }}
-  {{ $publishDate = $publishDate.Format $format }}
-{{ end }}
-
 <header id="" aria-labelledby="" class="position-relative bg-dark text-white mb-6">
   {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   <div class="container wvu-z-index-content py-10">
@@ -37,20 +36,23 @@
           <p class="h6 mb-6 wvu-b-label">{{ . }}</p>
         {{ end }}
 
-        <h1 id="big-search-1-label" class="display-5 antonia-light mb-3">{{ .topper.heading }}</h1>
+        <h1 id="big-search-1-label" class="display-5 antonia-light mb-3">{{ .title }}</h1>
 
-        {{ with .topper.subheading }}
+        {{ with .subheading }}
           <p class="config-light fs-4 mb-0">{{ . }}</p>
         {{ end }}
 
-        <p class="mt-4 mb-0 config-regular text-uppercase wvu-text-letter-spacing small">{{ $publishDate }}</p>
+        {{ if not site.Params.env_bookshop_live }}
+          <p class="mt-4 mb-0 antonia-light text-uppercase wvu-text-letter-spacing-lg">{{ $publishDate }}</p>
+        {{ end }}
+
         <div class="d-flex mt-4 justify-content-center">
           {{ if not site.Data }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
-          {{ else if and (site.Params.env_bookshop_live) (ne .topper.show_byline true) }}
+          {{ else if and (site.Params.env_bookshop_live) (not .topper.show_byline) }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Show Byline' is currently set to 'false' to speed up editing. To see the byline, check the 'Show Byline' box in the topper config." ) ) }}
           {{ else }}
-            {{ partial "bookshop" (slice "design-system/simple/byline" (dict "params" .params)) }}
+            {{ partial "bookshop" (slice "design-system/simple/byline-test" (dict "authors" .authors)) }}
           {{ end }}
         </div>
       </div>
