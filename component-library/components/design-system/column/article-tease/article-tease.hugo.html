@@ -84,17 +84,19 @@
             {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
           {{ end }}
         {{- end -}}
+
+        {{ $branding := "" }}
         
         {{ if $src }}
-          <div class="col-lg-12">
-            <div class="wvu-article__thumb h-100">
-              <img class="h-100 img-fluid object-fit-cover" src="{{ $src }}" alt="" />
-            </div>
+          {{ $branding = "text-white" }}
+          <div class="wvu-bg-img">
+            <img class="object-fit-cover h-100 w-100 position-relative" src="{{ $src }}" />
+            <div class="position-absolute wvu-bg-tint w-100 h-100" style="opacity: 0.7"></div>
           </div>
         {{ end }}
 
-        <div class="col-lg">
-          <div class="h-100 p-5 p-xxl-6">
+        <div class="col-24 wvu-z-index-content {{ $branding }}">
+          <div class="h-100 p-5">
 
             {{ with $label }}
               <p class="wvu-b-label">{{ . }}</p>
@@ -129,7 +131,7 @@
             {{ end }}
 
             <div class="mt-4">
-              <span class="display-4 fa-thin fa-arrow-circle-right wvu-b-accent-text"></span>
+              <span class="display-4 fa-thin fa-arrow-circle-right"></span>
             </div>
           </div>
         </div>
