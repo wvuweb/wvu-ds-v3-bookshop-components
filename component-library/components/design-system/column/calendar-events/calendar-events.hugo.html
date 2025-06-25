@@ -1,6 +1,6 @@
 <div class="wvu-b-subtle p-5 h-100">
   {{ if .heading }}
-    <h2 class="fs-3 mb-4 wvu-b-label pt-2"><span class="fa-regular fa-calendar"></span> {{ .heading }}</h2>
+    <h2 class="h4 mb-5 wvu-b-label pt-2">{{ .heading }}</h2>
   {{ end }}
   {{ if site.Params.env_bookshop_live }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "Events will show on live site." ) ) }}
