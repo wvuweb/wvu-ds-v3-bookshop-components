@@ -20,8 +20,8 @@
       
       <figure class="col mb-1">
         <img class="h-100" loading="lazy" decoding="async" src="{{ $src }}" alt="{{ .alt_text }}" />
-        {{ with .caption }}
-          <figcaption class="mt-3">{{ . }}</figcaption>
+        {{ if .caption }}
+          <figcaption class="mt-3">{{ .caption }}</figcaption>
         {{ end }}
       </figure>
     {{ end }}
