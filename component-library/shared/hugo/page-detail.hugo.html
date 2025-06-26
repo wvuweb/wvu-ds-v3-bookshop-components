@@ -13,12 +13,6 @@
 <main class="py-6 wvu-backpage-main tone-default bg-option-1 wvu-b-subtle">
   <div class="container text-dark">
     <div class="row">
-      {{ if not .hide_section_menu }}
-        <div class="col-xl-5">
-          <h2 class="wvu-b-label h6 mb-4">Section Menu</h2>
-          {{ partial "section-menu" . }}
-        </div>
-      {{ end }}
       <div class="{{ $mainCols }}">
         {{ range .detail_blocks }}
           {{ partial "bookshop" . }}
