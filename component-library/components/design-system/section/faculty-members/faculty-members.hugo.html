@@ -1,4 +1,6 @@
-<div class="row">
+{{ $linkText := .link_text }}
+{{ $showLinks := .settings.config.show_links }}
+<div class="row mb-n4">
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
   {{ else if and (site.Params.env_bookshop_live) (not .settings.config.show_content) }}
@@ -40,7 +42,7 @@
         {{ end }}
       {{- end -}}
 
-      <div class="col-sm-12 col-lg-6 col-xl-4">
+      <div class="col-sm-12 col-lg-6 col-xl-4 mb-4">
 
         <div class="ratio ratio-3x4 bg-light mb-3">
           <img class="img-fluid h-100 object-fit-cover" src="{{ $src }}" alt="" />
@@ -49,14 +51,16 @@
         <h3 class="h5 mb-1">{{ $params.name }}</h3>
 
         {{ with $params.position }}
-          <p class="small lh-1">
+          <p class="small lh-1 mb-1">
             {{ range . }}
               <span class="d-block helvetica-neue-bold">{{ .organization }}</span>
               <span class="d-block">{{ .title }}</span>
             {{ end }}
           </p>
         {{ end }}
-        <a class="text-decoration-none text-primary small" href="#">View Bio <span class="fa-regular fa-arrow-right"></span></a>
+        {{ if and $showLinks $linkText }}
+          <a class="text-decoration-none text-primary small text-dark" href="{{ .RelPermalink }}">{{ $linkText }} <span class="fa-regular fa-arrow-right"></span></a>
+        {{ end }}
       </div>
 
     {{ end }}

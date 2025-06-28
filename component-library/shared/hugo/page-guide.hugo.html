@@ -33,7 +33,7 @@
     {{ $backgroundColor = .settings.styles.color_palette }}
   {{ end }}
 
-  {{ if and .background_image }}
+  {{ if .background_image }}
     {{ $src = .background_image }}
     {{ if not .settings.styles.enable_blend }}
       {{ $backgroundColor = "option-2" }}

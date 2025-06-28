@@ -10,12 +10,25 @@ spec:
 blueprint:
   heading: Heading
   subheading:
-  address: []
+  office:
+    - heading: At the Office
+      icon: location-dot
+      items:
+        - heading:
+          lines: []
   phone:
+    - heading: By Phone
+      icon: phone
+      items:
+        - heading:
+          phone:
   fax:
+    - heading: By Fax
+      icon: fax
+      items:
+        - heading:
+          phone:
   email:
-  contacts:
-    - contact:
   settings:
     styles:
       audience: general
@@ -32,11 +45,19 @@ blueprint:
       name:
       instance:
       edit_mode_only: false
-      is_main: true
-      section_id: directory
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  email:
+    options:
+      values: _structures.email
+_structures:
+  email:
+    heading: By Email
+    icon: envelope
+    items:
+      - heading:
+        email:
