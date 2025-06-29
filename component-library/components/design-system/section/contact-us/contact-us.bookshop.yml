@@ -11,23 +11,8 @@ blueprint:
   heading: Heading
   subheading:
   office:
-    - heading: At the Office
-      icon: location-dot
-      items:
-        - heading:
-          lines: []
   phone:
-    - heading: By Phone
-      icon: phone
-      items:
-        - heading:
-          phone:
   fax:
-    - heading: By Fax
-      icon: fax
-      items:
-        - heading:
-          phone:
   email:
   settings:
     styles:
@@ -54,10 +39,34 @@ _inputs:
   email:
     options:
       values: _structures.email
+  office:
+    options:
+      values: _structures.office
+  phone:
+    options:
+      values: _structures.phone
 _structures:
   email:
-    heading: By Email
-    icon: envelope
-    items:
-      - heading:
-        email:
+    values:
+      value:
+        heading: By Email
+        icon: envelope
+        items:
+          - heading:
+            email:
+  office:
+    values:
+      value:
+        heading: At the Office
+        icon: location-dot
+        items:
+          - heading:
+            lines: []
+  phone:
+    values:
+      value:
+        heading: By Phone
+        icon: phone
+        items:
+          - heading:
+            phone:
