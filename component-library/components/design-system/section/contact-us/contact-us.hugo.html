@@ -18,6 +18,17 @@
                 {{ end }}
               {{ end }}
             </address>
+            {{ with .ctas }}
+              <div class="mt-4">
+                {{ range . }}
+                  {{ if .button_c }}
+                    {{ $buttonColor = .button_c }}
+                  {{ end }}
+                  <a class="btn wvu-b-btn btn-sm mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                  {{ $buttonColor := "primary" }}
+                {{ end }}
+              </div>
+            {{ end }}
           {{ end }}
         {{ end }}
       {{ end }}
@@ -38,6 +49,17 @@
               {{ end }}
               <span class="d-block">{{ .phone }}</span>
             </p>
+            {{ with .ctas }}
+              <div class="mt-4">
+                {{ range . }}
+                  {{ if .button_c }}
+                    {{ $buttonColor = .button_c }}
+                  {{ end }}
+                  <a class="btn wvu-b-btn btn-sm mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                  {{ $buttonColor := "primary" }}
+                {{ end }}
+              </div>
+            {{ end }}
           {{ end }}
         {{ end }}
       </div>
@@ -51,14 +73,25 @@
         </div>
         <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
         {{ with .items }}
-          <p class="mb-0">
-            {{ range . }}
+          {{ range . }}
+            <p class="mb-0">
               {{ if .heading }}
                 <strong class="d-block">{{ .heading }}</strong>
               {{ end }}
               <span class="d-block">{{ .fax }}</span>
+            </p>
+            {{ with .ctas }}
+              <div class="mt-4">
+                {{ range . }}
+                  {{ if .button_c }}
+                    {{ $buttonColor = .button_c }}
+                  {{ end }}
+                  <a class="btn wvu-b-btn btn-sm mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                  {{ $buttonColor := "primary" }}
+                {{ end }}
+              </div>
             {{ end }}
-          </p>
+          {{ end }}
         {{ end }}
       </div>
     {{ end }}
@@ -71,14 +104,25 @@
         </div>
         <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
         {{ if .items }}
-          <p class="mb-0">
-            {{ range .items }}
+          {{ range .items }}
+            <p class="mb-0">
               {{ if .heading }}
                 <strong class="d-block">{{ .heading }}</strong>
               {{ end }}
               <a href="mailto:{{ .email }}">{{ .email }}</a>
+            </p>
+            {{ with .ctas }}
+              <div class="mt-4">
+                {{ range . }}
+                  {{ if .button_c }}
+                    {{ $buttonColor = .button_c }}
+                  {{ end }}
+                  <a class="btn wvu-b-btn btn-sm mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                  {{ $buttonColor := "primary" }}
+                {{ end }}
+              </div>
             {{ end }}
-          </p>
+          {{ end }}
         {{ end }}
       </div>
     {{ end }}
