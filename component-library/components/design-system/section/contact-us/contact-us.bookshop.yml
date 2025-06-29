@@ -12,9 +12,29 @@ blueprint:
   heading: Heading
   subheading:
   office:
+    heading: At the Office
+    icon: location-dot
+    items:
+      - heading:
+        lines: []
   phone:
+    heading: By Phone
+    icon: phone
+    items:
+      - heading:
+        phone:
   fax:
+    heading: By Fax
+    icon: fax
+    items:
+      - heading:
+        email:
   email:
+    heading: By Email
+    icon: envelope
+    items:
+      - heading:
+        email:
   settings:
     styles:
       audience:
@@ -37,34 +57,3 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  email:
-    options:
-      values: _structures.email
-  office:
-    options:
-      values: _structures.office
-  phone:
-    options:
-      values: _structures.phone
-_structures:
-  email:
-    values:
-      heading: By Email
-      icon: envelope
-      items:
-        - heading:
-          email:
-  office:
-    values:
-      heading: At the Office
-      icon: location-dot
-      items:
-        - heading:
-          lines: []
-  phone:
-    values:
-      heading: By Phone
-      icon: phone
-      items:
-        - heading:
-          phone:
