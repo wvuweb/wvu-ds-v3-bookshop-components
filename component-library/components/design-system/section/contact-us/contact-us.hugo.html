@@ -1,61 +1,86 @@
 <div class="row justify-content-center">
   {{ with .office }}
-    <div class="col-md mb-4 mb-md-0">        
-      <div class="h3">
-        <span class="fa-solid fa-{{ .icon }}" aria-hidden="true"></span>
-      </div>
-      <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
-      {{ with .items }}
-        {{ range . }}
-          <address>
-            {{ with .heading }}
-              <strong class="d-block">{{ . }}</strong>
-            {{ end }}
-            {{ with .lines }}
-              {{ range . }}
-                <span class="d-block">{{ . }}</span>
+    {{ if .heading }}
+      <div class="col-md mb-4 mb-md-0">        
+        <div class="h3">
+          <span class="fa-solid fa-{{ .icon }}" aria-hidden="true"></span>
+        </div>
+        <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
+        {{ with .items }}
+          {{ range . }}
+            <address>
+              {{ if .heading }}
+                <strong class="d-block">{{ .heading }}</strong>
               {{ end }}
-            {{ end }}
-          </address>
+              {{ if .lines }}
+                {{ range .lines }}
+                  <span class="d-block">{{ . }}</span>
+                {{ end }}
+              {{ end }}
+            </address>
+          {{ end }}
         {{ end }}
       {{ end }}
     </div>
   {{ end }}
   {{ with .phone }}
-    <div class="col-md mb-4 mb-md-0">
-      <div class="h3">
-        <span class="fa-solid fa-{{ .icon }}" aria-hidden="true"></span>
+    {{ if .heading }}
+      <div class="col-md mb-4 mb-md-0">
+        <div class="h3">
+          <span class="fa-solid fa-{{ .icon }}" aria-hidden="true"></span>
+        </div>
+        <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
+        {{ with .items }}
+          {{ range . }}
+            <p class="mb-0">
+              {{ if .heading }}
+                <strong class="d-block">{{ .heading }}</strong>
+              {{ end }}
+              <span class="d-block">{{ .phone }}</span>
+            </p>
+          {{ end }}
+        {{ end }}
       </div>
-      <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
-      <address>
-        (304) 293-1234
-      </address>
-    </div>
+    {{ end }}
   {{ end }}
-  {{ with .fax }}  
-    <div class="col-md mb-4 mb-md-0">
-      <div class="h3">
-        <span class="fa-solid fa-{{ .icon }}" aria-hidden="true"></span>
+  {{ with .fax }}
+    {{ if .heading }}
+      <div class="col-md mb-4 mb-md-0">
+        <div class="h3">
+          <span class="fa-solid fa-{{ .icon }}" aria-hidden="true"></span>
+        </div>
+        <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
+        {{ with .items }}
+          <p class="mb-0">
+            {{ range . }}
+              {{ if .heading }}
+                <strong class="d-block">{{ .heading }}</strong>
+              {{ end }}
+              <span class="d-block">{{ .fax }}</span>
+            {{ end }}
+          </p>
+        {{ end }}
       </div>
-      <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
-      <address>(304) 293-5678</address>
-    </div>
+    {{ end }}
   {{ end }}
   {{ with .email }}
-    <div class="col-md">
-      <div class="h3">
-        <span class="fa-solid fa-{{ .icon }}" aria-hidden="true"></span>
-      </div>
-      <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
-      {{ if .items }}
-        {{ range .items }}
-          {{ with .heading }}
-            <strong class="d-block">{{ . }}</strong>
-          {{ end }}
-          <a href="mailto:{{ .email }}">{{ .email }}</a>
+    {{ if .heading }}
+      <div class="col-md">
+        <div class="h3">
+          <span class="fa-solid fa-{{ .icon }}" aria-hidden="true"></span>
+        </div>
+        <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
+        {{ if .items }}
+          <p class="mb-0">
+            {{ range .items }}
+              {{ if .heading }}
+                <strong class="d-block">{{ .heading }}</strong>
+              {{ end }}
+              <a href="mailto:{{ .email }}">{{ .email }}</a>
+            {{ end }}
+          </p>
         {{ end }}
-      {{ end }}
-      </address>
-    </div>
+      </div>
+    {{ end }}
   {{ end }}
 </div>
