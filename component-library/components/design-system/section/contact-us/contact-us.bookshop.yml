@@ -11,30 +11,34 @@ spec:
 blueprint:
   heading: Heading
   subheading:
-  office:
-    heading: At the Office
-    icon: location-dot
-    items:
-      - heading:
-        lines: []
   phone:
     heading: By Phone
     icon: phone
     items:
       - heading:
         phone:
-  fax:
-    heading: By Fax
-    icon: fax
-    items:
-      - heading:
-        email:
+        ctas:
   email:
     heading: By Email
     icon: envelope
     items:
       - heading:
         email:
+        ctas:
+  fax:
+    heading: By Fax
+    icon: fax
+    items:
+      - heading:
+        email:
+        ctas:
+  office:
+    heading: At the Office
+    icon: location-dot
+    items:
+      - heading:
+        lines: []
+        ctas:
   settings:
     styles:
       audience:

@@ -47,7 +47,7 @@
         <span class="fa-solid fa-{{ .icon }}" aria-hidden="true"></span>
       </div>
       <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
-      {{ with .items }}
+      {{ if .items }}
         {{ range .items }}
           {{ with .heading }}
             <strong class="d-block">{{ . }}</strong>
