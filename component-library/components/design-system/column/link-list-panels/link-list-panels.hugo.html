@@ -12,7 +12,7 @@
       <li class="position-relative bg-light row gx-0 border-start border-3 border-wvu-accent--blue mb-1">
         <div class="col">
           <div class="p-4">
-            <p class="mb-1"><a class="helvetica-neue-bold text-dark text-decoration-none stretched-link" href="{{ .url }}">{{ .text }}</a></p>
+            <p class="mb-1"><a class="helvetica-neue-bold text-dark text-decoration-none stretched-link" href="{{ .url }}" {{ if eq .icon "Download" }}download{{ end }}>{{ .text }}</a></p>
             {{ if .description }}
               <p class="mb-0">{{ .description }}</p>
             {{ end }}
