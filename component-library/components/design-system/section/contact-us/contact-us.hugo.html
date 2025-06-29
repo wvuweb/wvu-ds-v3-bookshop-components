@@ -19,7 +19,7 @@
               {{ end }}
             </address>
             {{ with .ctas }}
-              <div class="mt-4">
+              <div class="mt-3">
                 {{ range . }}
                   {{ if .button_c }}
                     {{ $buttonColor = .button_c }}
@@ -50,7 +50,7 @@
               <span class="d-block"><a href="tel:{{ .phone | urlize }}">{{ .phone }}</a></span>
             </p>
             {{ with .ctas }}
-              <div class="mt-4">
+              <div class="mt-3">
                 {{ range . }}
                   {{ if .button_c }}
                     {{ $buttonColor = .button_c }}
@@ -81,7 +81,7 @@
               <span class="d-block">{{ .fax }}</span>
             </p>
             {{ with .ctas }}
-              <div class="mt-4">
+              <div class="mt-3">
                 {{ range . }}
                   {{ if .button_c }}
                     {{ $buttonColor = .button_c }}
@@ -112,7 +112,7 @@
               <a href="mailto:{{ .email }}">{{ .email }}</a>
             </p>
             {{ with .ctas }}
-              <div class="mt-4">
+              <div class="mt-3">
                 {{ range . }}
                   {{ if .button_c }}
                     {{ $buttonColor = .button_c }}
