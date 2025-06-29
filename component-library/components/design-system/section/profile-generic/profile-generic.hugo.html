@@ -40,21 +40,20 @@
   {{ if and .settings.styles .settings.styles.tone (eq .settings.styles.tone "lets-go") }}
     <div class="wvu-bg-img">
       <div class="wvu-b-gradient d-flex w-100 h-100 justify-content-between position-absolute d-flex w-100 h-100 justify-content-between"></div>
-      <div class="wvu-b-pattern wvu-b-pattern-color h-100 w-100 position-absolute" style="opacity: .4"></div>
     </div>
   {{ end }}
   <div class="row gx-0">
-    <div class="col-xl-12 ms-auto order-2 order-xl-1">
+    <div class="col-lg-12 ms-auto order-2 order-lg-1">
       {{ with .label }}
-        <h2 class="wvu-b-accent-bg wvu-text-vertical wvu-shout h6 small wvu-text-letter-spacing-lg h-100 m-0 wvu-z-index-max"><span class="d-block bg- p-2">{{ . }}</span></h2>
+        <h2 class="d-none d-lg-block wvu-b-accent-bg wvu-text-vertical wvu-shout h6 small wvu-text-letter-spacing-lg h-100 m-0 wvu-z-index-max"><span class="d-block bg- p-2">{{ . }}</span></h2>
       {{ end }}
       <div class="{{ if .settings.layout.is_cutout }}p-5{{ else }}pe-5{{ end }} w-100 h-100 position-relative">
         <div class="h-100 position-relative">
           <div class="w-100 h-100">
             <div class="row h-100">
               {{ if .settings.layout.is_cutout }}
-                <div class="wvu-bg-img px-0 ps-4">
-                  <div class="wvu-b-pattern wvu-bg-blue h-100 w-100 position-absolute" style="opacity: .5"></div>
+                <div class="wvu-bg-img px-0 ms-lg-4">
+                  <div class="wvu-bg-topo-light wvu-b-pattern-color h-100 w-100 position-absolute" style="opacity: .5; width: calc(100% - 1.5rem) !important;"></div>
                 </div>
                 <div class="col-xxl-17 mx-xxl-auto d-flex justify-content-center align-items-end wvu-z-index-content">
                   <div class="wvu-z-index-content">
@@ -75,9 +74,9 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-12 mx-auto order-1 order-xl-2">
+    <div class="col-lg-12 mx-auto order-1 order-lg-2">
       <div class="row">
-        <div class="col-md-16 col-xl-16">
+        <div class="col-lg-16">
           <div class="wvu-z-index-content position-relative px-5 px-lg-3 py-5 py-xl-6 my-xl-n3">
             {{ with .super_heading }}
               <div class="wvu-b-superheading wvu-b-label">
@@ -101,7 +100,8 @@
             {{ end }}
             <div class="my-3 position-relative">
               {{ if .add_quotemark }}
-                <span class="display-3 wvu-b-accent position-absolute ms-n5 mt-n2 wvu-b-display-heading" style="top:0;">“</span>
+                <span class="display-3 wvu-b-accent d-block d-lg-none mb-n3 wvu-b-display-heading">“</span>
+                <span class="display-3 wvu-b-accent d-none d-lg-block position-absolute ms-n5 mt-n2 wvu-b-display-heading" style="top:0;">“</span>
               {{ end }}
               {{ .copy | markdownify }}
             </div>
@@ -110,11 +110,11 @@
             {{ end }}
           </div>
         </div>
-        <div class="col-md-7 col-xl-7 d-flex align-items-center position-relative">
-          <div class="py-6 my-n3 w-100 pe-4">
+        <div class="col-lg-7 d-flex align-items-center position-relative">
+          <div class="py-lg-6 mx-5 mx-lg-0 mb-5 mt-lg-n3 mb-lg-n3 w-100 pe-4">
             <div class="row">            
               {{ if .ctas }}
-                <div class="col-sm col-md-24">
+                <div class="col-sm col-lg-24">
                   <div class="wvu-z-index-content">
                     <h2 class="wvu-b-label small h6 wvu-text-letter-spacing-lg">See More</h2>
                     <ul class="list-unstyled w-100 small mb-5">

@@ -47,20 +47,8 @@
 {{- end -}}
 
 <header id="" class="c-topper-hero {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative">
-  <div class="position-absolute h-100 w-100">
-    <div class="container-fluid h-100 px-0">
-      <div class="row h-100 mx-0 gx-0">
-        <div class="col-xl-12 ms-xl-auto">
-          <div class="wvu-z-index-content h-100 w-100">
-            <div class="ratio ratio-3x2 d-xl-none"></div>
-            {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="container wvu-z-index-content">
-    <div class="row py-7">
+    <div class="row py-7 gx-5">
       <div class="col-xl-12 me-auto d-flex align-items-center">
         <div class="w-100">
           {{ with .topper.label }}
@@ -93,15 +81,26 @@
             </div>
           {{ end }}
 
-          {{ with .topper.postscript }}
-            <div class="mt-4">
-              {{ .markdown | markdownify }}
-            </div>
+          {{ if or .topper.postscript.markdown .topper.postscript.ctas }}
+            {{ with .topper.postscript }}
+              <div class="mt-4">
+                {{ .markdown | markdownify }}
+              </div>
+            {{ end }}
           {{ end }}
         </div>
       </div>
-      <div class="d-none d-xl-block col-xl-12">
-        <div class="ratio ratio-16x9"></div>
+    </div>
+  </div>
+  <div class="d-lg-none mt-n5">
+    <img src="{{ $src }}" alt=""/>
+  </div>
+  <div class="position-absolute container-fluid pe-0 h-100 w-100 d-none d-lg-block" style="top: 0;">
+    <div class="row h-100 w-100 mx-0 gx-5 px-0">
+      <div class="col-lg-12 ms-lg-auto pe-0">
+        <div class="wvu-z-index-content h-100 w-100 text-center">
+          {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
+        </div>
       </div>
     </div>
   </div>
