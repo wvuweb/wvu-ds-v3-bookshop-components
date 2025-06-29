@@ -49,25 +49,22 @@ _inputs:
 _structures:
   email:
     values:
-      value:
-        heading: By Email
-        icon: envelope
-        items:
-          - heading:
-            email:
+      heading: By Email
+      icon: envelope
+      items:
+        - heading:
+          email:
   office:
     values:
-      value:
-        heading: At the Office
-        icon: location-dot
-        items:
-          - heading:
-            lines: []
+      heading: At the Office
+      icon: location-dot
+      items:
+        - heading:
+          lines: []
   phone:
     values:
-      value:
-        heading: By Phone
-        icon: phone
-        items:
-          - heading:
-            phone:
+      heading: By Phone
+      icon: phone
+      items:
+        - heading:
+          phone:
