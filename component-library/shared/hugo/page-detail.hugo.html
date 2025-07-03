@@ -12,13 +12,13 @@
 
 <main class="py-6 wvu-backpage-main tone-default bg-option-1 wvu-b-subtle">
   <div class="container text-dark">
-    <div class="row">
-      <div class="{{ $mainCols }}">
+    <div class="row mb-n5">
+      <div class="{{ $mainCols }} mb-5">
         {{ range .detail_blocks }}
           {{ partial "bookshop" . }}
         {{ end }}
       </div>
-      <div class="col-xl-5">
+      <div class="col-xl-5 mb-5">
         <div class="c-jump-links mb-5 pt-5 mt-n5 sticky-top">
           {{ range .sidebar_blocks }}
             {{ partial "bookshop" . }}

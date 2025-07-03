@@ -1,4 +1,4 @@
-<div class="accordion mb-4" id="accordion">
+<div class="accordion accordion-flush mb-4" id="accordion">
   {{ range $index, $panel := .panels }}
     <div class="accordion-item border-start-0 border-end-0">
       <h2 class="accordion-header">
@@ -6,7 +6,7 @@
           {{ .title }}
         </button>
       </h2>
-      <div id="collapse-{{ $index }}" class="accordion-collapse collapse" data-bs-parent="#accordion">
+      <div id="collapse-{{ $index }}" class="accordion-collapse collapse">
         <div class="wvu-b-subtle accordion-body p-4 p-xl-5">
           {{ .markdown | markdownify }}
         </div>
