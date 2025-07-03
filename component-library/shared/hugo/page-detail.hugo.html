@@ -1,7 +1,7 @@
-{{ $mainCols := "col-xl-10 mx-xl-auto" }}
+{{ $mainCols := "col-md col-xl-16 col-xxl-14 mx-lg-auto" }}
 
 {{ if .hide_section_menu }}
-  {{ $mainCols = "col-xl-15 me-xl-auto" }}
+  {{ $mainCols = "col-md col-xl-15 me-lg-auto" }}
 {{ end }}
 
 {{ if and .topper .topper._bookshop_name }}
@@ -12,13 +12,13 @@
 
 <main class="py-6 wvu-backpage-main tone-default bg-option-1 wvu-b-subtle">
   <div class="container text-dark">
-    <div class="row mb-n5">
+    <div class="row gx-xl-6 mb-n5">
       <div class="{{ $mainCols }} mb-5">
         {{ range .detail_blocks }}
           {{ partial "bookshop" . }}
         {{ end }}
       </div>
-      <div class="col-xl-5 mb-5">
+      <div class="col-md-8 col-xl-7 mb-5">
         <div class="c-jump-links mb-5 pt-5 mt-n5 sticky-top">
           {{ range .sidebar_blocks }}
             {{ partial "bookshop" . }}
