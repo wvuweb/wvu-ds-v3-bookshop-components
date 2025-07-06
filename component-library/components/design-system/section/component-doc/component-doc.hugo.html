@@ -10,9 +10,19 @@
           <h2 class="wvu-b-display-heading">When to Use</h2>
           {{ . | markdownify }}
         {{ end }}
+        {{ with .cloudcannon_templates }}
+          <h2 class="wvu-b-display-heading mt-5">CloudCannon Templates</h2>
+          <ul class="">
+            {{ range . }}
+              <li><a href="{{ .url }}">{{ .text }}</a></li>
+            {{ end }}
+          </ul>
+        {{ end }}
         {{ if .in_the_wild }}
-          <ul class="list-unstyled">
+          <h2 class="wvu-b-display-heading mt-5">In the Wild</h2>
+          <ul class="">
             {{ range .in_the_wild }}
+              <li><a href="{{ .url }}">{{ .text }}</a></li>
             {{ end }}
           </ul>
         {{ end }}

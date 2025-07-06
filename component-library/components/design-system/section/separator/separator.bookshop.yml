@@ -54,3 +54,6 @@ _inputs:
         - name: WVU Pennant
           path: /uploads/sticker-wvu-pennant.webp
       value_key: path
+  is_dynamic: false
+  is_nested: false
+  use_common_wrapper: true

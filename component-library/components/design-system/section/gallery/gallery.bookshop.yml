@@ -14,6 +14,9 @@ blueprint:
   heading:
   subheading:
   images:
+  is_dynamic: false
+  is_nested: false
+  use_common_wrapper: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

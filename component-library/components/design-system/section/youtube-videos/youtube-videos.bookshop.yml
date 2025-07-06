@@ -33,6 +33,9 @@ blueprint:
       instance:
       edit_mode_only: false
       include_heading_postscript: true
+  is_dynamic: false
+  is_nested: false
+  use_common_wrapper: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

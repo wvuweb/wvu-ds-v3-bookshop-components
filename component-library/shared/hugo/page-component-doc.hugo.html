@@ -9,6 +9,8 @@
 {{ $counter := 0 }}
 
 {{ range .blocks }}
+  {{ $audienceLabel := "General Audience" }}
+  {{ $toneLabel := "Default Tone" }}
 
   {{ if and .is_sitewide site.Params.env_bookshop_live }}
     <div class="py-6 py-xxl-7">
@@ -23,6 +25,22 @@
   {{ $audienceOverride := "" }}
   {{ $toneOverride := "" }}
   {{ $bgSubtle := "" }}
+
+  {{ if eq .settings.styles.audience "alumni" }}
+    {{ $audienceLabel = "Academic / Traditional Audience" }}
+  {{ else if eq .settings.styles.audience "leader_partners" }}
+    {{ $audienceLabel = "Formal + Modern Audience" }}
+  {{ else if eq .settings.styles.audience "prospective_students" }}
+    {{ $audienceLabel = "Prospective Students Audience" }}
+  {{ end }}
+
+  {{ if eq .settings.styles.tone "reserved" }}
+    {{ $toneLabel = "Reserved Tone" }}
+  {{ else if eq .settings.styles.tone "loud" }}
+    {{ $toneLabel = "Loud Tone" }}
+  {{ else if eq .settings.styles.tone "lets-go" }}
+    {{ $toneLabel = "Let’s Go! Tone" }}
+  {{ end }}
 
   {{ if .settings.styles.audience }}
     {{ $audienceOverride = "override-audience-styles-site" }}
@@ -84,7 +102,7 @@
     <div class="audience-general tone-default bg-option-1 wvu-b-subtle pb-1 pt-5">
       <div class="{{ if .settings.layout.margin }}pb-5{{ end }}">
         <div class="container">
-          <p><span class="wvu-b-label">Example {{ $counter }}</span><br><code>audience-{{ .settings.styles.audience }}</code>, <code>tone-{{ .settings.styles.tone }}</code>{{ if not .background_image }}, <code>bg-{{ .settings.styles.color_palette }}</code>{{ end }}</p>
+          <p><span class="wvu-b-label">Example {{ $counter }}</span>{{ with $audienceLabel }} <span class="wvu-b-subtle border-rounded px-2 py-1 rounded-pill small">{{ . }}</span>{{ end }}{{ with $toneLabel }} <span class="wvu-b-subtle border-rounded px-2 py-1 rounded-pill small">{{ . }}</span>{{ end }}</p>
         </div>
       </div>
     </div>
