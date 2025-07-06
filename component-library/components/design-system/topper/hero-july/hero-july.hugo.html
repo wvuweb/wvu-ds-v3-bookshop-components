@@ -77,7 +77,7 @@
                   {{ $buttonColor = .button_c }}
                 {{ end }}
                 {{ if .text }}
-                  <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                  <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ if .icon }}<span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
                 {{ end }}
                 {{ $buttonColor := "primary" }}
               {{ end }}
