@@ -23,8 +23,8 @@
   {{ $backgroundColor = "option-2" }}
 {{ end }}
 
-{{ with .topper.settings.styles.heading_size }}
-  {{ $headingSize = . }}
+{{ if .topper.settings.styles.heading_size }}
+  {{ $headingSize = .topper.settings.styles.heading_size }}
 {{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
