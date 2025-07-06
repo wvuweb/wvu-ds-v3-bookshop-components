@@ -1,4 +1,7 @@
+{{ $src := .topper.background_image }}
+
 <header id="" class="c-topper-hero audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg- position-relative py-7">
+  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   <div class="container wvu-z-index-content">
     <div class="{{ .topper.settings.layout.buffer }}">
       <div class="row py-6">
