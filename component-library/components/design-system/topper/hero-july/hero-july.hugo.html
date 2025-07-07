@@ -4,7 +4,28 @@
   {{ $src = .topper.background_image }}
 {{ end }}
 
-<header id="" class="c-topper-hero audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg- position-relative py-7">
+{{ $backgroundColor := "" }}
+
+{{- if not site.Params.env_bookshop_live -}}
+  {{ $image := "" }}
+  {{/*  Get the image, either from its remote or local source  */}}
+  {{ if hasPrefix $src "http"}}
+    {{ $image = resources.GetRemote .topper.background_image }}
+  {{ else }}
+    {{ $image = resources.Get .topper.background_image }}
+  {{ end }}
+
+  {{/* Resize images and add them to a variable  */}}
+  {{ if and $image (ne $image.MediaType.SubType "svg") }}
+    {{ if eq .imageProcess "fit" }}
+      {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+    {{ else }}
+      {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{- end -}}
+
+<header id="" class="c-topper-hero audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7">
   {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   <div class="container wvu-z-index-content">
     <div class="{{ .topper.settings.layout.buffer }}">
@@ -44,6 +65,13 @@
             {{ if .topper.postscript.markdown }}
               <div class="mt-4">
                 {{ .markdown | markdownify }}
+              </div>
+            {{ end }}
+            {{ if .topper.postscript.ctas }}
+              <div class="mt-4">
+                {{ range .topper.postscript.ctas }}
+                  <a class="me-2" href="{{ .url }}">{{ .text }}</a>
+                {{ end }}
               </div>
             {{ end }}
           {{ end }}
