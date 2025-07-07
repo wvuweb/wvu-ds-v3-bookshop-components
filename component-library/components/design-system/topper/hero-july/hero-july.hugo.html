@@ -5,6 +5,19 @@
 {{ end }}
 
 {{ $backgroundColor := "" }}
+{{ $headingSize := "display-2" }}
+
+{{ if .topper.settings.styles.color_palette }}
+  {{ $backgroundColor = .topper.settings.styles.color_palette }}
+{{ end }}
+
+{{ if and .topper.background_image (not .topper.settings.styles.enable_blend) }}
+  {{ $backgroundColor = "option-2" }}
+{{ end }}
+
+{{ if .topper.settings.styles.heading_size }}
+  {{ $headingSize = .topper.settings.styles.heading_size }}
+{{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
   {{ $image := "" }}
@@ -35,7 +48,7 @@
             <p class="h6 mb-6 wvu-b-label">{{ .topper.label }}</p>
           {{ end }}
           
-          <h1 id="" class="wvu-b-display-heading wvu-b-text-shadow wvu-b-text-outline" data-text="{{ .topper.heading }}">
+          <h1 id="" class="wvu-b-display-heading wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }}" data-text="{{ .topper.heading }}">
             <span class="wvu-b-font-adjust">{{ .topper.heading }}</span>
           </h1>
 
