@@ -14,6 +14,47 @@
     </div>
   {{ end }}
 
-  {{ partial "bookshop" . }}
+  {{ $src := "" }}
+  {{ $backgroundColor := "" }}
+
+  {{ if .settings.styles.color_palette }}
+    {{ $backgroundColor = .settings.styles.color_palette }}
+  {{ end }}
+
+  {{ if .background_image }}
+    {{ $src = .background_image }}
+    {{ if not .settings.styles.enable_blend }}
+      {{ $backgroundColor = "option-2" }}
+    {{ end }}
+  {{ end }}
+
+  {{ if .settings.styles.bg_subtle }}
+    {{ $bgSubtle = "wvu-b-subtle" }}
+  {{ end }}
+
+  {{- if not site.Params.env_bookshop_live -}}
+    {{ $image := "" }}
+    {{/*  Get the image, either from its remote or local source  */}}
+    {{ if hasPrefix $src "http"}}
+      {{ $image = resources.GetRemote .background_image }}
+    {{ else }}
+      {{ $image = resources.Get .background_image }}
+    {{ end }}
+
+    {{/* Resize images and add them to a variable  */}}
+    {{ if and $image (ne $image.MediaType.SubType "svg") }}
+      {{ if eq .imageProcess "fit" }}
+        {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+      {{ else }}
+        {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+      {{ end }}
+    {{ end }}
+  {{- end -}}
+
+  {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) (not .is_sitewide) }}
+
+    {{ partial "bookshop" . }}
+
+  {{ end }}
 
 {{ end }}
