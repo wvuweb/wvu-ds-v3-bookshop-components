@@ -1,7 +1,7 @@
 {{ $src := "" }}
 
 {{ if .topper.background_image }}
-  {{ $src := .topper.background_image }}
+  {{ $src = .topper.background_image }}
 {{ end }}
 
 <header id="" class="c-topper-hero audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg- position-relative py-7">
