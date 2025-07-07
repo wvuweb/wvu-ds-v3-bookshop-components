@@ -31,11 +31,11 @@
           {{ with .topper.ctas }}
             <div class="mt-4">
               {{ range . }}
+                {{ $buttonColor := "primary" }}
                 {{ if .button_c }}
                   {{ $buttonColor = .button_c }}
                 {{ end }}
                 <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-                {{ $buttonColor := "primary" }}
               {{ end }}
             </div>
           {{ end }}
@@ -45,7 +45,7 @@
               {{ .markdown | markdownify }}
             </div>
           {{ end }}
-          
+
         </div>
       </div>
     </div>
