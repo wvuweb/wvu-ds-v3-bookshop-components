@@ -6,19 +6,6 @@
 
 {{ $backgroundColor := "" }}
 {{ $headingSize := "display-2" }}
-{{ $placement := "mx-xl-auto text-center" }}
-{{ $buttonColor := "primary" }}
-
-{{ $audienceOverride := "" }}
-{{ $toneOverride := "" }}
-
-{{ if .topper.settings.styles.audience }}
-  {{ $audienceOverride = "override-audience-styles-site" }}
-{{ end }}
-
-{{ if .topper.settings.styles.tone }}
-  {{ $toneOverride = "override-tone-styles-site" }}
-{{ end }}
 
 {{ if .topper.settings.styles.color_palette }}
   {{ $backgroundColor = .topper.settings.styles.color_palette }}
@@ -28,8 +15,8 @@
   {{ $backgroundColor = "option-2" }}
 {{ end }}
 
-{{ with .topper.settings.styles.heading_size }}
-  {{ $headingSize = . }}
+{{ if .topper.settings.styles.heading_size }}
+  {{ $headingSize = .topper.settings.styles.heading_size }}
 {{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
@@ -51,47 +38,59 @@
   {{ end }}
 {{- end -}}
 
-<header id="" class="c-topper-hero {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7">
+<header id="" class="c-topper-hero audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7">
   {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   <div class="container wvu-z-index-content">
     <div class="{{ .topper.settings.layout.buffer }}">
       <div class="row py-6">
         <div class="col-xl-16 col-xxl-12 {{ .topper.settings.layout.text_placement }}">
-          {{ with .topper.label }}
-            <p class="h6 mb-6 wvu-b-label">{{ . }}</p>
+          {{ if .topper.label }}
+            <p class="h6 mb-6 wvu-b-label">{{ .topper.label }}</p>
           {{ end }}
           
-          {{ with .topper.heading }}
-            <h1 id="" class="wvu-b-display-heading wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }}" data-text="{{ . }}">
-              <span class="wvu-b-font-adjust">{{ . }}</span>
-            </h1>
+          <h1 id="" class="wvu-b-display-heading wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }}" data-text="{{ .topper.heading }}">
+            <span class="wvu-b-font-adjust">{{ .topper.heading }}</span>
+          </h1>
+
+          {{ if .topper.subheading }}
+            <p class="fs-3 my-3 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ .topper.subheading }}</span></p>
           {{ end }}
 
-          <p class="fs-3 my-3 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ .topper.subheading }}</span></p>
-
-          {{ with .topper.markdown }}
-            <div class="mt-5 wvu-b-text">
-              {{ . | markdownify }}
+          {{ if .topper.markdown }}
+            <div class="mt-4 wvu-b-text">
+              {{ .topper.markdown | markdownify }}
             </div>
           {{ end }}
 
-          {{ with .topper.ctas }}
+          {{ if .topper.ctas }}
             <div class="mt-4">
-              {{ range . }}
+              {{ range .topper.ctas }}
+                {{ $buttonColor := "primary" }}
                 {{ if .button_c }}
                   {{ $buttonColor = .button_c }}
                 {{ end }}
-                <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-                {{ $buttonColor := "primary" }}
+                <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ if .icon }}<span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
               {{ end }}
             </div>
           {{ end }}
 
-          {{ with .topper.postscript }}
-            <div class="mt-4">
-              {{ .markdown | markdownify }}
+          {{ if .topper.postscript }}
+            <div class="mt-5 mb-n2">
+              {{ if .topper.postscript.markdown }}
+                <div class="mb-2">
+                  {{ .topper.postscript.markdown | markdownify }}
+                </div>
+              {{ end }}
+              {{ if .topper.postscript.ctas }}
+                <div class="">
+                  {{ range .topper.postscript.ctas }}
+                    <a class="me-2" href="{{ .url }}">{{ .text }}</a>
+                  {{ end }}
+                </div>
+              {{ end }}
             </div>
           {{ end }}
+
         </div>
       </div>
     </div>

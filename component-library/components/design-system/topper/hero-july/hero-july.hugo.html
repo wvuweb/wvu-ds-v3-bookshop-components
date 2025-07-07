@@ -57,7 +57,7 @@
           {{ end }}
 
           {{ if .topper.markdown }}
-            <div class="mt-5 wvu-b-text">
+            <div class="mt-4 wvu-b-text">
               {{ .topper.markdown | markdownify }}
             </div>
           {{ end }}
@@ -75,18 +75,20 @@
           {{ end }}
 
           {{ if .topper.postscript }}
-            {{ if .topper.postscript.markdown }}
-              <div class="mt-4">
-                {{ .markdown | markdownify }}
-              </div>
-            {{ end }}
-            {{ if .topper.postscript.ctas }}
-              <div class="mt-4">
-                {{ range .topper.postscript.ctas }}
-                  <a class="me-2" href="{{ .url }}">{{ .text }}</a>
-                {{ end }}
-              </div>
-            {{ end }}
+            <div class="mt-5 mb-n2">
+              {{ if .topper.postscript.markdown }}
+                <div class="mb-2">
+                  {{ .topper.postscript.markdown | markdownify }}
+                </div>
+              {{ end }}
+              {{ if .topper.postscript.ctas }}
+                <div class="">
+                  {{ range .topper.postscript.ctas }}
+                    <a class="me-2" href="{{ .url }}">{{ .text }}</a>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
           {{ end }}
 
         </div>
