@@ -1,4 +1,9 @@
-{{ $src := .topper.background_image }}
+{{ $src := "" }}
+
+{{ if .topper.background_image }}
+  {{ $src = .topper.background_image }}
+{{ end }}
+
 {{ $backgroundColor := "" }}
 {{ $headingSize := "display-2" }}
 {{ $placement := "mx-xl-auto text-center" }}
