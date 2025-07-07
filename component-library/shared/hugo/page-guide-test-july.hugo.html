@@ -28,10 +28,6 @@
     {{ end }}
   {{ end }}
 
-  {{ if .settings.styles.bg_subtle }}
-    {{ $bgSubtle = "wvu-b-subtle" }}
-  {{ end }}
-
   {{- if not site.Params.env_bookshop_live -}}
     {{ $image := "" }}
     {{/*  Get the image, either from its remote or local source  */}}
@@ -51,9 +47,13 @@
     {{ end }}
   {{- end -}}
 
-  {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) (not .is_sitewide) }}
+  {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
 
-    {{ partial "bookshop" . }}
+    <section id="" class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}">
+
+      {{ partial "bookshop" . }}
+    
+    </section>
 
   {{ end }}
 
