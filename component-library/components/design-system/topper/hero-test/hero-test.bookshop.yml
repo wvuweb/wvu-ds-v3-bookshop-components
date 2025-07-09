@@ -14,7 +14,7 @@ blueprint:
   heading: Heading
   subheading: Subheading.
   markdown:
-  cta_buttons: bookshop:simple/cta-buttons!
+  cta_buttons: bookshop:design-system/simple/cta-buttons!
   postscript:
     markdown:
     cta_list_inline:
