@@ -25,6 +25,7 @@ _inputs:
     label: Button Color
     type: select
     options:
+      allow_empty: false
       values: _select_data.brand_colors
       value_key: class
   button_size:
@@ -35,6 +36,8 @@ _inputs:
       value_key: value
 _select_data:
   brand_colors:
+    - name: Default`
+      class: wvu-b-btn
     - name: Gold
       class: btn-wvu-gold
     - name: Blue

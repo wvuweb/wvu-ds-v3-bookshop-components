@@ -6,5 +6,7 @@
   {{ if .button_c }}
     {{ $buttonColor = .button_c }}
   {{ end }}
-  <a class="btn {{ $buttonColor }} {{ $size }} mb-1" href="{{ .url }}">{{ .text }} {{ if .icon }}<span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+  {{ if .text }}
+    <a class="btn {{ $buttonColor }} {{ $size }} mb-1" href="{{ .url }}">{{ .text }} {{ if .icon }}<span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+  {{ end }}
 {{ end }}
