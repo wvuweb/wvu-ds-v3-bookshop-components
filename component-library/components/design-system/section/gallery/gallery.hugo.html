@@ -1,62 +1,60 @@
 <div class="container-fluid parvus-gallery__container mb-6">
   <div class="px-md-5 px-xl-6 d-flex justify-content-center">
-    <ul class="parvus-gallery__row list-unstyled">
-      <div class="d-sm-flex">
-        {{ $imageCount := 0 }}
+    <ul class="parvus-gallery__row list-unstyled d-sm-flex">
+      {{ $imageCount := 0 }}
+      {{ if not site.Params.env_bookshop_live }}
+        {{ range .images }}
+          {{ $imageCount = add $imageCount 1 }}
+        {{ end }}
+      {{ end }}
+
+      {{ range $index, $value := .images }}
+
+        {{ $1920 := "" }}
+        {{ $1366 := "" }}
+        {{ $960 := "" }}
+        {{ $450 := "" }}
+        {{ $src := .image_source }}
+
         {{ if not site.Params.env_bookshop_live }}
-          {{ range .images }}
-            {{ $imageCount = add $imageCount 1 }}
+          {{ $image := "" }}
+          {{/*  Get the image, either from its remote or local source  */}}
+          {{ if hasPrefix $src "http"}}
+            {{ $image = resources.GetRemote $src }}
+          {{ else }}
+            {{ $image = resources.Get $src }}
+          {{ end }}
+
+          {{/* Resize images and add them to a variable  */}}
+          {{ if and $image (ne $image.MediaType.SubType "svg") }}
+            {{ $1920 = ($image.Fit "1920x1280 webp").RelPermalink }}
+            {{ $1366 = ($image.Fit "1366x911 webp").RelPermalink }}
+            {{ $450 = ($image.Fit "450x300 webp").RelPermalink }}
+            {{ $960 = ($image.Fit "960x640 webp").RelPermalink }}
+            {{ $src = $960 }}
           {{ end }}
         {{ end }}
 
-        {{ range $index, $value := .images }}
-
-          {{ $1920 := "" }}
-          {{ $1366 := "" }}
-          {{ $960 := "" }}
-          {{ $450 := "" }}
-          {{ $src := .image_source }}
-
-          {{ if not site.Params.env_bookshop_live }}
-            {{ $image := "" }}
-            {{/*  Get the image, either from its remote or local source  */}}
-            {{ if hasPrefix $src "http"}}
-              {{ $image = resources.GetRemote $src }}
-            {{ else }}
-              {{ $image = resources.Get $src }}
+        <li class="parvus-gallery__item px-2 mb-4">
+          <a href="{{ $src }}" data-group="gallery" {{ if .image_caption }}data-caption="{{ .image_caption }}"{{ end }} class="js-parvus-lightbox parvus-gallery__link parvus-zoom" data-srcset="{{ $1920 }} 1920w, {{ $1366 }} 1366w, {{ $960 }} 960w, {{ $450 }} 450w ">
+            <img class="parvus-gallery__thumbnail" src="{{ $src }}" alt="{{ .image_alt }}" loading="lazy" decoding="async">
+          </a>
+        </li>
+        
+        {{ if not site.Params.env_bookshop_live }}
+          {{ if or (eq $imageCount 6) (eq $imageCount 7) }}
+            {{ if eq $index 3 }}
+              </div>
+              <div class="d-sm-flex">
             {{ end }}
-
-            {{/* Resize images and add them to a variable  */}}
-            {{ if and $image (ne $image.MediaType.SubType "svg") }}
-              {{ $1920 = ($image.Fit "1920x1280 webp").RelPermalink }}
-              {{ $1366 = ($image.Fit "1366x911 webp").RelPermalink }}
-              {{ $450 = ($image.Fit "450x300 webp").RelPermalink }}
-              {{ $960 = ($image.Fit "960x640 webp").RelPermalink }}
-              {{ $src = $960 }}
-            {{ end }}
-          {{ end }}
-
-          <li class="parvus-gallery__item px-2 mb-4">
-            <a href="{{ $src }}" data-group="gallery" {{ if .image_caption }}data-caption="{{ .image_caption }}"{{ end }} class="js-parvus-lightbox parvus-gallery__link parvus-zoom" data-srcset="{{ $1920 }} 1920w, {{ $1366 }} 1366w, {{ $960 }} 960w, {{ $450 }} 450w ">
-              <img class="parvus-gallery__thumbnail" src="{{ $src }}" alt="{{ .image_alt }}" loading="lazy" decoding="async">
-            </a>
-          </li>
-          
-          {{ if not site.Params.env_bookshop_live }}
-            {{ if or (eq $imageCount 6) (eq $imageCount 7) }}
-              {{ if eq $index 3 }}
-                </div>
-                <div class="d-sm-flex">
-              {{ end }}
-            {{ else if or (eq $imageCount 8) (eq $imageCount 9) }}
-              {{ if eq $index 4 }}
-                </div>
-                <div class="d-sm-flex">
-              {{ end }}
+          {{ else if or (eq $imageCount 8) (eq $imageCount 9) }}
+            {{ if eq $index 4 }}
+              </div>
+              <div class="d-sm-flex">
             {{ end }}
           {{ end }}
         {{ end }}
-      </div>
+      {{ end }}
     </ul>
   </div>
 </div>

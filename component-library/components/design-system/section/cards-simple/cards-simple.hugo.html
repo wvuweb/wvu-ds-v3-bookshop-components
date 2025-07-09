@@ -10,7 +10,7 @@
             {{ . | markdownify }}
           </div>
         {{ end }}
-        <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 wvu-b-accent-text"></span></a>
+        <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 wvu-b-accent-text"></span><span class="visually-hidden">{{ .title }}</span></a>
       </div>
     </div>
   {{ end }}

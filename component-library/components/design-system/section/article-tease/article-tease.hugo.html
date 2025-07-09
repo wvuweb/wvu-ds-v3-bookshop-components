@@ -62,7 +62,7 @@
             {{ $author = .Params }}
           {{ end }}
           {{ range $authors }}
-            {{ if eq .author $author.uuid }}
+            {{ if and (eq .author $author.uuid) (eq .article_role "Author") }}
               {{ $authorList = $authorList | append $author }}
             {{ end }}
           {{ end }}
@@ -106,7 +106,7 @@
               <p class="small d-block">
                 {{ if not $params.config.hide_author }}
                   {{ with $authorList }}
-                    {{ range . }}
+                    {{ range first 1 . }}
                       <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                         <span itemprop="name">
                           {{ .name }}
