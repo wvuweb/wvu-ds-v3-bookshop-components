@@ -2,7 +2,7 @@
 {{ $buttonsColor := .button_c }}
 
 {{ range .buttons }}
-  {{ $buttonColor = $buttonsColor }}
+  {{ $buttonColor := $buttonsColor }}
   {{ if .button_c }}
     {{ $buttonColor = .button_c }}
   {{ end }}
