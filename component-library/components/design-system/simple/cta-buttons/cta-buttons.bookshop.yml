@@ -25,15 +25,13 @@ _inputs:
     type: select
     options:
       allow_empty: false
-      values:
-        value: _select_data.brand_colors
-        value_key: class
+      values: _select_data.brand_colors
+      value_key: class
   size:
     type: choice
     options:
-      values:
-        value: _select_data.sizes
-        value_key: value
+      values: _select_data.sizes
+      value_key: value
 _select_data:
   brand_colors:
     - name: Default
