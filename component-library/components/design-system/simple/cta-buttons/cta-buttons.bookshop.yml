@@ -21,3 +21,53 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  button_c:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        value: _select_data.brand_colors
+        value_key: class
+  size:
+    type: choice
+    options:
+      values:
+        value: _select_data.sizes
+        value_key: value
+_select_data:
+  brand_colors:
+    - name: Default
+      class: wvu-b-btn
+    - name: Gold
+      class: btn-wvu-gold
+    - name: Blue
+      class: btn-wvu-blue
+    - name: Safety Blue
+      class: btn-wvu-accent--blue
+    - name: Coal
+      class: btn-wvu-accent--blue-dark
+    - name: Star City Blue
+      class: btn-wvu-accent--blue-light
+    - name: Canary
+      class: btn-wvu-accent--yellow
+    - name: Old Gold
+      class: btn-wvu-accent--old-gold
+    - name: Sunset
+      class: btn-wvu-accent--sunset
+    - name: Not Quite White
+      class: btn-wvu-neutral--off-white
+    - name: Cooper's Gray
+      class: btn-wvu-neutral--warm-gray-light
+    - name: Seneca Gray
+      class: btn-wvu-neutral--warm-gray-medium
+    - name: Rattler Gray
+      class: btn-wvu-neutral--warm-gray-dark
+    - name: Wild Flour
+      class: btn-wvu-neutral--cream
+    - name: Buckskin
+      class: btn-wvu-neutral--tan
+  sizes:
+    - name: Large
+      value: btn-lg
+    - name: Small
+      value: btn-sm
