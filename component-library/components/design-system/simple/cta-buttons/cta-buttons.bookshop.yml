@@ -8,7 +8,7 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  size:
+  size: default
   button_c: wvu-b-btn
   buttons:
     - text:
@@ -24,7 +24,6 @@ _inputs:
   button_c:
     type: select
     options:
-      allow_empty: false
       values: _select_data.brand_colors
       value_key: class
   size:
@@ -34,8 +33,6 @@ _inputs:
       value_key: value
 _select_data:
   brand_colors:
-    - name: Default
-      class: wvu-b-btn
     - name: Gold
       class: btn-wvu-gold
     - name: Blue
@@ -65,6 +62,8 @@ _select_data:
     - name: Buckskin
       class: btn-wvu-neutral--tan
   sizes:
+    - name: Default
+      value: btn-
     - name: Large
       value: btn-lg
     - name: Small
