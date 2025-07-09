@@ -1,0 +1,92 @@
+{{ $src := "" }}
+
+{{ if .topper.background_image }}
+  {{ $src = .topper.background_image }}
+{{ end }}
+
+{{ $backgroundColor := "" }}
+{{ $headingSize := "display-2" }}
+
+{{ if .topper.settings.styles.color_palette }}
+  {{ $backgroundColor = .topper.settings.styles.color_palette }}
+{{ end }}
+
+{{ if and .topper.background_image (not .topper.settings.styles.enable_blend) }}
+  {{ $backgroundColor = "option-2" }}
+{{ end }}
+
+{{ if .topper.settings.styles.heading_size }}
+  {{ $headingSize = .topper.settings.styles.heading_size }}
+{{ end }}
+
+{{- if not site.Params.env_bookshop_live -}}
+  {{ $image := "" }}
+  {{/*  Get the image, either from its remote or local source  */}}
+  {{ if hasPrefix $src "http"}}
+    {{ $image = resources.GetRemote .topper.background_image }}
+  {{ else }}
+    {{ $image = resources.Get .topper.background_image }}
+  {{ end }}
+
+  {{/* Resize images and add them to a variable  */}}
+  {{ if and $image (ne $image.MediaType.SubType "svg") }}
+    {{ if eq .imageProcess "fit" }}
+      {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+    {{ else }}
+      {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{- end -}}
+
+<header id="" class="c-topper-hero audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7">
+  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
+  <div class="container wvu-z-index-content">
+    <div class="{{ .topper.settings.layout.buffer }}">
+      <div class="row py-6">
+        <div class="col-xl-16 col-xxl-12 {{ .topper.settings.layout.text_placement }}">
+          {{ if .topper.label }}
+            <p class="h6 mb-6 wvu-b-label">{{ .topper.label }}</p>
+          {{ end }}
+          
+          <h1 id="" class="wvu-b-display-heading wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }}" data-text="{{ .topper.heading }}">
+            <span class="wvu-b-font-adjust">{{ .topper.heading }}</span>
+          </h1>
+
+          {{ if .topper.subheading }}
+            <p class="fs-3 my-3 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ .topper.subheading }}</span></p>
+          {{ end }}
+
+          {{ if .topper.markdown }}
+            <div class="mt-4 wvu-b-text">
+              {{ .topper.markdown | markdownify }}
+            </div>
+          {{ end }}
+
+          {{ if .topper.cta_buttons }}
+            <div class="mt-4">
+              {{ partial "bookshop" (slice "design-system/simple/cta-buttons" .topper.cta_buttons )}}
+            </div>
+          {{ end }}
+
+          {{ if .topper.postscript }}
+            <div class="mt-5 mb-n2">
+              {{ if .topper.postscript.markdown }}
+                <div class="mb-2">
+                  {{ .topper.postscript.markdown | markdownify }}
+                </div>
+              {{ end }}
+              {{ if .topper.postscript.ctas }}
+                <div class="">
+                  {{ range .topper.postscript.ctas }}
+                    <a class="me-2" href="{{ .url }}">{{ .text }}</a>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
