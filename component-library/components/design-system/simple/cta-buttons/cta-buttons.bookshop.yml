@@ -8,7 +8,7 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  size: default
+  button_size: default
   button_c: wvu-b-btn
   buttons:
     - text:
@@ -22,14 +22,16 @@ preview:
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
   button_c:
+    label: Button Color
     type: select
     options:
       values: _select_data.brand_colors
       value_key: class
-  size:
+  button_size:
+    label: Button Size
     type: choice
     options:
-      values: _select_data.sizes
+      values: _select_data.button_sizes
       value_key: value
 _select_data:
   brand_colors:
@@ -61,7 +63,7 @@ _select_data:
       class: btn-wvu-neutral--cream
     - name: Buckskin
       class: btn-wvu-neutral--tan
-  sizes:
+  button_sizes:
     - name: Default
       value: btn-
     - name: Large
