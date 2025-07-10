@@ -56,8 +56,13 @@
           <h2 class="position-absolute display-4 wvu-text-vertical wvu-b-display-heading wvu-b-accent-text h6 small wvu-text-letter-spacing-lg h-100 wvu-z-index-max mt-n5 mx-0"><span class="d-block bg- p-2">{{ .heading }}</span></h2>
         {{ end }}
       {{ end }}
+      <div class="{{ .settings.layout.buffer }}">
+        <div class="container{{ if .settings.layout.full_bleed }}-fluid px-0{{ end }} wvu-z-index-content">
 
-      {{ partial "bookshop" . }}
+          {{ partial "bookshop" . }}
+
+        </div>
+      </div>
     
     </section>
 
