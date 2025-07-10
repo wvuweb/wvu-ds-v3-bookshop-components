@@ -23,6 +23,7 @@ _inputs:
     type: select
     options:
       values: _select_data.brand_colors
+      value_key: class
 _select_data:
   brand_colors:
     - name: Default
