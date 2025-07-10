@@ -62,9 +62,9 @@
             </div>
           {{ end }}
 
-          {{ if .topper.cta_buttons }}
+          {{ if .topper.cta_buttons.buttons }}
             <div class="mt-4">
-              {{ partial "bookshop" (slice "design-system/simple/cta-buttons" .topper.cta_buttons) }}
+              {{ partial "bookshop" (slice "design-system/simple/cta-buttons" (dict "buttons" .topper.cta_buttons.buttons "size" "btn-lg" "color" "wvu-b-btn")) }}
             </div>
           {{ end }}
 
