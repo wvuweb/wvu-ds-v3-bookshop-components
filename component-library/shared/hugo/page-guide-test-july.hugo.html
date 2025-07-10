@@ -62,9 +62,52 @@
             <div class="{{ if not .settings.layout.full_bleed }}row{{ end }}">
               <div class="{{ with .settings.layout.max_cols }}col-xxl-{{ . }} mx-xxl-auto{{ end }}">            
                 <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}bg-option-1 p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
+                  {{ if not .is_nested }}
+                    {{ if .settings.config.include_heading_postscript }}
+                      {{ if .heading }}
+                        <div class="pb-3">
+                          <div class="mb-5 text-center">
+                            <h2 class="wvu-b-label h1 mb-3">{{ .heading }}</h2>
 
-                  {{ partial "bookshop" . }}
-                  
+                            {{ if .subheading }}
+                              <p class="config-light fs-5 mb-3">{{ .subheading }}</p>
+                            {{ end }}
+                          </div>
+                        </div>
+                      {{ end }}
+
+                      {{ if and site.Params.env_bookshop_live .is_dynamic (not .settings.config.show_content) }}
+                        Is dynamic.
+                      {{ else }}
+                        {{ partial "bookshop" . }}
+                      {{ end }}
+
+                      {{ if .postscript }}
+                        <div class="text-center">
+                          {{ if .postsscript.copy }}
+                            <div class="mb-4">
+                              {{ .postscript.copy | markdownify }}
+                            </div>
+                          {{ end }}
+
+                          {{ if .ctas }}
+                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                              {{ range .ctas }}
+                                <a class="btn wvu-b-subtle" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+                              {{ end }}
+                            </div>
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                    {{ else }}
+                      {{ if and site.Params.env_bookshop_live .is_dynamic (not .settings.config.show_content) }}
+                        Is dynamic.
+                      {{ else }}
+                        {{ partial "bookshop" . }}
+                      {{ end }}
+                    {{ end }}
+                  {{ else }}
+                  {{ end }}
                 </div>
               </div>
             </div>
