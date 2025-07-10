@@ -107,6 +107,71 @@
                       {{ end }}
                     {{ end }}
                   {{ else }}
+                    <div class="row justify-content-center gx-xl-5">
+                      {{ with .column_a }}
+                        <div class="col-xl mb-5 mb-xl-0">
+                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
+                            {{ partial "bookshop" . }}
+                          {{ else }}
+                            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                      {{ with .column_b }}
+                        <div class="col-xl mb-5 mb-xl-0">
+                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
+                            {{ partial "bookshop" . }}
+                          {{ else }}
+                            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                      {{ with .column_c }}
+                        <div class="col-xl mb-5 mb-xl-0">
+                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
+                            {{ partial "bookshop" . }}
+                          {{ else }}
+                            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                      {{ with .column_aa }}
+                        <div class="col-24 col-lg-10 col-xl-8">
+                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
+                            {{ partial "bookshop" . }}
+                          {{ else }}
+                            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                      {{ with .column_aaa }}
+                        <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
+                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
+                            {{ partial "bookshop" . }}
+                          {{ else }}
+                            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                      {{ with .column_bbb }}
+                        <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
+                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
+                            {{ partial "bookshop" . }}
+                          {{ else }}
+                            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                      {{ with .column_aaaa }}
+                        <div class="col-24 col-lg-6 col-xl-4 mb-5 mb-xl-0">
+                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
+                            {{ partial "bookshop" . }}
+                          {{ else }}
+                            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                    </div>
                   {{ end }}
                 </div>
               </div>
