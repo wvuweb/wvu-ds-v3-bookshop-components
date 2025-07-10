@@ -1,3 +1,4 @@
+{{ $size := .size }}
 {{ $buttonsColor := .color }}
 
 {{ range .buttons }}
@@ -6,6 +7,6 @@
     {{ $buttonColor = .button_c }}
   {{ end }}
   {{ if .text }}
-    <a class="btn {{ $buttonColor }} {{ .size }} mb-1" href="{{ .url }}">{{ .text }} {{ if .icon }}<span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+    <a class="btn {{ $buttonColor }} {{ $size }} mb-1" href="{{ .url }}">{{ .text }} {{ if .icon }}<span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
   {{ end }}
 {{ end }}
