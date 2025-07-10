@@ -4,74 +4,78 @@
 
 {{ range .blocks }}
 
-  {{ if and .is_sitewide site.Params.env_bookshop_live }}
-    <div class="py-6 py-xxl-7">
-      <div class="container">
-        <div class="alert alert-info">
-          This is a sitewide section. It will not show in the Live Editor.
+  {{ if .use_common_wrapper }}
+    {{ if and .is_sitewide site.Params.env_bookshop_live }}
+      <div class="py-6 py-xxl-7">
+        <div class="container">
+          <div class="alert alert-info">
+            This is a sitewide section. It will not show in the Live Editor.
+          </div>
         </div>
       </div>
-    </div>
-  {{ end }}
-
-  {{ $src := "" }}
-  {{ $backgroundColor := "" }}
-
-  {{ if .settings.styles.color_palette }}
-    {{ $backgroundColor = .settings.styles.color_palette }}
-  {{ end }}
-
-  {{ if .background_image }}
-    {{ $src = .background_image }}
-    {{ if not .settings.styles.enable_blend }}
-      {{ $backgroundColor = "option-2" }}
-    {{ end }}
-  {{ end }}
-
-  {{- if not site.Params.env_bookshop_live -}}
-    {{ $image := "" }}
-    {{/*  Get the image, either from its remote or local source  */}}
-    {{ if hasPrefix $src "http"}}
-      {{ $image = resources.GetRemote .background_image }}
-    {{ else }}
-      {{ $image = resources.Get .background_image }}
     {{ end }}
 
-    {{/* Resize images and add them to a variable  */}}
-    {{ if and $image (ne $image.MediaType.SubType "svg") }}
-      {{ if eq .imageProcess "fit" }}
-        {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
-      {{ else }}
-        {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+    {{ $src := "" }}
+    {{ $backgroundColor := "" }}
+
+    {{ if .settings.styles.color_palette }}
+      {{ $backgroundColor = .settings.styles.color_palette }}
+    {{ end }}
+
+    {{ if .background_image }}
+      {{ $src = .background_image }}
+      {{ if not .settings.styles.enable_blend }}
+        {{ $backgroundColor = "option-2" }}
       {{ end }}
     {{ end }}
-  {{- end -}}
 
-  {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
+    {{- if not site.Params.env_bookshop_live -}}
+      {{ $image := "" }}
+      {{/*  Get the image, either from its remote or local source  */}}
+      {{ if hasPrefix $src "http"}}
+        {{ $image = resources.GetRemote .background_image }}
+      {{ else }}
+        {{ $image = resources.Get .background_image }}
+      {{ end }}
 
-    <section id="" class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}">
-      {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
-      {{ if .is_nested }}
-        {{ if .heading }}
-          <h2 class="position-absolute display-4 wvu-text-vertical wvu-b-display-heading wvu-b-accent-text h6 small wvu-text-letter-spacing-lg h-100 wvu-z-index-max mt-n5 mx-0"><span class="d-block bg- p-2">{{ .heading }}</span></h2>
+      {{/* Resize images and add them to a variable  */}}
+      {{ if and $image (ne $image.MediaType.SubType "svg") }}
+        {{ if eq .imageProcess "fit" }}
+          {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+        {{ else }}
+          {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
         {{ end }}
       {{ end }}
-      <div class="{{ .settings.layout.buffer }}">
-        <div class="container{{ if .settings.layout.full_bleed }}-fluid px-0{{ end }} wvu-z-index-content">
-          <div class="{{ if not .settings.layout.full_bleed }}row{{ end }}">
-            <div class="{{ with .settings.layout.max_cols }}col-xxl-{{ . }} mx-xxl-auto{{ end }}">            
-              <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}bg-option-1 p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
+    {{- end -}}
 
-                {{ partial "bookshop" . }}
-                
+    {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
+
+      <section id="" class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}">
+        {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
+        {{ if .is_nested }}
+          {{ if .heading }}
+            <h2 class="position-absolute display-4 wvu-text-vertical wvu-b-display-heading wvu-b-accent-text h6 small wvu-text-letter-spacing-lg h-100 wvu-z-index-max mt-n5 mx-0"><span class="d-block bg- p-2">{{ .heading }}</span></h2>
+          {{ end }}
+        {{ end }}
+        <div class="{{ .settings.layout.buffer }}">
+          <div class="container{{ if .settings.layout.full_bleed }}-fluid px-0{{ end }} wvu-z-index-content">
+            <div class="{{ if not .settings.layout.full_bleed }}row{{ end }}">
+              <div class="{{ with .settings.layout.max_cols }}col-xxl-{{ . }} mx-xxl-auto{{ end }}">            
+                <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}bg-option-1 p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
+
+                  {{ partial "bookshop" . }}
+                  
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    
-    </section>
+      
+      </section>
 
+    {{ end }}
+  {{ else }}
+    {{ partial "bookshop" . }}
   {{ end }}
 
 {{ end }}
