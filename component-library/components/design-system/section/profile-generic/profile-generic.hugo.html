@@ -110,18 +110,20 @@
             {{ end }}
           </div>
         </div>
-        <div class="col-lg-7 d-flex align-items-center position-relative">
+        <div class="col-lg-8 d-flex align-items-center position-relative">
           <div class="py-lg-6 mx-5 mx-lg-0 mb-5 mt-lg-n3 mb-lg-n3 w-100 pe-4">
             <div class="row">            
               {{ if .ctas }}
-                <div class="col-sm col-lg-24">
-                  <div class="wvu-z-index-content">
-                    <h2 class="wvu-b-label small h6 wvu-text-letter-spacing-lg">See More</h2>
-                    <ul class="list-unstyled w-100 small mb-5">
-                      {{ range .ctas }}
-                        <li class=""><a class="d-flex w-100 justify-content-between align-items-center py-1 text-decoration-none" href="{{ .url }}">{{ .text }}</a></li>
-                      {{ end }}
-                    </ul>
+                <div class="col-sm col-lg-24 mb-5">
+                  <div class="wvu-z-index-content me-lg-n4">
+                    <div>
+                      <h2 class="wvu-b-label small h6 wvu-text-letter-spacing-lg ps-2 pb-1 py-1 pe-2 wvu-b-accent-bg mb-0">See More</h2>
+                      <ul class="list-unstyled small wvu-b-subtle ps-2 py-2 pe-2 mb-0">
+                        {{ range .ctas }}
+                          <li class=""><a class="d-flex w-100 justify-content-between align-items-center py-1 text-decoration-none" href="{{ .url }}">{{ .text }}</a></li>
+                        {{ end }}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               {{ end }}
