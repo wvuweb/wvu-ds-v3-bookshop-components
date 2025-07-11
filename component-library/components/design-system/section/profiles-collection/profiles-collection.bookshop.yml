@@ -11,8 +11,7 @@ blueprint:
   profiles:
     - person:
   config:
-    name:
-    instance:
+    name: profile-collection
     edit_mode_only: false
   is_dynamic: false
   is_nested: false

@@ -27,8 +27,7 @@ blueprint:
       max_cols: 12
       padding: py-6 py-xxl-7
     config:
-      name:
-      instance:
+      name: quote
       edit_mode_only: false
       include_heading_postscript: false
       show: 2024-09-01

@@ -28,8 +28,7 @@ blueprint:
       margin:
       padding: py-6 py-xxl-7
     config:
-      name:
-      instance:
+      name: video-feature
       edit_mode_only: false
       include_heading_postscript: false
       show: 2024-09-01

@@ -34,8 +34,7 @@ blueprint:
       padding: py-6 py-xxl-7
       max_cols: 20
     config:
-      name:
-      instance:
+      name: poster-split
       edit_mode_only: false
       include_heading_postscript: false
       show: 2024-09-01

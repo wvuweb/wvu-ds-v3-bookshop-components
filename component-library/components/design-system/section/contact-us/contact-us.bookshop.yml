@@ -53,8 +53,7 @@ blueprint:
       margin:
       padding: py-6 py-xxl-7
     config:
-      name:
-      instance:
+      name: contact-us
       edit_mode_only: false
   is_dynamic: false
   is_nested: false

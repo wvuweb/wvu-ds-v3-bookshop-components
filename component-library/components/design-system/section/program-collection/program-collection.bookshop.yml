@@ -29,8 +29,7 @@ blueprint:
     layout:
       margin_y:
     config:
-      name:
-      instance:
+      name: program-collection
       edit_mode_only: false
   is_dynamic: false
   is_nested: false

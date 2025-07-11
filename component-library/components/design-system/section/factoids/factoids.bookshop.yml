@@ -32,8 +32,7 @@ blueprint:
       margin:
       padding: py-6 py-xxl-7
     config:
-      name:
-      instance:
+      name: factoids
       edit_mode_only: false
       include_heading_postscript: true
       show: 2024-09-01

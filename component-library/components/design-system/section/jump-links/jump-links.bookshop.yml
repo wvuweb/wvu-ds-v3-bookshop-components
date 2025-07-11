@@ -20,8 +20,7 @@ blueprint:
       tone:
       color_palette:
     config:
-      name:
-      instance:
+      name: jump-links
       edit_mode_only: false
       include_heading_postscript: false
   is_dynamic: false

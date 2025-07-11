@@ -28,8 +28,7 @@ blueprint:
       padding: py-0
       full_bleed: true
     config:
-      name:
-      instance:
+      name: hero-split
       edit_mode_only: false
       include_heading_postscript: false
       show: 2024-09-01

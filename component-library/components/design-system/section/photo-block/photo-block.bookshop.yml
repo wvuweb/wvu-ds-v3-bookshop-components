@@ -13,6 +13,9 @@ blueprint:
     - image:
       alt_text:
       caption:
+  settings:
+    config:
+      name: photo-block
   is_dynamic: false
   is_nested: false
   use_common_wrapper: true

@@ -31,8 +31,7 @@ blueprint:
       text_placement: mx-auto text-center
       background_position:
     config:
-      name:
-      instance:
+      name: hero
       edit_mode_only: false
       include_heading_postscript: false
       show: 2024-09-01

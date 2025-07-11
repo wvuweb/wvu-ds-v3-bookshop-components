@@ -22,8 +22,7 @@ blueprint:
       show: 2024-09-01
       hide: 2099-09-01
   config:
-    name:
-    instance:
+    name: profile
     edit_mode_only: false
   is_dynamic: false
   is_nested: false
