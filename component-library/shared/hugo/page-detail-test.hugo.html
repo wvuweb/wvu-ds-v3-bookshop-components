@@ -1,7 +1,7 @@
 {{ $mainCols := "col-md-16 col-lg-18 col-xl-12 col-xxl-11" }}
 {{ $sidebarCols := "col-md-8 col-lg-6" }}
 
-{{ if or .hide_section_menu (not page.CurrentSection.Pages) (not .sidebar_blocks) }}
+{{ if or .hide_section_menu (not .sidebar_blocks) }}
   {{ if not .sidebar_blocks }}
     {{ $mainCols = "col-24 col-xl-14 ms-xl-5 me-xl-auto" }}
   {{ else }}
@@ -36,13 +36,13 @@
           </div>
         {{ end }}
       {{ end }}
-      <div class=" mb-5">
+      <div class="{{ $mainCols }} mb-5">
         {{ range .detail_blocks }}
           {{ partial "bookshop" . }}
         {{ end }}
       </div>
       {{ if .sidebar_blocks }}
-        <div class=" mb-5">
+        <div class="{{ $sidebarCols }} mb-5">
           <div class="c-jump-links mb-5 pt-5 mt-n5 sticky-top">
             {{ range .sidebar_blocks }}
               {{ partial "bookshop" . }}
