@@ -4,34 +4,40 @@
   {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .title "params" .params)) }}
 {{ end }}
 
-{{ if not site.Params.env_bookshop_live }}
-  {{ if and page.CurrentSection.Pages (not .hide_section_menu) }}
-    <div class="col-24 col-xl-6 mb-6 mb-xl-5">
-      <h2 class="wvu-b-label h6 mb-4">Section Menu</h2>
-      {{- if not site.Params.env_bookshop_live -}}
-        {{ partial "section-menu" . }}
-      {{- end -}}
-    </div>
-  {{ end }}
-{{ else }}
-  {{ if not .hide_section_menu }}
-    <div class="col-24 col-xl-6 mb-6 mb-xl-5">
-      <h2 class="wvu-b-label h6 mb-4">Section Menu</h2>
-      {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
-    </div>
-  {{ end }}
-{{ end }}
-<div class=" mb-5">
-  {{ range .detail_blocks }}
-    {{ partial "bookshop" . }}
-  {{ end }}
-</div>
-{{ if .sidebar_blocks }}
-  <div class=" mb-5">
-    <div class="c-jump-links mb-5 pt-5 mt-n5 sticky-top">
-      {{ range .sidebar_blocks }}
-        {{ partial "bookshop" . }}
+<main class="py-6 wvu-backpage-main tone-default bg-option-1 wvu-b-subtle">
+  <div class="container text-dark">
+    <div class="row gx-xxl-6 mb-n5">
+      {{ if not site.Params.env_bookshop_live }}
+        {{ if and page.CurrentSection.Pages (not .hide_section_menu) }}
+          <div class="col-24 col-xl-6 mb-6 mb-xl-5">
+            <h2 class="wvu-b-label h6 mb-4">Section Menu</h2>
+            {{- if not site.Params.env_bookshop_live -}}
+              {{ partial "section-menu" . }}
+            {{- end -}}
+          </div>
+        {{ end }}
+      {{ else }}
+        {{ if not .hide_section_menu }}
+          <div class="col-24 col-xl-6 mb-6 mb-xl-5">
+            <h2 class="wvu-b-label h6 mb-4">Section Menu</h2>
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
+          </div>
+        {{ end }}
+      {{ end }}
+      <div class=" mb-5">
+        {{ range .detail_blocks }}
+          {{ partial "bookshop" . }}
+        {{ end }}
+      </div>
+      {{ if .sidebar_blocks }}
+        <div class=" mb-5">
+          <div class="c-jump-links mb-5 pt-5 mt-n5 sticky-top">
+            {{ range .sidebar_blocks }}
+              {{ partial "bookshop" . }}
+            {{ end }}
+          </div>
+        </div>
       {{ end }}
     </div>
   </div>
-{{ end }}
+</main>
