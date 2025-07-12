@@ -1,3 +1,9 @@
+{{ if and .topper .topper._bookshop_name }}
+  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "title" .title "params" .params)) }}
+{{ else }}
+  {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .title "params" .params)) }}
+{{ end }}
+
 {{ if not site.Params.env_bookshop_live }}
   {{ if and page.CurrentSection.Pages (not .hide_section_menu) }}
     <div class="col-24 col-xl-6 mb-6 mb-xl-5">
