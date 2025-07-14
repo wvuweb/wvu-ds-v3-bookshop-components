@@ -1,1 +1,1 @@
-<span class="d-block"><span class="fa-regular fa-phone"></span> {{ if .label }}<strong>{{ .label }}:</strong>{{ end }} <a class="{{ .classes }}" href="tel:{{ .phone_n }}">{{ .phone_n }}</a></span>
+<span class="d-block"><span class="fa-regular fa-phone"></span> {{ if .label }}<strong>{{ .label }}:</strong>{{ end }} <a class="{{ .classes }}" href="tel:{{ .phone_n | urlize }}">{{ .phone_n }}</a></span>
