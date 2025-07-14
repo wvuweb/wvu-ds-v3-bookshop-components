@@ -1,5 +1,3 @@
-
-
 {{ if and .topper .topper._bookshop_name }}
   {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "title" .title "params" .params)) }}
 {{ else }}
@@ -26,16 +24,7 @@
           </div>
         {{ end }}
       {{ end }}
-      <div class="
-        {{ if or .hide_section_menu (not .sidebar_blocks) }}
-          {{ if not .sidebar_blocks }}
-            col-24 col-xl-14 ms-xl-5 me-xl-auto
-          {{ else }}
-            col-md-16 col-xl-15 mx-xxl-auto
-          {{ end }}
-        {{ else }}
-          col-md-16 col-lg-18 col-xl-12 col-xxl-11
-        {{ end }} mb-5">
+      <div class="col-md mx-md-auto mb-5">
         {{ range .detail_blocks }}
           {{ partial "bookshop" . }}
         {{ end }}
