@@ -47,7 +47,7 @@
               {{ if .heading }}
                 <strong class="d-block">{{ .heading }}</strong>
               {{ end }}
-              <a href="mailto:{{ .email }}">{{ .email }}</a>
+              <a href="mailto:{{ .email }}">{{ .email | safeHTML }}</a>
             </p>
             {{ with .ctas }}
               <div class="mt-3">
