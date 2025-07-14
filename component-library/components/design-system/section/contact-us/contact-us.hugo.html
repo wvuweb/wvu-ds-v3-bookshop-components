@@ -78,7 +78,7 @@
               {{ if .heading }}
                 <strong class="d-block">{{ .heading }}</strong>
               {{ end }}
-              <span class="d-block"><a href="tel:{{ .phone | urlize }}">{{ .phone }}</a></span>
+              <span class="d-block"><a href="tel:{{ .phone | urlize }}">{{ .phone | safeHTML }}</a></span>
             </p>
             {{ with .ctas }}
               <div class="mt-3">
