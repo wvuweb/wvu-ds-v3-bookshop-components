@@ -47,6 +47,7 @@
 {{- end -}}
 
 <header id="" class="c-topper-hero {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative">
+  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" "" "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   <div class="container wvu-z-index-content">
     <div class="row py-7 gx-xl-5">
       <div class="col-xl-12 me-auto d-flex align-items-center">
@@ -99,7 +100,9 @@
     <div class="row h-100 w-100 mx-0 gx-5 px-0">
       <div class="col-lg-12 ms-lg-auto pe-0">
         <div class="wvu-z-index-content h-100 w-100 text-center">
-          {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
+          <div class="wvu-bg-img">
+            <img class="object-fit-cover object-position-{{ .topper.settings.layout.background_position }} h-100 w-100 position-relative" src="{{ $src }}" alt="" />
+          </div>
         </div>
       </div>
     </div>

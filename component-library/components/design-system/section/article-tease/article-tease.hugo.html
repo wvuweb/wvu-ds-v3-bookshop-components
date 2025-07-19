@@ -116,10 +116,10 @@
                   {{ end }}
                 {{ end }}
 
-                {{ if and $authorList (not $params.config.hide_author) ($params.author) ($params.publishDate) }} | {{ end }}
+                {{ if and $authorList (not $params.config.hide_author) $params.publishDate }} | {{ end }}
 
                 {{ if $params.publishDate }}
-                  | <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
+                  <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
                 {{ end }}
               </p>
             {{ end }}

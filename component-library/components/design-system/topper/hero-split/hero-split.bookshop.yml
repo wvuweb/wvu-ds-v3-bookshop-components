@@ -44,6 +44,8 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  enable_blend:
+    hidden: true
   enable_pattern:
     hidden: true
   tint_opacity:

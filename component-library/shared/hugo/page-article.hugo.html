@@ -12,7 +12,8 @@
 <main class="py-6 position-relative audience-general tone-default wvu-b-subtle">
   <div class="container {{ $containerMargin }}">
     <div class="row">
-      <div class="col-xl-14 mx-xl-auto">
+      <div class="col-xl-5"></div>
+      <div class="col-xl-14 mb-5 mb-xl-0">
         <div class="bg-option-1 p-5">
           <div class="antonia-regular text-dark fs-5 ">
             {{ range .article_blocks }}
@@ -32,6 +33,17 @@
             {{ end }}
           {{ end }}
         </div>
+      </div>
+      <div class="col-xl-5">
+        {{ $articles := where site.RegularPages "Section" "articles" }}
+        {{ with $articles.Related . | first 5 }}
+          <p>Related content:</p>
+          <ul>
+            {{ range . }}
+              <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+            {{ end }}
+          </ul>
+        {{ end }}
       </div>
     </div>
   </div>
