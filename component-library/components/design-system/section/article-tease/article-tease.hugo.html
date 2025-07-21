@@ -97,10 +97,14 @@
           <div class="h-100 p-5 p-xxl-6">
 
             {{ with $label }}
-              <p class="wvu-b-label">{{ . }}</p>
+              <h2 class="h6 wvu-b-label">{{ . }}</h2>
             {{ end }}
 
-            <h2 class="display-5" itemprop="headline"><a class="wvu-b-display-heading stretched-link text-decoration-none" href="{{ $link }}"><span class="wvu-b-font-adjust">{{ $params.title }}</span></a></h2>
+            {{ if $label }}
+              <h3 class="display-5" itemprop="headline"><a class="wvu-b-display-heading stretched-link text-decoration-none" href="{{ $link }}"><span class="wvu-b-font-adjust">{{ $params.title }}</span></a></h3>
+            {{ else }}
+              <h2 class="display-5" itemprop="headline"><a class="wvu-b-display-heading stretched-link text-decoration-none" href="{{ $link }}"><span class="wvu-b-font-adjust">{{ $params.title }}</span></a></h2>
+            {{ end }}
 
             {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
               <p class="small d-block">
