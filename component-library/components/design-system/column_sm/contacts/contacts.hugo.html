@@ -1,8 +1,8 @@
-<div class="p-5 wvu-b-subtle h-100">
+<div class="p-5 wvu-b-subtle h-100 mb-n3">
   {{ $contacts := slice }}
 
   {{ if .heading }}
-    <h2 class="wvu-b-label h6">{{ .heading }}</h2>
+    <h2 class="wvu-b-label h6 mb-4">{{ .heading }}</h2>
   {{ end }}
 
   {{ if not site.Data }}
@@ -18,7 +18,7 @@
     {{ end }}
 
     {{ range .people }}
-      {{ with .label }}<div class="mb-3 position-relative"><p class="">{{ . }}</p></div>{{ end }}
+      {{ $label := .label }}
       {{ $contact := .contact }}
       {{ range $contacts }}
 
@@ -29,7 +29,7 @@
         {{ end }}
 
         {{ if eq $params.uuid $contact }}
-          <div class="row gx-3 mb-4">
+          <div class="row gx-3 mb-3">
             {{ if $params.profile_image }}
 
               {{ $src := $params.profile_image }}
@@ -50,19 +50,29 @@
               {{- end -}}
 
               <div class="col-6">
-                <div class="ratio ratio-1x1">
-                  <img class="object-fit" src="{{ $src }}" alt="{{ if $params.image.alt }}{{ $params.image.alt }}{{ else }}Portrait of {{ $params.name }}{{ end }}" />
+                <div class="w-100">
+                  <div class="ratio ratio-1x1">
+                    <img class="object-fit" src="{{ $src }}" alt="{{ if $params.image.alt }}{{ $params.image.alt }}{{ else }}Portrait of {{ $params.name }}{{ end }}" />
+                  </div>
                 </div>
               </div>
             {{ end }}
-            <div class="col">
-              <h3 class="h5">{{ $params.name }}</h3>
-              <p class="small">
-                {{ range $params.phone }}
-                  <span class="fa-solid fa-phone"></span> <a href="tel:{{ .number }}">{{ .number }}</a><br>
-                {{ end }}
-                {{ range $params.email }}
-                  <span class="fa-solid fa-envelope"></span> <a href="mailto:{{ .email }}">{{ .email }}</a>
+            <div class="col-18 ms-auto">
+              {{ if $label }}<div class="wvu-b-label position-relative small"><p class="mb-1">{{ $label }}</p></div>{{ end }}
+              <h3 class="h5 mb-1">{{ $params.name }}</h3>
+              <p class="small mb-0">
+                {{ if $params.staff_contact_info }}
+                  {{ range $params.staff_contact_info }}
+                    {{ if eq ._bookshop_name "design-system/simple/phone" }}
+                      <div class="small position-relative">
+                        <span class="fa-solid fa-phone position-absolute" style="top: 4px;"></span> <a class="ms-4" href="tel:{{ .phone_n }}">{{ .phone_n }}</a>
+                      </div>
+                    {{ else if eq ._bookshop_name "design-system/simple/email" }}
+                      <div class="small position-relative">
+                        <span class="fa-solid fa-envelope position-absolute" style="top: 4px;"></span> <a class="ms-4" href="mailto:{{ .address }}">Email</a>
+                      </div>
+                    {{ end }}
+                  {{ end }}
                 {{ end }}
               </p>
             </div>

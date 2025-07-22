@@ -12,7 +12,7 @@ spec:
 blueprint:
   heading: Contacts
   people:
-    - label: "For Inquiries, Contact"
+    - label: "Inquiries"
       contact:
   config:
     show_content: false
