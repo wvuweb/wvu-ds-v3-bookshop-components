@@ -1,6 +1,8 @@
-<h2 class="h6 wvu-b-label mb-4">On This Page</h2>
-<ul class="wvu-ul-chevrons">
-  {{ range .items }}
-    <li class="mb-2"><a class="text-dark text-decoration-none" href="#{{ .anchor }}">{{ .text }}</a></li>
-  {{ end }}
-</ul>
+<div class="mb-5">
+  <h2 class="h6 wvu-b-label mb-4">On This Page</h2>
+  <ul class="wvu-ul-chevrons">
+    {{ range .items }}
+      <li class="mb-2"><a class="text-dark text-decoration-none" href="#{{ .anchor }}">{{ .text }}</a></li>
+    {{ end }}
+  </ul>
+</div>

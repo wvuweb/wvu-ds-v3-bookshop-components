@@ -4,7 +4,7 @@
   {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .title "params" .params)) }}
 {{ end }}
 
-<main class="py-6 wvu-backpage-main tone-default bg-option-1 wvu-b-subtle">
+<main class="py-6 tone-default bg-option-1 wvu-b-subtle">
   <div class="container text-dark">
     <div class="row gx-xxl-6 mb-n5">
       {{ if not site.Params.env_bookshop_live }}
@@ -24,7 +24,7 @@
           </div>
         {{ end }}
       {{ end }}
-      <div class="col-md-12 mx-md-auto mb-5">
+      <div class="col-md mb-5 wvu-backpage-main">
         {{ range .detail_blocks }}
           {{ partial "bookshop" . }}
         {{ end }}
