@@ -2,6 +2,7 @@
 spec:
   structures:
     - column_blocks_sm
+    - sidebar_blocks
   label: "Contacts"
   description:
   icon:
