@@ -152,7 +152,7 @@
           <h2 class="h6 d-inline-block me-2">View All:</h2>
           <p class="d-inline-block">
             {{ range $tags }}
-              <a class="border border-1 py-2 px-3 me-2 rounded-pill small text-decoration-none" href="/tags/{{ . | urlize }}/">{{ . }}</a>
+              <a class="border border-1 py-2 px-3 me-2 rounded-pill small text-decoration-none mb-3 d-inline-block" href="/tags/{{ . | urlize }}/">{{ . }}</a>
             {{ end }}
           </p>
         </div>
