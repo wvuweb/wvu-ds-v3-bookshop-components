@@ -24,13 +24,13 @@
           </div>
         {{ end }}
       {{ end }}
-      <div class="col-md mb-5 wvu-backpage-main">
+      <div class="col-md mb-5 wvu-backpage-main" {{ if and .Params.properties .Params.properties.include_in_search_results }}data-pagefind-body{{ end }}>
         {{ range .detail_blocks }}
           {{ partial "bookshop" . }}
         {{ end }}
       </div>
       {{ if .sidebar_blocks }}
-        <div class="col-md-8 col-xl-6 mb-5">
+        <div class="col-md-8 col-xl-6 mb-5" data-pagefind-ignore="all">
           <div class="c-jump-links mb-5 pt-5 mt-n5 sticky-top">
             {{ range .sidebar_blocks }}
               {{ partial "bookshop" . }}

@@ -43,7 +43,7 @@
     {{ $authorData = where site.Data.people_data ".type" "author" }}
   {{ end }}
 
-  <div class="row">
+  <div class="row gx-5">
     {{ with $articles }}
       {{ range first $limit . }}
 
@@ -98,7 +98,7 @@
           {{ end }}
         {{- end -}}
         
-        <div class="col-lg-12 col-xl-6">
+        <div class="col-lg-12 col-xl-6 mb-4">
           <div class="mb-4 position-relative" itemscope="" itemtype="http://schema.org/BlogPosting">
             {{ if and $src (not $hideThumbnails) }}
               <div class="wvu-article__thumb mb-4">
@@ -118,7 +118,7 @@
               {{ end }}
 
               {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
-                <p class="small d-block">
+                <p class="small d-block mb-2">
                   {{ if not $params.config.hide_author }}
                     {{ with $authorList }}
                       {{ range . }}
@@ -140,7 +140,7 @@
               {{ end }}
 
               {{ with $params.teaser }}
-                <p>{{ . }}</p>
+                <p class="small">{{ . }}</p>
               {{ end }}
             </div>
 
