@@ -35,14 +35,15 @@
         </div>
       </div>
       <div class="col-xl-5">
-        {{ $articles := where site.RegularPages "Section" "articles" }}
-        {{ with $articles.Related . | first 5 }}
-          <p>Related content:</p>
-          <ul>
-            {{ range . }}
-              <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
-            {{ end }}
-          </ul>
+        {{- if not site.Params.env_bookshop_live -}}
+          {{ with .related | first 5 }}
+            <p>Related content:</p>
+            <ul>
+              {{ range . }}
+                <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+              {{ end }}
+            </ul>
+          {{ end }}
         {{ end }}
       </div>
     </div>
