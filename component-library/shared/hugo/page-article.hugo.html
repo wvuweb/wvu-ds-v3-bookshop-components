@@ -1,5 +1,11 @@
 {{ $containerMargin := "" }}
 
+{{ $related := slice }}
+
+{{- if not site.Params.env_bookshop_live -}}
+  {{ $related = .related }}
+{{- end -}}
+
 {{ if and .topper .topper._bookshop_name }}
   {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params "title" .params.title)) }}
   {{ if ne .topper._bookshop_name "design-system/topper/article" }}
@@ -36,11 +42,11 @@
       </div>
       <div class="col-xl-5">
         {{- if not site.Params.env_bookshop_live -}}
-          {{ with .related | first 5 }}
-            <p>Related content:</p>
-            <ul>
+          {{ with $related | first 5 }}
+            <h2 class="h6 wvu-b-label">Related</h2>
+            <ul class="wvu-ul-chevrons">
               {{ range . }}
-                <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+                <li><a class="text-decoration-none" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
               {{ end }}
             </ul>
           {{ end }}
