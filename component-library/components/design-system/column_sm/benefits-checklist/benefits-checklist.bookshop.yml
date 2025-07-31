@@ -41,4 +41,6 @@ _inputs:
           class: circle-check
         - name: Arrow
           class: arrow-circle-right
+        - name: Plus
+          class: circle-plus
       value_key: class

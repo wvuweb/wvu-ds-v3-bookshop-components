@@ -14,9 +14,9 @@
   <div class="row gx-4 mt-4 mb-n4">
     <ul class="list-unstyled">
       {{ range .items }}        
-        <li class="d-flex mb-4">
-          <span class="h-5 fa-solid fa-{{ $icon }} wvu-b-accent-text me-3 mt-1"></span>
-          <div>
+        <li class="mb-4 position-relative">
+          <span class="position-absolute h4 fa-sharp fa-solid fa-{{ $icon }} wvu-b-accent-text me-3 mt-1"></span>
+          <div class="ms-5">
             {{ with .title }}
               <h3 class="h5 mb-0">{{ . }}</h3>
             {{ end }}
