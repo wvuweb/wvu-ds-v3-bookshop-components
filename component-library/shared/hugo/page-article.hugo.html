@@ -15,7 +15,7 @@
   {{ partial "bookshop" (slice "design-system/topper/article" (dict "topper" .topper "params" .params "title" .params.title)) }}
 {{ end }}
 
-<main class="py-6 position-relative audience-general tone-default wvu-b-subtle">
+<div class="py-6 position-relative audience-general tone-default wvu-b-subtle">
   <div class="container {{ $containerMargin }}">
     <div class="row">
       <div class="col-xl-5"></div>
@@ -40,7 +40,7 @@
           {{ end }}
         </div>
       </div>
-      <div class="col-xl-5">
+      <div class="col-xl-5" data-pagefind-ignore="all">
         {{- if not site.Params.env_bookshop_live -}}
           {{ with $related | first 5 }}
             <h2 class="h6 wvu-b-label">Related</h2>
@@ -54,4 +54,4 @@
       </div>
     </div>
   </div>
-</main>
+</div>

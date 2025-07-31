@@ -74,10 +74,14 @@
             <div class="col-md-24 mx-auto">
               <div class="row mb-4">
                 <div class="col-md-24 position-relative">
-                  <div id="hero-big-search" class="position-relative" style="z-index: 99999999999999"></div>
+                  <div id="hero-big-search" class="position-relative" style="z-index: 99999999999999">
+                    <label for="hero-big-search-input" class="visually-hidden">Search</label>
+                  </div>
                   <script>
                     window.addEventListener('DOMContentLoaded', (event) => {
-                      new PagefindUI({ element: "#hero-big-search", showSubResults: false });
+                      new PagefindUI({ element: "#hero-big-search", showSubResults: false, showImages: false });
+                      const searchBox = document.querySelector('#hero-big-search .pagefind-ui__search-input');
+                      searchBox.setAttribute("name", "hero-big-search-input");
                     });
                   </script>
                 </div>
