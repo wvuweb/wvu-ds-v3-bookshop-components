@@ -33,6 +33,7 @@ _inputs:
     type: markdown
   title:
     options:
+      type: textarea
       required: false
   benefits_icon:
     label: Icon
