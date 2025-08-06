@@ -77,7 +77,7 @@
                       {{ end }}
 
                       {{ if and site.Params.env_bookshop_live .is_dynamic (not .settings.config.show_content) }}
-                        {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                        Is dynamic.
                       {{ else }}
                         {{ partial "bookshop" . }}
                       {{ end }}
@@ -101,7 +101,7 @@
                       {{ end }}
                     {{ else }}
                       {{ if and site.Params.env_bookshop_live .is_dynamic (not .settings.config.show_content) }}
-                        {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                        Is dynamic.
                       {{ else }}
                         {{ partial "bookshop" . }}
                       {{ end }}
