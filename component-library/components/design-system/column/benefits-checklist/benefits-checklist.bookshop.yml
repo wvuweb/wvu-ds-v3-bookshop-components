@@ -32,7 +32,6 @@ _inputs:
   text:
     type: markdown
   title:
-    type: textarea
     options:
       required: false
   benefits_icon:
