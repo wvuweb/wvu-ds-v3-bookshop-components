@@ -48,3 +48,6 @@ _inputs:
     options:
       values: _select_data.brand_colors
       value-key: class
+  title:
+    options:
+      required: false

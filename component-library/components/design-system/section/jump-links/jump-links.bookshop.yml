@@ -9,7 +9,7 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  title: "Hello World!"
+  title:
   items:
     - text:
       description:
@@ -32,3 +32,6 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  title:
+    options:
+      required: false

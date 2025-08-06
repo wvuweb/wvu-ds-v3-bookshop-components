@@ -26,3 +26,6 @@ preview:
 _inputs:
   quote_text:
     type: textarea
+  title:
+    options:
+      required: false

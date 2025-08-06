@@ -32,6 +32,9 @@ _inputs:
     hidden: true
   text:
     type: markdown
+  title:
+    options:
+      required: false
   benefits_icon:
     label: Icon
     type: select
