@@ -109,7 +109,7 @@
                   {{ else }}
                     <div class="row justify-content-center gx-xl-5">
                       {{ with .column_a }}
-                        <div class="col-xl mb-5 mb-xl-0">
+                        <div class="col mb-5 mb-xl-0">
                           {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
                             {{ partial "bookshop" . }}
                           {{ else }}
@@ -118,7 +118,7 @@
                         </div>
                       {{ end }}
                       {{ with .column_b }}
-                        <div class="col-xl mb-5 mb-xl-0">
+                        <div class="col mb-5 mb-xl-0">
                           {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
                             {{ partial "bookshop" . }}
                           {{ else }}
@@ -127,7 +127,7 @@
                         </div>
                       {{ end }}
                       {{ with .column_c }}
-                        <div class="col-xl mb-5 mb-xl-0">
+                        <div class="col mb-5 mb-xl-0">
                           {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
                             {{ partial "bookshop" . }}
                           {{ else }}

@@ -30,7 +30,7 @@
     {{ $authorData = where site.Data.people_data ".type" "author" }}
   {{ end }}
 
-  <div class="wvu-b-border wvu-b-shadow wvu-b-subtle position-relative">
+  <div class="wvu-b-border wvu-b-shadow wvu-b-subtle position-relative h-100 d-flex align-items-center">
     <div class="row gx-0">
       {{ range first 1 $articles }}
 
@@ -95,7 +95,7 @@
           </div>
         {{ end }}
 
-        <div class="col-24 wvu-z-index-content {{ $branding }}">
+        <div class="col-24 wvu-z-index-content {{ $branding }} h-100">
           <div class="h-100 p-5">
 
             {{ with $label }}

@@ -57,10 +57,10 @@
     {{ $backgroundColor = .settings.styles.color_palette }}
   {{ end }}
 
-  {{ if and .background_image }}
+  {{ if .background_image }}
     {{ $src = .background_image }}
     {{ if not .settings.styles.enable_blend }}
-      {{ $backgroundColor = "dark" }}
+      {{ $backgroundColor = "option-2" }}
     {{ end }}
   {{ end }}
 
@@ -109,7 +109,7 @@
 
     <div class="p-5 bg-wvu-neutral--off-white">
       <div class="border border-1 border-black-50">
-        <section id="{{ with .uuid }}{{ . }}{{ end }}" class="c-section-{{ ._component_name }} {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ $bgSubtle }}">
+        <section id="{{ with .uuid }}{{ . }}{{ end }}" class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}">
           {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
           {{ if .is_nested }}
             {{ with .heading }}
@@ -171,7 +171,7 @@
                     {{ else }}
                       <div class="row justify-content-center gx-xl-5">
                         {{ with .column_a }}
-                          <div class="col-xl mb-5 mb-xl-0">
+                          <div class="col mb-5 mb-xl-0">
                             {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
                               {{ partial "bookshop" . }}
                             {{ else }}
@@ -180,7 +180,7 @@
                           </div>
                         {{ end }}
                         {{ with .column_b }}
-                          <div class="col-xl mb-5 mb-xl-0">
+                          <div class="col mb-5 mb-xl-0">
                             {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
                               {{ partial "bookshop" . }}
                             {{ else }}
@@ -189,7 +189,7 @@
                           </div>
                         {{ end }}
                         {{ with .column_c }}
-                          <div class="col-xl mb-5 mb-xl-0">
+                          <div class="col mb-5 mb-xl-0">
                             {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
                               {{ partial "bookshop" . }}
                             {{ else }}
