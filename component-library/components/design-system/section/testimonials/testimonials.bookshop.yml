@@ -12,8 +12,7 @@ blueprint:
   heading: Heading
   subheading:
   testimonials:
-    - label:
-      name:
+    - name:
       title:
       image:
       quote:
@@ -44,6 +43,9 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  testimonials:
+    options:
+      max_items: 3
   title:
     options:
       required: false

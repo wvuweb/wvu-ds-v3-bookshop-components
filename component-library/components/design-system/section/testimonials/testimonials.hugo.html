@@ -3,23 +3,25 @@
   {{ $imgClasses = "mb-n5 mt-n6" }}
 {{ end }}
 
-<div class="row gx-4 justify-content-center">
+<div class="row gx-xl-4 justify-content-center mb-n5">
   {{ range .testimonials }}
-    <div class="col-6 text-center">
+    <div class="col-xl-8 text-center mb-5">
       <blockquote class="ms-0 border-0 border-wvu-gold mb-4">
-        <span class="d-block wvu-shout text-wvu-gold display-1 mb-n3">“</span>
-        <p class="iowan-old-style fs-4 mb-0">{{ .quote | markdownify }}</p>   
+        <span class="antonia-bold-italic d-flex justify-content-center wvu-b-accent-text display-1 mb-n3 mb-xl-n4 text-center"><span class="d-block ms-n5">“</span></span>
+        <p class="wvu-b-display-heading fs-4 mb-0">{{ .quote | markdownify }}</p>   
       </blockquote>
       <div class="w-100 d-flex justify-content-center mb-2">            
         <div class="ratio ratio-1x1" style="height: 100px; width: 100px;">
-          <div class="h-100 w-100 rounded-circle overflow-hidden bg-wvu-accent--blue">
-            {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image "width" 960 "height" 960 "classes" "object-fit-cover")) }}
+          <div class="h-100 w-100 rounded-circle overflow-hidden">
+            <div class="ratio ratio-1x1">
+              {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image "width" 960 "height" 960 "classes" "object-fit-cover")) }}
+            </div>
           </div>
         </div>
       </div>
       <p>
-        <span class="d-block">{{ .name }}</span>
-        <span class="d-block helvetica-neue-light">{{ .title }}</span>
+        <span class="d-block wvu-b-display-heading mb-1"><span class="wvu-b-font-adjust">{{ .name }}</span></span>
+        <span class="d-block wvu-b-subheading small"><span class="wvu-b-font-adjust">{{ .title }}</span></span>
       </p>
     </div>
   {{ end }}

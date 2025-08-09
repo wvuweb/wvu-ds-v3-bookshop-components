@@ -7,7 +7,7 @@
       {{ range .items }}
         <li class="list-inline-item">
           <a class="wvu-b-accent-bg h4 mb-0 text-decoration-none d-flex align-items-center justify-content-center rounded-circle p-4" href="{{ .url }}">
-            <span class="fab fa-{{ .icon }} position-absolute" aria-hidden="true"></span>
+            <span class="fab fa-{{ .class }} position-absolute"></span>
             <span class="visually-hidden">{{ .platform }}</span>
           </a>
         </li>          
