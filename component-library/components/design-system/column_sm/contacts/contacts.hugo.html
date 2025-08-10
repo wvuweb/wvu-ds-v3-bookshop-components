@@ -11,6 +11,12 @@
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
   {{ else }}
 
+    {{ $hideThumbnails := false }}
+
+    {{ if .config.hide_thumbnails }}
+      {{ $hideThumbnails = .config.hide_thumbnails }}
+    {{ end }}
+
     {{ if not site.Params.env_bookshop_live }}
       {{ $contacts = where site.RegularPages "Params.is_contact" true }}
     {{ else }}
@@ -29,8 +35,8 @@
         {{ end }}
 
         {{ if eq $params.uuid $contact }}
-          <div class="row gx-3 mb-3">
-            {{ if $params.profile_image }}
+          <div class="row gx-3 mb-4">
+            {{ if and $params.profile_image (not $hideThumbnails) }}
 
               {{ $src := $params.profile_image }}
 
@@ -59,7 +65,7 @@
             {{ end }}
             <div class="col">
               {{ if $label }}<div class="wvu-b-label position-relative small"><p class="mb-1">{{ $label }}</p></div>{{ end }}
-              <h3 class="h5 mb-1">{{ $params.name }}</h3>
+              <h3 class="h5">{{ $params.name }}</h3>
               <p class="small mb-0">
                 {{ if $params.staff_contact_info }}
                   {{ range $params.staff_contact_info }}

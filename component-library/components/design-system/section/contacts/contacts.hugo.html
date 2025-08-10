@@ -7,6 +7,12 @@
 
     {{ $contactsData := slice }}
 
+    {{ $hideThumbnails := false }}
+
+    {{ if .settings.config.hide_thumbnails }}
+      {{ $hideThumbnails = .settings.config.hide_thumbnails }}
+    {{ end }}
+
     {{ if not site.Params.env_bookshop_live }}
       {{ $contactsData = where site.RegularPages "Section" "eq" "people" }}
       {{ $contactsData = where $contactsData "Params.is_contact" "eq" true }}
@@ -28,12 +34,12 @@
         {{ end }}
 
         {{ if eq $contact.uuid $uuid }}
-          <div class="col-xxl-6 mb-5 position-relative">
+          <div class="col-lg-8 col-xl-6 mb-5 position-relative">
             {{ with $label }}
               <p class="wvu-b-label position-absolute mt-n4 w-100" style="top: 0; left: 0;"><span class="px-2 py-0 mb-2 small border border-2 d-inline-block">{{ . }}</span></p>
             {{ end }}
 
-            {{ if $contact.profile_image }}
+            {{ if and $contact.profile_image (not $hideThumbnails) }}
 
               {{ $src := $contact.profile_image }}
 
@@ -52,19 +58,20 @@
                 {{ end }}
               {{- end -}}
               <div class="w-100 d-flex justify-content-center">
-                <div class="ratio ratio-1x1 mb-3 mt-3" style="max-width: 175px;">
+                <div class="ratio ratio-1x1 mt-3" style="max-width: 175px;">
                   <img class="object-fit rounded-circle" src="{{ $src }}" alt="Portrait of {{ $contact.name }}" />
                 </div>
               </div>
             {{ end }}
-              <h3 class="h5">{{ $contact.name }}</h3>
-              {{ with $contact.staff_contact_info }}
-                <p class="small">
-                  {{ range . }}
-                    {{ partial "bookshop" (slice ._bookshop_name .) }}
-                  {{ end }}
-                </p>
-              {{ end }}
+
+            <h3 class="h5 mt-3">{{ $contact.name }}</h3>
+            {{ with $contact.staff_contact_info }}
+              <p class="small">
+                {{ range . }}
+                  {{ partial "bookshop" (slice ._bookshop_name .) }}
+                {{ end }}
+              </p>
+            {{ end }}
           </div>
         {{ end }}
       {{ end }}

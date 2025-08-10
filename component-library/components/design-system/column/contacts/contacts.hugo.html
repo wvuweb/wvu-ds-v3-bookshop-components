@@ -11,6 +11,12 @@
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
   {{ else }}
 
+    {{ $hideThumbnails := false }}
+
+    {{ if .config.hide_thumbnails }}
+      {{ $hideThumbnails = .config.hide_thumbnails }}
+    {{ end }}
+
     {{ if not site.Params.env_bookshop_live }}
       {{ $contacts = where site.RegularPages "Params.is_contact" true }}
     {{ else }}
@@ -33,7 +39,7 @@
 
         {{ if eq $params.uuid $contact }}
           <div class="row mb-5">
-            {{ if $params.profile_image }}
+            {{ if and $params.profile_image (not $hideThumbnails) }}
 
               {{ $src := $params.profile_image }}
 

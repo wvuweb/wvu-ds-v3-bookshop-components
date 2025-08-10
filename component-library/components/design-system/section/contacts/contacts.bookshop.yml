@@ -34,6 +34,7 @@ blueprint:
     config:
       name: contacts
       edit_mode_only: false
+      hide_thumbnails: false
       include_heading_postscript: true
       show_content: false
   is_dynamic: false

@@ -61,7 +61,7 @@
           <div class="container{{ if .settings.layout.full_bleed }}-fluid px-0{{ end }} wvu-z-index-content">
             <div class="{{ if not .settings.layout.full_bleed }}row{{ end }}">
               <div class="{{ with .settings.layout.max_cols }}col-xxl-{{ . }} mx-xxl-auto{{ end }}">            
-                <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}bg-option-1 p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
+                <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}{{ if and (ne .settings.styles.tone "loud") (ne .settings.styles.tone "lets-go") }}bg-{{ .settings.styles.color_palette }}{{ else }}bg-option-1{{ end }} p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
                   {{ if not .is_nested }}
                     {{ if .settings.config.include_heading_postscript }}
                       {{ if .heading }}

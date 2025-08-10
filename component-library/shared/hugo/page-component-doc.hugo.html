@@ -100,15 +100,16 @@
     {{ $styles := .settings.styles }}
 
     <div class="audience-general tone-default bg-option-1 wvu-b-subtle pb-1 pt-5">
-      <div class="{{ if .settings.layout.margin }}pb-5{{ end }}">
-        <div class="container">
-          <p><span class="wvu-b-label">Example {{ $counter }}</span>{{ with $audienceLabel }} <span class="wvu-b-subtle border-rounded px-2 py-1 rounded-pill small">{{ . }}</span>{{ end }}{{ with $toneLabel }} <span class="wvu-b-subtle border-rounded px-2 py-1 rounded-pill small">{{ . }}</span>{{ end }}</p>
-        </div>
+      <div class="container">
+        <p><span class="wvu-b-label">Example {{ $counter }}</span>{{ with $audienceLabel }} <span class="wvu-b-subtle border-rounded px-2 py-1 rounded-pill small">{{ . }}</span>{{ end }}{{ with $toneLabel }} <span class="wvu-b-subtle border-rounded px-2 py-1 rounded-pill small">{{ . }}</span>{{ end }}</p>
       </div>
     </div>
 
     <div class="p-5 bg-wvu-neutral--off-white">
       <div class="border border-1 border-black-50">
+        {{ if .settings.layout.margin }}
+          <div class="pt-9 bg-wvu-not-quite-white"></div>
+        {{ end }}
         <section id="{{ with .uuid }}{{ . }}{{ end }}" class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}">
           {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
           {{ if .is_nested }}
@@ -117,10 +118,10 @@
             {{ end }}
           {{ end }}
           <div class="{{ .settings.layout.buffer }}">
-            <div class="container{{ with .settings.layout.full_bleed }}-fluid px-0{{ end }} wvu-z-index-content">
+            <div class="container{{ with .settings.layout.full_bleed }}-fluid px-0{{ end }} wvu-z-index-content {{ if or (eq .settings.styles.tone "loud") (eq .settings.styles.tone "lets-go") }}is-loud{{ end }}">
               <div class="{{ if not .settings.layout.full_bleed }}row{{ end }}">
                 <div class="{{ with .settings.layout.max_cols }}col-xxl-{{ . }} mx-xxl-auto{{ end }}">            
-                  <div class="{{ .settings.layout.margin }} {{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}bg-option-1 p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
+                  <div class="{{ .settings.layout.margin }}{{ if .settings.layout.margin }}{{ if not .settings.styles.remove_container_background }}{{ if and (ne .settings.styles.tone "loud") (ne .settings.styles.tone "lets-go") }} bg-{{ .settings.styles.color_palette }}{{ else }} bg-option-1{{ end }} p-5 p-xl-6 wvu-b-shadow wvu-b-border{{ end }}{{ end }}">
                     
                     {{ if not .is_nested }}
                       {{ if .settings.config.include_heading_postscript }}
