@@ -1,11 +1,19 @@
-<div class="row">
+<div class="row mb-n5 justify-content-center wvu-justify-children">
   {{ range .videos }}
-    <div class="col-sm-12 col-lg-8 col-xxl-6">
-      <div class="ratio ratio-16x9">
-        <iframe src="https://www.youtube.com/embed/{{ .video_id }}" title="{{ .title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    <div class="col-md-12 col-lg-8 col-xxl-6 mb-5">
+      <div class="position-relative wvu-b-shadow wvu-b-border">
+        <div class="d-flex align-items-center justify-content-center bg-wvu-coal">
+          <div class="ratio ratio-16x9" style="opacity: .5;">
+            <img class="img-fluid object-fit-cover" src="https://img.youtube.com/vi/{{ .video_id }}/hqdefault.jpg" alt="{{ .title }}" />
+          </div>
+          <span class="display-5 fa-regular fa-circle-play text-white position-absolute"></span>
+        </div>
+        <div class="p-4 wvu-b-subtle">
+          <h2 class="wvu-b-display-heading h3"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
+          {{ .description | markdownify }}
+          <a class="stretched-link" href="https://www.youtube.com/watch?v={{ .video_id }}"><span class="visually-hidden">Watch Video: {{ .title }}</span></a>
+        </div>
       </div>
-      <h2>{{ .title }}</h2>
-      {{ .description | markdownify }}
     </div>
   {{ end }}
 </div>
