@@ -1,17 +1,22 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-  label: "YouTube Video"
+    - column_blocks
+    - detail_blocks
+  label: "YouTube Videos"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading: Featured Video
-  title: Video Title
-  description: Video description.
-  video_id: EMhV-NvxrAo
+  heading: Heading
+  subheading: Subheading goes here.
+  videos:
+    - title: Video Title
+      description: Video description.
+      video_id: EMhV-NvxrAo
+  is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
