@@ -2,8 +2,8 @@
 {{ $limit := 5 }}
 {{ $hideThumbnails := "" }}
 
-{{ if .settings.config.limit }}
-  {{ $limit = .settings.config.limit }}
+{{ if .config.limit }}
+  {{ $limit = .config.limit }}
 {{ end }}
 
 {{ with .config.hide_thumbnails }}
@@ -34,7 +34,7 @@
     {{ if not site.Params.env_bookshop_live }}
       {{ $articles = where site.Pages "Section" "articles" }}
       {{ $articles = where $articles "Params.tags" "intersect" $tags }}
-      {{ $articles = sort $articles "Params.publishDate" "asc" }}
+      {{ $articles = sort $articles "Params.publishDate" "desc" }}
       {{ $authorData = where site.Pages "Section" "people" }}
       {{ $authorData = where $authorData "Params.type" "eq" "author" }}
     {{ else }}
@@ -42,7 +42,7 @@
       {{ $photoEssays = where site.Data.site_pages ".type" "eq" "photo-essay" }}
       {{ $articles = $articles | append $photoEssays }}
       {{ $articles = where $articles ".tags" "intersect" $tags }}
-      {{ $articles = sort $articles ".publishDate" "asc" }}
+      {{ $articles = sort $articles ".publishDate" "desc" }}
       {{ $authorData = where site.Data.people_data ".type" "author" }}
     {{ end }}
 
