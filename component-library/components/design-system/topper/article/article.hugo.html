@@ -18,11 +18,11 @@
   <div class="container wvu-z-index-content pt-8 pb-4">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto text-center">
-        <h1 class="display-5 antonia-regular mb-3" data-pagefind-meta="title">{{ if .params.title }}{{ .params.title }}{{ end }}</h1>
+        <h1 class="display-5 wvu-b-display-heading mb-3" data-pagefind-meta="title">{{ if .params.title }}{{ .params.title }}{{ end }}</h1>
         {{ if .params.subheading }}
-          <p class="config-light fs-4 mb-0">{{ .params.subheading }}</p>
+          <p class="wvu-b-subheading fs-4 mb-0">{{ .params.subheading }}</p>
         {{ end }}
-        <p class="mt-4 mb-0 antonia-regular text-uppercase wvu-text-letter-spacing" data-pagefind-ignore>{{ $publishDate }}</p>
+        <p class="mt-4 mb-0 config-light text-uppercase wvu-text-letter-spacing" data-pagefind-ignore>{{ $publishDate }}</p>
         <div class="d-flex mt-4 justify-content-center" data-pagefind-ignore="all">
           {{ if not site.Data }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}

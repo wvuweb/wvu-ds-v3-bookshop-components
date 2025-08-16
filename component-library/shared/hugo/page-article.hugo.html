@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-xl-5"></div>
       <div class="col-xl-14 mb-5 mb-xl-0">
-        <div class="bg-option-1 p-5">
+        <div class="bg-option-1 p-5 {{ if or (eq .topper._bookshop_name "design-system/topper/article") (not .topper)}}mt-n6{{ end }}">
           <div class="antonia-regular text-dark fs-5 ">
             {{ range .article_blocks }}
               {{ partial "bookshop" . }}
