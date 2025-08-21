@@ -45,7 +45,7 @@ _select_data:
     - name: Sunset
       class: btn-wvu-accent--sunset
     - name: Not Quite White
-      class: btn-wvu-neutral--off-white
+      class: btn-wvu-not-quite-white
     - name: Cooper's Gray
       class: btn-wvu-neutral--warm-gray-light
     - name: Seneca Gray
