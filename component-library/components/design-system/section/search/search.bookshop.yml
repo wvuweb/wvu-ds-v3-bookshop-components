@@ -2,16 +2,21 @@
 spec:
   structures:
     - content_blocks
-  label: "Columns 2-1-1"
+  label: "Search"
   description:
-  icon:
+  icon: 
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  column_a:
-  column_aaa:
-  column_bbb:
+  label:
+  background_image:
+  alt_text:
+  heading: Heading
+  subheading: Subheading.
+  placeholder: Type in your search term.
+  postscript:
+    markdown:
   settings:
     styles:
       audience: general
@@ -26,13 +31,11 @@ blueprint:
       margin:
       padding: py-6 py-xxl-7
     config:
-      name: columns-2-1-1
-      show_label: true
+      name: search
+      edit_mode_only: false
       include_heading_postscript: false
-      show: 2024-09-01
-      hide: 2099-09-01
   is_dynamic: false
-  is_nested: true
+  is_nested: false
   use_common_wrapper: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -40,5 +43,7 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  background_image:
-    hidden: true
+  markdown:
+    options:
+      allowed_sources:
+        - ccdam
