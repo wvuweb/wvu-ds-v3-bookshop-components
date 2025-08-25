@@ -52,6 +52,11 @@ preview:
 _inputs:
   badge:
     hidden: true
+  copy:
+    type: markdown
+    options:
+      allowed_sources:
+        - ccdam
   label:
     hidden: true
   text:

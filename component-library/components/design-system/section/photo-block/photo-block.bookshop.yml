@@ -30,5 +30,7 @@ _inputs:
   image:
     type: image
     options:
+      allowed_sources:
+        - ccdam
       width: 1920
       height: 1080

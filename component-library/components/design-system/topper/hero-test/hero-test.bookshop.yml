@@ -43,3 +43,7 @@ _inputs:
     hidden: true
   enable_pattern:
     hidden: true
+  markdown:
+    options:
+      allowed_sources:
+        - ccdam

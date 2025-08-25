@@ -33,5 +33,10 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  body:
+    type: markdown
+    options:
+      allowed_sources:
+        - ccdam
   config:
     hidden: true

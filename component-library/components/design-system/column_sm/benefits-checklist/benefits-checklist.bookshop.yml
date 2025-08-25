@@ -32,6 +32,9 @@ _inputs:
     hidden: true
   text:
     type: markdown
+    options:
+      allowed_sources:
+        - ccdam
   title:
     options:
       required: false

@@ -26,6 +26,9 @@ preview:
 _inputs:
   list_description:
     type: markdown
+    options:
+      allowed_sources:
+        - ccdam
   icon:
     type: select
     options:
@@ -33,3 +36,7 @@ _inputs:
         - PDF
         - Download
         - Link
+  url:
+    options:
+      allowed_sources:
+        - ccdam

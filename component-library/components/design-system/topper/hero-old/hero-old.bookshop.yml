@@ -40,6 +40,9 @@ _inputs:
     hidden: true
   body_text:
     type: markdown
+    options:
+      allowed_sources:
+        - ccdam
   container_margin:
     type: select
     options:

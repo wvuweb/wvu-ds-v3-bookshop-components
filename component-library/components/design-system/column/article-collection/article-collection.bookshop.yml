@@ -27,3 +27,7 @@ preview:
 _inputs:
   limit:
     type: number
+  copy:
+    options:
+      allowed_sources:
+        - ccdam

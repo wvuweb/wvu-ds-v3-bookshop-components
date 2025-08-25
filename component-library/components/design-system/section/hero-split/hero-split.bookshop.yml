@@ -42,11 +42,18 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  copy:
+    type: markdown
+    options:
+      allowed_sources:
+        - ccdam
   padding:
     hidden: true
   image:
     type: image
     options:
+      allowed_sources:
+        - ccdam
       width: 1920
       height: 1080
       prevent_resize_existing_files: false

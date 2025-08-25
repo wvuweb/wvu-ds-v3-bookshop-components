@@ -57,5 +57,13 @@ _inputs:
       values: _select_data.brand_colors
       value_key: class
     label: Accent Color
+  copy:
+    type: markdown
+    options:
+      allowed_sources:
+        - ccdam
   text:
     type: markdown
+    options:
+      allowed_sources:
+        - ccdam

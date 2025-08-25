@@ -53,5 +53,8 @@ _structures:
         _inputs:
           image_source:
             type: image
+            options:
+              allowed_sources:
+                - ccdam
           image_caption:
             type: textarea

@@ -47,5 +47,11 @@ preview:
 _inputs:
   body:
     type: markdown
+    options:
+      allowed_sources:
+        - ccdam
   postscript:
     type: markdown
+    options:
+      allowed_sources:
+        - ccdam

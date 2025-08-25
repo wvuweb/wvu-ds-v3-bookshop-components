@@ -55,3 +55,8 @@ _inputs:
     options:
       values: _select_data.color_palettes
       value_key: class
+  copy:
+    type: markdown
+    options:
+      allowed_sources:
+        - ccdam

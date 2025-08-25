@@ -21,3 +21,6 @@ preview:
 _inputs:
   answer:
     type: markdown
+    options:
+      allowed_sources:
+        - ccdam

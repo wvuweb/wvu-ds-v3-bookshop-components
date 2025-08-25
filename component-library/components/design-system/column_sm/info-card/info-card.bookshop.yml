@@ -22,5 +22,8 @@ preview:
 _inputs:
   copy:
     type: markdown
+    options:
+      allowed_sources:
+        - ccdam
   card_c:
     hidden: true

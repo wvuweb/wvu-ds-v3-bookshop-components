@@ -49,6 +49,9 @@ preview:
 _inputs:
   copy:
     type: markdown
+    options:
+      allowed_sources:
+        - ccdam
   include_heading_postscript:
     hidden: true
   margin:

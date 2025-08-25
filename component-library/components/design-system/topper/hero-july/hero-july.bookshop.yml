@@ -46,3 +46,7 @@ preview:
 _inputs:
   enable_pattern:
     hidden: true
+  markdown:
+    options:
+      allowed_sources:
+        - ccdam

@@ -47,3 +47,8 @@ preview:
 _inputs:
   include_heading_postscript:
     hidden: true
+  text:
+    type: markdown
+    options:
+      allowed_sources:
+        - ccdam
