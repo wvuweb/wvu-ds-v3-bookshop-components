@@ -13,21 +13,30 @@
     {{ if .subheading }}
       <p class="fs-3 mt-3 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ .subheading }}</span></p>
     {{ end }}
-
     <div class="row d-flex justify-content-center text-start my-2">
       <div class="col-md-24 mx-auto">
         <div class="row my-4">
           <div class="col-md-24 position-relative">
-            <div id="{{ .search_id }}" class="position-relative" style="z-index: 99999999999999">
-              <label for="{{ .search_id }}h-input" class="visually-hidden">Search</label>
-            </div>
-            <script>
-              window.addEventListener('DOMContentLoaded', (event) => {
-                new PagefindUI({ element: "#{{ .search_id }}", showSubResults: false, showImages: false });
-                const searchBox = document.querySelector('#{{ .search_id }} .pagefind-ui__search-input');
-                searchBox.setAttribute("name", "{{ .search_id }}-input");
-              });
-            </script>
+            {{ if not site.Params.env_bookshop_live }}
+              <div id="{{ .search_id }}" class="position-relative" style="z-index: 99999999999999">
+                <label for="{{ .search_id }}h-input" class="visually-hidden">Search</label>
+              </div>
+              <script>
+                window.addEventListener('DOMContentLoaded', (event) => {
+                  new PagefindUI({ element: "#{{ .search_id }}", showSubResults: false, showImages: false });
+                  const searchBox = document.querySelector('#{{ .search_id }} .pagefind-ui__search-input');
+                  searchBox.setAttribute("name", "{{ .search_id }}-input");
+                });
+              </script>
+            {{ else }}
+              <div class="position-relative" style="z-index: 999999999999">
+                <div class="pagefind-ui svelte-e9gkc3 pagefind-ui--reset">
+                  <form class="pagefind-ui__form svelte-e9gkc3" role="search">
+                    <input class="pagefind-ui__search-input svelte-e9gkc3" type="text">
+                  </form>
+                </div>
+              </div>
+            {{ end }}
           </div>
         </div>
       </div>
