@@ -44,6 +44,8 @@ preview:
 _inputs:
   alt_text:
     hidden: '!background_image'
+    options:
+      required: true
   heading:
     options:
       required: true
