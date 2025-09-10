@@ -90,6 +90,9 @@ _inputs:
       values: _select_data.container_margins
       value_key: class
     cascade: true
+  padding:
+    type: auto
+    hidden: true
   tint_opacity:
     type: select
     options:

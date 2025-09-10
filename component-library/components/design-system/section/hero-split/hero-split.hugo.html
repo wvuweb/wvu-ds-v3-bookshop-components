@@ -5,9 +5,9 @@
   {{ $image := "" }}
   {{/*  Get the image, either from its remote or local source  */}}
   {{ if hasPrefix $src "http"}}
-    {{ $image = resources.GetRemote .background_image }}
+    {{ $image = resources.GetRemote $src }}
   {{ else }}
-    {{ $image = resources.Get .background_image }}
+    {{ $image = resources.Get $src }}
   {{ end }}
 
   {{/* Resize images and add them to a variable  */}}

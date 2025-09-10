@@ -43,6 +43,72 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  # Settings
+  audience:
+    type: choice
+    options:
+      allow_empty: false
+      values:
+        - name: General
+          class: general
+        - name: Academic / Traditional
+          class: alumni
+        - name: Modern + Formal
+          class: leaders_partners
+        - name: Prospective Students
+          class: prospective_students
+      value_key: class
+    label: Style
+  bg_subtle:
+    type: checkbox
+  buffer:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.buffers
+      value_key: class
+    cascade: true
+  color_palette:
+    type: choice
+    options:
+      allow_empty: false
+      values: _select_data.color_palettes
+      value_key: class
+    cascade: true
+  padding:
+    type: auto
+    hidden: true
+  margin:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.container_margins
+      value_key: class
+    cascade: true
+  tint_opacity:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.tint_opacities
+      value_key: value
+    comment: >-
+      Use to improve text legibility when using a background image. Disabled
+      when blend is enabled.
+    cascade: true
+  tone:
+    type: choice
+    options:
+      allow_empty: false
+      values:
+        - name: Default
+          class: default
+        - name: Reserved
+          class: reserved
+        - name: Loud
+          class: loud
+        - name: Let’s Go!
+          class: lets-go
+      value_key: class
   button_c:
     hidden: true
     type: select
@@ -50,9 +116,91 @@ _inputs:
       values: _select_data.brand_colors
       value_key: class
     label: Button Color
-  buttons_c:
-    type: select
-    options:
-      values: _select_data.brand_colors
-      value_key: class
-    label: Button Color
+_select_data:
+  _select_data:
+  buffers:
+    - name: Buffer Top
+      class: pt-6
+    - name: Buffer Bottom
+      class: pb-6
+    - name: Buffer Both
+      class: py-6
+  color_palettes:
+    - name: Option 1
+      class: option-1
+    - name: Option 2
+      class: option-2
+    - name: Option 3
+      class: option-3
+    - name: Option 4
+      class: option-4
+    - name: Option 5
+      class: option-5
+    - name: Option 6
+      class: option-6
+    - name: Option 7
+      class: option-7
+    - name: Option 8
+      class: option-8
+  container_margins:
+    - name: Pull Up
+      class: mt-n8 mt-xxl-n9
+    - name: Pull Down
+      class: mb-n8 mb-xxl-n9
+    - name: Pull Both
+      class: my-n8 my-xxl-n9
+  tint_opacities:
+    - name: None
+      value: '0.0'
+    - name: Light
+      value: '0.3'
+    - name: Medium
+      value: '0.5'
+    - name: Dark
+      value: '0.7'
+  brand_colors:
+    - name: WVU Gold
+      background_classes: bg-wvu-gold text-dark
+      class: wvu-gold
+    - name: WVU Blue
+      background_classes: bg-wvu-blue text-white
+      class: wvu-blue
+    - name: Safety Blue
+      background_classes: bg-wvu-safety-blue text-white
+      class: wvu-safety-blue
+    - name: Coal
+      background_classes: bg-wvu-coal text-white
+      class: wvu-coal
+    - name: Star City Blue
+      background_classes: bg-wvu-star-city-blue text-dark
+      class: wvu-star-city-blue
+    - name: Canary
+      background_classes: bg-wvu-canary text-dark
+      class: wvu-canary
+    - name: Old Gold
+      background_classes: bg-wvu-old-gold text-white
+      class: wvu-old-gold
+    - name: Sunset
+      background_classes: bg-wvu-sunset text-dark
+      class: wvu-sunset
+    - name: Not Quite White
+      background_classes: bg-wvu-not-quite-white text-dark
+      class: wvu-not-quite-white
+    - name: Cooper's Gray
+      background_classes: bg-wvu-coopers-gray text-dark
+      class: wvu-coopers-gray
+    - name: Seneca Gray
+      background_classes: bg-wvu-seneca-gray text-dark
+      class: wvu-seneca-gray
+    - name: Rattler Gray
+      background_classes: bg-wvu-rattler-gray text-white
+      class: wvu-rattler-gray
+    - name: Wild Flour
+      background_classes: bg-wvu-wild-flour text-dark
+      class: wvu-wild-flour
+    - name: Buckskin
+      background_classes: bg-wvu-buckskin text-dark
+      class: wvu-buckskin
+    - name: Dark
+      background_classes: bg-dark text-white
+      class: dark

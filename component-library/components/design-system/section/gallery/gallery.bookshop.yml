@@ -51,6 +51,9 @@ _structures:
               text:
                 - key: image_caption
         _inputs:
+          image_alt:
+            options:
+              required: '!image_source'
           image_source:
             type: image
             options:
