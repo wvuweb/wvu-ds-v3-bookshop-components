@@ -25,9 +25,29 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  limit:
-    type: number
   copy:
     options:
       allowed_sources:
         - ccdam
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
+    cascade: true
+  limit:
+    type: number
+  tags:
+    type: multiselect
+    options:
+      allow_create: true
+      allow_empty: true
+      values:
+        - featured
+_structures:
+  links:
+    style: select
+    values:
+      - value:
+          text:
+          icon:
+          url:

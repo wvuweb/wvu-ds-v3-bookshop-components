@@ -119,8 +119,9 @@ _inputs:
       value_key: class
   # Other
   alt_text:
+    hidden: '!image'
     options:
-      required: '!image'
+      required: true
   copy:
     type: markdown
     options:

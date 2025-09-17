@@ -19,7 +19,25 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  alert_type:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        - _select_data.alert_type
+      value_key: type
+    cascade: true
   markdown:
     options:
       allowed_sources:
         - ccdam
+_select_data:
+  alert_type:
+    - name: Danger
+      type: danger
+    - name: Info
+      type: info
+    - name: Success
+      type: success
+    - name: Warning
+      type: warning

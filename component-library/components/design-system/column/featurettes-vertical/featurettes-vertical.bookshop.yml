@@ -20,24 +20,36 @@ blueprint:
       badge:
       text: Item 1 text.
       ctas:
-  settings:
-    styles:
-      audience: general
-    layout:
-    config:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  alt_text:
+    hidden: '!image'
+    options:
+      required: true
   badge:
     hidden: true
-  config:
-    hidden: true
-  layout:
-    hidden: true
-  label:
-    hidden: true
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
+  image:
+    type: image
+    options:
+      allowed_sources:
+        - ccdam
+      width: 1920
+      height: 1080
   text:
     type: textarea
+_structures:
+  links:
+    style: select
+    values:
+      - value:
+          text:
+          icon:
+          url:

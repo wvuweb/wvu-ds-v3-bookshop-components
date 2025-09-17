@@ -18,7 +18,7 @@ blueprint:
       color_palette: option-2
       tint_opacity: "0.7"
     layout:
-      background_position:
+      # background_position:
       text_placement: mx-auto
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -26,3 +26,79 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  # Settings
+  alt_text:
+    hidden: '!background_image'
+    options:
+      required: true
+  audience:
+    type: choice
+    options:
+      allow_empty: false
+      values:
+        - name: General
+          class: general
+        - name: Academic / Traditional
+          class: alumni
+        - name: Modern + Formal
+          class: leaders_partners
+        - name: Prospective Students
+          class: prospective_students
+      value_key: class
+    label: Style
+  background_image:
+    type: image
+    options:
+      allowed_sources:
+        - ccdam
+      width: 1920
+      height: 1080
+      prevent_resize_existing_files: false
+    cascade: true
+  bg_subtle:
+    type: checkbox
+  color_palette:
+    type: choice
+    options:
+      allow_empty: false
+      values: _select_data.color_palettes
+      value_key: class
+    cascade: true
+  text_placement:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        - name: Left
+          class: me-auto text-start
+        - name: Center
+          class: mx-auto text-center
+        - name: Right
+          class: ms-auto text-start
+      value_key: class
+    comment: Use to place the text based on the composition of your background image.
+    cascade: true
+  tint_opacity:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.tint_opacities
+      value_key: value
+    comment: >-
+      Use to improve text legibility when using a background image. Disabled
+      when blend is enabled.
+    cascade: true
+  tone:
+    type: choice
+    options:
+      allow_empty: false
+      values:
+        - name: Default
+          class: default
+        - name: Reserved
+          class: reserved
+        - name: Loud
+          class: loud
+        - name: Let’s Go!
+          class: lets-go
+      value_key: class

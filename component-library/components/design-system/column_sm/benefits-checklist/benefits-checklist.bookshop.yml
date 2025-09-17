@@ -26,6 +26,10 @@ _inputs:
     hidden: true
   config:
     hidden: true
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
   layout:
     hidden: true
   label:
@@ -50,3 +54,11 @@ _inputs:
         - name: Plus
           class: circle-plus
       value_key: class
+_structures:
+  links:
+    style: select
+    values:
+      - value:
+          text:
+          icon:
+          url:

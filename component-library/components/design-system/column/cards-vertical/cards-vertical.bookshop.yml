@@ -16,7 +16,7 @@ blueprint:
       image:
       alt_text:
       label:
-      badge:
+      # badge:
       markdown: Item 1 text.
       ctas:
   postscript:
@@ -34,7 +34,34 @@ _inputs:
       values: _select_data.brand_colors
       value_key: class
     label: Accent Color
+  alt_text:
+    hidden: '!image'
+    options:
+      required: true
   copy:
     options:
       allowed_sources:
         - ccdam
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
+  image:
+    type: image
+    options:
+      allowed_sources:
+        - ccdam
+      width: 1920
+      height: 1080
+  markdown:
+    options:
+      allowed_sources:
+        - ccdam
+_structures:
+  links:
+    style: select
+    values:
+      - value:
+          text:
+          icon:
+          url:

@@ -33,6 +33,10 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  alt_text:
+    hidden: '!image'
+    options:
+      required: true
   body:
     type: markdown
     options:
@@ -40,3 +44,22 @@ _inputs:
         - ccdam
   config:
     hidden: true
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
+  image:
+    type: image
+    options:
+      allowed_sources:
+        - ccdam
+      width: 1920
+      height: 1080
+_structures:
+  links:
+    style: select
+    values:
+      - value:
+          text:
+          icon:
+          url:

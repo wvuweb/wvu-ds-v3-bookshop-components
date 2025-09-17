@@ -26,3 +26,16 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
+    cascade: true
+_structures:
+  links:
+    style: select
+    values:
+      - value:
+          text:
+          icon:
+          url:

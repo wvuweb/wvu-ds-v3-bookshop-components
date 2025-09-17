@@ -23,6 +23,14 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  alt_text:
+    hidden: '!image'
+    options:
+      required: true
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
   image:
     type: image
     options:
@@ -31,3 +39,11 @@ _inputs:
       width: 1920
       height: 1080
       prevent_resize_existing_files: false
+_structures:
+  links:
+    style: select
+    values:
+      - value:
+          text:
+          icon:
+          url:

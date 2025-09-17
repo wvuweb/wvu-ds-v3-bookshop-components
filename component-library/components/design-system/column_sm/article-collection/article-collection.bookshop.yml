@@ -24,3 +24,10 @@ preview:
 _inputs:
   limit:
     type: number
+  tags:
+    type: multiselect
+    options:
+      allow_create: true
+      allow_empty: true
+      values:
+        - featured

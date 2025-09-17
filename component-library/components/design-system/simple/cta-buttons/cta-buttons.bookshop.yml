@@ -33,26 +33,26 @@ _select_data:
     - name: Blue
       class: btn-wvu-blue
     - name: Safety Blue
-      class: btn-wvu-accent--blue
+      class: btn-wvu-safety-blue
     - name: Coal
-      class: btn-wvu-accent--blue-dark
+      class: btn-wvu-coal
     - name: Star City Blue
-      class: btn-wvu-accent--blue-light
+      class: btn-wvu-star-city-blue
     - name: Canary
-      class: btn-wvu-accent--yellow
+      class: btn-wvu-canary
     - name: Old Gold
-      class: btn-wvu-accent--old-gold
+      class: btn-wvu-old-gold
     - name: Sunset
-      class: btn-wvu-accent--sunset
+      class: btn-wvu-sunset
     - name: Not Quite White
       class: btn-wvu-not-quite-white
     - name: Cooper's Gray
-      class: btn-wvu-neutral--warm-gray-light
+      class: btn-wvu-coopers-gray
     - name: Seneca Gray
-      class: btn-wvu-neutral--warm-gray-medium
+      class: btn-wvu-seneca-gray
     - name: Rattler Gray
-      class: btn-wvu-neutral--warm-gray-dark
+      class: btn-wvu-rattler-gray
     - name: Wild Flour
-      class: btn-wvu-neutral--cream
+      class: btn-wvu-wild-flour
     - name: Buckskin
-      class: btn-wvu-neutral--tan
+      class: btn-wvu-buckskin

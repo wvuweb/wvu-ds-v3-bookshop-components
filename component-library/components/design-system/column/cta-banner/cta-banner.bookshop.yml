@@ -15,14 +15,7 @@ blueprint:
     - text:
       url:
       icon:
-      button_c:
-  settings:
-    styles:
-      background_c:
-    layout:
-      margin:
-      buffer:
-    config:
+      # button_c:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

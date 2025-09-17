@@ -15,18 +15,6 @@ blueprint:
       stat: "95%"
       post: Post text.
       source: Source
-  config:
-    edit_mode_only: false
-    source:
-      disable: false
-  styles:
-    container:
-      margin_bottom: "mb-4"
-    factoid:
-      font: "wvu-shout"
-      size: "display-1"
-      color: "text-wvu-gold"
-    divider:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

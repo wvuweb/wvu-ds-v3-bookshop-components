@@ -16,10 +16,35 @@ blueprint:
       tint_opacity: "0.7"
     layout:
       text_placement: text-center mx-auto
-      background_position:
+      # background_position:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  # Settings
+  text_placement:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        - name: Left
+          class: me-auto text-start
+        - name: Center
+          class: mx-auto text-center
+        - name: Right
+          class: ms-auto text-start
+      value_key: class
+    comment: Use to place the text based on the composition of your background image.
+    cascade: true
+  tint_opacity:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.tint_opacities
+      value_key: value
+    comment: >-
+      Use to improve text legibility when using a background image. Disabled
+      when blend is enabled.
+    cascade: true

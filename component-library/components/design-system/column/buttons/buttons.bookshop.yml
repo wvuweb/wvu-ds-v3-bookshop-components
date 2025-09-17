@@ -23,3 +23,39 @@ _inputs:
     options:
       values: _select_data.brand_colors
       value_key: class
+_select_data:
+  brand_colors:
+    - name: WVU Gold
+      class: wvu-gold
+    - name: WVU Blue
+      class: wvu-blue
+    - name: Safety Blue
+      class: wvu-safety-blue
+    - name: Coal
+      class: wvu-coal
+    - name: Star City Blue
+      class: wvu-star-city-blue
+    - name: Canary
+      class: wvu-canary
+    - name: Old Gold
+      class: wvu-old-gold
+    - name: Sunset
+      rgba: 245, 134, 114
+    - name: Not Quite White
+      class: wvu-not-quite-white
+    - name: Cooper's Gray
+      class: wvu-coopers-gray
+    - name: Seneca Gray
+      class: wvu-seneca-gray
+    - name: Rattler Gray
+      class: wvu-rattler-gray
+    - name: Wild Flour
+      class: wvu-wild-flour
+    - name: Buckskin
+      class: wvu-buckskin
+    - name: Transparent (Dark Text)
+      class: transparent
+    - name: Transparent (Light Text)
+      class: transparent
+    - name: Dark
+      class: dark

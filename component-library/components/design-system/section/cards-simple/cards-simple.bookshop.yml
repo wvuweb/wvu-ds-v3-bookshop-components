@@ -117,8 +117,9 @@ _inputs:
           class: lets-go
       value_key: class
   alt_text:
+    hidden: '!image'
     options:
-      required: '!image'
+      required: true
   card_c:
     type: choice
     options:

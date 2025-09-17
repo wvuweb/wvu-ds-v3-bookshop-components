@@ -23,3 +23,10 @@ preview:
 _inputs:
   is_dynamic:
     hidden: true
+  tags:
+    type: multiselect
+    options:
+      allow_create: true
+      allow_empty: true
+      values:
+        - featured

@@ -105,8 +105,9 @@ _inputs:
           class: lets-go
       value_key: class
   alt_text:
+    hidden: '!background_image'
     options:
-      required: '!background_image'
+      required: true
   background_image:
     type: image
     options:

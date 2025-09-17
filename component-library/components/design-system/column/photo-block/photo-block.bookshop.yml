@@ -20,3 +20,16 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  alt_text:
+    hidden: '!image'
+    options:
+      required: true
+  caption:
+    type: textarea
+  image:
+    type: image
+    options:
+      allowed_sources:
+        - ccdam
+      width: 1920
+      height: 1080
