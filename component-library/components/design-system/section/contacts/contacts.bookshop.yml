@@ -84,6 +84,11 @@ _inputs:
       allow_empty: false
       values: data.people_data[?(@.is_contact == true)]
       value_key: uuid
+  contacts:
+    type: array
+    options:
+      allow_empty: true
+      structures: _structures.contacts
   margin:
     type: select
     options:
@@ -169,6 +174,11 @@ _select_data:
     - name: Dark
       value: '0.7'
 _structures:
+  contact:
+    values:
+      - value:
+          label:
+          contact:
   links:
     values:
       - value:
