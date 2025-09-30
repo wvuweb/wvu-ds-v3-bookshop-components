@@ -80,7 +80,6 @@ _inputs:
       allow_empty: false
       values: _select_data.color_palettes
       value_key: class
-    cascade: true
   margin:
     type: select
     options:
@@ -110,12 +109,6 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
-  card_c:
-    type: choice
-    options:
-      allow_empty: false
-      values: _select_data.color_palettes
-      value_key: class
 _select_data:
   buffers:
     - name: Buffer Top
