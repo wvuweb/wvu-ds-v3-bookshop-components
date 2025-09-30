@@ -128,6 +128,9 @@ _inputs:
       width: 1920
       height: 1080
       prevent_resize_existing_files: false
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   buffers:
     - name: Buffer Top

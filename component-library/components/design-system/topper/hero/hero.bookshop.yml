@@ -31,7 +31,7 @@ blueprint:
       enable_blend: false
       enable_pattern: false
       tint_opacity: "0.7"
-      # heading_size: display-2
+      heading_size: display-2
     layout:
       buffer:
       text_placement: mx-auto text-center
@@ -88,7 +88,17 @@ _inputs:
       allow_empty: false
       values: _select_data.color_palettes
       value_key: class
-    cascade: true
+  heading_size:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        - name: Large
+          class: display-2
+        - name: Medium
+          class: display-3
+        - name: Small
+          class: display-4
   # margin:
   #   type: select
   #   options:

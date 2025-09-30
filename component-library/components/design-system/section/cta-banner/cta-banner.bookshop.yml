@@ -116,6 +116,9 @@ _inputs:
       values: _select_data.brand_colors
       value_key: class
     label: Button Color
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   _select_data:
   buffers:

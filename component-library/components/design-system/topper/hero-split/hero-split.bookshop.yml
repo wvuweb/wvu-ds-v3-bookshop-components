@@ -80,6 +80,17 @@ _inputs:
       values: _select_data.color_palettes
       value_key: class
     cascade: true
+  heading_size:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        - name: Large
+          class: display-2
+        - name: Medium
+          class: display-3
+        - name: Small
+          class: display-4
   image:
     type: image
     options:

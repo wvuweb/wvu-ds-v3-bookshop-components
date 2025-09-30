@@ -72,6 +72,9 @@ _inputs:
       text:
         - Layout, styles, and config
       icon: settings
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   brand_colors:
     - name: WVU Gold

@@ -114,6 +114,9 @@ _inputs:
       prevent_resize_existing_files: false
   text:
     type: textarea
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   buffers:
     - name: Buffer Top

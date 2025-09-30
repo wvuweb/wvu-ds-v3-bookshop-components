@@ -135,6 +135,9 @@ _inputs:
     hidden: true
   text:
     type: textarea
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   buffers:
     - name: Buffer Top

@@ -121,8 +121,10 @@ _inputs:
       structures: _structures.column_blocks_sm
     label: Column
   instance:
-    options:
-      hidden: true
+    hidden: true
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   buffers:
     - name: Buffer Top

@@ -44,3 +44,6 @@ _inputs:
     type: checkbox
   when_to_use_markdown:
     label: When to Use
+  use_common_wrapper:
+    type: auto
+    hidden: true

@@ -86,6 +86,9 @@ _inputs:
         - name: Let’s Go!
           class: lets-go
       value_key: class
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   buffers:
     - name: Buffer Top

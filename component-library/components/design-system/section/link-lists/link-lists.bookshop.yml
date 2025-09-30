@@ -114,6 +114,9 @@ _inputs:
       value_key: class
   container_bg_c:
     type: checkbox
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   buffers:
     - name: Buffer Top

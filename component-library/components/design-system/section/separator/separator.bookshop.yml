@@ -61,9 +61,9 @@ _inputs:
         - name: WVU Pennant
           path: /uploads/sticker-wvu-pennant.webp
       value_key: path
-  is_dynamic: false
-  is_nested: false
-  use_common_wrapper: true
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   brand_colors:
     - name: WVU Gold

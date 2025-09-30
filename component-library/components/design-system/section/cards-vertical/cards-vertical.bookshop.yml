@@ -139,6 +139,9 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   buffers:
     - name: Buffer Top

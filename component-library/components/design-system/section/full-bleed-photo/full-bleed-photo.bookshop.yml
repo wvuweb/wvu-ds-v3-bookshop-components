@@ -36,3 +36,6 @@ _inputs:
         - ccdam
       width: 1920
       height: 1080
+  use_common_wrapper:
+    type: auto
+    hidden: true

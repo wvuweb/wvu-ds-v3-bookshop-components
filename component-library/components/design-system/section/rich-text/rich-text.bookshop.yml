@@ -27,3 +27,6 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
+  use_common_wrapper:
+    type: auto
+    hidden: true

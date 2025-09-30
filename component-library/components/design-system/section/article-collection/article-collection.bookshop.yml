@@ -125,6 +125,9 @@ _inputs:
         - ccdam
   limit:
     type: number
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   buffers:
     - name: Buffer Top

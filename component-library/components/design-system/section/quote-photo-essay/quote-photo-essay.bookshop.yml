@@ -29,3 +29,6 @@ _inputs:
   title:
     options:
       required: false
+  use_common_wrapper:
+    type: auto
+    hidden: true

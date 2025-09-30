@@ -115,6 +115,9 @@ _inputs:
         - ccdam
   margin_no_bg:
     label: Margin
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   buffers:
     - name: Buffer Top

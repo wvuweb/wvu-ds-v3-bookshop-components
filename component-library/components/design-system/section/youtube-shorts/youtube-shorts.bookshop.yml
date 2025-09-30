@@ -115,6 +115,9 @@ _inputs:
         - ccdam
   ratio:
     hidden: true
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   buffers:
     - name: Buffer Top

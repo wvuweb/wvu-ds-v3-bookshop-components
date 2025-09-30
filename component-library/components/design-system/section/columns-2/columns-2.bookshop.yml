@@ -130,6 +130,9 @@ _inputs:
     options:
       structures: _structures.links
     cascade: true
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   buffers:
     - name: Buffer Top

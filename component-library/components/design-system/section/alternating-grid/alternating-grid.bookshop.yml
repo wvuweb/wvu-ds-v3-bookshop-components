@@ -137,6 +137,9 @@ _inputs:
       height: 1080
   include_heading_postscript:
     hidden: true
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _select_data:
   buffers:
     - name: Buffer Top
