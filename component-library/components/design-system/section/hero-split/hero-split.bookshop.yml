@@ -116,8 +116,6 @@ _inputs:
     type: array
     options:
       structures: _structures.links
-  padding:
-    hidden: true
   postscript_links:
     type: array
     options:
