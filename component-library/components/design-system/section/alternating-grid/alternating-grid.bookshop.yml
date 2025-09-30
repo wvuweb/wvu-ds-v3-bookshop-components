@@ -81,6 +81,7 @@ _inputs:
     cascade: true
   margin:
     type: select
+    hidden: true
     options:
       allow_empty: true
       values: _select_data.container_margins
@@ -135,8 +136,6 @@ _inputs:
       width: 1920
       height: 1080
   include_heading_postscript:
-    hidden: true
-  margin:
     hidden: true
 _select_data:
   buffers:
