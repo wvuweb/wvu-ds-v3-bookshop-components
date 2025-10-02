@@ -149,13 +149,13 @@ _select_data:
       class: option-7
     - name: Option 8
       class: option-8
-  container_margins:
+  container_margins_no_bg:
     - name: Pull Up
-      class: mt-n8 mt-xxl-n9
+      class: mt-n9
     - name: Pull Down
-      class: mb-n8 mb-xxl-n9
+      class: mb-n9
     - name: Pull Both
-      class: my-n8 my-xxl-n9
+      class: my-n9
   # tint_opacities:
   #   - name: None
   #     value: '0.0'
@@ -165,14 +165,6 @@ _select_data:
   #     value: '0.5'
   #   - name: Dark
   #     value: '0.7'
-_select_data:
-  container_margins_no_bg:
-    - name: Pull Up
-      class: mt-n9
-    - name: Pull Down
-      class: mb-n9
-    - name: Pull Both
-      class: my-n9
 _structures:
   links:
     values:
