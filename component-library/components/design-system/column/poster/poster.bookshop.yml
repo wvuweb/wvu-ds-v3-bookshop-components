@@ -53,6 +53,10 @@ _inputs:
         - ccdam
       width: 1920
       height: 1080
+  postscript_links:
+    type: array
+    options:
+      structures: _structures.links
   text_align:
     hidden: true
 _structures:

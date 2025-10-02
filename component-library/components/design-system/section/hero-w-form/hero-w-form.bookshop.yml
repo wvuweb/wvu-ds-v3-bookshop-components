@@ -65,6 +65,17 @@ preview:
 _inputs:
   form:
     type: textarea
+  postscript_links:
+    type: array
+    options:
+      structures: _structures.links
   use_common_wrapper:
     type: auto
     hidden: true
+_structures:
+  links:
+    values:
+      - value:
+          text:
+          icon:
+          url:

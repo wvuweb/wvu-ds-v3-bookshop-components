@@ -125,7 +125,6 @@ _inputs:
     type: array
     options:
       structures: _structures.links
-    cascade: true
   use_common_wrapper:
     type: auto
     hidden: true

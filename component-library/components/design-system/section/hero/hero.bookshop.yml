@@ -80,6 +80,10 @@ _inputs:
   padding:
     type: auto
     hidden: true
+  postscript_links:
+    type: array
+    options:
+      structures: _structures.links
   tint_opacity:
     type: select
     options:

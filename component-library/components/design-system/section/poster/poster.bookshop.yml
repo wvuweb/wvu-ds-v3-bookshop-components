@@ -90,6 +90,10 @@ _inputs:
   padding:
     type: auto
     hidden: true
+  postscript_links:
+    type: array
+    options:
+      structures: _structures.links
   tone:
     type: choice
     options:
@@ -153,3 +157,10 @@ _select_data:
   #     value: '0.5'
   #   - name: Dark
   #     value: '0.7'
+_structures:
+  links:
+    values:
+      - value:
+          text:
+          icon:
+          url:
