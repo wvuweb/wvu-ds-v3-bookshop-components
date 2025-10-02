@@ -48,6 +48,10 @@ _inputs:
     hidden: '!image'
     options:
       required: true
+  hide:
+    type: datetime
+    options:
+      timezone: America/New_York
   include_heading_postscript:
     hidden: true
   settings:

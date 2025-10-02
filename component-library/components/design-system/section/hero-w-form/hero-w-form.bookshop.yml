@@ -65,6 +65,10 @@ preview:
 _inputs:
   form:
     type: textarea
+  hide:
+    type: datetime
+    options:
+      timezone: America/New_York
   margin:
     type: select
     options:

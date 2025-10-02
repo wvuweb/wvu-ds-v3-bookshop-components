@@ -73,6 +73,10 @@ _inputs:
       values: _select_data.color_palettes
       value_key: class
     cascade: true
+  hide:
+    type: datetime
+    options:
+      timezone: America/New_York
   margin:
     type: select
     options:
@@ -115,8 +119,6 @@ _inputs:
         - name: Let’s Go!
           class: lets-go
       value_key: class
-  limit:
-    type: number
   use_common_wrapper:
     type: auto
     hidden: true

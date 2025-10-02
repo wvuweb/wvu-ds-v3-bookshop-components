@@ -20,7 +20,16 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  hide:
+    type: datetime
+    options:
+      timezone: America/New_York
   is_sitewide:
     hidden: true
   show:
     type: datetime
+  sitewide_section:
+    type: select
+    options:
+      allow_empty: true
+      values: data.sitewide_components.sitewide_components

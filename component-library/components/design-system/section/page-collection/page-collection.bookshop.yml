@@ -70,6 +70,10 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
+  hide:
+    type: datetime
+    options:
+      timezone: America/New_York
   margin:
     type: select
     options:

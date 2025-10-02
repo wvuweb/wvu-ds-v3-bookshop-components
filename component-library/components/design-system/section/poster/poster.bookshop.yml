@@ -80,6 +80,10 @@ _inputs:
       allow_empty: false
       values: _select_data.color_palettes
       value_key: class
+  hide:
+    type: datetime
+    options:
+      timezone: America/New_York
   margin_no_bg:
     type: select
     label: Margin

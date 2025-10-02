@@ -84,6 +84,10 @@ _inputs:
       allow_empty: false
       values: _select_data.color_palettes
       value_key: class
+  hide:
+    type: datetime
+    options:
+      timezone: America/New_York
   padding:
     type: auto
     hidden: true
