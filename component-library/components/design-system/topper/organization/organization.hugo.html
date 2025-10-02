@@ -82,12 +82,12 @@
                     {{ end }}
                   </div>
                 {{ end }}
-                {{ with .params.contacts }}
+                {{ with .params.org_contacts }}
                   <div class="col-md mb-md-n4">
                     <h2 class="config-extra-bold text-uppercase h6 mt-5 mb-4">Contact(s)</h2>
                     {{ range . }}
                       <p class="mb-4">
-                        {{ with .contact }}
+                        {{ with .name }}
                           <span class="d-flex w-100 position-relative">
                             <span class="fa-regular fa-user position-absolute" style="top: 0px;"></span>
                             <strong class="d-block ms-4">{{ . }}</strong>

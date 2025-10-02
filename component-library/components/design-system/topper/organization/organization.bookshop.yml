@@ -18,9 +18,9 @@ blueprint:
       tone: default
       color_palette: option-2
       tint_opacity: "0.7"
-    layout:
-      background_position:
-      text_placement: mx-auto
+    # layout:
+    #   background_position:
+    #   text_placement: mx-auto
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -124,3 +124,30 @@ _inputs:
         - name: Let’s Go!
           class: lets-go
       value_key: class
+_select_data:
+  color_palettes:
+    - name: Option 1
+      class: option-1
+    - name: Option 2
+      class: option-2
+    - name: Option 3
+      class: option-3
+    - name: Option 4
+      class: option-4
+    - name: Option 5
+      class: option-5
+    - name: Option 6
+      class: option-6
+    - name: Option 7
+      class: option-7
+    - name: Option 8
+      class: option-8
+  tint_opacities:
+    - name: None
+      value: '0.0'
+    - name: Light
+      value: '0.3'
+    - name: Medium
+      value: '0.5'
+    - name: Dark
+      value: '0.7'
