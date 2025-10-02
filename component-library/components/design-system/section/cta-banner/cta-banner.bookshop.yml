@@ -85,6 +85,12 @@ _inputs:
       values: _select_data.container_margins
       value_key: class
     cascade: true
+  settings:
+    type: object
+    options:
+      subtype: tabbed
+  show:
+    type: datetime
   tint_opacity:
     type: select
     options:

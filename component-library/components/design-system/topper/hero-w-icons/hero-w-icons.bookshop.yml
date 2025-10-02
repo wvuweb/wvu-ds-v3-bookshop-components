@@ -46,8 +46,8 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
-  container_margin:
-    type: select
-    options:
-      values: _select_data.topper_margins
-      value_key: class
+  # container_margin:
+  #   type: select
+  #   options:
+  #     values: _select_data.topper_margins
+  #     value_key: class

@@ -64,3 +64,7 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
+  settings:
+    type: object
+    options:
+      subtype: tabbed

@@ -56,6 +56,10 @@ _inputs:
     hidden: true
   label:
     hidden: true
+  settings:
+    type: object
+    options:
+      subtype: tabbed
   text:
     type: textarea
 _structures:

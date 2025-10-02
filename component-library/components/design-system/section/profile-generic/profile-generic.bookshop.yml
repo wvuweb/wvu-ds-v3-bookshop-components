@@ -84,17 +84,13 @@ _inputs:
       allow_empty: false
       values: _select_data.color_palettes
       value_key: class
-    cascade: true
-  margin:
-    type: select
-    options:
-      allow_empty: true
-      values: _select_data.container_margins
-      value_key: class
-    cascade: true
   padding:
     type: auto
     hidden: true
+  settings:
+    type: object
+    options:
+      subtype: tabbed
   tone:
     type: choice
     options:
@@ -120,9 +116,16 @@ _inputs:
   level:
     type: number
   margin_no_bg:
+    type: select
     label: Margin
+    options:
+      allow_empty: true
+      values: _select_data.container_margins_no_bg
+      value_key: class
   component_name:
     hidden: true
+  show:
+    type: datetime
   tint_opacity:
     hidden: true
   use_common_wrapper:
@@ -153,13 +156,13 @@ _select_data:
       class: option-7
     - name: Option 8
       class: option-8
-  container_margins:
+  container_margins_no_bg:
     - name: Pull Up
-      class: mt-n8 mt-xxl-n9
+      class: mt-n9
     - name: Pull Down
-      class: mb-n8 mb-xxl-n9
+      class: mb-n9
     - name: Pull Both
-      class: my-n8 my-xxl-n9
+      class: my-n9
   # tint_opacities:
   #   - name: None
   #     value: '0.0'

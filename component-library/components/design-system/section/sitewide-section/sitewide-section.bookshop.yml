@@ -22,3 +22,5 @@ preview:
 _inputs:
   is_sitewide:
     hidden: true
+  show:
+    type: datetime

@@ -57,6 +57,10 @@ _inputs:
     type: array
     options:
       structures: _structures.links
+  settings:
+    type: object
+    options:
+      subtype: tabbed
   text_align:
     hidden: true
 _structures:

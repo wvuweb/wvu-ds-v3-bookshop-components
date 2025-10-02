@@ -24,6 +24,10 @@ preview:
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
   # Settings
+  settings:
+    type: object
+    options:
+      subtype: tabbed
   text_placement:
     type: select
     options:

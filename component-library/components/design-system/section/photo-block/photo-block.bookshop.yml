@@ -38,6 +38,10 @@ _inputs:
         - ccdam
       width: 1920
       height: 1080
+  settings:
+    type: object
+    options:
+      subtype: tabbed
   use_common_wrapper:
     type: auto
     hidden: true

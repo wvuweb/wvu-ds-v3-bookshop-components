@@ -84,6 +84,10 @@ _inputs:
     type: array
     options:
       structures: _structures.links
+  settings:
+    type: object
+    options:
+      subtype: tabbed
   tint_opacity:
     type: select
     options:
@@ -129,6 +133,8 @@ _inputs:
     type: array
     options:
       structures: _structures.links
+  show:
+    type: datetime
   use_common_wrapper:
     type: auto
     hidden: true

@@ -82,6 +82,10 @@ _inputs:
   # padding:
   #   type: auto
   #   hidden: true
+  settings:
+    type: object
+    options:
+      subtype: tabbed
   text_placement:
     type: select
     options:
@@ -120,3 +124,21 @@ _inputs:
         - name: Let’s Go!
           class: lets-go
       value_key: class
+_select_data:
+  color_palettes:
+    - name: Option 1
+      class: option-1
+    - name: Option 2
+      class: option-2
+    - name: Option 3
+      class: option-3
+    - name: Option 4
+      class: option-4
+    - name: Option 5
+      class: option-5
+    - name: Option 6
+      class: option-6
+    - name: Option 7
+      class: option-7
+    - name: Option 8
+      class: option-8

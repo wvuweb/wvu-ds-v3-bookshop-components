@@ -50,6 +50,12 @@ _inputs:
       required: true
   include_heading_postscript:
     hidden: true
+  settings:
+    type: object
+    options:
+      subtype: tabbed
+  show:
+    type: datetime
   text:
     type: markdown
     options:

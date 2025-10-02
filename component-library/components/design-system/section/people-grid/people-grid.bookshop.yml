@@ -38,11 +38,27 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  color_palette:
+    type: choice
+    options:
+      allow_empty: false
+      values: _select_data.color_palettes
+      value_key: class
+  margin:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.container_margins
+      value_key: class
   person:
     type: select
     options:
       allow_empty: true
       values: data.people_data
+  settings:
+    type: object
+    options:
+      subtype: tabbed
   use_common_wrapper:
     type: auto
     hidden: true

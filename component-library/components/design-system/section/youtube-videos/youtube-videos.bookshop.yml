@@ -83,6 +83,10 @@ _inputs:
   padding:
     type: auto
     hidden: true
+  settings:
+    type: object
+    options:
+      subtype: tabbed
   # tint_opacity:
   #   type: select
   #   options:

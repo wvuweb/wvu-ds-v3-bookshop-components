@@ -72,6 +72,10 @@ _inputs:
   padding:
     type: auto
     hidden: true
+  settings:
+    type: object
+    options:
+      subtype: tabbed
   tone:
     type: choice
     options:

@@ -34,12 +34,22 @@ _inputs:
       values: _select_data.brand_colors
       value_key: class
     label: Background Color
+  margin:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.container_margins
+      value_key: class
   separator_c:
     type: select
     options:
       values: _select_data.brand_colors
       value_key: class
     label: Color
+  settings:
+    type: object
+    options:
+      subtype: tabbed
 _select_data:
   brand_colors:
     - name: WVU Gold
@@ -110,3 +120,10 @@ _select_data:
       background_classes: bg-dark text-white
       class: dark
       rgba: 42, 42, 41
+  container_margins:
+    - name: Pull Up
+      class: mt-n8 mt-xxl-n9
+    - name: Pull Down
+      class: mb-n8 mb-xxl-n9
+    - name: Pull Both
+      class: my-n8 my-xxl-n9

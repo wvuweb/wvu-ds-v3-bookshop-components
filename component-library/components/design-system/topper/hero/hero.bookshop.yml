@@ -109,6 +109,10 @@ _inputs:
   padding:
     type: auto
     hidden: true
+  settings:
+    type: object
+    options:
+      subtype: tabbed
   text_placement:
     type: select
     options:

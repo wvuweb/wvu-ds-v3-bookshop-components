@@ -38,6 +38,8 @@ _inputs:
     options:
       allow_empty: true
       values: data.people_data
+  show:
+    type: datetime
   use_common_wrapper:
     type: auto
     hidden: true

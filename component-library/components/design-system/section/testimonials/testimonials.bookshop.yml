@@ -85,6 +85,12 @@ _inputs:
   padding:
     type: auto
     hidden: true
+  show:
+    type: datetime
+  settings:
+    type: object
+    options:
+      subtype: tabbed
   tint_opacity:
     type: select
     options:

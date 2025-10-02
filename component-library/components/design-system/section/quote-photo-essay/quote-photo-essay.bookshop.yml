@@ -26,6 +26,10 @@ preview:
 _inputs:
   quote_text:
     type: textarea
+  settings:
+    type: object
+    options:
+      subtype: tabbed
   title:
     options:
       required: false

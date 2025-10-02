@@ -29,6 +29,21 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  audience:
+    type: choice
+    options:
+      allow_empty: false
+      values:
+        - name: General
+          class: general
+        - name: Academic / Traditional
+          class: alumni
+        - name: Modern + Formal
+          class: leaders_partners
+        - name: Prospective Students
+          class: prospective_students
+      value_key: class
+    label: Style
   image:
     type: image
     options:
@@ -37,3 +52,7 @@ _inputs:
       width: 1920
       height: 1080
     cascade: true
+  settings:
+    type: object
+    options:
+      subtype: tabbed

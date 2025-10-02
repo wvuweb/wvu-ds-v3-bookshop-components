@@ -24,7 +24,7 @@ _inputs:
     options:
       allow_empty: true
       values:
-        - _select_data.alert_type
+        - _select_data.alert_types
       value_key: type
     cascade: true
   markdown:
@@ -32,7 +32,7 @@ _inputs:
       allowed_sources:
         - ccdam
 _select_data:
-  alert_type:
+  alert_types:
     - name: Danger
       type: danger
     - name: Info

@@ -42,6 +42,21 @@ _inputs:
     hidden: '!background_image'
     options:
       required: true
+  audience:
+    type: choice
+    options:
+      allow_empty: false
+      values:
+        - name: General
+          class: general
+        - name: Academic / Traditional
+          class: alumni
+        - name: Modern + Formal
+          class: leaders_partners
+        - name: Prospective Students
+          class: prospective_students
+      value_key: class
+    label: Style
   heading_size:
     type: select
     options:
@@ -57,3 +72,7 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
+  settings:
+    type: object
+    options:
+      subtype: tabbed

@@ -59,11 +59,23 @@ _inputs:
       values: _select_data.brand_colors
       value_key: class
     label: Background Color
+  color_palette:
+    type: choice
+    options:
+      allow_empty: false
+      values: _select_data.color_palettes
+      value_key: class
   copy:
     type: markdown
     options:
       allowed_sources:
         - ccdam
+  margin:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.container_margins
+      value_key: class
   settings:
     type: object
     options:
@@ -72,6 +84,8 @@ _inputs:
       text:
         - Layout, styles, and config
       icon: settings
+  show:
+    type: datetime
   use_common_wrapper:
     type: auto
     hidden: true

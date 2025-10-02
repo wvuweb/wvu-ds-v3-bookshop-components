@@ -65,13 +65,33 @@ preview:
 _inputs:
   form:
     type: textarea
+  margin:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.container_margins
+      value_key: class
   postscript_links:
     type: array
     options:
       structures: _structures.links
+  settings:
+    type: object
+    options:
+      subtype: tabbed
+  show:
+    type: datetime
   use_common_wrapper:
     type: auto
     hidden: true
+_select_data:
+  container_margins:
+    - name: Pull Up
+      class: mt-n8 mt-xxl-n9
+    - name: Pull Down
+      class: mb-n8 mb-xxl-n9
+    - name: Pull Both
+      class: my-n8 my-xxl-n9
 _structures:
   links:
     values:
