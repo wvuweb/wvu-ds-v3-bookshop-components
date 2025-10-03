@@ -25,5 +25,7 @@ preview:
 _inputs:
   description:
     type: textarea
+  is_dynamic:
+    hidden: true
   subheading:
     hidden: true

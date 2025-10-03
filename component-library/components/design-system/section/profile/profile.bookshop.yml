@@ -37,6 +37,10 @@ _inputs:
     type: datetime
     options:
       timezone: America/New_York
+  is_dynamic:
+    hidden: true
+  is_nested:
+    hidden: true
   person:
     type: select
     options:

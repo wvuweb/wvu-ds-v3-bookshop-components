@@ -29,6 +29,10 @@ preview:
 _inputs:
   caption:
     type: textarea
+  is_dynamic:
+    hidden: true
+  is_nested:
+    hidden: true
   settings:
     type: object
     options:

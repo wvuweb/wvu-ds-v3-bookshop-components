@@ -10,7 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   heading:
-  alt_text:
+  # alt_text:
   column_a:
   column_aa:
   settings:
@@ -78,6 +78,10 @@ _inputs:
     type: datetime
     options:
       timezone: America/New_York
+  is_dynamic:
+    hidden: true
+  is_nested:
+    hidden: false
   margin:
     type: select
     options:

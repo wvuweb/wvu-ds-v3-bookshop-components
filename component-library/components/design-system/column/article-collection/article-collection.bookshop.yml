@@ -34,6 +34,8 @@ _inputs:
     options:
       structures: _structures.links
     cascade: true
+  is_dynamic:
+    hidden: true
   limit:
     type: number
   tags:

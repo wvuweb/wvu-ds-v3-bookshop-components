@@ -38,6 +38,10 @@ _inputs:
       values:
         - number
         - string
+  is_dynamic:
+    hidden: true
+  is_nested:
+    hidden: true
   overview_markdown:
     label: Overview
   required:

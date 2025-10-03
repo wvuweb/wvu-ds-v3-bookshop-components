@@ -29,6 +29,10 @@ _inputs:
     type: array
     options:
       structures: _structures.images
+  is_dynamic:
+    hidden: true
+  is_nested:
+    hidden: true
   settings:
     type: object
     options:

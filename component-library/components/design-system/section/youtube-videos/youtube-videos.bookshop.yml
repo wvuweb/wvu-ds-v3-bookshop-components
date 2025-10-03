@@ -73,6 +73,10 @@ _inputs:
       values: _select_data.color_palettes
       value_key: class
     cascade: true
+  is_dynamic:
+    hidden: true
+  is_nested:
+    hidden: true
   margin:
     type: select
     options:

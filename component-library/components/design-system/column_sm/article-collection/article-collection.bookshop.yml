@@ -22,6 +22,8 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  is_dynamic:
+    hidden: true
   limit:
     type: number
   tags:

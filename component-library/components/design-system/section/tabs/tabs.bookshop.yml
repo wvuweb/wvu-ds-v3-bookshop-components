@@ -54,6 +54,10 @@ _inputs:
       timezone: America/New_York
   include_heading_postscript:
     hidden: true
+  is_dynamic:
+    hidden: true
+  is_nested:
+    hidden: true
   settings:
     type: object
     options:

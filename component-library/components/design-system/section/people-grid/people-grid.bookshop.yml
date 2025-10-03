@@ -44,6 +44,10 @@ _inputs:
       allow_empty: false
       values: _select_data.color_palettes
       value_key: class
+  is_dynamic:
+    hidden: true
+  is_nested:
+    hidden: true
   margin:
     type: select
     options:
