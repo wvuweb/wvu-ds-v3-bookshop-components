@@ -2,6 +2,7 @@
 spec:
   structures:
     - topper
+    - component_block
   label: "Topper - Hero"
   description:
   icon:

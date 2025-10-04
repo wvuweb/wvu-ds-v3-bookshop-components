@@ -38,12 +38,31 @@
             </tr>
           </thead>
           <tbody>
-            {{ range .content_guidelines }}
-              <tr>
-                <td>{{ .content }}{{ if .required }}*{{ end }}</td>
-                <td>{{ .description }}</td>
-                <td>{{ .max_chars }}</td>
-              </tr>
+            {{- if not site.Params.env_bookshop_live -}}
+              {{ $required := "" }}
+              {{ range .content_guidelines }}
+                {{ $required = "" }}
+                {{ if .required }}
+                  {{ $required = true }}
+                {{ end }}
+                {{ if .heading }}
+                  {{ with index site.Data.content_guidelines "heading" }}
+                    <tr>
+                      <td>Heading{{ if $required }}<span class="text-danger">*</span>{{ end }}</td>
+                      <td>{{ .description }}</td>
+                      <td>{{ with .max_chars }}{{ . }}{{ end }}</td>
+                    </tr>
+                  {{ end }}
+                {{ else if .subheading }}
+                  {{ with index site.Data.content_guidelines "subheading" }}
+                    <tr>
+                      <td>Subheading{{ if $required }}<span class="text-danger">*</span>{{ end }}</td>
+                      <td>{{ .description }}</td>
+                      <td>{{ with .max_chars }}{{ . }}{{ end }}</td>
+                    </tr>
+                  {{ end }}
+                {{ end }}
+              {{ end }}
             {{ end }}
           </tbody>
         </table>
