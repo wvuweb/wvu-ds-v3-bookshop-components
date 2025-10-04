@@ -15,11 +15,14 @@ blueprint:
     - text:
       url:
   content_guidelines:
-    - content:
-      content_type:
-      description:
-      max_chars:
+    - heading: true
       required:
+    - subheading: true
+    - blurb: true
+    - call_to_action: true
+    - items: true
+    - postscript_copy: true
+    - postscript_links: true
   is_dynamic: false
   is_nested: false
   use_common_wrapper: true
