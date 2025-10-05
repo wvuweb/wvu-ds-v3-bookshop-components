@@ -38,6 +38,8 @@ _inputs:
       allow_empty: false
       values: _select_data.color_palettes
       value_key: class
+  include_heading_postscript:
+    hidden: true
   is_dynamic:
     hidden: true
   is_nested:

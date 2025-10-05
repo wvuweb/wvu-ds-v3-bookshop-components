@@ -25,8 +25,8 @@ blueprint:
       tone: default
       color_palette: option-1
       bg_subtle:
-      enable_blend: false
-      tint_opacity: '0.7'
+      # enable_blend: false
+      # tint_opacity: '0.7'
     layout:
       buffer:
       margin:
@@ -74,6 +74,8 @@ _inputs:
     type: datetime
     options:
       timezone: America/New_York
+  include_heading_postscript:
+    hidden: true
   is_dynamic:
     hidden: true
   is_nested:

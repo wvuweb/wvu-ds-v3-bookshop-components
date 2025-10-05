@@ -29,6 +29,8 @@ preview:
 _inputs:
   caption:
     type: textarea
+  include_heading_postscript:
+    hidden: true
   is_dynamic:
     hidden: true
   is_nested:

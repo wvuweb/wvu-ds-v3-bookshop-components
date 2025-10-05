@@ -45,8 +45,8 @@ blueprint:
       tone: default
       color_palette: option-1
       bg_subtle:
-      enable_blend: false
-      tint_opacity: '0.7'
+      # enable_blend: false
+      # tint_opacity: '0.7'
       remove_container_background: false
     layout:
       buffer:
@@ -96,6 +96,8 @@ _inputs:
       values: _select_data.color_palettes
       value_key: class
     cascade: true
+  include_heading_postscript:
+    hidden: true
   is_dynamic:
     hidden: true
   is_nested:
