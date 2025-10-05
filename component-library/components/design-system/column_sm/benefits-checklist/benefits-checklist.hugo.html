@@ -6,7 +6,7 @@
     <h2 class="h2 mb-3 wvu-b-subheading"><span class="wvu-b-font-adjust">{{ . }}</span></h2>
   {{ end }}
   {{ with .subheading }}
-    <p class="wvu-b-subheading">
+    <p class="h6 wvu-b-heading">
       <span class="wvu-b-font-adjust">{{ . }}</span>
     </p>
   {{ end }}
@@ -33,7 +33,7 @@
             {{ if .button_c }}
               {{ $buttonColor = .button_c }}
             {{ end }}
-            <a class="btn wvu-b-btn btn-sm mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+            <a class="btn wvu-b-btn btn-sm mb-1 me-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
             {{ $buttonColor := "primary" }}
           {{ end }}
         </div>
