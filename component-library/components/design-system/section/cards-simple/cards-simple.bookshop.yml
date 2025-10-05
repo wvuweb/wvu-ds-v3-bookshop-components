@@ -162,7 +162,6 @@ _inputs:
     type: auto
     hidden: true
 _select_data:
-  _select_data:
   buffers:
     - name: Buffer Top
       class: pt-6
