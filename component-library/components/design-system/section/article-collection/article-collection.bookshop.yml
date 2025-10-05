@@ -33,7 +33,7 @@ blueprint:
       name: article-collection
       edit_mode_only: false
       include_heading_postscript: true
-      limit:
+      limit: 4
       show_content: false
       hide_thumbnails: false
       show: 2024-09-01
@@ -144,8 +144,6 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
-  limit:
-    type: number
   use_common_wrapper:
     type: auto
     hidden: true
