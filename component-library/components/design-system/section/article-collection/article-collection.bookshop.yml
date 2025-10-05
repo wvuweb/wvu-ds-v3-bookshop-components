@@ -89,6 +89,8 @@ _inputs:
     hidden: true
   is_nested:
     hidden: true
+  limit:
+    type: number
   margin:
     type: select
     options:
