@@ -6,6 +6,12 @@
     <h2 class="display-5 mb-3 wvu-b-subheading mb-4">{{ . }}</h2>
   {{ end }}
 
+  {{ with .subheading }}
+    <p class="h5 wvu-b-subheading mb-5">
+      <span class="wvu-b-font-adjust">{{ . }}</span>
+    </p>
+  {{ end }}
+
   <div class="row gx-4 mb-n4">
     <ul class="list-unstyled">
       {{ range .items }}        
