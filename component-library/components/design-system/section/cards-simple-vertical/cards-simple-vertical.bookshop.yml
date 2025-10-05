@@ -15,9 +15,9 @@ blueprint:
     - title: Item 1 Title
       text: Item 1 text.
       url:
-  postscript:
-    copy:
-    ctas:
+  # postscript:
+  #   copy:
+  #   ctas:
   settings:
     styles:
       audience: general
