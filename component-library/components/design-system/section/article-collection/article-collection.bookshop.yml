@@ -21,8 +21,8 @@ blueprint:
       tone: default
       color_palette: option-1
       bg_subtle:
-      enable_blend: false
-      tint_opacity: '0.7'
+      # enable_blend: false
+      # tint_opacity: '0.7'
       remove_container_background: false
     layout:
       buffer:
@@ -83,6 +83,8 @@ _inputs:
     type: datetime
     options:
       timezone: America/New_York
+  include_heading_postscript:
+    hidden: true
   is_dynamic:
     hidden: true
   is_nested:
@@ -103,18 +105,19 @@ _inputs:
     type: object
     options:
       subtype: tabbed
+  show_content:
+    hidden: true
   show:
     type: datetime
-  tint_opacity:
-    type: select
-    options:
-      allow_empty: true
-      values: _select_data.tint_opacities
-      value_key: value
-    comment: >-
-      Use to improve text legibility when using a background image. Disabled
-      when blend is enabled.
-    cascade: true
+  # tint_opacity:
+  #   type: select
+  #   options:
+  #     allow_empty: true
+  #     values: _select_data.tint_opacities
+  #     value_key: value
+  #   comment: >-
+  #     Use to improve text legibility when using a background image. Disabled
+  #     when blend is enabled.
   tone:
     type: choice
     options:
