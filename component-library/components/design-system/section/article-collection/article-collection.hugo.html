@@ -83,6 +83,7 @@
           {{ end }}
           
           {{ $src := $params.article_image }}
+          {{ $alt := $params.article_image_alt_text }}
 
           {{- if not site.Params.env_bookshop_live -}}
             {{ $image := "" }}
@@ -105,7 +106,7 @@
                 <div class="wvu-article__thumb mb-4">
                   <div class="ratio ratio-3x2 bg-light">
                     <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
-                      <img class="h-100 w-100 object-fit-cover" src="{{ $src }}" alt="" />
+                      <img class="h-100 w-100 object-fit-cover" src="{{ $src }}" alt="{{ $alt }}" />
                     </a>
                   </div>
                 </div>

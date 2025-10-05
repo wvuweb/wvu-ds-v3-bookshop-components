@@ -68,15 +68,16 @@
           {{ end }}
         {{ end }}
         
-        {{ $src := $params.image }}
+        {{ $src := $params.article_image }}
+        {{ $alt := $params.article_image_alt_text }}
 
         {{- if not site.Params.env_bookshop_live -}}
           {{ $image := "" }}
           {{/*  Get the image, either from its remote or local source  */}}
           {{ if hasPrefix $src "http"}}
-            {{ $image = resources.GetRemote $params.image }}
+            {{ $image = resources.GetRemote $params.article_image }}
           {{ else }}
-            {{ $image = resources.Get $params.image }}
+            {{ $image = resources.Get $params.article_image }}
           {{ end }}
 
           {{/* Resize images and add them to a variable  */}}
@@ -88,7 +89,7 @@
         <div class="col-lg-12">
           {{ if $src }}
             <div class="wvu-article__thumb h-100">
-              <img class="h-100 img-fluid object-fit-cover" src="{{ $src }}" alt="" />
+              <img class="h-100 img-fluid object-fit-cover" src="{{ $src }}" alt="{{ $alt }}" />
             </div>
           {{ end }}
         </div>
