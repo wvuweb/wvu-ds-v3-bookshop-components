@@ -22,5 +22,16 @@
         </li>
       {{ end }}
     </ul>
+    {{ with .ctas }}
+      <div class="mt-4">
+        {{ range . }}
+          {{ if .button_c }}
+            {{ $buttonColor = .button_c }}
+          {{ end }}
+          <a class="btn wvu-b-btn mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+          {{ $buttonColor := "primary" }}
+        {{ end }}
+      </div>
+    {{ end }}
   </div>
 </div>

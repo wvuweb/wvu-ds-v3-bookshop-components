@@ -15,6 +15,7 @@
     <ul class="list-unstyled">
       {{ range .items }}        
         <li class="d-flex mb-4">
+          <span class="h4 fa-solid fa-{{ $icon }} wvu-b-accent-text me-3 mt-1"></span>
           <div>
             {{ with .title }}
               <h3 class="h5 mb-0">{{ . }}</h3>
@@ -32,7 +33,7 @@
             {{ if .button_c }}
               {{ $buttonColor = .button_c }}
             {{ end }}
-            <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+            <a class="btn wvu-b-btn btn-sm mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
             {{ $buttonColor := "primary" }}
           {{ end }}
         </div>
