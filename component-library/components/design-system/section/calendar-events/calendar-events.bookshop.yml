@@ -132,7 +132,6 @@ _inputs:
     options:
       structures: _structures.links
     cascade: true
-  event_feed: textarea
   text:
     type: markdown
     options:
