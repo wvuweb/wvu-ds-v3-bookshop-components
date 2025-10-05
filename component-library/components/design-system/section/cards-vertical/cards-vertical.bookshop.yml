@@ -15,8 +15,8 @@ blueprint:
     - title: Item 1 Title
       image:
       alt_text:
-      label:
-      badge:
+      # label:
+      # badge:
       text: Item 1 text.
       ctas:
   postscript:
@@ -145,6 +145,11 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
+    cascade: true
   image:
     type: image
     options:
