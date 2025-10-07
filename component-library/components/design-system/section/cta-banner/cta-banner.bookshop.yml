@@ -11,6 +11,8 @@ spec:
 blueprint:
   heading: Heading
   subheading: Subheading goes here.
+  background_image:
+  alt_text:
   buttons:
     - text:
       url:
@@ -22,8 +24,8 @@ blueprint:
       tone: default
       color_palette: option-1
       bg_subtle:
-      # enable_blend: false
-      # tint_opacity: '0.7'
+      enable_blend: false
+      tint_opacity: '0.7'
     layout:
       buffer:
       margin:
@@ -43,7 +45,10 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  # Settings
+  alt_text:
+    hidden: '!background_image'
+    options:
+      required: true
   audience:
     type: choice
     options:
@@ -59,6 +64,14 @@ _inputs:
           class: prospective_students
       value_key: class
     label: Style
+  background_image:
+    type: image
+    options:
+      allowed_sources:
+        - ccdam
+      width: 1920
+      height: 1080
+      prevent_resize_existing_files: false
   bg_subtle:
     type: checkbox
   buffer:
