@@ -29,8 +29,8 @@ blueprint:
       name: columns-2-1-1
       show_label: true
       include_heading_postscript: false
-      show: 2024-09-01
-      hide: 2099-09-01
+      # show: 2024-09-01
+      # hide: 2099-09-01
   is_dynamic: false
   is_nested: true
   use_common_wrapper: true

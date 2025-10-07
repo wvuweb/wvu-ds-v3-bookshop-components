@@ -36,8 +36,8 @@ blueprint:
       limit: 4
       show_content: false
       hide_thumbnails: false
-      show: 2024-09-01
-      hide: 2099-09-01
+      # show: 2024-09-01
+      # hide: 2099-09-01
   is_dynamic: true
   is_nested: false
   use_common_wrapper: true

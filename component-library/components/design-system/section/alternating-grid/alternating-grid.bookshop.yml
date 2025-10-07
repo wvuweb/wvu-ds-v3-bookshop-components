@@ -35,8 +35,8 @@ blueprint:
     config:
       name: alternating-grid
       edit_mode_only: false
-      show: 2024-09-01
-      hide: 2099-09-01
+      # show: 2024-09-01
+      # hide: 2099-09-01
       include_heading_postscript: true
   is_dynamic: false
   is_nested: false

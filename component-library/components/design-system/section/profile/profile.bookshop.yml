@@ -19,8 +19,8 @@ blueprint:
         - url:
           text:
           ref:
-      show: 2024-09-01
-      hide: 2099-09-01
+      # show: 2024-09-01
+      # hide: 2099-09-01
   config:
     name: profile
     edit_mode_only: false

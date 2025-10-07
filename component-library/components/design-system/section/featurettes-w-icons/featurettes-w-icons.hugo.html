@@ -9,11 +9,11 @@
             <span class="fa-solid fa-{{ .icon }} position-absolute" aria-hidden="true"></span>
           </div>
         </div>  
-        <h3 class="iowan-old-style h1">{{ .title }}</h3>
+        <h3 class="wvu-b-display-heading h1"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
         <p>{{ .text | markdownify }}</p>
         {{ with .ctas }}
           {{ range . }}
-            <a class="btn btn-primary" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+            <a class="btn wvu-b-btn btn-sm" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
           {{ end }}
         {{ end }}
       </div>
