@@ -232,7 +232,7 @@
                               {{ if and site.Params.env_bookshop_live .is_dynamic }}
                                 {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
                               {{ else }}
-                                {{ partial "bookshop" .column }}
+                                {{ partial "bookshop" . }}
                               {{ end }}
                             {{ end }}
                           </div>
