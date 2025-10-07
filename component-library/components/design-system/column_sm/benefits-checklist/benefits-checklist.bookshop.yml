@@ -16,6 +16,7 @@ blueprint:
       text: Item 1 text.
   ctas:
   benefits_icon: circle-check
+  is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -30,6 +31,8 @@ _inputs:
     type: array
     options:
       structures: _structures.links
+  is_dynamic:
+    hidden: true
   layout:
     hidden: true
   label:

@@ -21,6 +21,7 @@ blueprint:
     - Morgantown, WV
   copy:
   ctas:
+  is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -40,3 +41,5 @@ _inputs:
       width: 1920
       height: 1080
     cascade: true
+  is_dynamic:
+    hidden: true

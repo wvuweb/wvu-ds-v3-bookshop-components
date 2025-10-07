@@ -17,6 +17,7 @@ blueprint:
   ctas:
     - text: Call to Action
       url:
+  is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -34,3 +35,5 @@ _inputs:
       width: 1920
       height: 1080
       prevent_resize_existing_files: false
+  is_dynamic:
+    hidden: true

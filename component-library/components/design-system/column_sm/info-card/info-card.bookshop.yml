@@ -14,6 +14,7 @@ blueprint:
   subheading:
   copy:
   card_c:
+  is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -26,4 +27,6 @@ _inputs:
       allowed_sources:
         - ccdam
   card_c:
+    hidden: true
+  is_dynamic:
     hidden: true

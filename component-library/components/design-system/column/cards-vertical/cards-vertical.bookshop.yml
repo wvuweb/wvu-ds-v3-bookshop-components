@@ -22,6 +22,7 @@ blueprint:
   postscript:
     copy:
     ctas:
+  is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -53,6 +54,8 @@ _inputs:
         - ccdam
       width: 1920
       height: 1080
+  is_dynamic:
+    hidden: true
   markdown:
     options:
       allowed_sources:

@@ -14,6 +14,7 @@ blueprint:
   event_feed:
   link_text:
   url:
+  is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -22,3 +23,5 @@ preview:
 _inputs:
   event_feed:
     type: textarea
+  is_dynamic:
+    hidden: true

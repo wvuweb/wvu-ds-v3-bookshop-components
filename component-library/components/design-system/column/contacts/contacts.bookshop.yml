@@ -16,6 +16,7 @@ blueprint:
   config:
     hide_thumbnails: false
     show_content: false
+  is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -28,3 +29,5 @@ _inputs:
       allow_empty: false
       values: data.people_data[?(@.is_contact == true)]
       value_key: uuid
+  is_dynamic:
+    hidden: true

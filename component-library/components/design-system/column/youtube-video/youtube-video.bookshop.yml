@@ -12,6 +12,7 @@ blueprint:
   title: Video Title
   description: Video description.
   video_id: EMhV-NvxrAo
+  id_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -20,3 +21,5 @@ preview:
 _inputs:
   description:
     type: textarea
+  is_dynamic:
+    hidden: true

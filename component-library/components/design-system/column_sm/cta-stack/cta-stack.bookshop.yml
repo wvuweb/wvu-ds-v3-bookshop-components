@@ -14,9 +14,12 @@ blueprint:
   ctas:
     - text:
       url:
+  is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  is_dynamic:
+    hidden: true

@@ -15,8 +15,7 @@ blueprint:
   postscript:
     copy:
     ctas:
-  config:
-    show_content: false
+  is_dynamic: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -28,6 +27,8 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
+  is_dynamic:
+    hidden: true
   tags:
     type: multiselect
     options:
