@@ -125,18 +125,24 @@ _inputs:
   background_image:
     hidden: true
   column_a:
-    type: object
+    type: array
     options:
+      min_items: 1
+      max_items: 1
       structures: _structures.column_blocks
     label: Column
   column_aaa:
-    type: object
+    type: array
     options:
+      min_items: 1
+      max_items: 1
       structures: _structures.column_blocks_sm
     label: Column
   column_bbb:
-    type: object
+    type: array
     options:
+      min_items: 1
+      max_items: 1
       structures: _structures.column_blocks_sm
     label: Column
   use_common_wrapper:
