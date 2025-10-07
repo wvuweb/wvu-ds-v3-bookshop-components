@@ -1,7 +1,5 @@
-{{ if and .topper .topper._bookshop_name }}
+{{ if .topper }}
   {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "title" .title "params" .params)) }}
-{{ else }}
-  {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .title "params" .params)) }}
 {{ end }}
 
 <main class="py-6 tone-default bg-option-1 wvu-b-subtle">

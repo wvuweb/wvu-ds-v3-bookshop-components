@@ -1,4 +1,4 @@
-{{ if and .topper .topper._bookshop_name }}
+{{ if .topper }}
   {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "title" .title "params" .params)) }}
 {{ end }}
 
