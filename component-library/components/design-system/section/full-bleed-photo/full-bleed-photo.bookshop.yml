@@ -21,13 +21,17 @@ blueprint:
       include_heading_postscript: false
   is_dynamic: false
   is_nested: false
-  use_common_wrapper: true
+  use_common_wrapper: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  alt:
+    hidden: '!src'
+    options:
+      required: true
   caption:
     type: textarea
   include_heading_postscript:
