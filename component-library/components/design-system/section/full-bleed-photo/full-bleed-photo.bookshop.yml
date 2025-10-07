@@ -3,7 +3,6 @@ spec:
   structures:
     - photo_essay_blocks
     - place_blocks
-    - content_blocks
   label: "Full-Bleed Photo"
   description:
   icon: panorama
