@@ -103,6 +103,8 @@ _inputs:
       subtype: tabbed
   show:
     type: datetime
+  show_content:
+    hidden: true
   tint_opacity:
     type: select
     options:
