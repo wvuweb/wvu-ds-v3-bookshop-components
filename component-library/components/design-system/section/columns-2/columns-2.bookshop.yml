@@ -80,15 +80,15 @@ _inputs:
     type: array
     labal: Column
     options:
-      maz_items: 1
       min_items: 1
+      max_items: 1
       structures: _structures.column_blocks
   column_b:
     type: array
     labal: Column
     options:
-      maz_items: 1
       min_items: 1
+      max_items: 1
       structures: _structures.column_blocks
   hide:
     type: datetime
