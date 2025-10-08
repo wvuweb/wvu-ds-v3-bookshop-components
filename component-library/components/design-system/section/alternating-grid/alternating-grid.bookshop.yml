@@ -6,7 +6,7 @@ spec:
   label: "Alternating Grid"
   description: Alternating content blocks w/a photo, text call-to-action.
   icon: sync_alt
-  tags: []
+  tags: [Lists]
 
 # Defines the structure of this component, as well as the default values
 blueprint:
