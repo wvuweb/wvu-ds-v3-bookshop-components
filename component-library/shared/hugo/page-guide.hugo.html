@@ -82,18 +82,18 @@
                         {{ partial "bookshop" . }}
                       {{ end }}
 
-                      {{ if .postscript }}
-                        <div class="text-center mt-5">
-                          {{ if .postscript.copy }}
+                      {{ with .postscript }}
+                        <div class="text-center mt-4">
+                          {{ with .copy }}
                             <div class="mb-4">
-                              {{ .postscript.copy | markdownify }}
+                              {{ . | markdownify }}
                             </div>
                           {{ end }}
 
-                          {{ if .ctas }}
+                          {{ with .ctas }}
                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                              {{ range .ctas }}
-                                <a class="btn wvu-b-subtle" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+                              {{ range . }}
+                                <a class="btn wvu-b-subtle" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
                               {{ end }}
                             </div>
                           {{ end }}
