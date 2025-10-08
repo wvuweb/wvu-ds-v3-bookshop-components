@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Separator"
-  description:
-  icon:
+  description: A dotted horizontal line for visual separation between sections.
+  icon: horizontal_rule
   tags: []
 
 # Defines the structure of this component, as well as the default values

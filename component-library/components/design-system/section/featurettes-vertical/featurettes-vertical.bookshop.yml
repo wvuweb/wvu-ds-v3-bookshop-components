@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Featurettes - Vertical"
-  description:
-  icon:
+  description: Stacked image-and-text items with optional buttons.
+  icon: table_rows
   tags: []
 
 # Defines the structure of this component, as well as the default values
