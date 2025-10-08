@@ -1,13 +1,16 @@
 <nav class="navbar navbar-expand-lg py-0 {{ if not site.Params.env_bookshop_live }}sticky-top{{ end }} audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} bg-{{ .settings.styles.color_palette }}">
   <div class="container">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler bg-{{ .settings.styles.color_palette }} border-0 p-4 fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fa-solid fa-bars"></span> Menu
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
       <ul class="navbar-nav mb-0">
         {{ range .items }}
-          <li class="nav-item">
-            <a class="nav-link config-extra-bold text-uppercase fs-6 py-4 px-4 wvu-b-text" href="#{{ .anchor }}">{{ .text }}</a>
+          <li class="nav-item p-4 position-relative justify-content-center text-lg-center">
+            <a class="nav-link wvu-b-display-heading text-uppercase fs-6 wvu-b-text stretched-link d-block mb-0" href="#{{ .anchor }}"><span class="wvu-b-font-adjust">{{ .text }}</span></a>
+            {{ if .description }}
+              <p class="mb-0 small w-100" style="max-width: 12em">{{ .description }}</p>
+            {{ end }}
           </li>
         {{ end }}
       </ul>
