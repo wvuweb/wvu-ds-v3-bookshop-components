@@ -3,9 +3,9 @@ spec:
   structures:
     - content_blocks
   label: "Hero"
-  description:
-  icon:
-  tags: []
+  description: Full-width banner with heading and CTA.
+  icon: panorama
+  tags: [Call to Action]
 
 # Defines the structure of this component, as well as the default values
 blueprint:

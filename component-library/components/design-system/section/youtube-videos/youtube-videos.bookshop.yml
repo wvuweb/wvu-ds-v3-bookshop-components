@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "YouTube Videos"
-  description:
-  icon:
+  description: Small gallery of YouTube videos.
+  icon: youtube_activity
   tags: [Photos and Videos]
 
 # Defines the structure of this component, as well as the default values

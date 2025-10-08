@@ -3,9 +3,9 @@ spec:
   structures:
     - content_blocks
   label: "YouTube Shorts"
-  description:
-  icon:
-  tags: []
+  description: YouTube Shorts with optional title and subhead.
+  icon: youtube_activity
+  tags: [Photos and Videos]
 
 # Defines the structure of this component, as well as the default values
 blueprint:

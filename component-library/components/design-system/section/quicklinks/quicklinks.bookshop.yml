@@ -4,8 +4,8 @@ spec:
     - content_blocks
     - default_content_blocks
   label: "Quicklinks"
-  description: A collection of relevant links.
-  icon:
+  description: Compact grid of links for fast navigation.
+  icon: add_link
   tags: []
 
 # Defines the structure of this component, as well as the default values

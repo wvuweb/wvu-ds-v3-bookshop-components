@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Featurettes"
-  description:
-  icon:
+  description: Flexible layout for text, images, and CTAs in any order.
+  icon: view_comfy_alt
   tags: []
 
 # Defines the structure of this component, as well as the default values

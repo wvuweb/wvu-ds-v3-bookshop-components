@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Contacts"
-  description:
-  icon:
+  description: List of specific contacts with names, roles, and info.
+  icon: emoji_people
   tags: []
 
 # Defines the structure of this component, as well as the default values

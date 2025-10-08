@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Testimonials"
-  description:
-  icon:
+  description: Multi-column quote module with headshots, names, and titles.
+  icon: 3p
   tags: []
 
 # Defines the structure of this component, as well as the default values

@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Link Lists"
-  description: Vertical list of lists.
-  icon: list
+  description: Vertical group of categorized links.
+  icon: list_alt_add
   tags: []
 
 # Defines the structure of this component, as well as the default values

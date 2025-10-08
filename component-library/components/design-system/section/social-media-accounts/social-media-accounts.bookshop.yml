@@ -3,9 +3,9 @@ spec:
   structures:
     - content_blocks
   label: "Social Media Accounts"
-  description:
+  description: Linked social media icons for official accounts.
   icon: 
-  tags: []
+  tags: [Social Media]
 
 # Defines the structure of this component, as well as the default values
 blueprint:

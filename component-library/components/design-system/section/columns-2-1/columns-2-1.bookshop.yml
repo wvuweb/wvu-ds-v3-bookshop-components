@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Columns 2-1"
-  description:
-  icon: doc_to_right
+  description: Two-column layout with one wide and one narrow column.
+  icon: view_column_2
   tags: [Layout]
 
 # Defines the structure of this component, as well as the default values

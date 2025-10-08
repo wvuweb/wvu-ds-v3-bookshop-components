@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Jump Links"
-  description:
-  icon:
+  description: Horizontal links for navigating page sections.
+  icon: link
   tags: []
 
 # Defines the structure of this component, as well as the default values

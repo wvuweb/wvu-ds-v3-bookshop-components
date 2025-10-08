@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Quote"
-  description:
-  icon:
+  description: Large stylized quote block for emphasis.
+  icon: format_quote
   tags: []
 
 # Defines the structure of this component, as well as the default values

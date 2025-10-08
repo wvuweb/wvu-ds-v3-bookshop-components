@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Hero - Split"
-  description:
-  icon:
+  description: Split hero with image and CTA.
+  icon: vertical_split
   tags: [Call to Action]
 
 # Defines the structure of this component, as well as the default values

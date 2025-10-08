@@ -3,7 +3,7 @@ spec:
   structures:
     - content_blocks
   label: "Contact Us"
-  description:
+  description: Contact details.
   icon: contact_phone
   tags: []
 

@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Featurettes w/Icons"
-  description:
-  icon:
+  description: Feature items with icons arranged in a grid layout.
+  icon: calendar_view_month
   tags: []
 
 # Defines the structure of this component, as well as the default values
