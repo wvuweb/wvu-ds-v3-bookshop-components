@@ -32,6 +32,21 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  audience:
+    type: choice
+    options:
+      allow_empty: false
+      values:
+        - name: General
+          class: general
+        - name: Academic / Traditional
+          class: alumni
+        - name: Modern + Formal
+          class: leaders_partners
+        - name: Prospective Students
+          class: prospective_students
+      value_key: class
+    label: Style
   color_palette:
     type: choice
     options:
@@ -51,6 +66,38 @@ _inputs:
   title:
     options:
       required: false
+  tone:
+    type: choice
+    options:
+      allow_empty: false
+      values:
+        - name: Default
+          class: default
+        - name: Reserved
+          class: reserved
+        - name: Loud
+          class: loud
+        - name: Let’s Go!
+          class: lets-go
+      value_key: class
   use_common_wrapper:
     type: auto
     hidden: true
+_select_data:
+  color_palettes:
+    - name: Option 1
+      class: option-1
+    - name: Option 2
+      class: option-2
+    - name: Option 3
+      class: option-3
+    - name: Option 4
+      class: option-4
+    - name: Option 5
+      class: option-5
+    - name: Option 6
+      class: option-6
+    - name: Option 7
+      class: option-7
+    - name: Option 8
+      class: option-8
