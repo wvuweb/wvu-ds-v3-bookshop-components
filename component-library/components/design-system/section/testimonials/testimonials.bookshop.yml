@@ -96,6 +96,7 @@ _inputs:
     type: auto
     hidden: true
   quote:
+    type: textarea
     options:
       required: true
   show:
@@ -131,8 +132,6 @@ _inputs:
         - name: Let’s Go!
           class: lets-go
       value_key: class
-  quote:
-    type: textarea
   title:
     options:
       required: false
