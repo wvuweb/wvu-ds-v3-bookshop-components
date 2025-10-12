@@ -16,7 +16,7 @@ blueprint:
       video_id:
       ratio: 9x16
   postscript:
-    text:
+    copy:
     ctas:
   settings:
     styles:
