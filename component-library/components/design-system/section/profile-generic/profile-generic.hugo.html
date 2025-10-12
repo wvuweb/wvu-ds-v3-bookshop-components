@@ -49,23 +49,25 @@
         <div class="h-100 position-relative">
           <div class="w-100 h-100">
             <div class="row h-100">
-              {{ if .settings.layout.is_cutout }}
-                <div class="wvu-bg-img px-0 ms-lg-4">
-                  <div class="wvu-bg-topo-light wvu-b-pattern-color h-100 w-100 position-absolute" style="opacity: .5; width: calc(100% - 1.5rem) !important;"></div>
-                </div>
-                <div class="col-xxl-17 mx-xxl-auto d-flex justify-content-center align-items-end wvu-z-index-content">
-                  <div class="wvu-z-index-content">
-                    <div class="overflow-hidden mb-n5 mt-n6">
-                      <img class="object-fit wvu-b-shadow" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+              {{ if .image }}
+                {{ if .settings.layout.is_cutout }}
+                  <div class="wvu-bg-img px-0 ms-lg-4">
+                    <div class="wvu-bg-topo-light wvu-b-pattern-color h-100 w-100 position-absolute" style="opacity: .5; width: calc(100% - 1.5rem) !important;"></div>
+                  </div>
+                  <div class="col-xxl-17 mx-xxl-auto d-flex justify-content-center align-items-end wvu-z-index-content">
+                    <div class="wvu-z-index-content">
+                      <div class="overflow-hidden mb-n5 mt-n6">
+                        <img class="object-fit wvu-b-shadow" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              {{ else }}
-                <div class="w-100 h-100 d-flex justify-content-center align-items-end wvu-z-index-content">
-                  <div class="wvu-z-index-content">
-                    <img class="object-fit" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                {{ else }}
+                  <div class="w-100 h-100 d-flex justify-content-center align-items-end wvu-z-index-content">
+                    <div class="wvu-z-index-content">
+                      <img class="object-fit" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                    </div>
                   </div>
-                </div>
+                {{ end }}
               {{ end }}
             </div>
           </div>

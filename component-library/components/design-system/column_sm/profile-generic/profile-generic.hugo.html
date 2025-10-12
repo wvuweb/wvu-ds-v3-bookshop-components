@@ -26,23 +26,25 @@
         <div class="h-100 position-relative">
           <div class="w-100 h-100">
             <div class="row h-100">
-              {{ if .is_cutout }}
-                <div class="wvu-bg-img px-0">
-                  <div class="wvu-b-pattern wvu-bg-blue h-100 w-100 position-absolute" style="opacity: .5"></div>
-                </div>
-                <div class="col-24 mx-xxl-auto d-flex justify-content-center align-items-end wvu-z-index-content">
-                  <div class="wvu-z-index-content">
-                    <div class="overflow-hidden mt-n7">
-                      <img class="object-fit wvu-b-shadow" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+              {{ if .image }}
+                {{ if .is_cutout }}
+                  <div class="wvu-bg-img px-0">
+                    <div class="wvu-b-pattern wvu-bg-blue h-100 w-100 position-absolute" style="opacity: .5"></div>
+                  </div>
+                  <div class="col-24 mx-xxl-auto d-flex justify-content-center align-items-end wvu-z-index-content">
+                    <div class="wvu-z-index-content">
+                      <div class="overflow-hidden mt-n7">
+                        <img class="object-fit wvu-b-shadow" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              {{ else }}
-                <div class="w-100 h-100 d-flex justify-content-center align-items-end wvu-z-index-content">
-                  <div class="wvu-z-index-content">
-                    <img class="object-fit" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                {{ else }}
+                  <div class="w-100 h-100 d-flex justify-content-center align-items-end wvu-z-index-content">
+                    <div class="wvu-z-index-content">
+                      <img class="object-fit" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                    </div>
                   </div>
-                </div>
+                {{ end }}
               {{ end }}
             </div>
           </div>
