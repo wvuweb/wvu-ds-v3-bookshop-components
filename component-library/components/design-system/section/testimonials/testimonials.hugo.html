@@ -10,19 +10,27 @@
         <span class="antonia-bold-italic d-flex justify-content-center wvu-b-accent-text display-1 mb-n3 mb-xl-n4 text-center"><span class="d-block ms-n5">“</span></span>
         <p class="wvu-b-display-heading fs-4 mb-0">{{ .quote | markdownify }}</p>   
       </blockquote>
-      <div class="w-100 d-flex justify-content-center mb-2">            
-        <div class="ratio ratio-1x1" style="height: 100px; width: 100px;">
-          <div class="h-100 w-100 rounded-circle overflow-hidden">
-            <div class="ratio ratio-1x1">
-              {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image "width" 960 "height" 960 "classes" "object-fit-cover")) }}
+      {{ if .image }}
+        <div class="w-100 d-flex justify-content-center mb-2">            
+          <div class="ratio ratio-1x1" style="height: 100px; width: 100px;">
+            <div class="h-100 w-100 rounded-circle overflow-hidden">
+              <div class="ratio ratio-1x1">
+                {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image "width" 960 "height" 960 "classes" "object-fit-cover")) }}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <p>
-        <span class="d-block wvu-b-display-heading mb-1"><span class="wvu-b-font-adjust">{{ .name }}</span></span>
-        <span class="d-block wvu-b-subheading small"><span class="wvu-b-font-adjust">{{ .title }}</span></span>
-      </p>
+      {{ end }}
+      {{ if or .name .title }}
+        <p>
+          {{ if .name }}
+            <span class="d-block wvu-b-display-heading mb-1"><span class="wvu-b-font-adjust">{{ .name }}</span></span>
+          {{ end }}
+          {{ if .title }}
+            <span class="d-block wvu-b-subheading small"><span class="wvu-b-font-adjust">{{ .title }}</span></span>
+          {{ end }}
+        </p>
+      {{ end }}
     </div>
   {{ end }}
 </div>

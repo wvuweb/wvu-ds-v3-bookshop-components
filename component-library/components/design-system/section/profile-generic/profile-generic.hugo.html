@@ -43,9 +43,9 @@
     </div>
   {{ end }}
   <div class="row gx-0">
-    <div class="col-lg-12 ms-auto order-2 order-lg-1">
+    <div class="col-lg-12 ms-auto">
       <h2 class="d-none d-lg-block wvu-b-accent-bg wvu-text-vertical wvu-shout h6 small wvu-text-letter-spacing-lg h-100 m-0 wvu-z-index-max"><span class="d-block bg- p-2">{{ .label }}</span></h2>
-      <div class="{{ if .settings.layout.is_cutout }}p-5{{ else }}pe-5{{ end }} w-100 h-100 position-relative">
+      <div class="{{ if .settings.layout.is_cutout }}p-5{{ else }}pe-lg-5{{ end }} w-100 h-100 position-relative">
         <div class="h-100 position-relative">
           <div class="w-100 h-100">
             <div class="row h-100">
@@ -63,8 +63,8 @@
                   </div>
                 {{ else }}
                   <div class="w-100 h-100 d-flex justify-content-center align-items-end wvu-z-index-content">
-                    <div class="wvu-z-index-content">
-                      <img class="object-fit" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                    <div class="wvu-z-index-content h-100">
+                      <img class="object-fit-cover h-100" src="{{ $src }}" alt="Portrait of {{ .name }}" />
                     </div>
                   </div>
                 {{ end }}
@@ -74,7 +74,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-12 mx-auto order-1 order-lg-2">
+    <div class="col-lg-12 mx-auto">
       <div class="row">
         <div class="col-lg-16">
           <div class="wvu-z-index-content position-relative px-5 px-lg-3 py-5 py-xl-6 my-xl-n3">
@@ -111,7 +111,7 @@
           </div>
         </div>
         <div class="col-lg-8 d-flex align-items-center position-relative">
-          <div class="py-lg-6 mx-5 mx-lg-0 mb-5 mt-lg-n3 mb-lg-n3 w-100 pe-4">
+          <div class="py-lg-6 mx-5 mx-lg-0 mb-5 mt-lg-n3 mb-lg-n3 w-100 pe-lg-4">
             <div class="row">            
               {{ if .ctas }}
                 <div class="col-sm col-lg-24 mb-5">
@@ -129,8 +129,8 @@
               {{ end }}
               {{ if and .video_url .video_image }}
                 <div class="col-sm col-md-24">
-                  <div class="ms-n3 me-n5 wvu-z-index-content">
-                    <div class="me-n5">
+                  <div class="ms-lg-n3 me-lg-n5 wvu-z-index-content">
+                    <div class="me-lg-n5">
                       <div class="ratio ratio-16x9 bg-dark position-relative wvu-shadow-hard-filter">
                         <div class="wvu-bg-image">
                           <img class="position-absolute h-100 w-100 object-fit-cover" src="{{ $videoSrc }}" alt="" />

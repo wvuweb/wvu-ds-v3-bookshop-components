@@ -111,6 +111,9 @@ _inputs:
       Use to improve text legibility when using a background image. Disabled
       when blend is enabled.
     cascade: true
+  testimonials:
+    options:
+      max_items: 3
   tone:
     type: choice
     options:
