@@ -130,9 +130,6 @@ _inputs:
       value_key: class
   quote:
     type: textarea
-  testimonials:
-    options:
-      max_items: 3
   title:
     options:
       required: false
