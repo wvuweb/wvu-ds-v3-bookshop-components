@@ -15,9 +15,9 @@ blueprint:
     - title:
       video_id:
       ratio: 9x16
-  postscript:
-    copy:
-    ctas:
+  # postscript:
+  #   copy:
+  #   ctas:
   settings:
     styles:
       audience: general
