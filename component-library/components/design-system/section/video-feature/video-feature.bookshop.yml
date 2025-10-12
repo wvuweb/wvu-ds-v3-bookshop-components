@@ -73,6 +73,7 @@ _inputs:
       value_key: class
     cascade: true
   description:
+    type: textarea
     options:
       required: true
   hide:
@@ -127,8 +128,6 @@ _inputs:
         - name: Let’s Go!
           class: lets-go
       value_key: class
-  description:
-    type: textarea
   title:
     label: Video Title
   use_common_wrapper:
