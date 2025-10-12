@@ -15,9 +15,9 @@ blueprint:
     - title:
       video_id:
       ratio: 9x16
-  # postscript:
-  #   copy:
-  #   ctas:
+  postscript:
+    text:
+    ctas:
   settings:
     styles:
       audience: general
@@ -74,6 +74,10 @@ _inputs:
       values: _select_data.color_palettes
       value_key: class
     cascade: true
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
   include_heading_postscript:
     hidden: true
   is_dynamic:
@@ -94,6 +98,9 @@ _inputs:
     type: object
     options:
       subtype: tabbed
+  shorts:
+    options:
+      max_items: 3
   # tint_opacity:
   #   type: select
   #   options:
@@ -169,3 +176,10 @@ _select_data:
   #     value: '0.5'
   #   - name: Dark
   #     value: '0.7'
+_structures:
+  links:
+    values:
+      - value:
+          text:
+          icon:
+          url:
