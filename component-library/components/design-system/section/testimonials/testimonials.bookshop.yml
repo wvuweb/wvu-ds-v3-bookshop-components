@@ -95,6 +95,9 @@ _inputs:
   padding:
     type: auto
     hidden: true
+  quote:
+    options:
+      required: true
   show:
     type: datetime
   settings:

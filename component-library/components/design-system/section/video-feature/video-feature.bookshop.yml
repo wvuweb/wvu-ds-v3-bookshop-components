@@ -9,8 +9,6 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading: Video Feature Heading
-  subheading: Subheading goes here.
   title: Video Title
   description: Video description.
   id: EMhV-NvxrAo
@@ -93,6 +91,8 @@ _inputs:
     cascade: true
   padding:
     type: auto
+    hidden: true
+  remove_container_background:
     hidden: true
   settings:
     type: object
