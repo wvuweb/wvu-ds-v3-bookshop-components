@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Poster"
-  description:
-  icon:
+  description: A large image block with bold text overlay and optional CTA.
+  icon: mobile-text-2
   tags: []
 
 # Defines the structure of this component, as well as the default values
@@ -80,6 +80,10 @@ _inputs:
       allow_empty: false
       values: _select_data.color_palettes
       value_key: class
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
   hide:
     type: datetime
     options:

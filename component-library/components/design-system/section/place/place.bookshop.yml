@@ -16,8 +16,6 @@ blueprint:
   alt_text:
   text: Descriptive text goes here.
   ctas:
-    - text: Call to Action
-      url:
   settings:
     styles:
       audience: general
@@ -80,6 +78,10 @@ _inputs:
       values: _select_data.color_palettes
       value_key: class
     cascade: true
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
   hide:
     type: datetime
     options:
@@ -167,3 +169,10 @@ _select_data:
   #     value: '0.5'
   #   - name: Dark
   #     value: '0.7'
+_structures:
+  links:
+    values:
+      - value:
+          text:
+          icon:
+          url:
