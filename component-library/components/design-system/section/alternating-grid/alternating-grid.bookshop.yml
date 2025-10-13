@@ -87,7 +87,6 @@ _inputs:
     hidden: true
   margin:
     type: select
-    hidden: true
     options:
       allow_empty: true
       values: _select_data.container_margins
@@ -95,6 +94,8 @@ _inputs:
   padding:
     type: auto
     hidden: true
+  remove_container_background:
+    label: Remove Container Background and Hide Heading
   settings:
     type: object
     options:
