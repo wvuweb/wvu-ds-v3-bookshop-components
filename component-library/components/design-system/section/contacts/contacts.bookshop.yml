@@ -107,10 +107,14 @@ _inputs:
   padding:
     type: auto
     hidden: true
+  remove_container_background:
+    hidden: true
   settings:
     type: object
     options:
       subtype: tabbed
+  show_content:
+    hidden: true
   tint_opacity:
     type: select
     options:

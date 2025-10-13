@@ -1,5 +1,5 @@
 {{ if .map_link }}
-  <span class="d-block"><span class="fa-regular fa-building"></span> {{ with .label }}<strong>{{ . }}:</strong>{{ end }} <a class="{{ .classes }}" href="tel:{{ .map_link }}">{{ .location }}</a></span>
+  <span class="d-block"><span class="fa-regular fa-building"></span> {{ with .label }}<strong>{{ . }}:</strong>{{ end }} <a class="{{ .classes }}" href="{{ .map_link }}">{{ .location }}</a></span>
 {{ else }}
   <span class="d-block"><span class="fa-regular fa-building"></span> {{ with .label }}<strong>{{ . }}:</strong>{{ end }} {{ .location }}</span>
 {{ end }}

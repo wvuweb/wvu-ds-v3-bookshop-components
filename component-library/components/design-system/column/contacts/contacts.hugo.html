@@ -1,4 +1,4 @@
-<div class="p-6 wvu-b-subtle">
+<div class="p-5 p-lg-6 wvu-b-subtle">
   {{ $contacts := slice }}
 
   {{ if .heading }}
@@ -58,7 +58,7 @@
                 {{ end }}
               {{- end -}}
 
-              <div class="col-5">
+              <div class="col-6 col-lg-5">
                 <div class="ratio ratio-1x1">
                   <img class="object-fit rounded-circle" src="{{ $src }}" alt="{{ if $params.image.alt }}{{ $params.image.alt }}{{ else }}Portrait of {{ $params.name }}{{ end }}" />
                 </div>
@@ -68,14 +68,14 @@
               {{ with $label }}<p class="wvu-b-label small d-inline-block border border-1 p-1">{{ . }}</p>{{ end }}
 
               <h3 class="h5">{{ $params.name }}</h3>
-              <p class="small">
-                {{ range $params.phone }}
-                  <span class="fa-solid fa-phone"></span> <a href="tel:{{ .number }}">{{ .number }}</a><br>
-                {{ end }}
-                {{ range $params.email }}
-                  <span class="fa-solid fa-envelope"></span> <a href="mailto:{{ .email }}">{{ .email }}</a>
-                {{ end }}
-              </p>
+
+              {{ with $params.staff_contact_info }}
+                <p class="small">
+                  {{ range . }}
+                    {{ partial "bookshop" (slice ._bookshop_name .) }}
+                  {{ end }}
+                </p>
+              {{ end }}
             </div>
           </div>
         {{ end }}
