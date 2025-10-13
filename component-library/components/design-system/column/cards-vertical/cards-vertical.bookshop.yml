@@ -19,9 +19,9 @@ blueprint:
       # badge:
       markdown: Item 1 text.
       ctas:
-  postscript:
-    copy:
-    ctas:
+  # postscript:
+  #   copy:
+  #   ctas:
   is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
