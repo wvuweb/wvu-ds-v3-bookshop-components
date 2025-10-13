@@ -79,6 +79,7 @@ _inputs:
       value_key: class
   hide:
     type: datetime
+    hidden: true
     options:
       timezone: America/New_York
   is_dynamic:
@@ -102,6 +103,7 @@ _inputs:
     options:
       subtype: tabbed
   show:
+    hidden: true
     type: datetime
   tint_opacity:
     type: select
