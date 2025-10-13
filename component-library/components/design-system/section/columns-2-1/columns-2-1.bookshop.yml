@@ -127,17 +127,13 @@ _inputs:
   background_image:
     hidden: true
   column_a:
-    type: array
+    type: object
     options:
-      min_items: 1
-      max_items: 1
       structures: _structures.column_blocks
     label: Column
   column_aa:
     type: array
     options:
-      min_items: 1
-      max_items: 1
       structures: _structures.column_blocks_sm
     label: Column
   instance:

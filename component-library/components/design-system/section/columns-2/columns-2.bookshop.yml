@@ -77,18 +77,14 @@ _inputs:
       value_key: class
     cascade: true
   column_a:
-    type: array
+    type: object
     label: Column
     options:
-      min_items: 1
-      max_items: 1
       structures: _structures.column_blocks
   column_b:
-    type: array
+    type: object
     label: Column
     options:
-      min_items: 1
-      max_items: 1
       structures: _structures.column_blocks
   hide:
     type: datetime
