@@ -9,6 +9,7 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
+  heading:
   column_a:
   column_aaa:
   column_bbb:
@@ -91,6 +92,8 @@ _inputs:
     cascade: true
   padding:
     type: auto
+    hidden: true
+  remove_container_background:
     hidden: true
   settings:
     type: object

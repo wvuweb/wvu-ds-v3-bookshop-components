@@ -83,7 +83,7 @@ _inputs:
   is_dynamic:
     hidden: true
   is_nested:
-    hidden: false
+    hidden: true
   margin:
     type: select
     options:
