@@ -12,7 +12,6 @@ blueprint:
   heading: Article Collection Heading
   tags:
   postscript:
-    copy:
     ctas:
   config:
     limit:

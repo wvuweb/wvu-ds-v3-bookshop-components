@@ -12,6 +12,8 @@ blueprint:
   heading: Articles
   tags:
   limit: 5
+  postscript:
+    ctas:
   config:
     show_content: false
     hide_thumbnails: false
@@ -22,6 +24,11 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
+    cascade: true
   is_dynamic:
     hidden: true
   limit:
@@ -33,3 +40,11 @@ _inputs:
       allow_empty: true
       values:
         - featured
+_structures:
+  links:
+    style: select
+    values:
+      - value:
+          text:
+          icon:
+          url:

@@ -2,7 +2,7 @@
 spec:
   structures:
     - content_blocks
-  label: "Columns 2"
+  label: "Columns 1-1"
   description: Two-column layout with equal-width columns.
   icon: view_column_2
   tags: [Layout]

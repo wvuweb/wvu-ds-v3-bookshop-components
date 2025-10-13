@@ -68,15 +68,15 @@
           {{ end }}
         {{ end }}
         
-        {{ $src := $params.image }}
+        {{ $src := $params.article_image }}
 
         {{- if not site.Params.env_bookshop_live -}}
           {{ $image := "" }}
           {{/*  Get the image, either from its remote or local source  */}}
           {{ if hasPrefix $src "http"}}
-            {{ $image = resources.GetRemote $params.image }}
+            {{ $image = resources.GetRemote $params.article_image }}
           {{ else }}
-            {{ $image = resources.Get $params.image }}
+            {{ $image = resources.Get $params.article_image }}
           {{ end }}
 
           {{/* Resize images and add them to a variable  */}}
