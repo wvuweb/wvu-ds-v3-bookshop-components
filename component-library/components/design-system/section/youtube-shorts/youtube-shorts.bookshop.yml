@@ -94,6 +94,8 @@ _inputs:
   padding:
     type: auto
     hidden: true
+  remove_container_background:
+    hidden: true
   settings:
     type: object
     options:
