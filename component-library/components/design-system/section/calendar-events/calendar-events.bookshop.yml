@@ -79,6 +79,7 @@ _inputs:
     type: textarea
   hide:
     type: datetime
+    hidden: true
     options:
       timezone: America/New_York
   include_heading_postscript:
@@ -97,12 +98,15 @@ _inputs:
   padding:
     type: auto
     hidden: true
+  remove_container_background:
+    hidden: true
   settings:
     type: object
     options:
       subtype: tabbed
   show:
     type: datetime
+    hidden: true
   tint_opacity:
     type: select
     options:
