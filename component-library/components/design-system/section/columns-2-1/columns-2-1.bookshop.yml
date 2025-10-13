@@ -134,7 +134,7 @@ _inputs:
       structures: _structures.column_blocks
     label: Column
   column_aa:
-    type: array
+    type: object
     options:
       structures: _structures.column_blocks_sm
     label: Column
