@@ -95,7 +95,7 @@ _inputs:
     type: auto
     hidden: true
   remove_container_background:
-    label: Remove Container Background and Hide Heading
+    label: Remove Container Background, Hide Heading / Postscript
   settings:
     type: object
     options:
