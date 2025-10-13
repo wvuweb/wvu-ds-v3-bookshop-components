@@ -2,9 +2,6 @@
 {{ $styles := .settings.styles }}
 {{ $config := .settings.config }}
 {{ $itemBorder := "" }}
-{{ if .settings.layout.margin }}
-  {{ $itemBorder = "border border-1 border-black-50"}}
-{{ end }}
 
 <div class="row gx-xl-6">
   {{ if or .heading .subheading }} 
