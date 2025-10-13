@@ -26,6 +26,7 @@ preview:
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
   copy:
+    type: markdown
     options:
       allowed_sources:
         - ccdam
@@ -38,6 +39,8 @@ _inputs:
     hidden: true
   limit:
     type: number
+  show_content:
+    hidden: true
   tags:
     type: multiselect
     options:
