@@ -81,6 +81,7 @@ _inputs:
     cascade: true
   hide:
     type: datetime
+    hidden: true
     options:
       timezone: America/New_York
   include_heading_postscript:
@@ -113,6 +114,7 @@ _inputs:
     hidden: true
   show:
     type: datetime
+    hidden: true
   # tint_opacity:
   #   type: select
   #   options:

@@ -19,7 +19,7 @@ blueprint:
       bg_subtle:
       # enable_blend: false
       # tint_opacity: '0.7'
-      remove_container_background: false
+      remove_container_background: true
     layout:
       buffer:
       margin:
@@ -94,6 +94,8 @@ _inputs:
     hidden: true
   padding:
     type: auto
+    hidden: true
+  remove_container_background:
     hidden: true
   settings:
     type: object
