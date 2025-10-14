@@ -1,73 +1,75 @@
-{{ if .heading }}
-  <h2 class="h6 bg-wvu-blue text-white wvu-container-box-skewed wvu-container-box-skewed-4 wvu-container-box-skewed-shadow wvu-b-label">{{ .heading }}</h2>
-{{ end }}
+<div class="c-factoids wvu-b-subtle p-5">
+  {{ if .heading }}
+    <h2 class="h6 wvu-b-label mb-3">{{ .heading }}</h2>
+  {{ end }}
 
-<div class="row gx-3">
-  {{ if not site.Data }}
-    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
-  {{ else if and (site.Params.env_bookshop_live) (not .config.show_content) }}
-    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
-  {{ else }}
-
-    {{ $faculty := slice }}
-
-    {{ if not site.Params.env_bookshop_live }}
-      {{ $faculty = where site.RegularPages "Params.type" "eq" "faculty-profile" }}
-      {{ $faculty = where $faculty "Params.tags" "intersect" .tags }}
+  <div class="row gx-3">
+    {{ if not site.Data }}
+      {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
+    {{ else if and (site.Params.env_bookshop_live) (not .config.show_content) }}
+      {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
     {{ else }}
-      {{ $faculty = where site.Data.people_data ".type" "eq" "faculty-profile" }}
-      {{ $faculty = where $faculty ".tags" "intersect" .tags }}
-    {{ end }}
 
-    {{ range $faculty }}
-
-      {{ $params := . }}
+      {{ $faculty := slice }}
 
       {{ if not site.Params.env_bookshop_live }}
-        {{ $params = .Params }}
+        {{ $faculty = where site.RegularPages "Params.type" "eq" "faculty-profile" }}
+        {{ $faculty = where $faculty "Params.tags" "intersect" .tags }}
+      {{ else }}
+        {{ $faculty = where site.Data.people_data ".type" "eq" "faculty-profile" }}
+        {{ $faculty = where $faculty ".tags" "intersect" .tags }}
       {{ end }}
 
-      {{ $src := $params.profile_image }}
+      {{ range $faculty }}
 
-      {{- if not site.Params.env_bookshop_live -}}
-        {{ $image := "" }}
-        {{/*  Get the image, either from its remote or local source  */}}
-        {{ if hasPrefix $src "http"}}
-          {{ $image = resources.GetRemote $src }}
-        {{ else }}
-          {{ $image = resources.Get $src }}
+        {{ $params := . }}
+
+        {{ if not site.Params.env_bookshop_live }}
+          {{ $params = .Params }}
         {{ end }}
-      
-        {{/* Resize images and add them to a variable  */}}
-        {{ if and $image (ne $image.MediaType.SubType "svg") }}
-          {{ $src = ($image.Fill (printf "%dx%d webp" 600 400)).RelPermalink }}
-        {{ end }}
-      {{- end -}}
 
-      <div class="col-6">
+        {{ $src := $params.profile_image }}
 
-        <div class="ratio ratio-3x4 bg-light mb-3">
-          {{ if $params.profile_image }}
-            <img class="object-fit-cover" src="{{ $src }}" alt="Portrait of {{ $params.name }}" />
+        {{- if not site.Params.env_bookshop_live -}}
+          {{ $image := "" }}
+          {{/*  Get the image, either from its remote or local source  */}}
+          {{ if hasPrefix $src "http"}}
+            {{ $image = resources.GetRemote $src }}
+          {{ else }}
+            {{ $image = resources.Get $src }}
           {{ end }}
+        
+          {{/* Resize images and add them to a variable  */}}
+          {{ if and $image (ne $image.MediaType.SubType "svg") }}
+            {{ $src = ($image.Fill (printf "%dx%d webp" 600 400)).RelPermalink }}
+          {{ end }}
+        {{- end -}}
+
+        <div class="col-6">
+
+          <div class="ratio ratio-3x4 bg-light mb-3">
+            {{ if $params.profile_image }}
+              <img class="object-fit-cover" src="{{ $src }}" alt="Portrait of {{ $params.name }}" />
+            {{ end }}
+          </div>
+
+        </div>
+        <div class="col-18">
+
+          <h3 class="h5 mb-1">{{ $params.name }}</h3>
+
+          {{ with $params.position }}
+            <p class="small lh-1 mb-2">
+              {{ range . }}
+                <span class="d-block helvetica-neue-bold">{{ .organization }}</span>
+                <span class="d-block">{{ .title }}</span>
+              {{ end }}
+            </p>
+          {{ end }}
+          <a class="text-decoration-none small" href="{{ .RelPermalink }}">View Bio <span class="fa-regular fa-arrow-right"></span></a>
         </div>
 
-      </div>
-      <div class="col-18">
-
-        <h3 class="h5 mb-1">{{ $params.name }}</h3>
-
-        {{ with $params.position }}
-          <p class="small lh-1">
-            {{ range . }}
-              <span class="d-block helvetica-neue-bold">{{ .organization }}</span>
-              <span class="d-block">{{ .title }}</span>
-            {{ end }}
-          </p>
-        {{ end }}
-        <a class="text-decoration-none text-primary small" href="#">View Bio <span class="fa-regular fa-arrow-right"></span></a>
-      </div>
-
+      {{ end }}
     {{ end }}
-  {{ end }}
+  </div>
 </div>

@@ -11,9 +11,9 @@ spec:
 blueprint:
   heading: Faculty
   tags:
-  postscript:
-    copy:
-    ctas:
+  # postscript:
+  #   copy:
+  #   ctas:
   config:
     show_content: false
   is_dynamic: true
