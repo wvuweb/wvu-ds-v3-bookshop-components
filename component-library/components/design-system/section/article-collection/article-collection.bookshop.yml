@@ -83,7 +83,8 @@ _inputs:
       allow_empty: false
       values: _select_data.color_palettes
       value_key: class
-    cascade: true
+      preview:
+        subtext: These may change depending on what you select for Style and Tone.
   hide:
     type: datetime
     hidden: true
