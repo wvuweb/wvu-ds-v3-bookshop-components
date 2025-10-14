@@ -109,6 +109,8 @@ _inputs:
   settings:
     type: object
     text: Settings Test
+    preview:
+      - key: audience
     context:
       title: Test Title
     options:
