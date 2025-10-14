@@ -109,14 +109,14 @@ _inputs:
   settings:
     type: object
     text: Settings Test
-    preview:
-      text:
-        - key: audience
-      icon: settings
     context:
       title: Test Title
     options:
       subtype: tabbed
+      preview:
+      text:
+        - key: audience
+      icon: settings
   show_content:
     hidden: true
   show:
