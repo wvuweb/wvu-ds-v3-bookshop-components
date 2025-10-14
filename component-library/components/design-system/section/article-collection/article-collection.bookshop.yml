@@ -71,6 +71,8 @@ _inputs:
       allow_empty: true
       values: _select_data.buffers
       value_key: class
+      context:
+        content: If you want the component above this one to overlap on the top, choose "Buffer Top." If you want the component below to overlap, choose "Buffer Bottom." If you want both to overlap, choose "Buffer Both." For either the component above or below that you want to overlap, you must adjust the Margin in that component's Settings > Config.
     cascade: true
   color_palette:
     type: choice
@@ -98,7 +100,8 @@ _inputs:
       allow_empty: true
       values: _select_data.container_margins
       value_key: class
-    cascade: true
+    context:
+      content: If you want this component to overlap the component above, choose "Pull Up." If you want this component to overlap the component below, choose "Pull Down." If you want this component to overlap both, choose "Pull Both." Note, you should add a Buffer to the component above or below (or both), to allow for enough space for this component to overlap.
   max_cols:
     hidden: true
   padding:
@@ -107,7 +110,8 @@ _inputs:
   postscript:
     options:
       preview:
-        text: Text and CTAs That Come After Your Content
+        text: Text and CTAs
+        subtext: These will display after your content.
         icon: more_horiz
   remove_container_background:
     hidden: true
@@ -117,7 +121,7 @@ _inputs:
       subtype: tabbed
       preview:
         text: Styles, Layout and Config
-        subtext: Update colors and fonts, shift the content up or down (or add space for another component to overlap), hide the component, etc.
+        subtext: Update colors and fonts, shift the component up or down, etc.
         icon: settings
   show_content:
     hidden: true
@@ -138,7 +142,7 @@ _inputs:
       preview:
         icon: shoppingmode
     context:
-      content: Articles tagged with these tags will pull into your collection.
+      content: Articles with these tags will pull into your collection.
   tone:
     type: choice
     options:
