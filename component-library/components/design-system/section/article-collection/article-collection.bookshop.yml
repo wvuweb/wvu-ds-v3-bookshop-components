@@ -104,6 +104,10 @@ _inputs:
   padding:
     type: auto
     hidden: true
+  postscript:
+    options:
+      preview:
+        icon: more_horiz
   remove_container_background:
     hidden: true
   settings:
@@ -114,8 +118,7 @@ _inputs:
     options:
       subtype: tabbed
       preview:
-        text:
-          - key: audience
+        text: Testy McTesterson
         icon: settings
   show_content:
     hidden: true
@@ -131,6 +134,10 @@ _inputs:
   #   comment: >-
   #     Use to improve text legibility when using a background image. Disabled
   #     when blend is enabled.
+  tags:
+    options:
+      preview:
+        icon: shoppingmode
   tone:
     type: choice
     options:
