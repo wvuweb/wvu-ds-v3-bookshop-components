@@ -76,7 +76,7 @@
                         </div>
                       {{ end }}
 
-                      {{ if and site.Params.env_bookshop_live .is_dynamic (not .settings.config.show_content) }}
+                      {{ if and site.Params.env_bookshop_live .is_dynamic }}
                         {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
                       {{ else }}
                         {{ partial "bookshop" . }}
@@ -100,7 +100,7 @@
                         </div>
                       {{ end }}
                     {{ else }}
-                      {{ if and site.Params.env_bookshop_live .is_dynamic (not .settings.config.show_content) }}
+                      {{ if and site.Params.env_bookshop_live .is_dynamic }}
                         {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
                       {{ else }}
                         {{ partial "bookshop" . }}
@@ -108,66 +108,66 @@
                     {{ end }}
                   {{ else }}
                     <div class="row justify-content-center gx-xl-5">
-                      {{ with .column_a }}
+                      {{ if .column_a }}
                         <div class="col mb-5 mb-xl-0">
-                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
-                            {{ partial "bookshop" . }}
-                          {{ else }}
+                          {{ if and site.Params.env_bookshop_live .column_a.is_dynamic }}
                             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                          {{ else }}
+                            {{ partial "bookshop" .column_a }}
                           {{ end }}
                         </div>
                       {{ end }}
-                      {{ with .column_b }}
+                      {{ if .column_b }}
                         <div class="col mb-5 mb-xl-0">
-                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
-                            {{ partial "bookshop" . }}
-                          {{ else }}
+                          {{ if and site.Params.env_bookshop_live .column_b.is_dynamic }}
                             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                          {{ else }}
+                            {{ partial "bookshop" .column_b }}
                           {{ end }}
                         </div>
                       {{ end }}
-                      {{ with .column_c }}
+                      {{ if .column_c }}
                         <div class="col mb-5 mb-xl-0">
-                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
-                            {{ partial "bookshop" . }}
-                          {{ else }}
+                          {{ if and site.Params.env_bookshop_live .column_c.is_dynamic }}
                             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                          {{ else }}
+                            {{ partial "bookshop" .column_c }}
                           {{ end }}
                         </div>
                       {{ end }}
-                      {{ with .column_aa }}
+                      {{ if .column_aa }}
                         <div class="col-24 col-lg-10 col-xl-8">
-                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
-                            {{ partial "bookshop" . }}
-                          {{ else }}
+                          {{ if and site.Params.env_bookshop_live .column_aa.is_dynamic }}
                             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                          {{ else }}
+                            {{ partial "bookshop" .column_aa }}
                           {{ end }}
                         </div>
                       {{ end }}
-                      {{ with .column_aaa }}
+                      {{ if .column_aaa }}
                         <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
-                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
-                            {{ partial "bookshop" . }}
-                          {{ else }}
+                          {{ if and site.Params.env_bookshop_live .column_aaa.is_dynamic }}
                             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                          {{ else }}
+                            {{ partial "bookshop" .column_aaa }}
                           {{ end }}
                         </div>
                       {{ end }}
-                      {{ with .column_bbb }}
+                      {{ if .column_bbb }}
                         <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
-                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
-                            {{ partial "bookshop" . }}
-                          {{ else }}
+                          {{ if and site.Params.env_bookshop_live .column_bbb.is_dynamic }}
                             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                          {{ else }}
+                            {{ partial "bookshop" .column_bbb }}
                           {{ end }}
                         </div>
                       {{ end }}
-                      {{ with .column_aaaa }}
+                      {{ if .column_aaaa }}
                         <div class="col-24 col-lg-6 col-xl-4 mb-5 mb-xl-0">
-                          {{ if or (ne .show_content false) (not site.Params.env_bookshop_live) }}
-                            {{ partial "bookshop" . }}
-                          {{ else }}
+                          {{ if and site.Params.env_bookshop_live .column_aaaa.is_dynamic }}
                             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                          {{ else }}
+                            {{ partial "bookshop" .column_aaaa }}
                           {{ end }}
                         </div>
                       {{ end }}
