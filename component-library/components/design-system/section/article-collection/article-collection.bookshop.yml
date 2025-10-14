@@ -108,6 +108,7 @@ _inputs:
     hidden: true
   settings:
     type: object
+    text: Settings Test
     options:
       subtype: tabbed
   show_content:
