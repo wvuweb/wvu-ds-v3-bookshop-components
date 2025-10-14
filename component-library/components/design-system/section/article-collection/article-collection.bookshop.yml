@@ -63,11 +63,13 @@ _inputs:
           class: prospective_students
       value_key: class
     label: Style
+    context:
+      content: This defines the typography palette of the component.
   bg_subtle:
     type: checkbox
     label: Tint/Shade Background
     context:
-      content: If an adjacent component has the same background color as this component, you can select this option to either tint or shade the background color and add separation. 
+      content: If an adjacent component has the same background color as this component, you can select this option to either tint or shade the background color and add separation. Does not work with Let's Go! tone.
   buffer:
     type: select
     options:
@@ -83,8 +85,8 @@ _inputs:
       allow_empty: false
       values: _select_data.color_palettes
       value_key: class
-      preview:
-        subtext: These may change depending on what you select for Style and Tone.
+    context:
+      content: These change depending on what you select for Style and Tone.
   hide:
     type: datetime
     hidden: true
@@ -161,6 +163,8 @@ _inputs:
         - name: Let’s Go!
           class: lets-go
       value_key: class
+    context:
+      content: This will refine the typography palette based on the Style selected.
   ctas:
     type: array
     options:
