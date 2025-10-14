@@ -1,20 +1,4 @@
-{{ $articles := "" }}
-{{ $limit := 5 }}
-{{ $hideThumbnails := "" }}
 
-{{ if .config.limit }}
-  {{ $limit = .config.limit }}
-{{ end }}
-
-{{ with .config.hide_thumbnails }}
-  {{ $hideThumbnails = . }}
-{{ end }}
-
-{{ $tags := slice }}
-
-{{ if .tags }}
-  {{ $tags = .tags }}
-{{ end }}
 
 <div class="p-5 wvu-b-subtle h-100">
   {{ if .heading }}
@@ -23,9 +7,27 @@
 
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
-  {{ else if and (site.Params.env_bookshop_live) (not .config.show_content) }}
-    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
+  {{ else if and site.Params.env_bookshop_live .is_dynamic }}
+    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
   {{ else }}
+
+    {{ $articles := "" }}
+    {{ $limit := 5 }}
+    {{ $hideThumbnails := "" }}
+
+    {{ if .config.limit }}
+      {{ $limit = .config.limit }}
+    {{ end }}
+
+    {{ with .config.hide_thumbnails }}
+      {{ $hideThumbnails = . }}
+    {{ end }}
+
+    {{ $tags := slice }}
+
+    {{ if .tags }}
+      {{ $tags = .tags }}
+    {{ end }}
 
     {{ $articles := slice }}
     {{ $photoEssays := slice }}
