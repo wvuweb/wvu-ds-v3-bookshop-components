@@ -71,8 +71,8 @@ _inputs:
       allow_empty: true
       values: _select_data.buffers
       value_key: class
-      context:
-        content: If you want the component above this one to overlap on the top, choose "Buffer Top." If you want the component below to overlap, choose "Buffer Bottom." If you want both to overlap, choose "Buffer Both." For either the component above or below that you want to overlap, you must adjust the Margin in that component's Settings > Config.
+    context:
+      content: If you want the component above this one to overlap on the top, choose "Buffer Top." If you want the component below to overlap, choose "Buffer Bottom." If you want both to overlap, choose "Buffer Both." For either the component above or below that you want to overlap, you must adjust the Margin in that component's Settings > Config.
     cascade: true
   color_palette:
     type: choice
