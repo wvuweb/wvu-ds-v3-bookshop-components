@@ -109,6 +109,8 @@ _inputs:
   settings:
     type: object
     text: Settings Test
+    context:
+      title: Test Title
     options:
       subtype: tabbed
   show_content:
