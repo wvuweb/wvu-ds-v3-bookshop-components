@@ -86,7 +86,7 @@ _inputs:
       values: _select_data.color_palettes
       value_key: class
     context:
-      content: These change depending on what you select for Style and Tone.
+      content: The options available change depending on the selected Style and Tone.
   hide:
     type: datetime
     hidden: true
