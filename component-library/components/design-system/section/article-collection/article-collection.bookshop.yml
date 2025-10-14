@@ -110,7 +110,9 @@ _inputs:
     type: object
     text: Settings Test
     preview:
-      - key: audience
+      text:
+        - key: audience
+      icon: settings
     context:
       title: Test Title
     options:
