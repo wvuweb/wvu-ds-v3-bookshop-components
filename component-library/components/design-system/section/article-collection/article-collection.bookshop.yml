@@ -114,9 +114,9 @@ _inputs:
     options:
       subtype: tabbed
       preview:
-      text:
-        - key: audience
-      icon: settings
+        text:
+          - key: audience
+        icon: settings
   show_content:
     hidden: true
   show:
