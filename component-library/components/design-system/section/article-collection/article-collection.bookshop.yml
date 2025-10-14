@@ -107,18 +107,17 @@ _inputs:
   postscript:
     options:
       preview:
+        text: Text and CTAs That Come After Your Content
         icon: more_horiz
   remove_container_background:
     hidden: true
   settings:
     type: object
-    text: Settings Test
-    context:
-      title: Test Title
     options:
       subtype: tabbed
       preview:
-        text: Testy McTesterson
+        text: Styles, Layout and Config
+        subtext: Update colors and fonts, shift the content up or down (or add space for another component to overlap), hide the component, etc.
         icon: settings
   show_content:
     hidden: true
@@ -138,6 +137,8 @@ _inputs:
     options:
       preview:
         icon: shoppingmode
+    context:
+      content: Articles tagged with these tags will pull into your collection.
   tone:
     type: choice
     options:
