@@ -144,7 +144,11 @@ _inputs:
   #     Use to improve text legibility when using a background image. Disabled
   #     when blend is enabled.
   tags:
+    tags:
+    type: multiselect
     options:
+      allow_create: true
+      allow_empty: true
       preview:
         icon: shoppingmode
     context:
