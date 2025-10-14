@@ -65,6 +65,9 @@ _inputs:
     label: Style
   bg_subtle:
     type: checkbox
+    label: Tint/Shade Background
+    context:
+      content: If an adjacent component has the same background color as this component, you can select this option to either tint or shade the background color and add separation. 
   buffer:
     type: select
     options:
