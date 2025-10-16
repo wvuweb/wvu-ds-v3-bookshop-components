@@ -21,7 +21,7 @@ blueprint:
   copy:
   add_quotemark: false
   profile_url:
-  video_url:
+  video_id:
   video_image:
   ctas:
   settings:
