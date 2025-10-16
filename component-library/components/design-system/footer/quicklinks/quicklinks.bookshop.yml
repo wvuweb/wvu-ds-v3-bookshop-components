@@ -20,10 +20,4 @@ _inputs:
   items:
     type: array
     options:
-      structures: _structures.quicklink_item
-_structures:
-  quicklink_item:
-    options:
-      values:
-        - text:
-          url:
+      structures: _structures.f_quicklink_item
