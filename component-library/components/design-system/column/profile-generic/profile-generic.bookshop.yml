@@ -2,7 +2,7 @@
 spec:
   structures:
     - column_blocks
-  label: "Column Profile"
+  label: "Profile - Generic"
   description:
   icon:
   tags: []
@@ -16,9 +16,7 @@ blueprint:
   image:
   is_cutout: false
   super_heading:
-    - Label
   info:
-    - Morgantown, WV
   copy:
   ctas:
   is_dynamic: false
@@ -40,17 +38,25 @@ _inputs:
   image:
     type: image
     options:
+      required: true
       allowed_sources:
         - ccdam
       width: 1920
       height: 1080
+  info:
+    type: array
+  info[*]:
+    type: text
   is_dynamic:
     hidden: true
+  super_heading:
+    type: array
+  super_heading[*]:
+    type: text
 _structures:
   links:
     style: select
     values:
       - value:
           text:
-          icon:
           url:
