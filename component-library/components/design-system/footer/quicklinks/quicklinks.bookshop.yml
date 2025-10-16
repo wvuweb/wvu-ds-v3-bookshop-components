@@ -25,6 +25,5 @@ _structures:
   quicklink_item:
     options:
       values:
-        - value:
-            text:
-            url:
+        - text:
+          url:
