@@ -15,9 +15,7 @@ blueprint:
   name: Firstname Lastname
   image:
   super_heading:
-    - Label
   info:
-    - Morgantown, WV
   copy:
   add_quotemark: false
   profile_url:
@@ -94,6 +92,10 @@ _inputs:
       timezone: America/New_York
   include_heading_postscript:
     hidden: true
+  info:
+    type: array
+  info[*]:
+    type: text
   is_dynamic:
     hidden: true
   is_nested:
@@ -105,6 +107,10 @@ _inputs:
     type: object
     options:
       subtype: tabbed
+  super_heading:
+    type: array
+  super_heading[*]:
+    type: text
   tone:
     type: choice
     options:

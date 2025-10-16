@@ -21,6 +21,7 @@ blueprint:
   add_quotemark: false
   profile_url:
   ctas:
+  video_id:
   is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
