@@ -14,7 +14,7 @@ blueprint:
   tags: []
   postscript:
     copy:
-    ctas:
+    # ctas:
   settings:
     styles:
       audience: general

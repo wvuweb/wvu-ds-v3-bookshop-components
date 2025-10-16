@@ -16,7 +16,7 @@ blueprint:
       icon: 
   postscript:
     copy:
-    postscript_links:
+    # postscript_links:
   settings:
     styles:
       audience: general

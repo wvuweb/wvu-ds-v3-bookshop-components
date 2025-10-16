@@ -17,7 +17,7 @@ blueprint:
       ratio: 9x16
   postscript:
     copy:
-    ctas:
+    # ctas:
   settings:
     styles:
       audience: general

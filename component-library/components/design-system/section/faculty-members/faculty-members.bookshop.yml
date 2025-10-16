@@ -15,7 +15,7 @@ blueprint:
   link_text: View Profile
   postscript:
     copy:
-    ctas:
+    # ctas:
   settings:
     styles:
       audience: general

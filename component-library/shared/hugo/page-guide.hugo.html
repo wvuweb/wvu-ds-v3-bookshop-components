@@ -89,14 +89,6 @@
                               {{ . | markdownify }}
                             </div>
                           {{ end }}
-
-                          {{ with .ctas }}
-                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                              {{ range . }}
-                                <a class="btn wvu-b-subtle" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-                              {{ end }}
-                            </div>
-                          {{ end }}
                         </div>
                       {{ end }}
                     {{ else }}

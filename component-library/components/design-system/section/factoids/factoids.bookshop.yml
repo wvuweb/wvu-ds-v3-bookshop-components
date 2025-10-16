@@ -20,7 +20,7 @@ blueprint:
       source:
   postscript:
     copy:
-    ctas:
+    # ctas:
   settings:
     styles:
       audience: general

@@ -16,7 +16,7 @@ blueprint:
       contact:
   postscript:
     copy:
-    ctas:
+    # ctas:
   settings:
     styles:
       audience: general
