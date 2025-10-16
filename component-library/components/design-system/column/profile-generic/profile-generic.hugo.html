@@ -79,7 +79,9 @@
             <div class="my-3">
               {{ .copy | markdownify }}
             </div>
-            <p><a href="" class="text-decoration-none wvu-b-accent-text"><span class="fa-solid fa-user-circle"></span> View Profile</a></p>
+            {{ if .profile_url }}
+              <p><a href="{{ .profile_url }}" class="text-decoration-none wvu-b-accent-text"><span class="fa-solid fa-user-circle"></span> View Profile</a></p>
+            {{ end }}
           </div>
         </div>
         <div class="col-md-7 col-xl-7 d-flex align-items-center position-relative">
@@ -97,21 +99,23 @@
                   </div>
                 </div>
               {{ end }}
-              <div class="col-sm col-md-24">
-                <div class="ms-n3 me-n4 wvu-z-index-content">
-                  <div class="me-n5">
-                    <div class="ratio ratio-16x9 bg-dark position-relative wvu-shadow-hard-filter">
-                      <div class="wvu-bg-image">
-                        <img class="position-absolute h-100 w-100 object-fit-cover" src="https://img.youtube.com/vi/{{ .video_id }}/hqdefault.jpg" alt="" />
-                        <div class="position-absolute wvu-bg-tint w-100 h-100" style="opacity: 0.7;"></div>
-                      </div>
-                      <div class="wvu-b-accent-text d-flex w-100 h-100 align-items-center justify-content-center">
-                        <a class="small d-block me-2 mt-n1 text-white text-decoration-none stretched-link" href="https://www.youtube.com/watch?v={{ .video_id }}">Watch Video</a> <span class="d-block fa-regular fa-circle-play h2 text-white"></span>
+              {{ if .video_id }}
+                <div class="col-sm col-md-24">
+                  <div class="ms-n3 me-n4 wvu-z-index-content">
+                    <div class="me-n5">
+                      <div class="ratio ratio-16x9 bg-dark position-relative wvu-shadow-hard-filter">
+                        <div class="wvu-bg-image">
+                          <img class="position-absolute h-100 w-100 object-fit-cover" src="https://img.youtube.com/vi/{{ .video_id }}/hqdefault.jpg" alt="" />
+                          <div class="position-absolute wvu-bg-tint w-100 h-100" style="opacity: 0.7;"></div>
+                        </div>
+                        <div class="wvu-b-accent-text d-flex w-100 h-100 align-items-center justify-content-center">
+                          <a class="small d-block me-2 mt-n1 text-white text-decoration-none stretched-link" href="https://www.youtube.com/watch?v={{ .video_id }}">Watch Video</a> <span class="d-block fa-regular fa-circle-play h2 text-white"></span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              {{ end }}
             </div>
           </div>
         </div>
