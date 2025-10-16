@@ -1,7 +1,6 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - footer_blocks
   label: "Location Map"
   description:
   icon:
@@ -15,3 +14,4 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+
