@@ -23,7 +23,6 @@ _inputs:
       structures: _structures.quicklink_item
 _structures:
   quicklink_item:
-    options:
-      values:
-        - text:
-          url:
+    values:
+      - text:
+        url:
