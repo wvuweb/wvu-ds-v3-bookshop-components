@@ -24,5 +24,6 @@ _inputs:
 _structures:
   quicklink_item:
     values:
-      - text:
-        url:
+      - value:
+          text:
+          url:
