@@ -20,7 +20,7 @@ blueprint:
       audience: general
       tone: default
       card_c: option-2
-      bg_subtle:
+      bg_subtle: false
       enable_blend: false
       tint_opacity: '0.7'
   is_dynamic: false
@@ -45,6 +45,12 @@ _inputs:
           class: prospective_students
       value_key: class
     label: Style
+  card_c:
+    type: choice
+    options:
+      allow_empty: false
+      values: _select_data.color_palettes
+      value_key: class
   image:
     type: image
     options:
@@ -59,6 +65,22 @@ _inputs:
     type: object
     options:
       subtype: tabbed
+  tint_opacity:
+    hidden: true
+  tone:
+    type: choice
+    options:
+      allow_empty: false
+      values:
+        - name: Default
+          class: default
+        - name: Reserved
+          class: reserved
+        - name: Loud
+          class: loud
+        - name: Let’s Go!
+          class: lets-go
+      value_key: class
 _select_data:
   color_palettes:
     - name: Option 1
