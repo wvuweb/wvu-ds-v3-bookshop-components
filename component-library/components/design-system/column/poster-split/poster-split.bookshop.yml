@@ -19,7 +19,7 @@ blueprint:
   postscript_links:
   settings:
     styles:
-      background_c:
+      color_palette: option-2
   is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -31,13 +31,12 @@ _inputs:
     hidden: '!image'
     options:
       required: true
-  background_c:
-    type: select
+  color_palette:
+    type: choice
     options:
-      allow_empty: true
-      values: _select_data.brand_colors
+      allow_empty: false
+      values: _select_data.color_palettes
       value_key: class
-    label: Background Color
   body:
     type: markdown
     options:
@@ -67,75 +66,23 @@ _inputs:
     options:
       subtype: tabbed
 _select_data:
-  brand_colors:
-    - name: WVU Gold
-      background_classes: bg-wvu-gold text-dark
-      class: wvu-gold
-      rgba: 234,170,0
-    - name: WVU Blue
-      background_classes: bg-wvu-blue text-white
-      class: wvu-blue
-      rgba: 0, 40, 85
-    - name: Safety Blue
-      background_classes: bg-wvu-safety-blue text-white
-      class: wvu-safety-blue
-      rgba: 0, 98, 163
-    - name: Coal
-      background_classes: bg-wvu-coal text-white
-      class: wvu-coal
-      rgba: 28, 43, 57
-    - name: Star City Blue
-      background_classes: bg-wvu-star-city-blue text-dark
-      class: wvu-star-city-blue
-      rgba: 157, 218, 230
-    - name: Canary
-      background_classes: bg-wvu-canary text-dark
-      class: wvu-canary
-      rgba: 255, 229, 57
-    - name: Old Gold
-      background_classes: bg-wvu-old-gold text-white
-      class: wvu-old-gold
-      rgba: 127, 99, 16
-    - name: Sunset
-      background_classes: bg-wvu-sunset text-dark
-      class: wvu-sunset
-      rgba: 245, 134, 114
-    - name: Not Quite White
-      background_classes: bg-wvu-not-quite-white text-dark
-      class: wvu-not-quite-white
-      rgba: 247, 247, 247
-    - name: Cooper's Gray
-      background_classes: bg-wvu-coopers-gray text-dark
-      class: wvu-coopers-gray
-      rgba: 190,183,179
-    - name: Seneca Gray
-      background_classes: bg-wvu-seneca-gray text-dark
-      class: wvu-seneca-gray
-      rgba: 152, 142, 139
-    - name: Rattler Gray
-      background_classes: bg-wvu-rattler-gray text-white
-      class: wvu-rattler-gray
-      rgba: 85, 71, 65
-    - name: Wild Flour
-      background_classes: bg-wvu-wild-flour text-dark
-      class: wvu-wild-flour
-      rgba: 242, 230, 194
-    - name: Buckskin
-      background_classes: bg-wvu-buckskin text-dark
-      class: wvu-buckskin
-      rgba: 179, 161, 105
-    - name: Transparent (Dark Text)
-      background_classes: bg-transparent text-dark
-      class: transparent
-      rgba:
-    - name: Transparent (Light Text)
-      background_classes: bg-transparent text-white
-      class: transparent
-      rgba:
-    - name: Dark
-      background_classes: bg-dark text-white
-      class: dark
-      rgba: 42, 42, 41
+  color_palettes:
+    - name: Option 1
+      class: option-1
+    - name: Option 2
+      class: option-2
+    - name: Option 3
+      class: option-3
+    - name: Option 4
+      class: option-4
+    - name: Option 5
+      class: option-5
+    - name: Option 6
+      class: option-6
+    - name: Option 7
+      class: option-7
+    - name: Option 8
+      class: option-8
 _structures:
   links:
     style: select

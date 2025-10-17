@@ -74,14 +74,12 @@ _inputs:
       allow_empty: true
       values: _select_data.buffers
       value_key: class
-    cascade: true
   color_palette:
     type: choice
     options:
       allow_empty: false
       values: _select_data.color_palettes
       value_key: class
-    cascade: true
   hide:
     type: datetime
     options:
@@ -98,7 +96,6 @@ _inputs:
       allow_empty: true
       values: _select_data.container_margins
       value_key: class
-    cascade: true
   padding:
     type: auto
     hidden: true
