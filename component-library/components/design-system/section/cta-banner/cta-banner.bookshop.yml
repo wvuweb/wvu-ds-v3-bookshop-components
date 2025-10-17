@@ -2,7 +2,6 @@
 spec:
   structures:
     - content_blocks
-    - default_content_blocks
   label: "CTA Banner"
   description: A banner with a call to action button.
   icon: campaign
