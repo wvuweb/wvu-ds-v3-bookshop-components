@@ -24,11 +24,11 @@
     <div class="col-lg-12 d-flex align-items-center h-100">
       <div class="p-5 wvu-z-index-content">
         <div class="wvu-p-max-width">
-          <h2 id="-label" class="display-4 wvu-b-display-heading mb-3" data-text="{{ .heading }}">{{ .heading }}</h2>
+          <h2 id="-label" class="display-4 wvu-b-display-heading mb-3" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
 
           {{ with .subheading }}
-            <p class="lead py-1">
-              {{ . }}
+            <p class="wvu-b-subheading py-1">
+              <span class="wvu-b-font-adjust">{{ . }}</span>
             </p>
           {{ end }}
   
