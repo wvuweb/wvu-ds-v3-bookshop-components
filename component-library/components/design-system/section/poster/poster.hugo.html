@@ -61,13 +61,21 @@
             </div>
           {{ end }}
 
-          {{ with .postscript_links }}
-            <p class="mt-3">
-              {{- range $i, $l := . }}
-                {{- if gt $i 0 }} | {{- end }}
-                <a class="text-decoration-none small" href=".url">{{ .text }}{{ if .icon }} <span class="fa-solid fa-{{ .icon }}"></span>{{ end }}</a>
-              {{ end }}
-            </p>
+          {{ if .postscript_links }}
+            {{ if not site.Params.env_bookshop_live }}
+              <p class="mt-3">
+                {{- range $i, $l := .postscript_links }}
+                  {{- if gt $i 0 }} | {{- end }}
+                  <a class="text-decoration-none" href=".url">{{ .text }}{{ if .icon }} <span class="fa-solid fa-{{ .icon }}"></span>{{ end }}</a>
+                {{ end }}
+              </p>
+            {{ else }}
+              <p class="mt-3">
+                {{- range .postscript_links }}
+                  <a class="text-decoration-none" href=".url">{{ .text }}{{ if .icon }} <span class="fa-solid fa-{{ .icon }}"></span>{{ end }}</a>
+                {{ end }}
+              </p>
+            {{ end }}
           {{ end }}
         </div>
       </div>
