@@ -1,7 +1,6 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - default_content_blocks
   label: "Quicklinks"
   description: Compact grid of links for fast navigation.
   icon: add_link
@@ -14,26 +13,10 @@ blueprint:
   links:
     - text: Text
       url: /url
-  settings:
-    styles:
-      audience: general
-      tone: default
-      color_palette: option-1
-      bg_subtle:
-      # enable_blend: false
-      # tint_opacity: '0.7'
-      remove_container_background: false
-    layout:
-      buffer:
-      margin:
-      padding: py-6 py-xxl-7
-    config:
-      name: quicklinks
-      edit_mode_only: false
-      include_heading_postscript: false
-  is_dynamic: false
-  is_nested: false
-  use_common_wrapper: true
+  audience: general
+  tone: default
+  color_palette: option-1
+  bg_subtle: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -42,7 +25,7 @@ preview:
 _inputs:
   # Settings
   audience:
-    type: choice
+    type: select
     options:
       allow_empty: false
       values:
@@ -58,52 +41,13 @@ _inputs:
     label: Style
   bg_subtle:
     type: checkbox
-  buffer:
+  color_palette:
     type: select
     options:
-      allow_empty: true
-      values: _select_data.buffers
-      value_key: class
-    cascade: true
-  color_palette:
-    type: choice
-    options:
-      allow_empty: false
       values: _select_data.color_palettes
       value_key: class
-    cascade: true
-  include_heading_postscript:
-    hidden: true
-  is_dynamic:
-    hidden: true
-  is_nested:
-    hidden: true
-  margin:
-    type: select
-    options:
-      allow_empty: true
-      values: _select_data.container_margins
-      value_key: class
-    cascade: true
-  padding:
-    type: auto
-    hidden: true
-  settings:
-    type: object
-    options:
-      subtype: tabbed
-  # tint_opacity:
-  #   type: select
-  #   options:
-  #     allow_empty: true
-  #     values: _select_data.tint_opacities
-  #     value_key: value
-  #   comment: >-
-  #     Use to improve text legibility when using a background image. Disabled
-  #     when blend is enabled.
-  #   cascade: true
   tone:
-    type: choice
+    type: select
     options:
       allow_empty: false
       values:
@@ -116,9 +60,6 @@ _inputs:
         - name: Let’s Go!
           class: lets-go
       value_key: class
-  use_common_wrapper:
-    type: auto
-    hidden: true
 _select_data:
   buffers:
     - name: Buffer Top
@@ -151,12 +92,3 @@ _select_data:
       class: mb-n8 mb-xxl-n9
     - name: Pull Both
       class: my-n8 my-xxl-n9
-  # tint_opacities:
-  #   - name: None
-  #     value: '0.0'
-  #   - name: Light
-  #     value: '0.3'
-  #   - name: Medium
-  #     value: '0.5'
-  #   - name: Dark
-  #     value: '0.7'
