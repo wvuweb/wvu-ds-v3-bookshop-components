@@ -31,6 +31,10 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
   image:
     type: image
     options:
@@ -49,3 +53,10 @@ _inputs:
     type: array
   super_heading[*]:
     type: text
+_structures:
+  links:
+    style: select
+    values:
+      - value:
+          text:
+          url:

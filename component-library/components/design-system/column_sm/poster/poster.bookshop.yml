@@ -17,8 +17,8 @@ blueprint:
   url:
   settings:
     styles:
-      audience:
-      tone:
+      audience: general
+      tone: default
       card_c: option-2
       bg_subtle:
       enable_blend: false
