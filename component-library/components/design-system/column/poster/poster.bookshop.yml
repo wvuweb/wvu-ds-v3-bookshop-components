@@ -87,6 +87,8 @@ _inputs:
       subtype: tabbed
   text_align:
     hidden: true
+  tine_opacity:
+    hidden: true
   tone:
     type: choice
     options:

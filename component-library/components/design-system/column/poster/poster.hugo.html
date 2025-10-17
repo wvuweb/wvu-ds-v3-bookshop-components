@@ -1,4 +1,9 @@
 {{ $src := .image }}
+{{ $backgroundColor := .settings.styles.card_c }}
+
+{{ if $src }}
+  {{ $backgroundColor = "option-2" }}
+{{ end }}
 
 {{ if not site.Params.env_bookshop_live }}
   {{ $image := "" }}
@@ -13,11 +18,11 @@
   {{ if and $image (ne $image.MediaType.SubType "svg") }}{{ $src = ($image.Fill "960x640 webp").RelPermalink }}{{ end }}
 {{ end }}
 
-<div class="h-100 audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} bg-{{ .settings.styles.card_c }} position-relative">
+<div class="h-100 wvu-b-shadow wvu-b-border wvu-b-subtle audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} bg-{{ $backgroundColor }} position-relative">
   {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
   <div class="row h-100">
     <div class="col-lg-12 d-flex align-items-center h-100">
-      <div class="p-5 wvu-z-index-content text-white">
+      <div class="p-5 wvu-z-index-content">
         <div class="wvu-p-max-width">
           <h2 id="-label" class="display-4 wvu-b-display-heading mb-3" data-text="{{ .heading }}">{{ .heading }}</h2>
 
@@ -49,7 +54,7 @@
             <p class="mt-3">
               {{- range $i, $l := . }}
                 {{- if gt $i 0 }} | {{- end }}
-                <a class="text-white" href=".url">{{ .text }}{{ if .icon }} <span class="fa-solid fa-{{ .icon }}"></span>{{ end }}</a>
+                <a class="text-decoration-none" href=".url">{{ .text }}{{ if .icon }} <span class="fa-solid fa-{{ .icon }}"></span>{{ end }}</a>
               {{ end }}
             </p>
           {{ end }}
