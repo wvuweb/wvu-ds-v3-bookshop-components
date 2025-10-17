@@ -13,7 +13,7 @@
   {{ if and $image (ne $image.MediaType.SubType "svg") }}{{ $src = ($image.Fill "960x640 webp").RelPermalink }}{{ end }}
 {{ end }}
 
-<div class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} bg-{{ .settings.styles.card_c }} h-100 position-relative h-100">
+<div class="wvu-b-shadow wvu-b-border {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }} audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} bg-{{ .settings.styles.card_c }} h-100 position-relative h-100">
   {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
   <div class="p-4 wvu-z-index-content d-flex flex-column h-100">
     {{ with .label }}
