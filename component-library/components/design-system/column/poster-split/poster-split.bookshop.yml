@@ -19,7 +19,9 @@ blueprint:
   postscript_links:
   settings:
     styles:
-      color_palette: option-2
+      audience: general
+      tone: default
+      color_palette: option-4
   is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -31,6 +33,21 @@ _inputs:
     hidden: '!image'
     options:
       required: true
+  audience:
+    type: choice
+    options:
+      allow_empty: false
+      values:
+        - name: General
+          class: general
+        - name: Academic / Traditional
+          class: alumni
+        - name: Modern + Formal
+          class: leaders_partners
+        - name: Prospective Students
+          class: prospective_students
+      value_key: class
+    label: Style
   color_palette:
     type: choice
     options:
@@ -65,6 +82,20 @@ _inputs:
     type: object
     options:
       subtype: tabbed
+  tone:
+    type: choice
+    options:
+      allow_empty: false
+      values:
+        - name: Default
+          class: default
+        - name: Reserved
+          class: reserved
+        - name: Loud
+          class: loud
+        - name: Let’s Go!
+          class: lets-go
+      value_key: class
 _select_data:
   color_palettes:
     - name: Option 1
