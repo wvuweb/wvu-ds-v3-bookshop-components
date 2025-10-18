@@ -30,13 +30,13 @@ blueprint:
       tone: loud
       color_palette: option-2
       enable_blend: false
-      enable_pattern: false
+      # enable_pattern: false
       tint_opacity: "0.7"
-      heading_size: display-2
+      # heading_size: display-2
     layout:
       buffer:
       text_placement: mx-auto text-center
-      background_position:
+      # background_position:
     config:
       show_label: true
 
