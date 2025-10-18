@@ -4,6 +4,7 @@ spec:
     - column_blocks
     - detail_blocks
     - detail_sidebar_blocks
+    - info_card_sidebar_blocks
   label: "Link List Panels"
   description:
   icon:

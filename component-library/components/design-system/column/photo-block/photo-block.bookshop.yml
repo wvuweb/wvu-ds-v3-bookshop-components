@@ -3,6 +3,7 @@ spec:
   structures:
     - article_blocks
     - detail_blocks
+    - info_card_sidebar_blocks
   label: "Photo Block"
   description:
   icon:

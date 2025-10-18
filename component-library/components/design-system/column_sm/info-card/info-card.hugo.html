@@ -1,8 +1,8 @@
-<div class="wvu-bg-shadow wvu-b-shadow wvu-b-border wvu-b-subtle p-5">
+<div class="bg-wvu-not-quite-white wvu-bg-shadow wvu-b-shadow wvu-b-border wvu-b-subtle p-5">
   <div class="mb-4">
-    <h2 class="h1 wvu-b-subheading wvu-b-accent-text mb-4"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>  
+    <h2 class="h3 wvu-b-subheading wvu-b-accent-text mb-4"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>  
     {{ with .subheading }}
-      <p>{{ . }}</p>
+      <p class="wvu-b-heading h5"><span class="wvu-b-font-adjust">{{ . }}</span></p>
     {{ end }}
   </div>
   {{ .copy | markdownify }}

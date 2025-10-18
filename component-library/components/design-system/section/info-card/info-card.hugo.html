@@ -1,0 +1,18 @@
+<div class="bg-wvu-not-quite-white wvu-b-subtle wvu-b-border p-5">
+  <div class="row">
+    <div class="col-lg">
+      <div class="mb-4">
+        <h2 class="h1 wvu-b-subheading mb-4"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>  
+        {{ with .subheading }}
+          <p class="h4 wvu-b-heading"><span class="wvu-b-font-adjust">{{ . }}</span></p>
+        {{ end }}
+      </div>
+      {{ .markdown | markdownify }}
+    </div>
+    {{ if .info_card_sidebar_blocks }}
+      {{ range .info_card_sidebar_blocks }}
+        {{ partial "bookshop" . }}
+      {{ end }}
+    {{ end }}
+  </div>
+</div>

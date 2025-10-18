@@ -14,12 +14,13 @@ blueprint:
   label:
   background_image:
   alt_text:
+  info_card_sidebar_blocks:
   settings:
     styles:
       audience: general
       tone: loud
       color_palette: option-2
-      bg_subtle:
+      bg_subtle: false
       enable_blend: false
     layout:
       buffer:
