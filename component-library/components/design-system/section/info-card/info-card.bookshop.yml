@@ -25,6 +25,7 @@ blueprint:
     layout:
       buffer:
       margin:
+      max_cols: 16
       padding: py-6 py-xxl-7
     config:
       name: hero
