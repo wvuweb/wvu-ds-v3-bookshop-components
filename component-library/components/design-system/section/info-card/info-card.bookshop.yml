@@ -11,7 +11,7 @@ spec:
 blueprint:
   heading:
   subheading:
-  label:
+  markdown:
   background_image:
   alt_text:
   info_card_sidebar_blocks:
