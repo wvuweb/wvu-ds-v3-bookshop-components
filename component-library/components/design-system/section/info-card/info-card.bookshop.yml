@@ -39,6 +39,10 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  alt_text:
+    hidden: '!background_image'
+    options:
+      required: true
   audience:
     type: choice
     options:
@@ -54,6 +58,13 @@ _inputs:
           class: prospective_students
       value_key: class
     label: Style
+  buffer:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.buffers
+      value_key: class
+    cascade: true
   color_palette:
     type: choice
     options:
@@ -65,6 +76,15 @@ _inputs:
   is_dynamic:
     hidden: true
   is_nested:
+    hidden: true
+  margin:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.container_margins
+      value_key: class
+    cascade: true
+  padding:
     hidden: true
   settings:
     type: object
@@ -88,6 +108,13 @@ _inputs:
     type: auto
     hidden: true
 _select_data:
+  buffers:
+    - name: Buffer Top
+      class: pt-6
+    - name: Buffer Bottom
+      class: pb-6
+    - name: Buffer Both
+      class: py-6
   color_palettes:
     - name: Option 1
       class: option-1
@@ -105,3 +132,10 @@ _select_data:
       class: option-7
     - name: Option 8
       class: option-8
+  container_margins:
+    - name: Pull Up
+      class: mt-n8 mt-xxl-n9
+    - name: Pull Down
+      class: mb-n8 mb-xxl-n9
+    - name: Pull Both
+      class: my-n8 my-xxl-n9
