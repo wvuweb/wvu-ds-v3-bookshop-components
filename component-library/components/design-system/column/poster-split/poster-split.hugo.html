@@ -32,10 +32,12 @@
             </div>
           {{ end }}
   
-          {{ if .ctas }}
-            {{ range .ctas }}
-              {{ partial "bookshop" (slice "design-system/generic/button" .) }}
-            {{ end }}
+          {{ with .ctas }}
+            <p class="mb-0">
+              {{ range . }}
+                <a class="btn wvu-b-btn btn-sm mb-1 me-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+              {{ end }}
+            </p>
           {{ end }}
 
           {{ if .postscript_links }}
