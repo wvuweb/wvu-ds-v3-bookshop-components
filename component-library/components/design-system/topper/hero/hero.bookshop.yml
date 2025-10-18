@@ -17,10 +17,6 @@ blueprint:
   subheading: Subheading.
   markdown:
   ctas:
-    - text:
-      button_c:
-      icon:
-      url:
   postscript:
     markdown:
     ctas:
@@ -38,7 +34,8 @@ blueprint:
       text_placement: mx-auto text-center
       # background_position:
     config:
-      show_label: true
+      name: hero
+      edit_mode_only: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -89,6 +86,10 @@ _inputs:
       allow_empty: false
       values: _select_data.color_palettes
       value_key: class
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
   heading_size:
     type: select
     options:
@@ -158,3 +159,10 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
+_structures:
+  links:
+    values:
+      - value:
+          text:
+          icon:
+          url:
