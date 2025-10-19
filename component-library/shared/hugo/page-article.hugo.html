@@ -6,14 +6,7 @@
   {{ $related = .related }}
 {{- end -}}
 
-{{ if and .topper .topper._bookshop_name }}
-  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params "title" .params.title)) }}
-  {{ if ne .topper._bookshop_name "design-system/topper/article" }}
-    {{ $containerMargin = "mt-n9" }}
-  {{ end }}
-{{ else }}
-  {{ partial "bookshop" (slice "design-system/topper/article" (dict "topper" .topper "params" .params "title" .params.title)) }}
-{{ end }}
+
 
 <div class="py-6 position-relative audience-general tone-default wvu-b-subtle">
   <div class="container {{ $containerMargin }}">
