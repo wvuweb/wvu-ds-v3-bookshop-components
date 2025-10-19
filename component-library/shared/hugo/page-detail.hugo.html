@@ -7,20 +7,15 @@
 <main class="py-6 tone-default bg-option-1 wvu-b-subtle">
   <div class="container text-dark">
     <div class="row gx-xxl-6 mb-n5">
-      {{ if not site.Params.env_bookshop_live }}
-        {{ if and page.CurrentSection.Pages (not .hide_section_menu) }}
+      {{ if .subnav }}
+        {{- if not site.Params.env_bookshop_live -}}
           <div class="col-24 col-xl-6 mb-6 mb-xl-5">
-            <h2 class="wvu-b-label h6 mb-4">Section Menu</h2>
-            {{- if not site.Params.env_bookshop_live -}}
-              {{ partial "section-menu" . }}
-            {{- end -}}
+            {{ partial "vertical-subnav" .subnav }}
           </div>
-        {{ end }}
-      {{ else }}
-        {{ if not .hide_section_menu }}
+        {{ else }}
           <div class="col-24 col-xl-6 mb-6 mb-xl-5">
-            <h2 class="wvu-b-label h6 mb-4">Section Menu</h2>
-            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
+            <h2 class="wvu-b-label h6 mb-4">{{ .subnav.label }}</h2>
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
           </div>
         {{ end }}
       {{ end }}
