@@ -34,7 +34,7 @@ blueprint:
       text_placement: mx-auto text-center
       # background_position:
     config:
-      name: hero
+      name: topper-hero
       edit_mode_only: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

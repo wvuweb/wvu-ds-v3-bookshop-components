@@ -17,7 +17,7 @@ blueprint:
     - text:
       url:
       icon:
-      button_c:
+      # button_c:
   settings:
     styles:
       audience: general

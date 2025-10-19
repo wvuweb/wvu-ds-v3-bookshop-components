@@ -8,7 +8,7 @@
         {{ end }}
       </div>
       {{ range .buttons }}
-        <a class="btn {{ if .button_c }}btn-{{ .button_c }}{{ else }}wvu-b-btn{{ end }} mb-1" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+        <a class="btn wvu-b-btn mb-1" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
       {{ end }}
     </div>
   </div>
