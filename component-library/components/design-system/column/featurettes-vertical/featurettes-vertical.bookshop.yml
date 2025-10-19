@@ -17,7 +17,7 @@ blueprint:
       image:
       alt_text:
       # label:
-      badge:
+      # badge:
       text: Item 1 text.
       ctas:
   is_dynamic: false

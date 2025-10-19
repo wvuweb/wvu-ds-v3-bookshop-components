@@ -16,8 +16,8 @@ blueprint:
     - title: Item 1 Title
       image:
       alt_text:
-      label:
-      badge:
+      # label:
+      # badge:
       url:
   settings:
     styles:

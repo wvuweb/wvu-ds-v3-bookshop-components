@@ -14,8 +14,8 @@ blueprint:
   items:
     - title: Item 1 Title
       icon:
-      label:
-      badge:
+      # label:
+      # badge:
       text: Item 1 text.
       ctas:
   settings:
