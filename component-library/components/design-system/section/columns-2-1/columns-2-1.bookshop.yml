@@ -28,7 +28,6 @@ blueprint:
       padding: py-6 py-xxl-7
     config:
       name: columns-2-1
-      instance:
       edit_mode_only: false
       include_heading_postscript: false
       # show: 2024-09-01
