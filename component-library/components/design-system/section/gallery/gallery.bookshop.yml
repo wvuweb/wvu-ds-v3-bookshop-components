@@ -35,6 +35,7 @@ _inputs:
     hidden: true
   settings:
     type: object
+    hidden: true
     options:
       subtype: tabbed
   use_common_wrapper:

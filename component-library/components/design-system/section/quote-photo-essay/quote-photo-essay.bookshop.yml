@@ -32,6 +32,7 @@ _inputs:
     type: textarea
   settings:
     type: object
+    hidden: true
     options:
       subtype: tabbed
   title:
