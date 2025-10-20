@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Search"
-  description:
-  icon: 
+  description: Search your site’s pages.
+  icon: search
   tags: []
 
 # Defines the structure of this component, as well as the default values

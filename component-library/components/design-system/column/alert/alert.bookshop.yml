@@ -3,7 +3,7 @@ spec:
   structures:
     - detail_blocks
   label: "Alert"
-  description:
+  description: Callout for warnings, info, etc.
   icon: info
   tags: []
 

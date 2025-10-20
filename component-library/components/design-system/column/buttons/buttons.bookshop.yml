@@ -3,8 +3,8 @@ spec:
   structures:
     - detail_blocks
   label: "Buttons"
-  description:
-  icon:
+  description: A list of CTA buttons.
+  icon: buttons_alt
   tags: []
 
 # Defines the structure of this component, as well as the default values

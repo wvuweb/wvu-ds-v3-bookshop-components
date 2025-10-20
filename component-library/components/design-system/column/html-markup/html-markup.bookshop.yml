@@ -6,8 +6,8 @@ spec:
     - detail_blocks
     - place_blocks
   label: "HTML Markup"
-  description:
-  icon:
+  description: Add HTML inline.
+  icon: code
   tags: []
 
 # Defines the structure of this component, as well as the default values

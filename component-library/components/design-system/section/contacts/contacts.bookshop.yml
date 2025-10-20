@@ -5,7 +5,7 @@ spec:
   label: "Contacts"
   description: List of specific contacts with names, roles, and info.
   icon: emoji_people
-  tags: []
+  tags: [Lists,People]
 
 # Defines the structure of this component, as well as the default values
 blueprint:

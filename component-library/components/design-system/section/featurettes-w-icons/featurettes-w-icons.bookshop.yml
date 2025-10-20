@@ -5,7 +5,7 @@ spec:
   label: "Featurettes w/Icons"
   description: Feature items with icons arranged in a grid layout.
   icon: calendar_view_month
-  tags: []
+  tags: [Lists]
 
 # Defines the structure of this component, as well as the default values
 blueprint:

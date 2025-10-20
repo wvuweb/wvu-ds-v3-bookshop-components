@@ -5,7 +5,7 @@ spec:
   label: "CTA Banner"
   description: A banner with a call to action button.
   icon: campaign
-  tags: []
+  tags: [Call to Action]
 
 # Defines the structure of this component, as well as the default values
 blueprint:

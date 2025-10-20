@@ -5,7 +5,7 @@ spec:
   label: "Faculty Members"
   description: Profiles of faculty with names, titles, and photos.
   icon: person_add
-  tags: []
+  tags: [Lists,People]
 
 # Defines the structure of this component, as well as the default values
 blueprint:

@@ -3,8 +3,8 @@ spec:
   structures:
     - detail_blocks
   label: "FAQs"
-  description:
-  icon:
+  description: Questions list with links to answers.
+  icon: live_help
   tags: []
 
 # Defines the structure of this component, as well as the default values

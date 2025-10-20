@@ -1,4 +1,9 @@
 <div class="mt-4">
+
+  {{ if .heading }}
+    <h2>{{ .heading }}</h2>
+  {{ end }}
+
   <ol class="mb-5">
     {{ range .items }}
       <li><a href="#{{ .question | urlize }}">{{ .question }}</a></li>

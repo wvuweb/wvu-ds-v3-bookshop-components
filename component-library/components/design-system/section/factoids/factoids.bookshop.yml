@@ -5,7 +5,7 @@ spec:
   label: "Factoids"
   description: A banner with key stats or numeric highlights.
   icon: analytics
-  tags: []
+  tags: [Lists,Data Presentations]
 
 # Defines the structure of this component, as well as the default values
 blueprint:

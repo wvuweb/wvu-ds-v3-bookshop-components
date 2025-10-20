@@ -3,7 +3,7 @@ spec:
   structures:
     - detail_blocks
   label: "Accordion"
-  description:
+  description: Expandable content panels.
   icon: top_panel_open
   tags: []
 
