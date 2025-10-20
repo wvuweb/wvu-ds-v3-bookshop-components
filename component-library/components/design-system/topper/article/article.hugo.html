@@ -25,11 +25,13 @@
         <p class="mt-4 mb-0 config-light text-uppercase wvu-text-letter-spacing" data-pagefind-ignore>{{ $publishDate }}</p>
         <div class="d-flex mt-4 justify-content-center" data-pagefind-ignore="all">
           {{ if not site.Data }}
-            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
-          {{ else if and site.Params.env_bookshop_live .params.authors (not .topper.show_byline) }}
-            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Show Byline' is currently set to 'false' in the topper’s config to speed up editing. To see the byline, check the 'Show Byline' box in the topper config.")) }}
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "Byline will not display content in the live editor." ) ) }}
+          {{ else if not site.Params.env_bookshop_live }}
+            {{ if .params.authors }}
+              {{ partial "bookshop" (slice "design-system/simple/byline" (dict "params" .params)) }}
+            {{ end }}
           {{ else }}
-            {{ partial "bookshop" (slice "design-system/simple/byline" (dict "params" .params)) }}
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "Byline will not display content in the live editor.")) }}            
           {{ end }}
         </div>
       </div>
