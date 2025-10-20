@@ -7,7 +7,7 @@
 {{- end -}}
 
 {{ if and .topper .topper._bookshop_name }}
-  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params "title" .params.title)) }}
+  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params "title" .params.title "authors" .params.authors)) }}
   {{ if ne .topper._bookshop_name "design-system/topper/article" }}
     {{ $containerMargin = "mt-n9" }}
   {{ end }}
