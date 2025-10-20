@@ -53,6 +53,7 @@ _inputs:
     label: Color
   settings:
     type: object
+    hidden: true
     options:
       subtype: tabbed
   sticker:
@@ -60,23 +61,23 @@ _inputs:
     options:
       values:
         - name: Black Bear
-          path: /uploads/sticker-black-bear.webp
+          path: https://static.wvu.edu/global/images/stickers/black-bear.webp
         - name: Cardinal
-          path: /uploads/sticker-cardinal.webp
+          path: https://static.wvu.edu/global/images/stickers/cardinal.webp
         - name: Coonskin Cap
-          path: /uploads/sticker-coonskin-cap.webp
+          path: https://static.wvu.edu/global/images/stickers/coonskin-cap.webp
         - name: Honey Bee
-          path: /uploads/sticker-honey-bee.webp
+          path: https://static.wvu.edu/global/images/stickers/honey-bee.webp
         - name: Mountaineer Statue
-          path: /uploads/sticker-mountaineer-statue.webp
+          path: https://static.wvu.edu/global/images/stickers/mountaineer-statue.webp
         - name: PRT
-          path: /uploads/sticker-prt.webp
+          path: https://static.wvu.edu/global/images/stickers/prt.webp
         - name: Trout
-          path: /uploads/sticker-trout.webp
+          path: https://static.wvu.edu/global/images/stickers/trout.webp
         - name: Woodburn
-          path: /uploads/sticker-woodburn.webp
+          path: https://static.wvu.edu/global/images/stickers/woodburn.webp
         - name: WVU Pennant
-          path: /uploads/sticker-wvu-pennant.webp
+          path: https://static.wvu.edu/global/images/stickers/wvu-pennant.webp
       value_key: path
   use_common_wrapper:
     type: auto
