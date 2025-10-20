@@ -41,6 +41,7 @@ _inputs:
     hidden: true
   settings:
     type: object
+    hidden: true
     options:
       subtype: tabbed
   src:
@@ -50,8 +51,6 @@ _inputs:
         - ccdam
       width: 1920
       height: 1080
-  settings:
-    hidden: true
   use_common_wrapper:
     type: auto
     hidden: true
