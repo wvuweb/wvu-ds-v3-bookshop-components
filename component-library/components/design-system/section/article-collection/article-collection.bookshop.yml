@@ -3,7 +3,7 @@ spec:
   structures:
     - content_blocks
   label: "Article Collection"
-  description:
+  description: Grid of tagged articles.
   icon: library_books
   tags: [Lists]
 

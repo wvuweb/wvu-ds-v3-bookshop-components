@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Sitewide Section"
-  description:
-  icon:
+  description: Pull in a component from site settings.
+  icon: globe
   tags: []
 
 # Defines the structure of this component, as well as the default values
