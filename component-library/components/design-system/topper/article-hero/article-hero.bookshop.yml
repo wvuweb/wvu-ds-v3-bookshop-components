@@ -2,7 +2,7 @@
 spec:
   structures:
     - article_topper
-  label: "Topper - Article Test"
+  label: "Topper - Article Hero"
   description:
   icon:
   tags: []
@@ -52,3 +52,13 @@ _inputs:
       Use to improve text legibility when using a background image. Disabled
       when blend is enabled.
     cascade: true
+_select_data:
+  tint_opacities:
+    - name: None
+      value: '0.0'
+    - name: Light
+      value: '0.3'
+    - name: Medium
+      value: '0.5'
+    - name: Dark
+      value: '0.7'
