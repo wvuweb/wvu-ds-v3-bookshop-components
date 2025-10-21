@@ -1,4 +1,4 @@
-<div class="alert alert-{{ .alert_type | urlize }} p-4 helvetica-neue my-4">
+<div class="alert alert-{{ .alert_type | urlize }} p-4 p-xl-5 helvetica-neue my-4">
   <div class="row">
     {{ with .icon }}
       <div class="col-6">
@@ -7,7 +7,7 @@
     {{ end }}
     <div class="col">
       {{ with .heading }}
-        <h2 class="h5">{{ . }}</h2>
+        <h2 class="fs-2">{{ . }}</h2>
       {{ end }}
       {{ .text | markdownify }}
     </div>

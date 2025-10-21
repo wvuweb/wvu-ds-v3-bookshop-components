@@ -2,7 +2,6 @@
 spec:
   structures:
     - column_blocks
-    - detail_blocks
   label: "Poster - Split"
   description:
   icon:

@@ -3,8 +3,8 @@ spec:
   structures:
     - detail_blocks
   label: "Lead Text"
-  description:
-  icon:
+  description: Large text to call out important content.
+  icon: font_download
   tags: []
 
 # Defines the structure of this component, as well as the default values

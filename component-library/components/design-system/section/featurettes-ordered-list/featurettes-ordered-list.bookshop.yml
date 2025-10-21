@@ -13,8 +13,8 @@ blueprint:
   subheading: Subheading.
   items:
     - title: Item 1 Title
-      label:
-      badge:
+      # label:
+      # badge:
       text: Item 1 text.
       ctas:
   postscript:

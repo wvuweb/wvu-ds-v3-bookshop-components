@@ -2,15 +2,17 @@
 spec:
   structures:
     - detail_blocks
-  label: "List - Big Numbers"
-  description:
-  icon:
+  label: "Featurettes - Ordered List"
+  description: Numbered list of features with headings and short text.
+  icon: format_list_numbered
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
   items:
-    - text:
+    - heading:
+      text:
+      ctas:
   is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -18,6 +20,10 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
   is_dynamic:
     hidden: true
   text:
@@ -25,3 +31,10 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
+_structures:
+  links:
+    values:
+      - value:
+          text:
+          icon:
+          url:

@@ -1,8 +1,6 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - column_blocks
-    - column_sm_blocks
     - detail_blocks
   label: "Separator"
   description: A dotted horizontal line for visual separation between sections.
@@ -12,43 +10,18 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   separator_c:
-  settings:
-    styles:
-      background_c: transparent
-    layout:
-      margin: my-xl-n6 my-xxl-n7
-      padding: py-xl-0 py-xxl-0
-    config:
-      include_heading_postscript: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  background_c:
-    type: select
-    options:
-      allow_empty: true
-      values: _select_data.brand_colors
-      value_key: class
-    label: Background Color
-  margin:
-    type: select
-    options:
-      allow_empty: true
-      values: _select_data.container_margins
-      value_key: class
   separator_c:
     type: select
     options:
       values: _select_data.brand_colors
       value_key: class
     label: Color
-  settings:
-    type: object
-    options:
-      subtype: tabbed
 _select_data:
   brand_colors:
     - name: WVU Gold
@@ -119,10 +92,3 @@ _select_data:
       background_classes: bg-dark text-white
       class: dark
       rgba: 42, 42, 41
-  container_margins:
-    - name: Pull Up
-      class: mt-n8 mt-xxl-n9
-    - name: Pull Down
-      class: mb-n8 mb-xxl-n9
-    - name: Pull Both
-      class: my-n8 my-xxl-n9

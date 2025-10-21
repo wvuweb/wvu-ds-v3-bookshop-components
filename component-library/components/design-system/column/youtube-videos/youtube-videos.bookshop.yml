@@ -4,8 +4,8 @@ spec:
     - column_blocks
     - detail_blocks
   label: "YouTube Videos"
-  description:
-  icon:
+  description: Small gallery of YouTube videos.
+  icon: youtube_activity
   tags: []
 
 # Defines the structure of this component, as well as the default values

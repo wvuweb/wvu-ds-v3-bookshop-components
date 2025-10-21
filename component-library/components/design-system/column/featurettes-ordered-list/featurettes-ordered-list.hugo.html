@@ -1,0 +1,19 @@
+<ol class="wvu-ol-big-numbers wvu-ol-big-numbers-wvu-blue fs-5">
+  {{ range .items }}
+    <li>
+      <span class="d-block mb-4">
+        {{ if .heading }}
+          <h2>{{ .heading }}</h2>
+        {{ end }}
+        {{ .text | markdownify }}
+        {{ with .ctas }}
+          <div class="mt-4">
+            {{ range . }}
+              <a class="btn btn-primary btn-sm mb-1 me-1" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+            {{ end }}
+          </div>
+        {{ end }}
+      </span>
+    </li>
+  {{ end }}
+</ol>

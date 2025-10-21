@@ -3,17 +3,15 @@ spec:
   structures:
     - detail_blocks
   label: "Tabs"
-  description:
+  description: Tabbed UI.
   icon: tabs
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
   tabs:
-    - label: Tab 1
-      text: Tab 1 text.
-    - label: Tab 2
-      text: Tab 2 text.
+    - label: Tab
+      text: Tab text.
   is_dynamic: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
