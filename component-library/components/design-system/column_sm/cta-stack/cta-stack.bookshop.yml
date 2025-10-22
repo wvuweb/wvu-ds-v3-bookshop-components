@@ -4,8 +4,8 @@ spec:
     - detail_sidebar_blocks
     - profile_sidebar_blocks
   label: "CTA Stack"
-  description:
-  icon:
+  description: Stack of featured links.
+  icon: table_rows
   tags: []
 
 # Defines the structure of this component, as well as the default values
