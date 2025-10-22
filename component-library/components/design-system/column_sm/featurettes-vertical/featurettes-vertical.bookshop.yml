@@ -4,8 +4,8 @@ spec:
     - column_blocks_sm
     - detail_sidebar_blocks
   label: "Featurettes - Vertical"
-  description:
-  icon:
+  description: Stacked image-and-text items with optional buttons.
+  icon: table_rows
   tags: []
 
 # Defines the structure of this component, as well as the default values
@@ -69,6 +69,7 @@ _inputs:
     hidden: true
   settings:
     type: object
+    hidden: true
     options:
       subtype: tabbed
   text:

@@ -4,8 +4,9 @@ spec:
     - column_blocks_sm
     - detail_sidebar_blocks
   label: "Contacts"
-  description:
-  icon:
+  label: "Contacts"
+  description: List of specific contacts with names, roles, and info.
+  icon: emoji_people
   tags: []
 
 # Defines the structure of this component, as well as the default values

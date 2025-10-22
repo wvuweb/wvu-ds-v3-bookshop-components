@@ -4,8 +4,8 @@ spec:
     - column_blocks_sm
     - detail_sidebar_blocks
   label: "Info Card"
-  description:
-  icon:
+  description: For including larger bodies of content.
+  icon: info
   tags: []
 
 # Defines the structure of this component, as well as the default values
