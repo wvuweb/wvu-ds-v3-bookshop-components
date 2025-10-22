@@ -5,8 +5,8 @@ spec:
     - detail_blocks
     - sidebar_blocks
   label: "Cards - Simple - Vertical"
-  description:
-  icon:
+  description: Cards stacked vertically (no photos).
+  icon: library_books
   tags: []
 
 # Defines the structure of this component, as well as the default values
