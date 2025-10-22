@@ -12,6 +12,7 @@
           {{- if not site.Params.env_bookshop_live -}}
             {{ partial "vertical-subnav" .subnav }}
           {{ else }}
+            <h2 class="wvu-b-label h6 mb-4">Section Menu</h2>
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
           {{ end }}
         </div>
