@@ -21,7 +21,9 @@
       {{ end }}
       <div class="col-md mb-5 wvu-backpage-main" {{ if and .Params.properties .Params.properties.include_in_search_results }}data-pagefind-body{{ end }}>
         {{ range .detail_blocks }}
-          {{ partial "bookshop" . }}
+          <div class="mb-5">
+            {{ partial "bookshop" . }}
+          </div>
         {{ end }}
       </div>
       {{ if .sidebar_blocks }}
