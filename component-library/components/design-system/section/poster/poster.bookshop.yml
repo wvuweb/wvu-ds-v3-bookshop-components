@@ -4,7 +4,7 @@ spec:
     - content_blocks
   label: "Poster"
   description: A large image block with bold text overlay and optional CTA.
-  icon: mobile-text-2
+  icon: subheader
   tags: []
 
 # Defines the structure of this component, as well as the default values

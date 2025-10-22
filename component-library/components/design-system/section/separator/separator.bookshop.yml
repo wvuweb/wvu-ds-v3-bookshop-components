@@ -46,6 +46,7 @@ _inputs:
   padding:
     hidden: true
   separator_c:
+    label: Line Color
     type: select
     options:
       values: _select_data.brand_colors

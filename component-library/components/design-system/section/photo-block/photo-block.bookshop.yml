@@ -3,8 +3,8 @@ spec:
   structures:
     - photo_essay_blocks
   label: "Photo Block"
-  description:
-  icon:
+  description: Add photos in main container.
+  icon: photo
   tags: []
 
 # Defines the structure of this component, as well as the default values
