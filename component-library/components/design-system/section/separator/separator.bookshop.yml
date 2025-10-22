@@ -51,7 +51,6 @@ _inputs:
     options:
       values: _select_data.brand_colors
       value_key: class
-    label: Color
   settings:
     type: object
     hidden: true
