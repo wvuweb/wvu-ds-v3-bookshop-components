@@ -24,3 +24,6 @@ _inputs:
     type: textarea
   is_dynamic:
     hidden: true
+  video_id:
+    context:
+      content: This is the last part of the URL of the video you want to feature i.e. if the video URL is https://www.youtube.com/watch?v=EMhV-NvxrAo then the ID is <strong>EMhV-NvxrAo</strong>.
