@@ -4,7 +4,6 @@ spec:
     - column_blocks_sm
     - detail_sidebar_blocks
   label: "Contacts"
-  label: "Contacts"
   description: List of specific contacts with names, roles, and info.
   icon: emoji_people
   tags: []
