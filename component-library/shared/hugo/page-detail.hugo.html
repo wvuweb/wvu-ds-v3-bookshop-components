@@ -8,16 +8,14 @@
   <div class="container text-dark">
     <div class="row gx-xxl-6 mb-n5">
       {{ if .subnav }}
-        {{- if not site.Params.env_bookshop_live -}}
-          <div class="col-24 col-xl-6 mb-6 mb-xl-5">
+        <div class="col-24 col-xl-6 mb-6 mb-xl-5">
+          <h2 class="wvu-b-label h6 mb-4">{{ .subnav.label }}</h2>
+          {{- if not site.Params.env_bookshop_live -}}
             {{ partial "vertical-subnav" .subnav }}
-          </div>
-        {{ else }}
-          <div class="col-24 col-xl-6 mb-6 mb-xl-5">
-            <h2 class="wvu-b-label h6 mb-4">{{ .subnav.label }}</h2>
+          {{ else }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
-          </div>
-        {{ end }}
+          {{ end }}
+        </div>
       {{ end }}
       <div class="col-md mb-5 wvu-backpage-main" {{ if and .Params.properties .Params.properties.include_in_search_results }}data-pagefind-body{{ end }}>
         {{ range .detail_blocks }}
