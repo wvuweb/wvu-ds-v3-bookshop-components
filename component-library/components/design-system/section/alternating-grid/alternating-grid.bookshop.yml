@@ -27,11 +27,11 @@ blueprint:
       tone: default
       color_palette: option-1
       bg_subtle:
+      remove_container_background: false
     layout:
       buffer:
       margin:
       padding: py-6 py-xxl-7
-      remove_container_background: false
     config:
       name: alternating-grid
       edit_mode_only: false
@@ -95,8 +95,6 @@ _inputs:
       value_key: class
   padding:
     type: auto
-    hidden: true
-  remove_container_background:
     hidden: true
   settings:
     type: object

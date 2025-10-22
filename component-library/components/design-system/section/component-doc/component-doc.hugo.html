@@ -28,44 +28,84 @@
         {{ end }}
       </div>
       <div class="col-lg-12">
-        <table class="table caption-top">
-          <caption class="h5 wvu-b-label text-uppercase">Content Guidelines</caption>
-          <thead>
-            <tr class="config-bold">
-              <th>Content</th>
-              <th>Description</th>
-              <th>Max Chars.</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{- if not site.Params.env_bookshop_live -}}
-              {{ $required := "" }}
-              {{ range .content_guidelines }}
-                {{ $required = "" }}
-                {{ if .required }}
-                  {{ $required = true }}
-                {{ end }}
-                {{ if .heading }}
-                  {{ with index site.Data.content_guidelines "heading" }}
-                    <tr>
-                      <td>Heading{{ if $required }}<span class="text-danger">*</span>{{ end }}</td>
-                      <td>{{ .description }}</td>
-                      <td>{{ with .max_chars }}{{ . }}{{ end }}</td>
-                    </tr>
-                  {{ end }}
-                {{ else if .subheading }}
-                  {{ with index site.Data.content_guidelines "subheading" }}
-                    <tr>
-                      <td>Subheading{{ if $required }}<span class="text-danger">*</span>{{ end }}</td>
-                      <td>{{ .description }}</td>
-                      <td>{{ with .max_chars }}{{ . }}{{ end }}</td>
-                    </tr>
-                  {{ end }}
-                {{ end }}
+        <h2 class="wvu-b-display-heading mb-4">Content Guidelines</h2>
+        {{ $hasComponent := "" }}
+        {{ $hasItems := "" }}
+
+        {{ if .content_guidelines_component }}
+          {{ $hasComponent = true }}
+        {{ end }}
+        {{ if .content_guidelines_items }}
+          {{ $hasItems = true }}
+        {{ end }}
+
+        {{- if and (not site.Params.env_bookshop_live) -}}
+          {{ with .content_guidelines_component }}          
+            <table class="table caption-top mb-4">
+              {{ if $hasItems }}
+                <caption class="h5 wvu-b-label text-uppercase">Component</caption>
               {{ end }}
-            {{ end }}
-          </tbody>
-        </table>
+              <thead>
+                <tr class="config-bold">
+                  <th>Content</th>
+                  <th>Description</th>
+                  <th>Max Chars.</th>
+                </tr>
+              </thead>
+              <tbody>
+              
+                {{ $required := "" }}
+
+                {{ range . }}
+                  {{ $required = "" }}
+                  {{ if .required }}
+                    {{ $required = true }}
+                  {{ end }}
+
+                  <tr>
+                    <td>{{ .title }}{{ if $required }}<span class="text-danger">*</span>{{ end }}</td>
+                    <td>{{ .description }}</td>
+                    <td>{{ .max_chars }}</td>
+                  </tr>
+
+                {{ end }}
+              </tbody>
+            </table>
+          {{ end }}
+
+          {{ with .content_guidelines_items }}          
+            <table class="table caption-top">
+              {{ if $hasComponent }}
+                <caption class="h5 wvu-b-label text-uppercase">Items</caption>
+              {{ end }}
+              <thead>
+                <tr class="config-bold">
+                  <th>Content</th>
+                  <th>Description</th>
+                  <th>Max Chars.</th>
+                </tr>
+              </thead>
+              <tbody>
+              
+                {{ $required := "" }}
+
+                {{ range . }}
+                  {{ $required = "" }}
+                  {{ if .required }}
+                    {{ $required = true }}
+                  {{ end }}
+
+                  <tr>
+                    <td>{{ .title }}{{ if $required }}<span class="text-danger">*</span>{{ end }}</td>
+                    <td>{{ .description }}</td>
+                    <td>{{ .max_chars }}</td>
+                  </tr>
+
+                {{ end }}
+              </tbody>
+            </table>
+          {{ end }}
+        {{ end }}
         <p class="small">*Required content.</p>
       </div>
     </div>

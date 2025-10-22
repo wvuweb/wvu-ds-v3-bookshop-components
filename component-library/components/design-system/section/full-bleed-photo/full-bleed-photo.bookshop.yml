@@ -4,7 +4,7 @@ spec:
     - photo_essay_blocks
     - place_blocks
   label: "Full-Bleed Photo"
-  description:
+  description: A photo that extends the width of the browser.
   icon: panorama
   tags: []
 

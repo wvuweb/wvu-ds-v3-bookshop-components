@@ -12,8 +12,8 @@ blueprint:
   heading: Article Collection Heading
   subheading: Subheading goes here.
   tags: []
-  postscript:
-    copy:
+  # postscript:
+  #   copy:
     # ctas:
   settings:
     styles:
