@@ -3,7 +3,7 @@ spec:
   structures:
     - column_blocks
   label: "Article Tease"
-  description:
+  description: Feature a single article.
   icon: library_books
   tags: []
 

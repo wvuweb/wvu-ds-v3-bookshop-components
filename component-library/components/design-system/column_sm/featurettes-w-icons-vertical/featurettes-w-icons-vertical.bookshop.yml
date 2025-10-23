@@ -3,8 +3,8 @@ spec:
   structures:
     - column_blocks_sm
   label: "Featurettes w/Icons - Vertical"
-  description:
-  icon:
+  description: Stacked features with icons, titles, and text.
+  icon: table_rows
   tags: []
 
 # Defines the structure of this component, as well as the default values

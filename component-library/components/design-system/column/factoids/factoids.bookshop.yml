@@ -3,8 +3,8 @@ spec:
   structures:
     - column_blocks
   label: "Factoids"
-  description:
-  icon:
+  description: A banner with key stats or numeric highlights.
+  icon: analytics
   tags: []
 
 # Defines the structure of this component, as well as the default values

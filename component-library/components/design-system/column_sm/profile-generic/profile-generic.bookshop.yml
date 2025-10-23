@@ -3,8 +3,8 @@ spec:
   structures:
     - column_blocks_sm
   label: "Profile - Generic"
-  description:
-  icon:
+  description: Spotlight with image, name, location, and heading.
+  icon: account_circle
   tags: []
 
 # Defines the structure of this component, as well as the default values
