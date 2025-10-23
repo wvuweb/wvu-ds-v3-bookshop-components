@@ -46,7 +46,7 @@
       {{ $authorData = where site.Data.people_data ".type" "author" }}
     {{ end }}
 
-    <div class="mb-n4">
+    <div class="mb-n4 position-relative">
       {{ range first $limit $articles }}
         <div class="row position-relative mb-4">
           {{ $params := "" }}

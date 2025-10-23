@@ -4,10 +4,10 @@
   {{ end }}
 
   {{ if .list_description }}
-    <p>{{ .list_description }}</p>
+    <p class="mb-4">{{ .list_description }}</p>
   {{ end }}
 
-  <ul class="list-unstyled my-5">
+  <ul class="list-unstyled mb-0">
     {{ range .items }}
       <li class="position-relative bg-light row gx-0 border-start border-3 border-wvu-accent--blue mb-1">
         <div class="col">

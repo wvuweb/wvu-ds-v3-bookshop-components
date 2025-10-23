@@ -3,13 +3,13 @@
     <li>
       <span class="d-block mb-4">
         {{ if .heading }}
-          <h2>{{ .heading }}</h2>
+          <h2 class="fs-2">{{ .heading }}</h2>
         {{ end }}
         {{ .text | markdownify }}
         {{ with .ctas }}
           <div class="mt-4">
             {{ range . }}
-              <a class="btn btn-primary btn-sm mb-1 me-1" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+              <a class="btn wvu-b-btn btn-sm mb-1 me-1" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
             {{ end }}
           </div>
         {{ end }}

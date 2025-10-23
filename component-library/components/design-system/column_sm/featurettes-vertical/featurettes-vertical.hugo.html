@@ -3,40 +3,42 @@
     <h2 class="h6 mb-3 wvu-b-label">{{ .heading }}</h2>
   {{ end }}
 
+  <div class="position-relative">
   {{ range .items }}
-    <div class="row gx-3 mb-3">
-      {{ $src := .image }}
+      <div class="row gx-3 mb-3">
+        {{ $src := .image }}
 
-      {{- if not site.Params.env_bookshop_live -}}
-        {{ $image := "" }}
-        {{/*  Get the image, either from its remote or local source  */}}
-        {{ if hasPrefix $src "http"}}
-          {{ $image = resources.GetRemote .image }}
-        {{ else }}
-          {{ $image = resources.Get .image }}
-        {{ end }}
-      
-        {{/* Resize images and add them to a variable  */}}
-        {{ if and $image (ne $image.MediaType.SubType "svg") }}
-          {{ $src = ($image.Fill (printf "%dx%d webp" 100 100)).RelPermalink }}
-        {{ end }}
-      {{- end -}}
-
-      <div class="col-lg-6">
-        <div class="position-relative">
-          {{ if .image }}
-            <div class="ratio ratio-1x1">
-              <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
-            </div>
+        {{- if not site.Params.env_bookshop_live -}}
+          {{ $image := "" }}
+          {{/*  Get the image, either from its remote or local source  */}}
+          {{ if hasPrefix $src "http"}}
+            {{ $image = resources.GetRemote .image }}
+          {{ else }}
+            {{ $image = resources.Get .image }}
           {{ end }}
-        </div> 
+        
+          {{/* Resize images and add them to a variable  */}}
+          {{ if and $image (ne $image.MediaType.SubType "svg") }}
+            {{ $src = ($image.Fill (printf "%dx%d webp" 100 100)).RelPermalink }}
+          {{ end }}
+        {{- end -}}
+
+        <div class="col-lg-6">
+          <div class="position-relative">
+            {{ if .image }}
+              <div class="ratio ratio-1x1">
+                <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
+              </div>
+            {{ end }}
+          </div> 
+        </div>
+        <div class="col-lg-18">
+          <h3 class="h5 wvu-b-display-heading mb-0"><a class="text-decoration-none stretched-link" href="{{ .url }}">{{ .title }}</a></h3>
+          {{ with .text }}
+            <p>{{ . }}</p>
+          {{ end }}
+        </div>
       </div>
-      <div class="col-lg-18">
-        <h3 class="h5 wvu-b-display-heading mb-0"><a class="text-decoration-none stretched-link" href="{{ .url }}">{{ .title }}</a></h3>
-        {{ with .text }}
-          <p>{{ . }}</p>
-        {{ end }}
-      </div>
-    </div>
-  {{ end }}
+    {{ end }}
+  </div>
 </div>
