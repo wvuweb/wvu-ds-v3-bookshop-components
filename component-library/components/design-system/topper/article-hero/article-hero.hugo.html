@@ -1,4 +1,4 @@
-{{ $src := .image }}
+{{ $src := .article_image }}
 {{ $publishDate := .publish_date }}
 {{ $format := "January 2, 2006" }}
 
@@ -12,9 +12,9 @@
   {{ $image := "" }}
   {{/*  Get the image, either from its remote or local source  */}}
   {{ if hasPrefix $src "http"}}
-    {{ $image = resources.GetRemote .image }}
+    {{ $image = resources.GetRemote .article_image }}
   {{ else }}
-    {{ $image = resources.Get .image }}
+    {{ $image = resources.Get .article_image }}
   {{ end }}
 
   {{/* Resize images and add them to a variable  */}}
