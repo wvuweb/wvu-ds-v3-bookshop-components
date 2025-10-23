@@ -137,10 +137,6 @@
         <div class="pt-9 bg-wvu-not-quite-white"></div>
       {{ end }}
 
-      {{ if .settings.styles.card_c }}
-        {{ $backgroundColor = .settings.styles.card_c }}
-      {{ end }}
-
       <section id="{{ with .uuid }}{{ . }}{{ end }}" class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}">
         {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
         {{ if .is_nested }}
@@ -148,6 +144,11 @@
             <h2 class="position-absolute display-4 wvu-text-vertical wvu-b-display-heading wvu-b-accent-text h6 small wvu-text-letter-spacing-lg h-100 wvu-z-index-max mt-n5 mx-0"><span class="d-block bg- p-2">{{ . }}</span></h2>
           {{ end }}
         {{ end }}
+
+        {{ if .settings.styles.card_c }}
+          {{ $backgroundColor = .settings.styles.card_c }}
+        {{ end }}
+
         <div class="{{ .settings.layout.buffer }}">
           <div class="container{{ with .settings.layout.full_bleed }}-fluid px-0{{ end }} wvu-z-index-content {{ if or (eq .settings.styles.tone "loud") (eq .settings.styles.tone "lets-go") }}is-loud{{ end }}">
             <div class="{{ if not .settings.layout.full_bleed }}row{{ end }}">
