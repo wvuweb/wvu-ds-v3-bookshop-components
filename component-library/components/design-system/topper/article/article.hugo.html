@@ -27,7 +27,7 @@
           {{ if not site.Data }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "Byline will not display content in the live editor." ) ) }}
           {{ else if not site.Params.env_bookshop_live }}
-            {{ if and .params.authors .topper.show_byline }}
+            {{ if and .params.authors .topper .topper.show_byline }}
               {{ partial "bookshop" (slice "design-system/simple/byline" (dict "params" .params)) }}
             {{ end }}
           {{ else }}
