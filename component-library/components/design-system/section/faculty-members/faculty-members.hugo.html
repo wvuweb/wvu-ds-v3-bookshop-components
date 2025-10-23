@@ -52,8 +52,8 @@
 
         <h3 class="h5 mb-1">{{ $params.name }}</h3>
 
-        {{ with $params.position }}
-          <p class="small lh-1 mb-1">
+        {{ with $params.job_position }}
+          <p class="small lh-1 mb-2">
             {{ range . }}
               <span class="d-block helvetica-neue-bold">{{ .organization }}</span>
               <span class="d-block">{{ .title }}</span>

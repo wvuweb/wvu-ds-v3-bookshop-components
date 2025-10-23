@@ -33,7 +33,7 @@ blueprint:
       remove_container_background: false
     layout:
       buffer:
-      margin:
+      # margin:
       padding: py-6 py-xxl-7
     config:
       name: featurettes-2-column

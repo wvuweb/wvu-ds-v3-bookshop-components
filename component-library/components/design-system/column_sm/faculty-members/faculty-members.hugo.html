@@ -45,9 +45,9 @@
           {{ end }}
         {{- end -}}
 
-        <div class="col-6">
+        <div class="col-6 mb-5">
 
-          <div class="ratio ratio-3x4 bg-light mb-3">
+          <div class="ratio ratio-3x4 bg-light mb-1">
             {{ if $params.profile_image }}
               <img class="object-fit-cover" src="{{ $src }}" alt="Portrait of {{ $params.name }}" />
             {{ end }}
@@ -58,8 +58,8 @@
 
           <h3 class="h5 mb-1">{{ $params.name }}</h3>
 
-          {{ with $params.position }}
-            <p class="small lh-1 mb-2">
+          {{ with $params.job_position }}
+            <p class="small lh-1 mb-1">
               {{ range . }}
                 <span class="d-block helvetica-neue-bold">{{ .organization }}</span>
                 <span class="d-block">{{ .title }}</span>
