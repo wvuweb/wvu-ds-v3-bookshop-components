@@ -46,7 +46,7 @@
     {{ end }}
 
     {{ if or (eq .settings.layout.margin "mb-n8 mb-xxl-n9") (eq .settings.layout.margin "my-n8 my-xxl-n9") }}
-      {{ if .postscript }}
+      {{ if .postscript.copy }}
         {{ $containerPadding = "p-5 p-xl-6 wvu-b-shadow wvu-b-border" }}
         {{ if and (ne .settings.styles.tone "loud") (ne .settings.styles.tone "lets-go") }}
           {{ $containerBackgroundColor = .settings.styles.color_palette }}
