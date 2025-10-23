@@ -133,10 +133,7 @@
 
   <div class="p-5 bg-wvu-not-quite-white">
     <div class="border border-1 border-black-50">
-      {{ if or (eq .settings.layout.margin "my-n8 my-xxl-n9") (eq .settings.layout.margin "mt-n8 mt-xxl-n9") }}
-        <div class="pt-9 bg-wvu-not-quite-white"></div>
-      {{ end }}
-
+      <div class="pt-9 bg-wvu-not-quite-white"></div>
       <section id="{{ with .uuid }}{{ . }}{{ end }}" class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}">
         {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
         {{ if .is_nested }}
@@ -239,9 +236,7 @@
           </div>
         </div>
       </section>
-      {{ if or (eq .settings.layout.margin "my-n8 my-xxl-n9") (eq .settings.layout.margin "mb-n8 mb-xxl-n9") }}
-        <div class="pt-9 bg-wvu-not-quite-white"></div>
-      {{ end }}
+      <div class="pt-9 bg-wvu-not-quite-white"></div>
     </div>
   </div>
 {{ end }}
