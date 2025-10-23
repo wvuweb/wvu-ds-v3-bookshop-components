@@ -118,6 +118,8 @@ _inputs:
       Use to improve text legibility when using a background image. Disabled
       when blend is enabled.
     cascade: true
+  text:
+    type: textarea
   tone:
     type: choice
     options:

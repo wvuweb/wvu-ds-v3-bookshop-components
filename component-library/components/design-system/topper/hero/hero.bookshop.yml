@@ -115,6 +115,8 @@ _inputs:
     type: object
     options:
       subtype: tabbed
+  subheading:
+    type: textarea
   text_placement:
     type: select
     options:

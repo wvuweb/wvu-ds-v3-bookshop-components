@@ -180,10 +180,6 @@ _select_data:
   container_margins:
     - name: Pull Up
       class: mt-n8 mt-xxl-n9
-    - name: Pull Down
-      class: mb-n8 mb-xxl-n9
-    - name: Pull Both
-      class: my-n8 my-xxl-n9
   tint_opacities:
     - name: None
       value: '0.0'
