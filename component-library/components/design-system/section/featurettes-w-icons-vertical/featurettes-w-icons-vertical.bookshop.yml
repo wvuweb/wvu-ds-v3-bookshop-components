@@ -4,7 +4,7 @@ spec:
     - content_blocks
   label: "Featurettes w/Icons - Vertical"
   description: Stacked features with icons, titles, and text.
-  icon: table_rows
+  icon: formatted_list_bulleted
   tags: []
 
 # Defines the structure of this component, as well as the default values

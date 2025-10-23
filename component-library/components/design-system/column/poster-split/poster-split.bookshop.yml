@@ -3,8 +3,8 @@ spec:
   structures:
     - column_blocks
   label: "Poster - Split"
-  description:
-  icon:
+  description: Two-column layout with text block and image.
+  icon: side_navigation
   tags: []
 
 # Defines the structure of this component, as well as the default values
