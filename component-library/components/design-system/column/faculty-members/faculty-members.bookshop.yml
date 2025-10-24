@@ -3,8 +3,8 @@ spec:
   structures:
     - column_blocks
   label: "Faculty Members"
-  description:
-  icon:
+  description: Profiles of faculty with names, titles, and photos.
+  icon: person_add
   tags: []
 
 # Defines the structure of this component, as well as the default values
