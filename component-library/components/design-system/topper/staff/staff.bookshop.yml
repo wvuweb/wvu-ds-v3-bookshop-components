@@ -20,7 +20,7 @@ blueprint:
       tint_opacity: "0.7"
     layout:
       # background_position:
-      text_placement: mx-auto
+      text_placement: mx-auto text-start
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -94,7 +94,7 @@ _inputs:
         - name: Left
           class: me-auto text-start
         - name: Center
-          class: mx-auto text-center
+          class: mx-auto text-start
         - name: Right
           class: ms-auto text-start
       value_key: class

@@ -15,7 +15,7 @@ blueprint:
     styles:
       tint_opacity: "0.7"
     layout:
-      text_placement: text-center mx-auto
+      text_placement: mx-auto text-center
       # background_position:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
