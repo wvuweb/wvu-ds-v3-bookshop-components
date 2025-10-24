@@ -20,7 +20,7 @@ blueprint:
       bg_subtle:
       # enable_blend: false
       # tint_opacity: '0.7'
-      remove_container_background: false
+      # remove_container_background false
     layout:
       buffer:
       margin:
@@ -132,7 +132,7 @@ _inputs:
     options:
       values: _select_data.brand_colors
       value-key: class
-  remove_container_background:
+  # remove_container_background
     hidden: true
   title:
     options:

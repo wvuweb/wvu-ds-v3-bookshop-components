@@ -23,7 +23,7 @@ blueprint:
       bg_subtle:
       # enable_blend: false
       # tint_opacity: '0.7'
-      remove_container_background: false
+      # remove_container_background false
     layout:
       buffer:
       margin:
@@ -119,7 +119,7 @@ _inputs:
         text: Text and CTAs
         subtext: These will display after your content.
         icon: more_horiz
-  remove_container_background:
+  # remove_container_background
     hidden: true
   settings:
     type: object
