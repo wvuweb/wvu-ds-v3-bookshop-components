@@ -122,7 +122,7 @@ _inputs:
       values: _select_data.tint_opacities
       value_key: value
     comment: >-
-      Use to improve text legibility when using a background image. Disabled
+      Use to improve text legibility when applying a background image. Disabled
       when blend is enabled.
     cascade: true
   tone:
