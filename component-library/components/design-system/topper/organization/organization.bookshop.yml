@@ -18,6 +18,9 @@ blueprint:
       tone: default
       color_palette: option-2
       tint_opacity: "0.7"
+    layout:
+      # background_position:
+      text_placement: mx-auto text-start
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -97,6 +100,20 @@ _inputs:
   #     value_key: class
   #   comment: Use to place the text based on the composition of your background image\. Requires a background image to work.
   #   cascade: true
+  text_placement:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        - name: Left
+          class: me-auto text-start
+        - name: Center
+          class: mx-auto text-start
+        - name: Right
+          class: ms-auto text-start
+      value_key: class
+    comment: Use to place the text based on the composition of your background image\. Requires a background image to work.
+    cascade: true
   tint_opacity:
     hidden: true
   tone:
