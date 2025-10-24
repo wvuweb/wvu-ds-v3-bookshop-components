@@ -59,7 +59,11 @@
               </div>
             {{ end }}
 
-            <h1 class="display-3 wvu-b-display-heading"><span class="wvu-b-font-adjust">{{ .params.name }}</span></h1>
+            {{ if .params.name }}
+              <h1 class="display-6 wvu-b-display-heading"><span class="wvu-b-font-adjust">{{ .params.name }}</span></h1>
+            {{ else }}
+              <h1 class="display-6 wvu-b-display-heading"><span class="wvu-b-font-adjust">Firstname Lastname</span></h1>
+            {{ end }}
 
             {{ if or .params.contacts .params.location }}
               <div class="row">
