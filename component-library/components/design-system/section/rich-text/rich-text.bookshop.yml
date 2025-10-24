@@ -2,6 +2,7 @@
 spec:
   structures:
     - photo_essay_blocks
+    - place_blocks
   label: "Rich Text"
   description: Add formatted text.
   icon: edit_note

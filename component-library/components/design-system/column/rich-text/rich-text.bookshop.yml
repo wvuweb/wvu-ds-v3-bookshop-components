@@ -4,7 +4,6 @@ spec:
     - article_blocks
     - column_sm_blocks
     - detail_blocks
-    - place_blocks
   label: "Rich Text"
   description: Add formatted text.
   icon: edit_note
