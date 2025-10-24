@@ -4,184 +4,186 @@
 
 {{ range .blocks }}
 
-  {{ if .use_common_wrapper }}
-    {{ if and .is_sitewide site.Params.env_bookshop_live }}
-      <div class="py-6 py-xxl-7">
-        <div class="container">
-          <div class="alert alert-info">
-            This is a sitewide section. It will not show in the Live Editor.
-          </div>
+  {{ if and .is_sitewide site.Params.env_bookshop_live }}
+    <div class="py-6 py-xxl-7">
+      <div class="container">
+        <div class="alert alert-info">
+          This is a sitewide section. It will not show in the Live Editor.
         </div>
       </div>
-    {{ end }}
+    </div>
+  {{ else }}
 
-    {{ $src := "" }}
-    {{ $backgroundColor := "" }}
-    {{ $containerPadding := "" }}
-    {{ $containerBackgroundColor := "" }}
+    {{ if .use_common_wrapper }}
 
-    {{ if .settings.styles.color_palette }}
-      {{ $backgroundColor = .settings.styles.color_palette }}
-    {{ end }}
+      {{ $src := "" }}
+      {{ $backgroundColor := "" }}
+      {{ $containerPadding := "" }}
+      {{ $containerBackgroundColor := "" }}
 
-    {{ if .background_image }}
-      {{ $src = .background_image }}
-      {{ if not .settings.styles.enable_blend }}
-        {{ $backgroundColor = "option-2" }}
+      {{ if .settings.styles.color_palette }}
+        {{ $backgroundColor = .settings.styles.color_palette }}
       {{ end }}
-    {{ end }}
 
-    {{ if or (eq .settings.layout.margin "mt-n8 mt-xxl-n9") (eq .settings.layout.margin "my-n8 my-xxl-n9") }}
-      {{ if .heading }}
-        {{ $containerPadding = "p-5 p-xl-6 wvu-b-shadow wvu-b-border" }}
-        {{ if and (ne .settings.styles.tone "loud") (ne .settings.styles.tone "lets-go") }}
-          {{ $containerBackgroundColor = .settings.styles.color_palette }}
-          {{ if .settings.styles.card_c }}
+      {{ if .background_image }}
+        {{ $src = .background_image }}
+        {{ if not .settings.styles.enable_blend }}
+          {{ $backgroundColor = "option-2" }}
+        {{ end }}
+      {{ end }}
+
+      {{ if or (eq .settings.layout.margin "mt-n8 mt-xxl-n9") (eq .settings.layout.margin "my-n8 my-xxl-n9") }}
+        {{ if .heading }}
+          {{ $containerPadding = "p-5 p-xl-6 wvu-b-shadow wvu-b-border" }}
+          {{ if and (ne .settings.styles.tone "loud") (ne .settings.styles.tone "lets-go") }}
+            {{ $containerBackgroundColor = .settings.styles.color_palette }}
+            {{ if .settings.styles.card_c }}
+              {{ $containerBackgroundColor = "option-1" }}
+            {{ end }}
+          {{ else }}
             {{ $containerBackgroundColor = "option-1" }}
           {{ end }}
-        {{ else }}
-          {{ $containerBackgroundColor = "option-1" }}
         {{ end }}
       {{ end }}
-    {{ end }}
 
-    {{ if or (eq .settings.layout.margin "mb-n8 mb-xxl-n9") (eq .settings.layout.margin "my-n8 my-xxl-n9") }}
-      {{ if .postscript.copy }}
-        {{ $containerPadding = "p-5 p-xl-6 wvu-b-shadow wvu-b-border" }}
-        {{ if and (ne .settings.styles.tone "loud") (ne .settings.styles.tone "lets-go") }}
-          {{ $containerBackgroundColor = .settings.styles.color_palette }}
-          {{ if .settings.styles.card_c }}
+      {{ if or (eq .settings.layout.margin "mb-n8 mb-xxl-n9") (eq .settings.layout.margin "my-n8 my-xxl-n9") }}
+        {{ if .postscript.copy }}
+          {{ $containerPadding = "p-5 p-xl-6 wvu-b-shadow wvu-b-border" }}
+          {{ if and (ne .settings.styles.tone "loud") (ne .settings.styles.tone "lets-go") }}
+            {{ $containerBackgroundColor = .settings.styles.color_palette }}
+            {{ if .settings.styles.card_c }}
+              {{ $containerBackgroundColor = "option-1" }}
+            {{ end }}
+          {{ else }}
             {{ $containerBackgroundColor = "option-1" }}
           {{ end }}
-        {{ else }}
-          {{ $containerBackgroundColor = "option-1" }}
         {{ end }}
       {{ end }}
-    {{ end }}
 
-    {{- if not site.Params.env_bookshop_live -}}
-      {{ $image := "" }}
-      {{/*  Get the image, either from its remote or local source  */}}
-      {{ if hasPrefix $src "http"}}
-        {{ $image = resources.GetRemote .background_image }}
-      {{ else }}
-        {{ $image = resources.Get .background_image }}
-      {{ end }}
-
-      {{/* Resize images and add them to a variable  */}}
-      {{ if and $image (ne $image.MediaType.SubType "svg") }}
-        {{ if eq .imageProcess "fit" }}
-          {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+      {{- if not site.Params.env_bookshop_live -}}
+        {{ $image := "" }}
+        {{/*  Get the image, either from its remote or local source  */}}
+        {{ if hasPrefix $src "http"}}
+          {{ $image = resources.GetRemote .background_image }}
         {{ else }}
-          {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+          {{ $image = resources.Get .background_image }}
         {{ end }}
-      {{ end }}
-    {{- end -}}
 
-    {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
-
-      <section id="{{ .settings.config.name }}" class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}" data-pagefind-ignore="all">
-        {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
-        {{ if .is_nested }}
-          {{ if .heading }}
-            <h2 class="position-absolute display-4 wvu-text-vertical wvu-b-display-heading wvu-b-accent-text h6 small wvu-text-letter-spacing-lg h-100 wvu-z-index-max mt-n5 mx-0"><span class="d-block bg- p-2">{{ .heading }}</span></h2>
+        {{/* Resize images and add them to a variable  */}}
+        {{ if and $image (ne $image.MediaType.SubType "svg") }}
+          {{ if eq .imageProcess "fit" }}
+            {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
+          {{ else }}
+            {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
           {{ end }}
         {{ end }}
+      {{- end -}}
 
-        {{ if .settings.styles.card_c }}
-          {{ $backgroundColor = .settings.styles.card_c }}
-        {{ end }}
+      {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
 
-        <div class="{{ .settings.layout.buffer }}">
-          <div class="container{{ if .settings.layout.full_bleed }}-fluid px-0{{ end }} wvu-z-index-content">
-            <div class="{{ if not .settings.layout.full_bleed }}row{{ end }}">
-              <div class="{{ with .settings.layout.max_cols }}col-xxl-{{ . }} mx-xxl-auto{{ end }}">            
-                <div class="{{ .settings.layout.margin }} {{ $containerPadding }} bg-{{ $containerBackgroundColor }}">
-                  {{ if not .is_nested }}
-                    {{ if .settings.config.include_heading_postscript }}
-                      {{ if .heading }}
-                        <div class="pb-3">
-                          <div class="mb-5 text-center">
-                            <h2 class="wvu-b-label h1 mb-3">{{ .heading }}</h2>
+        <section id="{{ .settings.config.name }}" class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}" data-pagefind-ignore="all">
+          {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
+          {{ if .is_nested }}
+            {{ if .heading }}
+              <h2 class="position-absolute display-4 wvu-text-vertical wvu-b-display-heading wvu-b-accent-text h6 small wvu-text-letter-spacing-lg h-100 wvu-z-index-max mt-n5 mx-0"><span class="d-block bg- p-2">{{ .heading }}</span></h2>
+            {{ end }}
+          {{ end }}
 
-                            {{ if .subheading }}
-                              <p class="config-light fs-5 mb-3">{{ .subheading }}</p>
+          {{ if .settings.styles.card_c }}
+            {{ $backgroundColor = .settings.styles.card_c }}
+          {{ end }}
+
+          <div class="{{ .settings.layout.buffer }}">
+            <div class="container{{ if .settings.layout.full_bleed }}-fluid px-0{{ end }} wvu-z-index-content">
+              <div class="{{ if not .settings.layout.full_bleed }}row{{ end }}">
+                <div class="{{ with .settings.layout.max_cols }}col-xxl-{{ . }} mx-xxl-auto{{ end }}">            
+                  <div class="{{ .settings.layout.margin }} {{ $containerPadding }} bg-{{ $containerBackgroundColor }}">
+                    {{ if not .is_nested }}
+                      {{ if .settings.config.include_heading_postscript }}
+                        {{ if .heading }}
+                          <div class="pb-3">
+                            <div class="mb-5 text-center">
+                              <h2 class="wvu-b-label h1 mb-3">{{ .heading }}</h2>
+
+                              {{ if .subheading }}
+                                <p class="config-light fs-5 mb-3">{{ .subheading }}</p>
+                              {{ end }}
+                            </div>
+                          </div>
+                        {{ end }}
+
+                        {{ if and site.Params.env_bookshop_live .is_dynamic }}
+                          {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                        {{ else }}
+                          {{ partial "bookshop" . }}
+                        {{ end }}
+
+                        {{ with .postscript }}
+                          <div class="text-center mt-5">
+                            {{ with .copy }}
+                              <div class="mb-4">
+                                {{ . | markdownify }}
+                              </div>
                             {{ end }}
                           </div>
-                        </div>
-                      {{ end }}
-
-                      {{ if and site.Params.env_bookshop_live .is_dynamic }}
-                        {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                        {{ end }}
                       {{ else }}
-                        {{ partial "bookshop" . }}
-                      {{ end }}
-
-                      {{ with .postscript }}
-                        <div class="text-center mt-5">
-                          {{ with .copy }}
-                            <div class="mb-4">
-                              {{ . | markdownify }}
-                            </div>
-                          {{ end }}
-                        </div>
+                        {{ if and site.Params.env_bookshop_live .is_dynamic }}
+                          {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+                        {{ else }}
+                          {{ partial "bookshop" . }}
+                        {{ end }}
                       {{ end }}
                     {{ else }}
-                      {{ if and site.Params.env_bookshop_live .is_dynamic }}
-                        {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
-                      {{ else }}
-                        {{ partial "bookshop" . }}
-                      {{ end }}
+                      <div class="row justify-content-center gx-xl-5">
+                        {{ if .column_a }}
+                          <div class="col-lg mb-5 mb-xl-0">
+                            {{ partial "bookshop" .column_a }}
+                          </div>
+                        {{ end }}
+                        {{ if .column_b }}
+                          <div class="col-lg mb-5 mb-xl-0">
+                            {{ partial "bookshop" .column_b }}
+                          </div>
+                        {{ end }}
+                        {{ if .column_c }}
+                          <div class="col mb-5 mb-xl-0">
+                            {{ partial "bookshop" .column_c }}
+                          </div>
+                        {{ end }}
+                        {{ if .column_aa }}
+                          <div class="col-24 col-lg-10 col-xl-8">
+                            {{ partial "bookshop" .column_aa }}
+                          </div>
+                        {{ end }}
+                        {{ if .column_aaa }}
+                          <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
+                            {{ partial "bookshop" .column_aaa }}
+                          </div>
+                        {{ end }}
+                        {{ if .column_bbb }}
+                          <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
+                            {{ partial "bookshop" .column_bbb }}
+                          </div>
+                        {{ end }}
+                        {{ if .column_aaaa }}
+                          <div class="col-24 col-lg-6 col-xl-4 mb-5 mb-xl-0">
+                            {{ partial "bookshop" .column_aaaa }}
+                          </div>
+                        {{ end }}
+                      </div>
                     {{ end }}
-                  {{ else }}
-                    <div class="row justify-content-center gx-xl-5">
-                      {{ if .column_a }}
-                        <div class="col-lg mb-5 mb-xl-0">
-                          {{ partial "bookshop" .column_a }}
-                        </div>
-                      {{ end }}
-                      {{ if .column_b }}
-                        <div class="col-lg mb-5 mb-xl-0">
-                          {{ partial "bookshop" .column_b }}
-                        </div>
-                      {{ end }}
-                      {{ if .column_c }}
-                        <div class="col mb-5 mb-xl-0">
-                          {{ partial "bookshop" .column_c }}
-                        </div>
-                      {{ end }}
-                      {{ if .column_aa }}
-                        <div class="col-24 col-lg-10 col-xl-8">
-                          {{ partial "bookshop" .column_aa }}
-                        </div>
-                      {{ end }}
-                      {{ if .column_aaa }}
-                        <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
-                          {{ partial "bookshop" .column_aaa }}
-                        </div>
-                      {{ end }}
-                      {{ if .column_bbb }}
-                        <div class="col-24 col-lg-12 col-xl-6 mb-5 mb-xl-0">
-                          {{ partial "bookshop" .column_bbb }}
-                        </div>
-                      {{ end }}
-                      {{ if .column_aaaa }}
-                        <div class="col-24 col-lg-6 col-xl-4 mb-5 mb-xl-0">
-                          {{ partial "bookshop" .column_aaaa }}
-                        </div>
-                      {{ end }}
-                    </div>
-                  {{ end }}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
+      {{ end }}
+    {{ else }}
+      {{ partial "bookshop" . }}
     {{ end }}
-  {{ else }}
-    {{ partial "bookshop" . }}
   {{ end }}
 
 {{ end }}
