@@ -132,7 +132,7 @@ _inputs:
     options:
       values: _select_data.brand_colors
       value-key: class
-  # remove_container_background
+  remove_container_background:
     hidden: true
   title:
     options:
