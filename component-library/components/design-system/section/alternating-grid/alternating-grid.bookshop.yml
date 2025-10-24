@@ -2,7 +2,6 @@
 spec:
   structures:
     - content_blocks
-    - place_blocks
   label: "Alternating Grid"
   description: Alternating content blocks w/a photo, text call-to-action.
   icon: sync_alt
