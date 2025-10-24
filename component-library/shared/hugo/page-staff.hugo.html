@@ -10,11 +10,11 @@
 {{ end }}
 
 {{ if or .detail_blocks site.Params.env_bookshop_live }}
-  <main class="py-6 wvu-backpage-main wvu-z-index-content">
+  <main class="py-6 wvu-backpage-main wvu-z-index-content tone-default bg-option-1">
     <div class="container">
       <div class="row gx-0">
         <div class="col-xl-14 ms-xl-auto">
-          <div class="bg-wvu-not-quite-white p-5 p-xl-6 {{ $containerMargin }}">
+          <div class="tone-default bg-option-1 wvu-b-subtle p-5 p-xl-6 {{ $containerMargin }}">
             {{ if or .params.heading .params.subheading }}
               <div class="mb-5">
                 {{ with .params.heading }}
