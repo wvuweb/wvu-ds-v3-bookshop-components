@@ -9,10 +9,8 @@
   {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .params.title)) }}
 {{ end }}
 
-{{ if or .detail_blocks site.Params.env_bookshop_live }}
-  <main class="py-6 wvu-backpage-main wvu-z-index-content">
-    {{ range .place_blocks }}
-      {{ partial "bookshop" . }}
-    {{ end }}
-  </main>
-{{ end }}
+<main class="py-6 wvu-backpage-main wvu-z-index-content">
+  {{ range .place_blocks }}
+    {{ partial "bookshop" . }}
+  {{ end }}
+</main>
