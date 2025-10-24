@@ -24,7 +24,7 @@ blueprint:
       tone: default
       color_palette: option-1
       bg_subtle:
-      # remove_container_background false
+      # remove_container_background: false
     layout:
       buffer:
       margin:
