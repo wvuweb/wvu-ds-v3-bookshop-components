@@ -75,10 +75,10 @@
             <h1 class="display-3 wvu-b-display-heading">{{ .params.name }}</h1>
 
             {{ if .params.job_position }}
-              <div class="mt-3">
+              <div class="mb-4">
                 {{ range .params.job_position }}
                   <p class="fs-5 lh-1">
-                    {{ if .title }}<span class="d-block helvetica-neue-bold">{{ .title }}</span>{{ end }}
+                    {{ if .job_title }}<span class="d-block helvetica-neue-bold">{{ .job_title }}</span>{{ end }}
                     {{ if .organization }}<span class="d-block helvetica-neue-light">{{ .organization }}</span>{{ end }}
                   </p>
                 {{ end }}
