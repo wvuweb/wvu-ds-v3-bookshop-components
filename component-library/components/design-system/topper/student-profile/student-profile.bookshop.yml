@@ -97,7 +97,7 @@ _inputs:
         - name: Right
           class: ms-auto text-start
       value_key: class
-    comment: Use to place the text based on the composition of your background image.
+    comment: Use to place the text based on the composition of your background image\. Requires a background image to work.
     cascade: true
   tint_opacity:
     type: select
