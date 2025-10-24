@@ -17,7 +17,7 @@
           {{ end }}
         </div>
       {{ end }}
-      <div class="col-md mb-5 wvu-backpage-main" {{ if and .Params.properties .Params.properties.include_in_search_results }}data-pagefind-body{{ end }}>
+      <div class="col-md-14 col-xl-12 mx-auto mb-5 wvu-backpage-main" {{ if and .Params.properties .Params.properties.include_in_search_results }}data-pagefind-body{{ end }}>
         {{ range .detail_blocks }}
           <div class="mb-5">
             {{ partial "bookshop" . }}
