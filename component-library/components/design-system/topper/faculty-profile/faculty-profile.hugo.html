@@ -81,7 +81,11 @@
               <div class="mb-4">
                 {{ range .params.job_position }}
                   <p class="fs-5 lh-1">
-                    {{ if .job_title }}<span class="d-block helvetica-neue-bold">{{ .job_title }}</span>{{ end }}
+                    {{ if .job_title }}
+                      {{ range .job_title }}
+                        <span class="d-block helvetica-neue-bold">{{ . }}</span>
+                      {{ end }}
+                    {{ end }}
                     {{ if .organization }}<span class="d-block helvetica-neue-light">{{ .organization }}</span>{{ end }}
                   </p>
                 {{ end }}
