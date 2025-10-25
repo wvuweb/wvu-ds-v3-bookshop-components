@@ -2,7 +2,7 @@
 spec:
   structures:
     - detail_blocks
-  label: "HTML"
+  label: "HTML Code Example"
   description: Display an HTML code example.
   icon: html
   tags: []

@@ -1,21 +1,21 @@
 {{ if eq .level "h3" }}
-  <h3>
+  <h3 id="{{ .text | urlize }}">
     {{ .text }}
   </h3>
 {{ else if eq .level "h4" }}
-  <h4>
+  <h4 id="{{ .text | urlize }}">
     {{ .text }}
   </h4>
 {{ else if eq .level "h5" }}
-  <h5>
+  <h5 id="{{ .text | urlize }}">
     {{ .text }}
   </h5>
 {{ else if eq .level "h6" }}
-  <h6>
+  <h6 id="{{ .text | urlize }}">
     {{ .text }}
   </h6>
 {{ else }}
-  <h2>
+  <h2 id="{{ .text | urlize }}">
     {{ .text }}
   </h2>
 {{ end }}
