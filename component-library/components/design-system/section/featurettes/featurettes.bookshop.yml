@@ -2,6 +2,7 @@
 spec:
   structures:
     - content_blocks
+    - default_content_blocks
   label: "Featurettes"
   description: Flexible layout for text, images, and CTAs in any order.
   icon: view_comfy_alt
