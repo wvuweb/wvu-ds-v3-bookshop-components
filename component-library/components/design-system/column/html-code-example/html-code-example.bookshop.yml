@@ -1,0 +1,27 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - detail_blocks
+  label: "HTML"
+  description: Display an HTML code example.
+  icon: html
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  code:
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  code:
+    type: code
+    label: Example Code
+    comment: Enter the example code you want to display.
+    options:
+      max_visible_lines: 25
+      min_visible_lines: 10
+      show_gutter: true
+      syntax: html

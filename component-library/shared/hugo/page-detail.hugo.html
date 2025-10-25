@@ -7,23 +7,26 @@
 <main class="py-6 tone-default bg-option-1 wvu-b-subtle">
   <div class="container text-dark">
     <div class="row gx-xxl-6 mb-n5">
-      {{ if .subnav }}
-        <div class="col-24 col-xl-6 mb-6 mb-xl-5">
+      
+      <div class="col-24 col-xl-6 mb-6 mb-xl-5">
+        {{ if .subnav }}
           {{- if not site.Params.env_bookshop_live -}}
             {{ partial "vertical-subnav" .subnav }}
           {{ else }}
             <h2 class="wvu-b-label h6 mb-4">Section Menu</h2>
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
           {{ end }}
-        </div>
-      {{ end }}
-      <div class="col-md-14 col-xl-12 mx-auto mb-5 wvu-backpage-main" {{ if and .Params.properties .Params.properties.include_in_search_results }}data-pagefind-body{{ end }}>
+        {{ end }}
+      </div>
+      
+      <div class="col-md mb-5 wvu-backpage-main" {{ if and .Params.properties .Params.properties.include_in_search_results }}data-pagefind-body{{ end }}>
         {{ range .detail_blocks }}
           <div class="mb-5">
             {{ partial "bookshop" . }}
           </div>
         {{ end }}
       </div>
+      
       {{ if .sidebar_blocks }}
         <div class="col-md-8 col-xl-6 mb-5" data-pagefind-ignore="all">
           <div class="c-jump-links mb-5 pt-5 mt-n5 sticky-top">
