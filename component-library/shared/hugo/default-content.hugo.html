@@ -35,7 +35,6 @@
   {{- end -}}
 
   {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
-
     <section id="{{ .settings.config.name }}" class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}" data-pagefind-ignore="all">
       {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
       {{ if .is_nested }}
