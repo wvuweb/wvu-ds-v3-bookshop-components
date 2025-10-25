@@ -36,3 +36,6 @@ _inputs:
       allow_empty: true
       values: data.sitewide_components.sitewide_components.content_blocks
       value_key: uuid
+      preview:
+        text:
+          - key: c_title
