@@ -1,13 +1,15 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-  label: "Column Heading"
-  description:
-  icon:
+    - detail_blocks
+  label: "Heading"
+  description: Standalone heading
+  icon: format_h2
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
+  level: h2
   text: "Hello, world!"
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -15,3 +17,13 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  level:
+    type: select
+    options:
+      values:
+        - value:
+            - h2
+            - h3
+            - h4
+            - h5
+            - h6

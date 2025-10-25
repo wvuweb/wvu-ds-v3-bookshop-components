@@ -1,5 +1,21 @@
-{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-  <h2 class="display-1 oliviar-black text-wvu-gold">
+{{ if eq .level "h3" }}
+  <h3>
+    {{ .text }}
+  </h3>
+{{ else if eq .level "h4" }}
+  <h4>
+    {{ .text }}
+  </h4>
+{{ else if eq .level "h5" }}
+  <h5>
+    {{ .text }}
+  </h5>
+{{ else if eq .level "h6" }}
+  <h6>
+    {{ .text }}
+  </h6>
+{{ else }}
+  <h2>
     {{ .text }}
   </h2>
 {{ end }}
