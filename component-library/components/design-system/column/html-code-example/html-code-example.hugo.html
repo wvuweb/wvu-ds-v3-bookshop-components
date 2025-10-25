@@ -1,4 +1,8 @@
-<div class="border-1 border-black-50 p-4 p-xl-5">
-  {{ .code }}
+<div class="border border-2 border-black-50 rounded-2">
+  <div class="p-4 p-xl-5">
+    {{ .code | safeHTML }}
+  </div>
+  <div class="p-4" style="background-color: #f8f8f8">
+    {{ transform.Highlight .code "html" "style=tango" }}
+  </div>
 </div>
-{{ transform.Highlight .code "html" }}
