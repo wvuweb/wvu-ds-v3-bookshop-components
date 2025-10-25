@@ -34,7 +34,7 @@ _inputs:
     type: select
     options:
       allow_empty: true
-      values: data.sitewide_components.sitewide_components
+      values: data.sitewide_components.sitewide_components.sitewide_components
       value_key: uuid
       preview:
         text:
