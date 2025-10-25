@@ -7,9 +7,9 @@
       <ul class="navbar-nav mb-0">
         {{ range .items }}
           <li class="nav-item p-4 position-relative justify-content-center text-lg-center">
-            <a class="nav-link wvu-b-display-heading text-uppercase fs-6 wvu-b-text stretched-link d-block mb-0" href="#{{ .anchor }}"><span class="wvu-b-font-adjust">{{ .text }}</span></a>
+            <a class="text-decoration-none wvu-b-display-heading text-uppercase fs-6 wvu-b-text stretched-link d-block mb-0" href="#{{ .anchor }}"><span class="wvu-b-font-adjust">{{ .text }}</span></a>
             {{ if .description }}
-              <p class="mb-0 small w-100" style="max-width: 12em">{{ .description }}</p>
+              <p class="mb-0 small w-100 mt-1" style="max-width: 12em">{{ .description }}</p>
             {{ end }}
           </li>
         {{ end }}

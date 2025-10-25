@@ -4,7 +4,7 @@ spec:
     - content_blocks
   label: "Jump Links"
   description: Horizontal links for navigating page sections.
-  icon: link
+  icon: arrow_cool_down
   tags: [Navigation]
 
 # Defines the structure of this component, as well as the default values
