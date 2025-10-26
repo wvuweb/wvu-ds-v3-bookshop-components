@@ -24,5 +24,7 @@ _inputs:
   text:
     type: markdown
     options:
+      code: true
+      style: /assets/scss/custom/_content.scss
       allowed_sources:
         - ccdam
