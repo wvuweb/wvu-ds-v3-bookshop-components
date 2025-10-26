@@ -1,0 +1,114 @@
+<div class="row justify-content-center">
+  {{ with .offices }}
+    {{ if or .offices_items .ctas }}
+      <div class="col-md mb-4 mb-md-0">        
+        <div class="h3">
+          <span class="fa-solid fa-location-dot" aria-hidden="true"></span>
+        </div>
+        <h2 class="fs-3 mb-4">At the Office</h2>
+        {{ if .offices_items }}
+          {{ range .offices_items }}
+            <address>
+              {{ if .heading }}
+                <strong class="d-block">{{ .heading }}</strong>
+              {{ end }}
+              {{ if .lines }}
+                {{ range .lines }}
+                  <span class="d-block">{{ . }}</span>
+                {{ end }}
+              {{ end }}
+            </address>
+          {{ end }}
+        {{ end }}
+        {{ if .ctas}}
+          <div class="mt-3">
+            {{ range .ctas }}
+              <a class="btn wvu-b-btn btn-sm mb-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+            {{ end }}
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  {{ end }}
+  {{ with .emails }}
+    {{ if or .emails_items .ctas }}
+      <div class="col-md">
+        <div class="h3">
+          <span class="fa-solid fa-envelope" aria-hidden="true"></span>
+        </div>
+        <h2 class="fs-3 mb-4">By Email</h2>
+        {{ if .emails_items }}
+          {{ range .emails_items }}
+            <p class="mb-3">
+              {{ if .heading }}
+                <strong class="d-block">{{ .heading }}</strong>
+              {{ end }}
+              <a href="mailto:{{ .email }}">{{ .email | safeHTML }}</a>
+            </p>
+          {{ end }}
+        {{ end }}
+        {{ if .ctas }}
+          <div class="mt-3">
+            {{ range .ctas }}
+              <a class="btn wvu-b-btn btn-sm mb-1" href="{{ .url | safeURL }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+  {{ end }}
+  {{ with .phones }}
+    {{ if or .phones_items .ctas }}
+      <div class="col-md mb-4 mb-md-0">
+        <div class="h3">
+          <span class="fa-solid fa-phone" aria-hidden="true"></span>
+        </div>
+        <h2 class="fs-3 mb-4k">By Phone</h2>
+        {{ if .phones_items }}
+          {{ range .phones_items }}
+            <p class="mb-3">
+              {{ if .heading }}
+                <strong class="d-block">{{ .heading }}</strong>
+              {{ end }}
+              <span class="d-block"><a href="tel:{{ .phone | urlize }}">{{ .phone | safeHTML }}</a></span>
+            </p>
+          {{ end }}
+        {{ end }}
+        {{ if .ctas }}
+          <div class="mt-3">
+            {{ range .ctas }}
+              <a class="btn wvu-b-btn btn-sm mb-1" href="{{ .url | safeURL }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+  {{ end }}
+  {{ with .faxes }}
+    {{ if or .faxes_items .ctas }}
+      <div class="col-md mb-4 mb-md-0">
+        <div class="h3">
+          <span class="fa-solid fa-fax" aria-hidden="true"></span>
+        </div>
+        <h2 class="fs-3 mb-4">By Fax</h2>
+        {{ if .faxes_items }}
+          {{ range .faxes_items }}
+            <p class="mb-3">
+              {{ if .heading }}
+                <strong class="d-block">{{ .heading }}</strong>
+              {{ end }}
+              <span class="d-block">{{ .fax }}</span>
+            </p>
+          {{ end }}
+        {{ end }}
+        {{ if .ctas }}
+          <div class="mt-3">
+            {{ range .ctas }}
+              <a class="btn wvu-b-btn btn-sm mb-1 me-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+  {{ end }}
+</div>
