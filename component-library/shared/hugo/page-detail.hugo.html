@@ -4,6 +4,12 @@
   {{ partial "bookshop" (slice "design-system/topper/default" (dict "topper" .topper "title" .title "params" .params)) }}
 {{ end }}
 
+{{ $centerCols := "col-xl-18" }}
+
+{{ if .sidebar_blocks }}
+  {{ $centerCols = "col-md-16 col-xl-12" }}
+{{ end }}
+
 <main class="py-6 tone-default bg-option-1 wvu-b-subtle">
   <div class="container text-dark">
     <div class="row gx-xxl-6 mb-n5">
@@ -19,7 +25,7 @@
         {{ end }}
       </div>
       
-      <div class="col-md mb-5 wvu-backpage-main" {{ if and .Params.properties .Params.properties.include_in_search_results }}data-pagefind-body{{ end }}>
+      <div class="{{ $centerCols }} mb-5 wvu-backpage-main" {{ if and .Params.properties .Params.properties.include_in_search_results }}data-pagefind-body{{ end }}>
         {{ range .detail_blocks }}
           <div class="mb-5">
             {{ partial "bookshop" . }}
