@@ -4,11 +4,11 @@
       <div class="col-lg-12 mb-5 mb-lg-0">
         {{ with .overview_markdown }}
           <h2 class="wvu-b-display-heading">Overview</h2>
-          {{ . | markdownify }}
+          <p class="lead">{{ . | markdownify }}</p>
         {{ end }}
         {{ with .when_to_use_markdown }}
           <h2 class="wvu-b-display-heading mt-5">When to Use</h2>
-          {{ . | markdownify }}
+          <p class="lead">{{ . | markdownify }}</p>
         {{ end }}
         {{ with .cloudcannon_templates }}
           <h2 class="wvu-b-display-heading mt-5">CloudCannon Templates</h2>
@@ -42,7 +42,7 @@
         {{- if and (not site.Params.env_bookshop_live) -}}
           {{ with .content_guidelines_component }}          
             <table class="table caption-top mb-4">
-              {{ if $hasItems }}
+              {{ if $hasComponent }}
                 <caption class="h6 wvu-b-label text-uppercase">Component</caption>
               {{ end }}
               <thead>
