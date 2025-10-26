@@ -16,7 +16,7 @@
     
       {{/* Resize images and add them to a variable  */}}
       {{ if and $image (ne $image.MediaType.SubType "svg") }}
-        {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+        {{ $src = ($image.Fill ("960x640 center webp")).RelPermalink }}
       {{ end }}
     {{- end -}}
 
@@ -25,7 +25,7 @@
         <div class="position-relative">                    
           {{ if .image }}
             <div class="ratio ratio-3x2">
-              <img leading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
+              <img leading="lazy" class="object-fit-cover object-position-center" src="{{ $src }}" alt="{{ .alt_text }}" />
             </div>
           {{ end }}
         </div> 

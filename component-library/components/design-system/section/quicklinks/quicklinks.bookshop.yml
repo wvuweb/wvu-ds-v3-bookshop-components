@@ -14,7 +14,7 @@ blueprint:
   subheading:
   links:
     - text: Text
-      url: /url
+      url:
   settings:
     styles:
       audience: general

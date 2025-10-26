@@ -11,9 +11,9 @@
           {{ $image := "" }}
           {{/*  Get the image, either from its remote or local source  */}}
           {{ if hasPrefix $src "http"}}
-            {{ $image = resources.GetRemote .image }}
+            {{ $image = resources.GetRemote $src }}
           {{ else }}
-            {{ $image = resources.Get .image }}
+            {{ $image = resources.Get $src }}
           {{ end }}
         
           {{/* Resize images and add them to a variable  */}}
@@ -25,7 +25,7 @@
         <div class="col-24 col-lg-12">
           {{ if .image }}
             <div class="h-100">
-              <img leading="lazy" class="h-100 object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
+              <img loading="lazy" class="h-100 object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" style="object-position: center;" />
             </div>
           {{ end }}
         </div>

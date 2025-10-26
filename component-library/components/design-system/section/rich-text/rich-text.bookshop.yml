@@ -32,6 +32,7 @@ _inputs:
     hidden: true
     options:
       subtype: tabbed
+      code: true
   text:
     type: markdown
     options:
