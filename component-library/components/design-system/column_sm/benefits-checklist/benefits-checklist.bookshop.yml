@@ -3,7 +3,7 @@ spec:
   structures:
     - column_blocks_sm
   label: "Benefits Checklist"
-  description: List of product benefits
+  description: List of product benefits.
   icon: checklist
   tags: []
 

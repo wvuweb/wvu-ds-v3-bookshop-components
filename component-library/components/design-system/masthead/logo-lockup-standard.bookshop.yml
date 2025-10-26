@@ -21,3 +21,5 @@ _inputs:
     type: array
   lockup_lines[*]:
     type: text
+  super_heading:
+    hidden: true
