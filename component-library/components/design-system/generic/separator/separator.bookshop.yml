@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   separator_c:
+  sticker:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -22,6 +23,29 @@ _inputs:
       values: _select_data.brand_colors
       value_key: class
     label: Color
+  sticker:
+    type: select
+    options:
+      values:
+        - name: Black Bear
+          path: https://static.wvu.edu/global/images/stickers/black-bear.webp
+        - name: Cardinal
+          path: https://static.wvu.edu/global/images/stickers/cardinal.webp
+        - name: Coonskin Cap
+          path: https://static.wvu.edu/global/images/stickers/coonskin-cap.webp
+        - name: Honey Bee
+          path: https://static.wvu.edu/global/images/stickers/honey-bee.webp
+        - name: Mountaineer Statue
+          path: https://static.wvu.edu/global/images/stickers/mountaineer-statue.webp
+        - name: PRT
+          path: https://static.wvu.edu/global/images/stickers/prt.webp
+        - name: Trout
+          path: https://static.wvu.edu/global/images/stickers/trout.webp
+        - name: Woodburn
+          path: https://static.wvu.edu/global/images/stickers/woodburn.webp
+        - name: WVU Pennant
+          path: https://static.wvu.edu/global/images/stickers/wvu-pennant.webp
+      value_key: path
 _select_data:
   brand_colors:
     - name: WVU Gold

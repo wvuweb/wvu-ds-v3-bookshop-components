@@ -1,9 +1,14 @@
-<div class="wvu-z-index-content py-5">
+<div class="wvu-z-index-content">
   <div class="position-absolute w-100">
     <div class="container">
       <div class="row justify-content-center align-items-center">
-        <div class="col-18">
-          <div class="wvu-hr-dotted wvu-hr-dotted-{{ .separator_c }}" style="content: '';"></div>
+        <div class="col-18 d-flex-align-items-center justify-content-center position-relative" style="height: 0px;">
+          <div class="wvu-hr-dotted w-100 position-absolute wvu-hr-dotted-{{ .separator_c }}" style="content: ''; top: 0;"></div>
+          {{ if .sticker }}
+            <div class="w-100 position-absolute d-flex align-items-center justify-content-center" style="height: 0px;">
+              <img class="position-absolute wvu-shadow-hard-filter" src="{{ .sticker }}" alt="" height="150px" width="150px" />
+            </div>
+          {{ end }}
         </div>
       </div>
     </div>
