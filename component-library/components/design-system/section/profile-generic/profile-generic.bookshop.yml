@@ -167,7 +167,7 @@ _select_data:
       class: pb-6
     - name: Buffer Both
       class: py-6
-  card_c:
+  color_palettes:
     - name: Option 1
       class: option-1
     - name: Option 2

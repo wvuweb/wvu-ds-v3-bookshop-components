@@ -29,12 +29,6 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  card_c:
-    type: choice
-    options:
-      allow_empty: false
-      values: _select_data.color_palettes
-      value_key: class
   copy:
     type: markdown
     options:
@@ -62,24 +56,6 @@ _inputs:
     type: array
   super_heading[*]:
     type: text
-_select_data:
-  color_palettes:
-    - name: Option 1
-      class: option-1
-    - name: Option 2
-      class: option-2
-    - name: Option 3
-      class: option-3
-    - name: Option 4
-      class: option-4
-    - name: Option 5
-      class: option-5
-    - name: Option 6
-      class: option-6
-    - name: Option 7
-      class: option-7
-    - name: Option 8
-      class: option-8
 _structures:
   links:
     style: select
