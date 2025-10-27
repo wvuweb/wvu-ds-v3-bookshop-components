@@ -19,7 +19,7 @@ blueprint:
   add_quotemark: false
   profile_url:
   video_id:
-  video_image:
+  # video_image:
   ctas:
   settings:
     styles:
@@ -158,6 +158,8 @@ _inputs:
     hidden: true
   use_common_wrapper:
     type: auto
+    hidden: true
+  video_image:
     hidden: true
 _select_data:
   buffers:

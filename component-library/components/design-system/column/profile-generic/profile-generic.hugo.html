@@ -11,39 +11,24 @@
 
   {{/* Resize images and add them to a variable  */}}
   {{ if and $image (ne $image.MediaType.SubType "svg") }}
-    {{ if .is_cutout }}
-      {{ $src = ($image.Fit (printf "%dx%d webp" 640 960)).RelPermalink }}
-    {{ else }}
-      {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
-    {{ end }}
+    {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
   {{ end }}
 {{- end -}}
 
 <div class="wvu-b-subtle wvu-b-border wvu-b-shadow {{ .settings.layout.margin_no_bg }}">
   <div class="row gx-0">
-    <div class="col-xl-12 ms-auto order-2 order-xl-1">
+    <div class="col-xxl-12 ms-auto position-relative">
       {{ with .label }}
-        <h2 class="wvu-b-accent-text wvu-text-vertical wvu-b-label h6 small wvu-text-letter-spacing-lg h-100 m-0 wvu-z-index-max"><span class="d-block bg- p-2">{{ . }}</span></h2>
+        <h2 class="wvu-b-accent-text wvu-text-vertical wvu-b-label h6 small wvu-text-letter-spacing-lg h-100 m-0 wvu-z-index-max bg-white" style="left: -1px;"><span class="d-block bg- p-2">{{ . }}</span></h2>
       {{ end }}
-      <div class="{{ if .settings.layout.is_cutout }}p-5{{ else }}pe-5{{ end }} w-100 h-100 position-relative">
+      <div class="pe-xxl-5 w-100 h-100 position-relative">
         <div class="h-100 position-relative">
           <div class="w-100 h-100">
             <div class="row h-100">
-              {{ if .is_cutout }}
-                <div class="wvu-bg-img px-0 ps-4">
-                  <div class="wvu-b-pattern wvu-bg-blue h-100 w-100 position-absolute" style="opacity: .5"></div>
-                </div>
-                <div class="col-xxl-18 mx-xxl-auto d-flex justify-content-center align-items-end wvu-z-index-content">
-                  <div class="wvu-z-index-content">
-                    <div class="overflow-hidden mt-n7">
-                      <img class="object-fit wvu-b-shadow" src="{{ $src }}" alt="Portrait of {{ .name }}" />
-                    </div>
-                  </div>
-                </div>
-              {{ else }}
+              {{ if .image }}
                 <div class="w-100 h-100 d-flex justify-content-center align-items-end wvu-z-index-content">
-                  <div class="wvu-z-index-content">
-                    <img class="object-fit-cover" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                  <div class="wvu-z-index-content h-100">
+                    <img class="object-fit-cover h-100" src="{{ $src }}" alt="Portrait of {{ .name }}" />
                   </div>
                 </div>
               {{ end }}
@@ -52,40 +37,40 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-12 mx-auto order-1 order-xl-2">
+    <div class="col-xxl-12 mx-xxl-auto">
       <div class="row">
         <div class="col-md-16 col-xl-16">
-          <div class="wvu-z-index-content position-relative px-5 px-lg-3 py-5 py-xl-6 my-xl-n3">
+          <div class="wvu-z-index-content position-relative ps-5 pe-5 ps-xxl-0 pe-xxl-3 py-5 my-xxl-n3">
             {{ with .super_heading }}
               <div class="wvu-b-superheading wvu-b-label">
-                <p class="">
+                <p class="mb-1">
                   {{ range . }}
                     <span class="d-block">{{ . }}</span>
                   {{ end }}
                 </p>
               </div>
             {{ end }}
-            <h2 class="wvu-header-max-width wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow mb-3" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
+            <h2 class="wvu-header-max-width wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow mb-2" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
             {{ with .name }}
-              <p class="wvu-b-subheading fs-5 mb-3">{{ . }}</p>
+              <p class="wvu-b-subheading fs-5 mb-2">{{ . }}</p>
             {{ end }}
             {{ with .info }}
-              <div class="">
+              <div class="small">
                 {{ range . }}
                   <p class="mb-0">{{ . }}</p>
                 {{ end }}
               </div>
             {{ end }}
-            <div class="my-3">
+            <div class="my-2 small">
               {{ .copy | markdownify }}
             </div>
             {{ if .profile_url }}
-              <p><a href="{{ .profile_url }}" class="text-decoration-none wvu-b-accent-text"><span class="fa-solid fa-user-circle"></span> View Profile</a></p>
+              <p><a href="{{ .profile_url }}" class="text-decoration-none wvu-b-accent-text small"><span class="fa-solid fa-user-circle"></span> View Profile</a></p>
             {{ end }}
           </div>
         </div>
         <div class="col-md-7 col-xl-7 d-flex align-items-center position-relative">
-          <div class="py-6 my-n3 w-100 pe-4">
+          <div class="py-6 my-n3 w-100">
             <div class="row">            
               {{ if .ctas }}
                 <div class="col-sm col-md-24">

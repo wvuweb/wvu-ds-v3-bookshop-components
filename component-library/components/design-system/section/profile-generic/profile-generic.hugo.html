@@ -44,7 +44,9 @@
   {{ end }}
   <div class="row gx-0">
     <div class="col-lg-12 ms-auto">
-      <h2 class="d-none d-lg-block wvu-b-accent-bg wvu-text-vertical wvu-shout h6 small wvu-text-letter-spacing-lg h-100 m-0 wvu-z-index-max"><span class="d-block bg- p-2">{{ .label }}</span></h2>
+      {{ if .label }}
+        <h2 class="d-none d-lg-block wvu-b-accent-bg wvu-text-vertical wvu-shout h6 small wvu-text-letter-spacing-lg h-100 m-0 wvu-z-index-max"><span class="d-block bg- p-2">{{ .label }}</span></h2>
+      {{ end }}
       <div class="{{ if .settings.layout.is_cutout }}p-5{{ else }}pe-lg-5{{ end }} w-100 h-100 position-relative">
         <div class="h-100 position-relative">
           <div class="w-100 h-100">

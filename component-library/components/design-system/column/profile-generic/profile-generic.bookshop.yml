@@ -14,7 +14,7 @@ blueprint:
   heading: Heading
   name: Firstname Lastname
   image:
-  is_cutout: false
+  # is_cutout: false
   super_heading:
   info:
   copy:
@@ -50,6 +50,8 @@ _inputs:
     type: array
   info[*]:
     type: text
+  is_cutout:
+    hidden: true
   is_dynamic:
     hidden: true
   super_heading:
