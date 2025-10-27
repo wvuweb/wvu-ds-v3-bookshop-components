@@ -34,6 +34,7 @@ _inputs:
       indent: true
       join_above: true
       join_below: true
+      link: true
       numberedlist: true
       outdent: true
       strike: true
