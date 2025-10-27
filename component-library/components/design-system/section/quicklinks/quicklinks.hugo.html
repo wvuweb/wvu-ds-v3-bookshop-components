@@ -8,9 +8,9 @@
     {{ end }}
   </div>
   <div class="col-xxl-16">
-    <ul class="wvu-ul-chevrons wvu-column-count-lg-3">
+    <ul class="wvu-column-count-lg-3 list-unstyled">
       {{ range .links }}
-        <li><a class="text-decoration-none" href="{{ .url }}">{{ .text }}</a></li></li>
+        <li class="position-relative ps-4"><span class="fa-solid fa-chevron-right wvu-b-accent-text position-absolute small" style="top: 6px; left: 0;"></span> <a class="text-decoration-none" href="{{ .url }}">{{ .text }}</a></li></li>
       {{ end }}
     </ul>
   </div>
