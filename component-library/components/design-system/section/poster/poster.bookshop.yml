@@ -88,6 +88,13 @@ _inputs:
     type: datetime
     options:
       timezone: America/New_York
+  image:
+    type: image
+    options:
+      allowed_sources:
+        - ccdam
+      width: 1920
+      height: 1080
   include_heading_postscript:
     hidden: true
   is_dynamic:

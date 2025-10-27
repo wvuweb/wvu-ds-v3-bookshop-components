@@ -9,7 +9,6 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  component_name: profile-generic
   label: Spotlight
   heading: Heading
   name: Firstname Lastname
@@ -90,6 +89,13 @@ _inputs:
     type: datetime
     options:
       timezone: America/New_York
+  image:
+    type: image
+    options:
+      allowed_sources:
+        - ccdam
+      width: 1920
+      height: 1080
   include_heading_postscript:
     hidden: true
   info:
