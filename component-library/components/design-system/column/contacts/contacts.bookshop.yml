@@ -29,5 +29,6 @@ _inputs:
       allow_empty: false
       values: data.people_data[?(@.is_contact == true)]
       value_key: uuid
+      max_items: 3
   is_dynamic:
     hidden: true

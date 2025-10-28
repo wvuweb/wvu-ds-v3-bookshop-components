@@ -2,25 +2,27 @@
   {{ if .heading }}
     <h2 class="h6 wvu-b-label mb-5">{{ .heading }}</h2>
   {{ end }}
-  <div class="row gx-5">
-    {{ range .items }}
-      <div class="col-md-12 col-lg-8">
-        <p class="mb-5">
-          {{ if .pre }}
-            <span class="d-block helvetica-neue-bold">{{ .pre }}</span>
-          {{ end }}
-          
-          <span class="d-block wvu-b-display-heading display-3">{{ .stat }}</span>
-          
-          {{ if .post }}
-            <span class="d-block helvetica-neue-bold">{{ .post }}</span>
-          {{ end }}
-    
-          {{ if .source }}
-            <span class="d-block small"><em>{{ .source }}</em></span>
-          {{ end }}
-        </p>
-      </div>
-    {{ end }}
+  <div class="h-100 d-flex align-items-center mt-xxl-n5 w-100">
+    <div class="row w-100 gx-5">
+      {{ range .items }}
+        <div class="col-md-12 col-xxl-8">
+          <p class="mb-5">
+            {{ if .pre }}
+              <span class="d-block helvetica-neue-bold">{{ .pre }}</span>
+            {{ end }}
+            
+            <span class="d-block wvu-b-display-heading display-3">{{ .stat }}</span>
+            
+            {{ if .post }}
+              <span class="d-block helvetica-neue-bold">{{ .post }}</span>
+            {{ end }}
+      
+            {{ if .source }}
+              <span class="d-block small"><em>{{ .source }}</em></span>
+            {{ end }}
+          </p>
+        </div>
+      {{ end }}
+    </div>
   </div>
 </div>
