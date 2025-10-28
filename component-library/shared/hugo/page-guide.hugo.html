@@ -83,11 +83,6 @@
 
         <section id="{{ .settings.config.name }}" class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}" data-pagefind-ignore="all">
           {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
-          {{ if .is_nested }}
-            {{ if .heading }}
-              <h2 class="position-absolute display-4 wvu-text-vertical wvu-b-display-heading wvu-b-accent-text h6 small wvu-text-letter-spacing-lg h-100 wvu-z-index-max mt-n5 mx-0"><span class="d-block bg- p-2">{{ .heading }}</span></h2>
-            {{ end }}
-          {{ end }}
 
           {{ if .settings.styles.card_c }}
             {{ $backgroundColor = .settings.styles.card_c }}
@@ -98,6 +93,15 @@
               <div class="{{ if not .settings.layout.full_bleed }}row{{ end }}">
                 <div class="{{ with .settings.layout.max_cols }}col-xxl-{{ . }} mx-xxl-auto{{ end }}">            
                   <div class="{{ .settings.layout.margin }} {{ $containerPadding }} bg-{{ $containerBackgroundColor }}">
+                    {{ if and .is_nested .heading }}
+                      <div class="pb-3">
+                        <div class="mb-5 text-center">
+                          {{ with .heading }}
+                            <h2 class="wvu-b-label h1 mb-3">{{ . }}</h2>
+                          {{ end }}
+                        </div>
+                      </div>
+                    {{ end }}
                     {{ if not .is_nested }}
                       {{ if .settings.config.include_heading_postscript }}
                         {{ if .heading }}
