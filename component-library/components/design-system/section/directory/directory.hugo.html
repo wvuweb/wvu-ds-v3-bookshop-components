@@ -13,7 +13,7 @@
 {{ end }}
 
 <!-- Loop By: sort_order -->
-<section id="wvu-main-content" class="py-6 audience-general tone-default bg-option-1 bg-subtle">  
+<section id="wvu-main-content" class="py-6 audience-general tone-default bg-option-1 wvu-b-subtle">  
   <div class="container wvu-z-index-content">
     <ul class="list-unstyled">
       {{ range $directory }}
@@ -28,6 +28,20 @@
 
         {{ $src := $contact.profile_image }}
 
+        {{- if not site.Params.env_bookshop_live -}}
+          {{ $image := "" }}
+          {{/*  Get the image, either from its remote or local source  */}}
+          {{ if hasPrefix $src "http"}}
+            {{ $image = resources.GetRemote $src }}
+          {{ else }}
+            {{ $image = resources.Get $src }}
+          {{ end }}
+
+          {{/* Resize images and add them to a variable  */}}
+          {{ if and $image (ne $image.MediaType.SubType "svg") }}
+            {{ $src = ($image.Fill "webp center 960x960").RelPermalink }}
+          {{ end }}
+        {{- end -}}
 
         <li class="border-bottom border-1 border-black-50 pt-4 pb-4 pb-sm-4 text-center text-sm-start">
           <div class="row">
