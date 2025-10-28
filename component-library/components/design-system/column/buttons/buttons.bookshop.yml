@@ -2,6 +2,7 @@
 spec:
   structures:
     - detail_blocks
+    - article_blocks
   label: "Buttons"
   description: A list of CTA buttons.
   icon: buttons_alt
