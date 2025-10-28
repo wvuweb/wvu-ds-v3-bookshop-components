@@ -43,7 +43,7 @@
 
   {{/* Resize images and add them to a variable  */}}
   {{ if and $image (ne $image.MediaType.SubType "svg") }}
-    {{ $src = ($image.Fill (printf "%s webp" $imageSize)).RelPermalink }}
+    {{ $src = ($image.Fill (printf "%s center webp" $imageSize)).RelPermalink }}
   {{ end }}
 {{- end -}}
 
@@ -61,7 +61,7 @@
             {{ if not .params.image_lg }}
               <div class="col-8">
                 <div class="ratio ratio-1x1">
-                  <img class="img-fluid h-100 w-100 rounded-circle" src="{{ $src }}" />
+                  <img class="img-fluid h-100 w-100 rounded-circle object-fit-cover" src="{{ $src }}" />
                 </div>
               </div>
             {{ end }}
