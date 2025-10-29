@@ -2,7 +2,7 @@
 
 <div class="mb-n5">
   {{ range .items }}
-    <div class="bg-white wvu-b-shadow wvu-b-border mb-5">
+    <div class="wvu-b-subtle wvu-b-shadow wvu-b-border mb-5">
       <div class="row gx-0">
       
         {{ $src := .image }}
@@ -22,14 +22,14 @@
           {{ end }}
         {{- end -}}
 
-        <div class="col-24 col-lg-12">
+        <div class="col-24 col-lg-8">
           {{ if .image }}
             <div class="h-100">
               <img loading="lazy" class="h-100 object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" style="object-position: center;" />
             </div>
           {{ end }}
         </div>
-        <div class="col-24 col-lg-12">
+        <div class="col-24 col-lg-16">
           <div class="h-100">
             <div class="position-relative p-5">
               <h3 class="wvu-b-display-heading h1 mb-3"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
