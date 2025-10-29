@@ -8,13 +8,13 @@
 {{- end -}}
 
 {{ if and .topper .topper._bookshop_name }}
-  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params "title" .params.title "authors" .params.authors "image" .params.article_image)) }}
+  {{ partial "bookshop" (slice .topper._bookshop_name (dict "topper" .topper "params" .params "title" .params.title "subheading" .params.subheading "authors" .params.authors "image" .params.article_image)) }}
   {{ if ne .topper._bookshop_name "design-system/topper/article" }}
     {{ $containerMargin = "mt-n9" }}
     {{ $sidebarMargin = "mt-8" }}
   {{ end }}
 {{ else }}
-  {{ partial "bookshop" (slice "design-system/topper/article" (dict "topper" .topper "params" .params "title" .params.title)) }}
+  {{ partial "bookshop" (slice "design-system/topper/article" (dict "topper" .topper "params" .params "title" .params.title "subheading" .params.subheading)) }}
 {{ end }}
 
 

@@ -38,8 +38,8 @@
 
         <h1 id="big-search-1-label" class="display-5 antonia-light mb-3">{{ .title }}</h1>
 
-        {{ with .subheading }}
-          <p class="config-light fs-4 mb-0">{{ . }}</p>
+        {{ if .subheading }}
+          <p class="config-light fs-4 mb-0">{{ .subheading }}</p>
         {{ end }}
 
         {{ if not site.Params.env_bookshop_live }}
