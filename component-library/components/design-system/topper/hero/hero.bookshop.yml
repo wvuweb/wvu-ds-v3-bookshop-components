@@ -101,6 +101,7 @@ _inputs:
           class: display-3
         - name: Small
           class: display-4
+      value_key: class
   # margin:
   #   type: select
   #   options:
