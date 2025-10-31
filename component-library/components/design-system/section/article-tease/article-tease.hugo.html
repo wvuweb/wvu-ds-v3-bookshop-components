@@ -1,6 +1,8 @@
 {{ $label := .label }}
 {{ $tags := slice }}
 
+
+
 {{ if .tags }}
   {{ $tags = .tags }}
 {{ end }}
@@ -97,8 +99,8 @@
         <div class="col-lg-12">
           <div class="h-100 p-5 p-xxl-6">
 
-            {{ if .label }}
-              <h2 class="h6 wvu-b-label">{{ .label }}</h2>
+            {{ if $label }}
+              <h2 class="h6 wvu-b-label">{{ $label }}</h2>
             {{ end }}
 
             {{ if $label }}
