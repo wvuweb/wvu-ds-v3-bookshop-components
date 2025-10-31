@@ -1,4 +1,9 @@
 {{ $src := .background_image }}
+{{ $headingSize := "display-3" }}
+
+{{ if .settings.styles.heading_size }}
+  {{ $headingSize = .settings.styles.heading_size }}
+{{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
   {{ $image := "" }}
@@ -27,7 +32,7 @@
     {{ end }}
     
     {{ with .heading }}
-      <h2 id="" class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow wvu-b-text-outline display-3 mb-n2" data-text="{{ . }}">
+      <h2 id="" class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }} mb-n2" data-text="{{ . }}">
         <span class="wvu-b-font-adjust">{{ . }}</span>
       </h2>
     {{ end }}
