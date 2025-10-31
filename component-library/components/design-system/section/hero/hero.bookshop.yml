@@ -25,6 +25,7 @@ blueprint:
       bg_subtle:
       enable_blend: false
       tint_opacity: '0.7'
+      heading_size: display-2
     layout:
       buffer:
       padding: py-6 py-xxl-7
@@ -77,6 +78,18 @@ _inputs:
       values: _select_data.color_palettes
       value_key: class
     cascade: true
+  heading_size:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        - name: Large
+          class: display-2
+        - name: Medium
+          class: display-3
+        - name: Small
+          class: display-4
+      value_key: class
   hide:
     type: datetime
     options:
