@@ -1,18 +1,12 @@
-{{ $subheading := "" }}
-
-{{ if and .topper .topper.subheading }}
-  {{ $subheading = .topper.subheading }}
-{{ end }}
-
 <header class="pt-6 pb-4 position-relative">
   <div class="container wvu-z-index-content">
-    {{ if .title }}
-      <h1 class="config-extra-bold display-3 text-wvu-blue"><span class="wvu-b-font-adjust">{{ .title }}</span></h1>
+    {{ if .heading }}
+      <h1 class="config-extra-bold display-3 text-wvu-blue"><span class="wvu-b-font-adjust">{{ .heading }}</span></h1>
     {{ else }}
-      <h1 class="config-extra-bold display-3 text-wvu-blue"><span class="wvu-b-font-adjust">Title</span></h1>
+      <h1 class="config-extra-bold display-3 text-wvu-blue"><span class="wvu-b-font-adjust">{{ .title }}</span></h1>
     {{ end }}
-    {{ with $subheading }}
-      <p class="lead">{{ . }}</p>
+    {{ if .subheading }}
+      <p class="lead">{{ .subheading }}</p>
     {{ end }}
   </div>
 </header>
