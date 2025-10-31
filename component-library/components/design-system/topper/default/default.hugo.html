@@ -1,12 +1,12 @@
 <header class="pt-6 pb-4 position-relative">
   <div class="container wvu-z-index-content">
-    {{ if .heading }}
-      <h1 class="config-extra-bold display-3 text-wvu-blue"><span class="wvu-b-font-adjust">{{ .heading }}</span></h1>
+    {{ if and .topper .topper.heading }}
+      <h1 class="config-extra-bold display-3 text-wvu-blue"><span class="wvu-b-font-adjust">{{ .topper.heading }}</span></h1>
     {{ else }}
       <h1 class="config-extra-bold display-3 text-wvu-blue"><span class="wvu-b-font-adjust">{{ .title }}</span></h1>
     {{ end }}
-    {{ if .subheading }}
-      <p class="lead">{{ .subheading }}</p>
+    {{ if and .topper .topper.subheading }}
+      <p class="lead">{{ .topper.subheading }}</p>
     {{ end }}
   </div>
 </header>
