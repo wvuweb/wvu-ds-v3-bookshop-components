@@ -7,7 +7,7 @@
         {{ if not site.Data }}
           {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
         {{ else if and (site.Params.env_bookshop_live) (.config.hide_collection_pages) .student }}
-          {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" .) }}
+          {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
         {{ else }}
           {{ $peopleData := site.Data.people }}
           {{ range .people }}

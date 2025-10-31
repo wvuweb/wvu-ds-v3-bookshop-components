@@ -54,7 +54,7 @@
               {{ partial "bookshop" (slice "design-system/simple/byline-test" (dict "authors" .authors )) }}
             {{ end }}
           {{ else }}
-            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "Byline will not display in the live editor.")) }}            
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
           {{ end }}
         </div>
       </div>

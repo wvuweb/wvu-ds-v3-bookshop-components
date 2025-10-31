@@ -3,7 +3,7 @@
     <h2 class="h4 mb-5 wvu-b-label pt-2">{{ .heading }}</h2>
   {{ end }}
   {{ if site.Params.env_bookshop_live }}
-    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "Events will show on live site." ) ) }}
+    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
   {{ else }}
     {{ .event_feed | safeHTML }}
   {{ end }}
