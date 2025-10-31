@@ -76,7 +76,9 @@ _inputs:
       value_key: class
     cascade: true
   event_feed:
-    type: textarea
+    type: code
+    options:
+      syntax: html
   hide:
     type: datetime
     hidden: true
