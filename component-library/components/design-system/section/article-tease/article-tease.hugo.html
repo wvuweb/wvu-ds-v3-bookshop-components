@@ -97,8 +97,8 @@
         <div class="col-lg-12">
           <div class="h-100 p-5 p-xxl-6">
 
-            {{ with $label }}
-              <h2 class="h6 wvu-b-label">{{ . }}</h2>
+            {{ if .label }}
+              <h2 class="h6 wvu-b-label">{{ .label }}</h2>
             {{ end }}
 
             {{ if $label }}
@@ -129,8 +129,8 @@
               </p>
             {{ end }}
 
-            {{ with $params.teaser }}
-              <p>{{ . }}</p>
+            {{ if $params.teaser }}
+              <p>{{ $params.teaser }}</p>
             {{ end }}
 
             <div class="mt-4">
