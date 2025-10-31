@@ -53,7 +53,7 @@ preview:
 _inputs:
   aria_label:
     label: ARIA Label
-    hidden: '!heading'
+    hidden: 'heading'
     options:
       required: true
     context:
