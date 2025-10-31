@@ -94,24 +94,32 @@
                 <div class="{{ with .settings.layout.max_cols }}col-xxl-{{ . }} mx-xxl-auto{{ end }}">            
                   <div class="{{ .settings.layout.margin }} {{ $containerPadding }} bg-{{ $containerBackgroundColor }}">
                     {{ if and .is_nested .heading }}
-                      <div class="pb-3">
-                        <div class="mb-5 text-center">
-                          {{ with .heading }}
-                            <h2 class="wvu-b-label h1 mb-3">{{ . }}</h2>
-                          {{ end }}
+                      <div class="row">
+                        <div class="col-xl-16 mx-xl-auto">
+                          <div class="pb-3">
+                            <div class="mb-5 text-center">
+                              {{ with .heading }}
+                                <h2 class="wvu-b-label h1 mb-3">{{ . }}</h2>
+                              {{ end }}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     {{ end }}
                     {{ if not .is_nested }}
                       {{ if .settings.config.include_heading_postscript }}
                         {{ if .heading }}
-                          <div class="pb-3">
-                            <div class="mb-5 text-center">
-                              <h2 class="wvu-b-label h1 mb-3">{{ .heading }}</h2>
+                          <div class="row">
+                            <div class="col-xl-16 mx-xl-auto">
+                              <div class="pb-3">
+                                <div class="mb-5 text-center">
+                                  <h2 class="wvu-b-label h1 mb-3">{{ .heading }}</h2>
 
-                              {{ if .subheading }}
-                                <p class="config-light fs-5 mb-3">{{ .subheading }}</p>
-                              {{ end }}
+                                  {{ if .subheading }}
+                                    <p class="config-light fs-5 mb-3">{{ .subheading }}</p>
+                                  {{ end }}
+                                </div>
+                              </div>
                             </div>
                           </div>
                         {{ end }}
