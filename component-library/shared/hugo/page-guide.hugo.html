@@ -81,7 +81,7 @@
 
       {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
 
-        <section id="{{ .settings.config.name }}" class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}" data-pagefind-ignore="all">
+        <section id="{{ .settings.config.name }}" {{ if .aria_label }}aria-label="{{ .aria_label}}" {{ else}}aria-labelledby="{{ .settings.config.name }}-label" {{end }}class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}" data-pagefind-ignore="all">
           {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
 
           {{ if .settings.styles.card_c }}
@@ -99,7 +99,7 @@
                           <div class="pb-3">
                             <div class="mb-5 text-center">
                               {{ with .heading }}
-                                <h2 class="wvu-b-label h1 mb-3">{{ . }}</h2>
+                                <h2 id="{{ .settings.config.name }}-label" class="wvu-b-label h1 mb-3">{{ . }}</h2>
                               {{ end }}
                             </div>
                           </div>
@@ -113,7 +113,7 @@
                             <div class="col-xl-16 mx-xl-auto">
                               <div class="pb-3">
                                 <div class="mb-5 text-center">
-                                  <h2 class="wvu-b-label h1 mb-3">{{ .heading }}</h2>
+                                  <h2 id="{{ .settings.config.name }}-label" class="wvu-b-label h1 mb-3">{{ .heading }}</h2>
 
                                   {{ if .subheading }}
                                     <p class="config-light fs-5 mb-3">{{ .subheading }}</p>
