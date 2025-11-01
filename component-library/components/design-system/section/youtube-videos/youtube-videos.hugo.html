@@ -1,3 +1,4 @@
+{{ $heading := .heading }}
 <div class="row gx-md-5 mb-n5 justify-content-center wvu-justify-children">
   {{ range .videos }}
     <div class="col-md-12 col-lg-8 col-xxl-6 mb-5">
@@ -9,7 +10,11 @@
           <span class="display-5 fa-regular fa-circle-play text-white position-absolute"></span>
         </div>
         <div class="p-4 wvu-b-subtle">
-          <h2 class="wvu-b-display-heading h3"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
+          {{ if not $heading }}
+            <h2 class="wvu-b-display-heading h3"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
+          {{ else }}
+            <h3 class="wvu-b-display-heading h3"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
+          {{ end }}
           {{ .description | markdownify }}
           <a class="stretched-link" href="https://www.youtube.com/watch?v={{ .video_id }}"><span class="visually-hidden">Watch Video: {{ .title }}</span></a>
         </div>

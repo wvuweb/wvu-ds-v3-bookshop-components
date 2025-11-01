@@ -14,8 +14,8 @@
 
 {{ $heading := .heading }}
 
-{{ with .settings.config.hide_thumbnails }}
-  {{ $hideThumbnails = . }}
+{{ if .settings.config.hide_thumbnails }}
+  {{ $hideThumbnails = .settings.config.hide_thumbnails }}
 {{ end }}
 
 {{ if not site.Data }}

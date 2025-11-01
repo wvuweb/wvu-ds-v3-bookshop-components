@@ -1,3 +1,5 @@
+{{ $heading := .heading }}
+
 <div class="row justify-content-center">
   {{ with .office }}
     {{ if .heading }}
@@ -5,7 +7,11 @@
         <div class="h3">
           <span class="fa-solid fa-{{ .icon }}" aria-hidden="true"></span>
         </div>
-        <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
+        {{ if not $heading }}
+          <h2 class="h5">{{ .heading }}</h2>
+        {{ else }}
+          <h3 class="h5">{{ .heading }}</h3>
+        {{ end }}
         {{ with .items }}
           {{ range . }}
             <address>
@@ -40,7 +46,11 @@
         <div class="h3">
           <span class="fa-solid fa-{{ .icon }}" aria-hidden="true"></span>
         </div>
-        <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
+        {{ if not $heading }}
+          <h2 class="h5">{{ .heading }}</h2>
+        {{ else }}
+          <h3 class="h5">{{ .heading }}</h3>
+        {{ end }}
         {{ if .items }}
           {{ range .items }}
             <p class="mb-0">
@@ -71,7 +81,11 @@
         <div class="h3">
           <span class="fa-solid fa-{{ .icon }}" aria-hidden="true"></span>
         </div>
-        <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
+        {{ if not $heading }}
+          <h2 class="h5">{{ .heading }}</h2>
+        {{ else }}
+          <h3 class="h5">{{ .heading }}</h3>
+        {{ end }}
         {{ with .items }}
           {{ range . }}
             <p class="mb-0">
@@ -102,7 +116,11 @@
         <div class="h3">
           <span class="fa-solid fa-{{ .icon }}" aria-hidden="true"></span>
         </div>
-        <h2 class="h5 iowan-old-style-black">{{ .heading }}</h2>
+        {{ if not $heading }}
+          <h2 class="h5">{{ .heading }}</h2>
+        {{ else }}
+          <h3 class="h5">{{ .heading }}</h3>
+        {{ end }}
         {{ with .items }}
           {{ range . }}
             <p class="mb-0">

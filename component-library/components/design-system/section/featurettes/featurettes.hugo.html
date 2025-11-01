@@ -1,4 +1,4 @@
-{{ $styles := .settings.styles }}
+{{ $heading := .heading }}
 
 <div class="row gx-lg-5 justify-content-center wvu-justify-children mb-n5">
 
@@ -30,11 +30,15 @@
         </div>
       {{ end }}
 
-      <h2 class="wvu-b-display-heading h2"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
+      {{ if not $heading }}
+        <h2 class="wvu-b-display-heading h2"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
+      {{ else }}
+        <h3 class="wvu-b-display-heading h2"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
+      {{ end }}
       <p>{{ .text | markdownify }}</p>
-      {{ with .ctas }}
-        {{ range . }}
-          <a class="btn wvu-b-btn btn-sm" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+      {{ if .ctas }}
+        {{ range .ctas }}
+          <a class="btn wvu-b-btn btn-sm" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
         {{ end }}
       {{ end }}
     </div>

@@ -1,5 +1,4 @@
-{{ $styles := .settings.styles }}
-
+{{ $heading := .heading }}
 
 {{ range .items }}
   <div class="row gx-4 mb-5">
@@ -30,11 +29,15 @@
       </div> 
     </div>
     <div class="col-lg-18">
-      <h3 class="wvu-b-display-heading h1"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
+      {{ if not $heading }}
+        <h2 class="wvu-b-display-heading h1"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
+      {{ else }}
+        <h3 class="wvu-b-display-heading h1"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
+      {{ end }}
       <p>{{ .text | markdownify }}</p>
-      {{ with .ctas }}
-        {{ range . }}
-          <a class="btn wvu-b-btn" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+      {{ if .ctas }}
+        {{ range .ctas }}
+          <a class="btn wvu-b-btn" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
         {{ end }}
       {{ end }}
     </div>

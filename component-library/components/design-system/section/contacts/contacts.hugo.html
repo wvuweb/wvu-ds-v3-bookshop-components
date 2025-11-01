@@ -1,3 +1,5 @@
+{{ $heading := .heading }}
+
 <div class="row mb-n5 justify-content-center wvu-justify-children text-center">
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display content inside the Bookshop browser." ) ) }}
@@ -64,7 +66,11 @@
               </div>
             {{ end }}
 
-            <h3 class="h5 mt-3">{{ $contact.name }}</h3>
+            {{ if not $heading }}
+              <h2 class="h5 mt-3">{{ $contact.name }}</h2>
+            {{ else }}
+              <h3 class="h5 mt-3">{{ $contact.name }}</h3>
+            {{ end }}
             {{ with $contact.staff_contact_info }}
               <p class="small">
                 {{ range . }}

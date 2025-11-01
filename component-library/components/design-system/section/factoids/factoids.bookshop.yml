@@ -11,6 +11,7 @@ spec:
 blueprint:
   heading: By the Numbers
   subheading: Subheading goes here.
+  aria_label:
   background_image:
   alt_text:
   items:
@@ -52,6 +53,13 @@ _inputs:
     hidden: '!background_image'
     options:
       required: true
+  aria_label:
+    label: ARIA Label
+    hidden: 'heading'
+    options:
+      required: true
+    context:
+      content: If your component doesn’t have a heading, it needs an <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">ARIA label</a> to be accessible. Enter a concise label to provide a clear and useful name for this component e.g. “Featured News Stories.”
   audience:
     type: choice
     options:

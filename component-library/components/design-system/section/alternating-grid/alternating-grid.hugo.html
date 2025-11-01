@@ -1,3 +1,4 @@
+{{ $heading := .heading }}
 <div class="mb-n4">
   {{ range .items }}
 
@@ -30,12 +31,16 @@
 
         <div class="h-100 d-flex align-items-center wvu-b-subtle p-5">
           <div class="fs-5">
-            <h3 class="display-5 wvu-b-display-heading wvu-b-accent-text">{{ .heading }}</h3>
+            {{ if not $heading }}
+              <h2 class="display-5 wvu-b-display-heading wvu-b-accent-text">{{ .heading }}</h2>
+            {{ else }}
+              <h3 class="display-5 wvu-b-display-heading wvu-b-accent-text">{{ .heading }}</h3>
+            {{ end }}
             <div class="mb-3">
               {{ .copy | markdownify }}
             </div>
-            {{ with .ctas }}
-              {{ range . }}
+            {{ if .ctas }}
+              {{ range .ctas }}
                 <a class="btn wvu-b-btn" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
               {{ end }}
             {{ end }}

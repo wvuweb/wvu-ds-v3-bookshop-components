@@ -1,35 +1,28 @@
-{{ $layout := .settings.layout }}
-{{ $styles := .settings.styles }}
-{{ $config := .settings.config }}
-{{ $itemBorder := "" }}
-
 <div class="row gx-xl-6">
-  {{ if or .heading .subheading }} 
-    <div class="col-xl-10">
-      <div class="sticky-xl-top">
-        <div class="mt-xl-n5 pt-xl-5 mb--xl-5 pb-3">  
-          <div class="text-start mb-5">
-            <div class="col">
-              <h2 class="h1 wvu-b-label my-4">{{ .heading }}</h2>
-              {{ with .subheading }}
-                <p class="wvu-b-subheading h4">{{ . }}</p>
-              {{ end }}
-            </div>
+  <div class="col-xl-10">
+    <div class="sticky-xl-top">
+      <div class="mt-xl-n5 pt-xl-5 mb--xl-5 pb-3">  
+        <div class="text-start mb-5">
+          <div class="col">
+            <h2 class="h1 wvu-b-label my-4">{{ .heading }}</h2>
+            {{ if .subheading }}
+              <p class="wvu-b-subheading h4">{{ .subheading }}</p>
+            {{ end }}
           </div>
         </div>
       </div>
     </div>
-  {{ end }}
+  </div>
   <div class="col-xl mx-xl-auto">
     <div class="mb-n3">
       {{ range .items }}
-        <div class="position-relative wvu-b-subtle mb-3 {{ $itemBorder }}">
+        <div class="position-relative wvu-b-subtle mb-3">
           <div class="row gx-4">
             <div class="col">
               <div class=" p-5 h-100 rounded-2">
                 <h3 class="wvu-b-display-heading h2">{{ .title }}</h3>
-                {{ with .text }}
-                  <p class="mb-0">{{ . }}</p>
+                {{ if .text }}
+                  <p class="mb-0">{{ .text }}</p>
                 {{ end }}
               </div>
             </div>

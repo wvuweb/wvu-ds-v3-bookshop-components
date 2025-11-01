@@ -1,3 +1,4 @@
+{{ $heading := .heading }}
 {{ $styles := .settings.styles }}
 
 <div class="row gx-4 gx-xxl-5 mb-n5">
@@ -30,10 +31,10 @@
           {{ end }}
         </div> 
         <div class="position-relative p-5">
-          {{ if .heading }}
-            <h3 class="wvu-b-display-heading h2 mb-3"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
-          {{ else }}
+          {{ if not $heading }}
             <h2 class="wvu-b-display-heading h2 mb-3"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
+          {{ else }}
+            <h3 class="wvu-b-display-heading h2 mb-3"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
           {{ end }}
           <p class="mb-3">{{ .text | markdownify }}</p>
           {{ with .ctas }}

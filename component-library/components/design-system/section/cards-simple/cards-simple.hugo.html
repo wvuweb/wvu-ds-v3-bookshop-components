@@ -1,13 +1,18 @@
+{{ $heading := .heading }}
 {{ $cardColor := .settings.styles.card_c }}
 
 <div class="row gx-4 text-center mb-n5">
   {{ range .items }}
     <div class="col-24 col-lg-12 col-xl-8 mb-5">
       <div class="position-relative px-5 py-6 h-100 bg-{{ $cardColor }} wvu-b-subtle wvu-b-border wvu-b-shadow">
-        <h3 class="h1 wvu-b-display-heading wvu-b-accent-text"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
-        {{ with .text }}
+        {{ if not $heading }}
+          <h2 class="h1 wvu-b-display-heading wvu-b-accent-text"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
+        {{ else }}
+          <h3 class="h1 wvu-b-display-heading wvu-b-accent-text"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
+        {{ end }}
+        {{ if .text }}
           <div class="mb-3">
-            {{ . | markdownify }}
+            {{ .text | markdownify }}
           </div>
         {{ end }}
         <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 wvu-b-accent-text"></span><span class="visually-hidden">{{ .title }}</span></a>
