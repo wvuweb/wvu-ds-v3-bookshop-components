@@ -19,7 +19,6 @@
 {{ end }}
 
 <div class="h-100 wvu-b-shadow wvu-b-border {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }} audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} bg-{{ $backgroundColor }} position-relative">
-  {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
   <div class="row h-100">
     <div class="col-lg-12 d-flex align-items-center h-100">
       <div class="p-5 wvu-z-index-content">
