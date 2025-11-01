@@ -30,3 +30,5 @@ _inputs:
       required: true
   is_dynamic:
     hidden: true
+  link_text:
+    label: Link to Calendar

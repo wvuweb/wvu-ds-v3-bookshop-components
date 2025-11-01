@@ -1,5 +1,5 @@
 <div class="wvu-b-subtle p-5 h-100">
-  <h2 class="h4 mb-5 wvu-b-label pt-2">{{ .heading }}</h2>
+  <h2 class="h4 mb-4 wvu-b-label">{{ .heading }}</h2>
   {{ if site.Params.env_bookshop_live }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
   {{ else }}
