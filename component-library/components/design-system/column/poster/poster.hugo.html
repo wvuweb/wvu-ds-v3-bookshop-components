@@ -26,22 +26,22 @@
         <div class="wvu-p-max-width">
           <h2 id="-label" class="display-4 wvu-b-display-heading mb-3" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
 
-          {{ with .subheading }}
+          {{ if .subheading }}
             <p class="wvu-b-subheading py-1">
-              <span class="wvu-b-font-adjust">{{ . }}</span>
+              <span class="wvu-b-font-adjust">{{ .subheading }}</span>
             </p>
           {{ end }}
   
-          {{ with .body }}
+          {{ if .body }}
             <div class="mb-4">
-              {{ . | markdownify }}
+              {{ .body | markdownify }}
             </div>
           {{ end }}
   
-          {{ with .ctas }}
+          {{ if .ctas }}
             <div class="mt-4">
-              {{ range . }}
-                <a class="btn wvu-b-btn mb-1 me-1" href="{{ .url }}">{{ .text }} {{ with .icon }}<span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+              {{ range .ctas }}
+                <a class="btn wvu-b-btn mb-1 me-1" href="{{ .url }}">{{ .text }} {{ if .icon }}<span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
               {{ end }}
             </div>
           {{ end }}
