@@ -92,8 +92,9 @@ _inputs:
   contacts:
     type: array
     options:
-      allow_empty: true
-      structures: _structures.contacts
+      values:
+        - label:
+          contact:
   include_heading_postscript:
     hidden: true
   is_dynamic:
@@ -194,11 +195,6 @@ _select_data:
     - name: Dark
       value: '0.7'
 _structures:
-  contacts:
-    values:
-      - value:
-          label:
-          contact:
   links:
     values:
       - value:
