@@ -61,14 +61,14 @@
               <div class="row my-4">
                 <div class="col-md-24 position-relative">
                   {{ if not site.Params.env_bookshop_live }}
-                    <div id="search-hero-topper-input" class="position-relative" style="z-index: 99999999999999">
-                      <label for="search-hero-topper-input" class="visually-hidden">Search</label>
+                    <div id="hero-search-topper" class="position-relative" style="z-index: 99999999999999">
+                      <label for="hero-search-topper-input" class="visually-hidden">Search</label>
                     </div>
                     <script>
                       window.addEventListener('DOMContentLoaded', (event) => {
-                        new PagefindUI({ element: "#{{ .search_id }}", showSubResults: false, showImages: false });
-                        const searchBox = document.querySelector('#{{ .search_id }} .pagefind-ui__search-input');
-                        searchBox.setAttribute("name", "{{ .search_id }}-input");
+                        new PagefindUI({ element: "#hero-search-topper", showSubResults: false, showImages: false });
+                        const searchBox = document.querySelector('#hero-search-topper .pagefind-ui__search-input');
+                        searchBox.setAttribute("name", "hero-search-topper-input");
                       });
                     </script>
                   {{ else }}
