@@ -13,6 +13,8 @@ blueprint:
   subheading: Subheading goes here.
   aria_label:
   contacts:
+    - label: "For Inquiries, Contact"
+      contact:
   postscript:
     copy:
     # ctas:
@@ -89,12 +91,11 @@ _inputs:
       allow_empty: false
       values: data.people_data[?(@.is_contact == true)]
       value_key: uuid
-  contacts:
-    type: array
-    options:
-      values:
-        - label:
-          contact:
+  # contacts:
+  #   type: array
+  #   options:
+  #     allow_empty: true
+  #     structures: _structures.contacts
   include_heading_postscript:
     hidden: true
   is_dynamic:
@@ -195,6 +196,11 @@ _select_data:
     - name: Dark
       value: '0.7'
 _structures:
+  # contact:
+  #   values:
+  #     - value:
+  #         label:
+  #         contact:
   links:
     values:
       - value:
