@@ -1,19 +1,11 @@
-{{ $src := .topper.background_image }}
+{{ $src := "" }}
+
+{{ if .topper.background_image }}
+  {{ $src = .topper.background_image }}
+{{ end }}
+
 {{ $backgroundColor := "" }}
 {{ $headingSize := "display-2" }}
-{{ $placement := "mx-xl-auto text-center" }}
-{{ $buttonColor := "primary" }}
-
-{{ $audienceOverride := "" }}
-{{ $toneOverride := "" }}
-
-{{ if .topper.settings.styles.audience }}
-  {{ $audienceOverride = "override-audience-styles-site" }}
-{{ end }}
-
-{{ if .topper.settings.styles.tone }}
-  {{ $toneOverride = "override-tone-styles-site" }}
-{{ end }}
 
 {{ if .topper.settings.styles.color_palette }}
   {{ $backgroundColor = .topper.settings.styles.color_palette }}
@@ -23,8 +15,8 @@
   {{ $backgroundColor = "option-2" }}
 {{ end }}
 
-{{ with .topper.settings.styles.heading_size }}
-  {{ $headingSize = . }}
+{{ if .topper.settings.styles.heading_size }}
+  {{ $headingSize = .topper.settings.styles.heading_size }}
 {{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
@@ -46,54 +38,68 @@
   {{ end }}
 {{- end -}}
 
-<header id="" class="c-topper-hero {{ $audienceOverride }} {{ $toneOverride }} audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7" style="z-index: 999999999999;">
+<header id="" class="c-topper-hero audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7">
   {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   <div class="container wvu-z-index-content">
     <div class="{{ .topper.settings.layout.buffer }}">
       <div class="row py-6">
-        <div class="col-xl-16 col-xxl-12 text-center mx-xl-auto">
-          {{ with .topper.label }}
-            <p class="h6 mb-6 wvu-b-label">{{ . }}</p>
+        <div class="col-xl-16 col-xxl-12 {{ .topper.settings.layout.text_placement }}">
+          {{ if .topper.label }}
+            <p class="h6 mb-6 wvu-b-label">{{ .topper.label }}</p>
           {{ end }}
           
-          {{ with .topper.heading }}
-            <h1 id="" class="wvu-b-display-heading wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }}" data-text="{{ . }}">
-              <span class="wvu-b-font-adjust">{{ . }}</span>
-            </h1>
-          {{ end }}
+          <h1 id="" class="wvu-b-display-heading wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }}" data-text="{{ .topper.heading }}">
+            <span class="wvu-b-font-adjust">{{ .topper.heading }}</span>
+          </h1>
 
-          <p class="fs-3 my-3 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ .topper.subheading }}</span></p>
-
-          {{ with .topper.markdown }}
-            <div class="mt-5 wvu-b-text">
-              {{ . | markdownify }}
-            </div>
+          {{ if .topper.subheading }}
+            <p class="fs-3 my-3 wvu-b-text wvu-b-subheading"><span class="xwvu-b-font-adjust">{{ .topper.subheading }}</span></p>
           {{ end }}
 
           <div class="row d-flex justify-content-center text-start my-2">
             <div class="col-md-24 mx-auto">
-              <div class="row mb-4">
+              <div class="row my-4">
                 <div class="col-md-24 position-relative">
-                  <div id="hero-big-search" class="position-relative" style="z-index: 99999999999999">
-                    <label for="hero-big-search-input" class="visually-hidden">Search</label>
-                  </div>
-                  <script>
-                    window.addEventListener('DOMContentLoaded', (event) => {
-                      new PagefindUI({ element: "#hero-big-search", showSubResults: false, showImages: false });
-                      const searchBox = document.querySelector('#hero-big-search .pagefind-ui__search-input');
-                      searchBox.setAttribute("name", "hero-big-search-input");
-                    });
-                  </script>
+                  {{ if not site.Params.env_bookshop_live }}
+                    <div id="search-hero-topper-input" class="position-relative" style="z-index: 99999999999999">
+                      <label for="search-hero-topper-input" class="visually-hidden">Search</label>
+                    </div>
+                    <script>
+                      window.addEventListener('DOMContentLoaded', (event) => {
+                        new PagefindUI({ element: "#{{ .search_id }}", showSubResults: false, showImages: false });
+                        const searchBox = document.querySelector('#{{ .search_id }} .pagefind-ui__search-input');
+                        searchBox.setAttribute("name", "{{ .search_id }}-input");
+                      });
+                    </script>
+                  {{ else }}
+                    <div class="position-relative" style="z-index: 999999999999">
+                      <form>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter your search terms">
+                      </form>
+                    </div>
+                  {{ end }}
                 </div>
               </div>
             </div>
           </div>
 
-          {{ with .topper.postscript }}
-            <div class="mt-5">
-              {{ .markdown | markdownify }}
+          {{ if .topper.postscript }}
+            <div class="mt-5 mb-n2">
+              {{ if .topper.postscript.markdown }}
+                <div class="mb-2">
+                  {{ .topper.postscript.markdown | markdownify }}
+                </div>
+              {{ end }}
+              {{ if .topper.postscript.ctas }}
+                <div class="">
+                  {{ range .topper.postscript.ctas }}
+                    <a class="me-2" href="{{ .url }}">{{ .text }}</a>
+                  {{ end }}
+                </div>
+              {{ end }}
             </div>
           {{ end }}
+
         </div>
       </div>
     </div>

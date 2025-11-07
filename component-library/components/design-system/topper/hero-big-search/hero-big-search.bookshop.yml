@@ -1,7 +1,8 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-  label: "Topper - Big Search"
+    - topper
+  label: "Topper - Hero w/Search"
   description:
   icon:
   tags: []
@@ -14,7 +15,6 @@ blueprint:
   heading: Heading
   subheading: Subheading.
   placeholder: Type in your search term.
-  markdown:
   postscript:
     markdown:
     ctas:
@@ -24,20 +24,21 @@ blueprint:
       tone: loud
       color_palette: option-2
       enable_blend: false
-      enable_pattern: false
       tint_opacity: "0.7"
-      heading_size: display-2
+      heading_size: display-3
     layout:
       buffer:
       text_placement: mx-auto text-center
     config:
-      show_label: true
+      name: topper-hero
+      edit_mode_only: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  # Settings
   alt_text:
     hidden: '!background_image'
     options:
@@ -57,6 +58,34 @@ _inputs:
           class: prospective_students
       value_key: class
     label: Style
+  background_image:
+    type: image
+    options:
+      allowed_sources:
+        - ccdam
+      width: 1920
+      height: 1080
+      prevent_resize_existing_files: false
+    cascade: true
+  bg_subtle:
+    type: checkbox
+  buffer:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.buffers
+      value_key: class
+    cascade: true
+  color_palette:
+    type: choice
+    options:
+      allow_empty: false
+      values: _select_data.color_palettes
+      value_key: class
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
   heading_size:
     type: select
     options:
@@ -68,11 +97,92 @@ _inputs:
           class: display-3
         - name: Small
           class: display-4
-  markdown:
-    options:
-      allowed_sources:
-        - ccdam
+      value_key: class
+  padding:
+    type: auto
+    hidden: true
   settings:
     type: object
     options:
       subtype: tabbed
+  subheading:
+    type: textarea
+  text_placement:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        - name: Left
+          class: me-auto text-start
+        - name: Center
+          class: mx-auto text-center
+        - name: Right
+          class: ms-auto text-start
+      value_key: class
+    comment: Use to place the text based on the composition of your background image\. Requires a background image to work.
+    cascade: true
+  tint_opacity:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.tint_opacities
+      value_key: value
+    comment: >-
+      Use to improve text legibility when applying a background image. Disabled
+      when blend is enabled.
+    cascade: true
+  tone:
+    type: choice
+    options:
+      allow_empty: false
+      values:
+        - name: Default
+          class: default
+        - name: Reserved
+          class: reserved
+        - name: Loud
+          class: loud
+        - name: Let’s Go!
+          class: lets-go
+      value_key: class
+_select_data:
+  buffers:
+    - name: Buffer Top
+      class: pt-6
+    - name: Buffer Bottom
+      class: pb-6
+    - name: Buffer Both
+      class: py-6
+  color_palettes:
+    - name: Option 1
+      class: option-1
+    - name: Option 2
+      class: option-2
+    - name: Option 3
+      class: option-3
+    - name: Option 4
+      class: option-4
+    - name: Option 5
+      class: option-5
+    - name: Option 6
+      class: option-6
+    - name: Option 7
+      class: option-7
+    - name: Option 8
+      class: option-8
+  tint_opacities:
+    - name: None
+      value: '0.0'
+    - name: Light
+      value: '0.3'
+    - name: Medium
+      value: '0.5'
+    - name: Dark
+      value: '0.7'
+_structures:
+  links:
+    values:
+      - value:
+          text:
+          icon:
+          url:
