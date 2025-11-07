@@ -103,7 +103,7 @@
           <div class="col-lg-12 col-xl-6 mb-4">
             <div class="mb-4 position-relative" itemscope="" itemtype="http://schema.org/BlogPosting">
               {{ if and $src (not $hideThumbnails) }}
-                <div class="wvu-article__thumb mb-4">
+                <div class="wvu-article__thumb">
                   <div class="ratio ratio-3x2 bg-light">
                     <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
                       <img class="h-100 w-100 object-fit-cover" src="{{ $src }}" alt="{{ $alt }}" />
@@ -112,7 +112,7 @@
                 </div>
               {{ end }}
 
-              <div class="mt-3 mt-md-0">
+              <div class="mt-3 mt-md-0 wvu-b-subtle p-4">
                 {{ if not $heading }}
                   <h2 class="h4" itemprop="headline"><a class="wvu-b-display-heading text-decoration-none stretched-link" href="{{ $link }}">{{ $params.title }}</a></h2>
                 {{ else }}
@@ -142,7 +142,7 @@
                 {{ end }}
 
                 {{ with $params.teaser }}
-                  <p class="small">{{ . }}</p>
+                  <p class="small mb-0">{{ . }}</p>
                 {{ end }}
               </div>
 
