@@ -13,8 +13,6 @@ blueprint:
   subheading: Subheading goes here.
   aria_label:
   contacts:
-    - label: "For Inquiries, Contact"
-      contact:
   postscript:
     copy:
     # ctas:
@@ -196,7 +194,7 @@ _select_data:
     - name: Dark
       value: '0.7'
 _structures:
-  contact:
+  contacts:
     values:
       - value:
           label:
