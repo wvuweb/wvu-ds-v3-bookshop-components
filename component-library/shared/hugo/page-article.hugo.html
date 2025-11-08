@@ -26,7 +26,9 @@
         <div class="bg-option-1 p-5 p-lg-6 {{ if and .topper (or (eq .topper._bookshop_name "design-system/topper/article") (not .topper)) }}mt-n6{{ end }}">
           <div class="antonia-regular text-dark fs-5 ">
             {{ range .article_blocks }}
-              {{ partial "bookshop" . }}
+              <div class="mb-5">
+                {{ partial "bookshop" . }}
+              </div>
             {{ end }}
           </div>
         </div>

@@ -74,19 +74,38 @@
             {{ end }}
 
             {{ if .params.name }}
-              <h1 class="display-6 wvu-b-display-heading"><span class="wvu-b-font-adjust">{{ .params.name }}</span></h1>
+              <h1 class="display-6 wvu-b-display-heading mb-4"><span class="wvu-b-font-adjust">{{ .params.name }}</span></h1>
             {{ else }}
-              <h1 class="display-6 wvu-b-display-heading"><span class="wvu-b-font-adjust">Firstname Lastname</span></h1>
+              <h1 class="display-6 wvu-b-display-heading mb-4"><span class="wvu-b-font-adjust">Firstname Lastname</span></h1>
             {{ end }}
 
-            {{ with .params.hometown }}
-              <p><span class="config-heavy text-uppercase">Hometown:</span> {{ . }}</p>
+            {{ if .params.hometown }}
+              <p><span class="config-extra-bold text-uppercase">Hometown:</span> {{ .params.hometown }}</p>
             {{ end }}
-            {{ with .params.majors }}
-              <p><span class="config-heavy text-uppercase">Majors:</span> {{ range . }}{{ . }};{{ end }}</p>
+
+            {{- if not site.Params.env_bookshop_live -}}
+              {{ if .params.majors }}
+                <p><span class="config-extra-bold text-uppercase">Majors:</span> {{ range $index, $majors := .params.majors }}{{- if and $index (gt $index 0) -}}; {{ end }}{{ $majors }}{{ end }}</p>
+              {{ end }}
+              {{ if .params.minors }}
+                <p><span class="config-extra-bold text-uppercase">Minors:</span> {{ range $index, $minors := .params.minors }}{{- if and $index (gt $index 0) -}}; {{ end }}{{ $minors }}{{ end }}</p>
+              {{ end }}
+            {{ else }}
+              {{ if .params.majors }}
+                <p><span class="config-extra-bold text-uppercase">Majors:</span> {{ range .params.majors }}{{ . }} {{ end }}</p>
+              {{ end }}
+              {{ if .params.minors }}
+                <p><span class="config-extra-bold text-uppercase">Minors:</span> {{ range .params.minors }}{{ . }} {{ end }}</p>
+              {{ end }}
             {{ end }}
-            {{ with .params.minors }}
-              <p><span class="config-heavy text-uppercase">Minors:</span> {{ range . }}{{ . }};{{ end }}</p>
+
+            {{ if .params.quote }}
+              <div class="position-relative mt-4">
+                <span class="position-absolute display-1" style="top: -30px; left: -60px;">“</span>
+                <span class="d-block fs-5 antonia-heavy-italic wvu-p-max-width">
+                  {{ .params.quote }}
+                </span>
+              </div>
             {{ end }}
           </div>
         </div>

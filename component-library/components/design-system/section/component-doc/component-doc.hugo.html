@@ -40,70 +40,74 @@
         {{ end }}
 
         {{- if and (not site.Params.env_bookshop_live) -}}
-          {{ with .content_guidelines_component }}          
-            <table class="table caption-top mb-4">
-              {{ if $hasComponent }}
-                <caption class="h6 wvu-b-label text-uppercase">Component</caption>
-              {{ end }}
-              <thead>
-                <tr class="config-bold">
-                  <th class="w-25">Content</th>
-                  <th class="w-50">Description</th>
-                  <th class="w-25">Max Chars.</th>
-                </tr>
-              </thead>
-              <tbody>
-              
-                {{ $required := "" }}
-
-                {{ range . }}
-                  {{ $required = "" }}
-                  {{ if .required }}
-                    {{ $required = true }}
-                  {{ end }}
-
-                  <tr>
-                    <td>{{ .title }}{{ if $required }}<span class="text-danger">*</span>{{ end }}</td>
-                    <td>{{ .description }}</td>
-                    <td>{{ .max_chars }}</td>
-                  </tr>
-
+          {{ with .content_guidelines_component }}
+            <div class="wvu-table">
+              <table class="caption-top mb-4">
+                {{ if $hasComponent }}
+                  <caption class="h6 wvu-b-label text-uppercase">Component</caption>
                 {{ end }}
-              </tbody>
-            </table>
+                <thead>
+                  <tr class="config-bold">
+                    <th class="w-25">Content</th>
+                    <th class="w-50">Description</th>
+                    <th class="w-25">Max Chars.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  {{ $required := "" }}
+
+                  {{ range . }}
+                    {{ $required = "" }}
+                    {{ if .required }}
+                      {{ $required = true }}
+                    {{ end }}
+
+                    <tr>
+                      <td>{{ .title }}{{ if $required }}<span class="text-danger">*</span>{{ end }}</td>
+                      <td>{{ .description }}</td>
+                      <td>{{ .max_chars }}</td>
+                    </tr>
+
+                  {{ end }}
+                </tbody>
+              </table>
+            </div>
           {{ end }}
 
-          {{ with .content_guidelines_items }}          
-            <table class="table caption-top">
-              {{ if $hasItems }}
-                <caption class="h6 wvu-b-label text-uppercase">Items</caption>
-              {{ end }}
-              <thead>
-                <tr class="config-bold">
-                  <th class="w-25">Content</th>
-                  <th class="w-50">Description</th>
-                  <th class="w-50">Max Chars.</th>
-                </tr>
-              </thead>
-              <tbody>
-              
-                {{ $required := "" }}
-
-                {{ range . }}
-                  {{ $required = "" }}
-                  {{ if .required }}
-                    {{ $required = true }}
-                  {{ end }}
-
-                  <tr>
-                    <td>{{ .title }}{{ if $required }}<span class="text-danger">*</span>{{ end }}</td>
-                    <td>{{ .description }}</td>
-                    <td>{{ .max_chars }}</td>
-                  </tr>
-
+          {{ with .content_guidelines_items }}
+            <div class="wvu-table">
+              <table class="caption-top">
+                {{ if $hasItems }}
+                  <caption class="h6 wvu-b-label text-uppercase">Items</caption>
                 {{ end }}
-              </tbody>
-            </table>
+                <thead>
+                  <tr class="config-bold">
+                    <th class="w-25">Content</th>
+                    <th class="w-50">Description</th>
+                    <th class="w-50">Max Chars.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  {{ $required := "" }}
+
+                  {{ range . }}
+                    {{ $required = "" }}
+                    {{ if .required }}
+                      {{ $required = true }}
+                    {{ end }}
+
+                    <tr>
+                      <td>{{ .title }}{{ if $required }}<span class="text-danger">*</span>{{ end }}</td>
+                      <td>{{ .description }}</td>
+                      <td>{{ .max_chars }}</td>
+                    </tr>
+
+                  {{ end }}
+                </tbody>
+              </table>
+            </div>
           {{ end }}
         {{ end }}
         <p class="small">*Required content.</p>
