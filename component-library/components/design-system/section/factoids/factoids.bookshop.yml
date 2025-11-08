@@ -32,7 +32,7 @@ blueprint:
       tint_opacity: '0.7'
     layout:
       buffer:
-      margin:
+      # margin:
       padding: py-6 py-xxl-7
     config:
       name: factoids
@@ -113,6 +113,7 @@ _inputs:
     type: auto
     hidden: true
   margin:
+    hidden: true
     type: select
     options:
       allow_empty: true
