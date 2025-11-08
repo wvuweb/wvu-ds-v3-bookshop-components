@@ -1,9 +1,14 @@
 {{ $blendMode := "" }}
 {{ $imageOpacity := "" }}
+{{ $position := "" }}
 
 {{ if and .styles .styles.enable_blend }}
   {{ $blendMode = "wvu-bg-blend-mode-luminosity" }}
   {{ $imageOpacity = "0.08" }}
+{{ end }}
+
+{{ if and .layout .layout.background_position }}
+  {{ $position = .layout.background_position }}
 {{ end }}
 
 <div class="wvu-bg-img">
@@ -12,7 +17,7 @@
     <div class="wvu-b-gradient d-flex w-100 h-100 justify-content-between position-absolute"></div>
   {{ end }}
   {{ if .image }}
-    <img class="object-fit-cover xobject-position- h-100 w-100 position-relative {{ $blendMode }}" style="opacity: {{ $imageOpacity }}" src="{{ .image }}" alt="" />
+    <img class="object-fit-cover {{ $position }} h-100 w-100 position-relative {{ $blendMode }}" style="opacity: {{ $imageOpacity }}" src="{{ .image }}" alt="" />
     {{ if not $blendMode }}
       <div class="position-absolute wvu-bg-tint w-100 h-100" style="opacity: {{ .styles.tint_opacity }}"></div>
     {{ end }}
