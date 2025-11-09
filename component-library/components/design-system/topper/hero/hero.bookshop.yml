@@ -105,12 +105,16 @@ _inputs:
     options:
       allow_empty: true
       values:
-        - name: Large
+        - name: Extra Large
           class: display-2
-        - name: Medium
+        - name: Large
           class: display-3
-        - name: Small
+        - name: Medium
           class: display-4
+        - name: Small
+          class: display-5
+        - name: Extra Small
+          class: display-6
       value_key: class
   # margin:
   #   type: select
