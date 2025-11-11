@@ -32,7 +32,7 @@ blueprint:
       # tint_opacity: '0.7'
     layout:
       buffer:
-      margin:
+      # margin:
       padding: py-6 py-xxl-7
     config:
       name: featurettes-w-icons

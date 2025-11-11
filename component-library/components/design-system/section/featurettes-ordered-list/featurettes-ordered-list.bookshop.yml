@@ -32,7 +32,7 @@ blueprint:
       # remove_container_background: false
     layout:
       buffer:
-      margin:
+      # margin:
       padding: py-6 py-xxl-7
     config:
       name: featurettes-ordered-list
@@ -186,8 +186,8 @@ _select_data:
     - name: Option 8
       class: option-8
   container_margins:
-    - name: Pull Up
-      class: mt-n8 mt-xxl-n9
+    # - name: Pull Up
+    #   class: mt-n8 mt-xxl-n9
   tint_opacities:
     - name: None
       value: '0.0'

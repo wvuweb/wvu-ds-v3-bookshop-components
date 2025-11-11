@@ -34,7 +34,7 @@ blueprint:
       # remove_container_background: false
     layout:
       buffer:
-      margin:
+      # margin:
       max_cols: 16
       padding: py-6 py-xxl-7
     config:
