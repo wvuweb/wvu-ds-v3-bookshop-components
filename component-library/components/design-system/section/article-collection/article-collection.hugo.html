@@ -1,5 +1,6 @@
 {{ $limit := "5" }}
 {{ $hideThumbnails := "" }}
+{{ $cardColor := "" }}
 
 {{ if .settings.config.limit }}
   {{ $limit = .settings.config.limit }}
@@ -101,7 +102,7 @@
           {{- end -}}
           
           <div class="col-lg-12 col-xl-6 mb-4">
-            <div class="mb-4 position-relative" itemscope="" itemtype="http://schema.org/BlogPosting">
+            <div class="mb-4 position-relative wvu-b-subtle wvu-b-shadow wvu-b-border" itemscope="" itemtype="http://schema.org/BlogPosting">
               {{ if and $src (not $hideThumbnails) }}
                 <div class="wvu-article__thumb">
                   <div class="ratio ratio-3x2 bg-light">
@@ -112,11 +113,11 @@
                 </div>
               {{ end }}
 
-              <div class="mt-3 mt-md-0 wvu-b-subtle p-4">
+              <div class="mt-3 mt-md-0 p-4">
                 {{ if not $heading }}
-                  <h2 class="h4" itemprop="headline"><a class="wvu-b-display-heading text-decoration-none stretched-link" href="{{ $link }}">{{ $params.title }}</a></h2>
+                  <h2 class="h4 wvu-b-display-heading" itemprop="headline"><a class="wvu-b-display-heading text-decoration-none stretched-link" href="{{ $link }}">{{ $params.title }}</a></h2>
                 {{ else }}
-                  <h3 class="h4" itemprop="headline"><a class="wvu-b-display-heading text-decoration-none stretched-link" href="{{ $link }}">{{ $params.title }}</a></h3>
+                  <h3 class="h4 wvu-b-display-heading" itemprop="headline"><a class="wvu-b-display-heading text-decoration-none stretched-link" href="{{ $link }}">{{ $params.title }}</a></h3>
                 {{ end }}
 
                 {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
