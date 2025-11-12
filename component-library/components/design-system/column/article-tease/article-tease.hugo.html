@@ -90,7 +90,7 @@
         {{ if $src }}
           {{ $branding = "text-white" }}
           <div class="wvu-bg-img">
-            <img class="object-fit-cover h-100 w-100 position-relative" src="{{ $src }}" />
+            <img class="object-fit-cover h-100 w-100 position-relative" src="{{ $src }}" alt="{{ $params.article_image_alt_text }}" />
             <div class="position-absolute wvu-bg-tint w-100 h-100" style="opacity: 0.7"></div>
           </div>
         {{ end }}
