@@ -64,7 +64,8 @@
                     </div>
                   </div>
                 {{ else }}
-                  <div class="w-100 h-100 d-flex justify-content-center align-items-end wvu-z-index-content">
+                  <img class="d-lg-none" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                  <div class="w-100 h-100 d-none d-lg-flex justify-content-center align-items-end wvu-z-index-content">
                     <div class="wvu-z-index-content h-100">
                       <img class="object-fit-cover h-100" src="{{ $src }}" alt="Portrait of {{ .name }}" />
                     </div>

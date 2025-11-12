@@ -6,7 +6,7 @@
   {{ end }}
 
   {{ range .items }}
-    <div class="row gx-4 mb-4">
+    <div class="row gx-4 mb-5">
       {{ $src := .image }}
 
       {{- if not site.Params.env_bookshop_live -}}
@@ -24,7 +24,7 @@
         {{ end }}
       {{- end -}}
 
-      <div class="col-lg-6">
+      <div class="col-lg-6 mb-3 mb-lg-0">
         <div class="position-relative">
           {{ if .image }}
             <div class="ratio ratio-3x2">

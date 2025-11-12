@@ -15,7 +15,7 @@
 
 <div class="h-100 wvu-b-shadow wvu-b-border wvu-b-subtle audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} bg-{{ .settings.styles.color_palette }} position-relative">
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12 order-2 order-lg-1">
       <div class="p-5 wvu-z-index-content">
         <div class="wvu-p-max-width wvu-z-index-content">
           <h2 id="-label" class="h1 wvu-b-display-heading wvu-b-accent-text mb-3" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
@@ -59,9 +59,10 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-12">
+    <div class="col-lg-12 order-1 order-lg-2">
       <div class="position-relative wvu-z-index-content h-100">
-        <div class="wvu-bg-img">
+        <img class="mw-100 d-lg-none" src="{{ $src }}" />
+        <div class="wvu-bg-img d-none d-lg-block">
           {{ if $src }}
             <img class="object-fit-cover h-100 w-100" src="{{ $src }}" />
           {{ end }}

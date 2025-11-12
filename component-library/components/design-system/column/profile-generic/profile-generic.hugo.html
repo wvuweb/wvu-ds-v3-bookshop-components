@@ -26,9 +26,10 @@
           <div class="w-100 h-100">
             <div class="row h-100">
               {{ if .image }}
-                <div class="w-100 h-100 d-flex justify-content-center align-items-end wvu-z-index-content">
+                <img class="object-fit-cover h-100 d-xxl-none" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                <div class="d-none d-xxl-block w-100 h-100 d-flex justify-content-center align-items-end wvu-z-index-content">
                   <div class="wvu-z-index-content h-100">
-                    <img class="object-fit-cover h-100" src="{{ $src }}" alt="Portrait of {{ .name }}" />
+                    <img class="object-fit-cover h-100" src="{{ $src }}" alt="Portrait of {{ .name }}" style="max-height: 300px;" />
                   </div>
                 </div>
               {{ end }}
@@ -40,37 +41,39 @@
     <div class="col-xxl-12 mx-xxl-auto">
       <div class="row">
         <div class="col-md-16 col-xl-16">
-          <div class="wvu-z-index-content position-relative ps-5 pe-5 ps-xxl-0 pe-xxl-3 py-5 my-xxl-n3">
-            {{ with .super_heading }}
-              <div class="wvu-b-superheading wvu-b-label">
-                <p class="mb-1">
+          <div class="wvu-z-index-content position-relative ps-3 ps-md-5 pe-5 ps-xxl-0 pe-xxl-3 py-5 my-xxl-n3">
+            <div>
+              {{ with .super_heading }}
+                <div class="wvu-b-superheading wvu-b-label">
+                  <p class="mb-1">
+                    {{ range . }}
+                      <span class="d-block">{{ . }}</span>
+                    {{ end }}
+                  </p>
+                </div>
+              {{ end }}
+              <h2 class="wvu-header-max-width wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow mb-2" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
+              {{ with .name }}
+                <p class="wvu-b-subheading fs-5 mb-2">{{ . }}</p>
+              {{ end }}
+              {{ with .info }}
+                <div class="small">
                   {{ range . }}
-                    <span class="d-block">{{ . }}</span>
+                    <p class="mb-0">{{ . }}</p>
                   {{ end }}
-                </p>
+                </div>
+              {{ end }}
+              <div class="my-2 small">
+                {{ .copy | markdownify }}
               </div>
-            {{ end }}
-            <h2 class="wvu-header-max-width wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow mb-2" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
-            {{ with .name }}
-              <p class="wvu-b-subheading fs-5 mb-2">{{ . }}</p>
-            {{ end }}
-            {{ with .info }}
-              <div class="small">
-                {{ range . }}
-                  <p class="mb-0">{{ . }}</p>
-                {{ end }}
-              </div>
-            {{ end }}
-            <div class="my-2 small">
-              {{ .copy | markdownify }}
+              {{ if .profile_url }}
+                <p><a href="{{ .profile_url }}" class="text-decoration-none wvu-b-accent-text small"><span class="fa-solid fa-user-circle"></span> View Profile</a></p>
+              {{ end }}
             </div>
-            {{ if .profile_url }}
-              <p><a href="{{ .profile_url }}" class="text-decoration-none wvu-b-accent-text small"><span class="fa-solid fa-user-circle"></span> View Profile</a></p>
-            {{ end }}
           </div>
         </div>
         <div class="col-md-7 col-xl-7 d-flex align-items-center position-relative">
-          <div class="py-6 my-n3 w-100">
+          <div class="py-md-6 px-3 px-xxl-0 my-n3 w-100">
             <div class="row">            
               {{ if .ctas }}
                 <div class="col-sm col-md-24">

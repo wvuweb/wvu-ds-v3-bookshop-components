@@ -22,14 +22,14 @@
           {{ end }}
         {{- end -}}
 
-        <div class="col-24 col-lg-8">
+        <div class="col-24 col-xl-8">
           {{ if .image }}
             <div class="h-100">
-              <img loading="lazy" class="h-100 object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" style="object-position: center;" />
+              <img loading="lazy" class=" object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" style="object-position: center; min-height: 100%;" />
             </div>
           {{ end }}
         </div>
-        <div class="col-24 col-lg-16">
+        <div class="col-24 col-xl-16">
           <div class="h-100">
             <div class="position-relative p-5">
               <h3 class="wvu-b-display-heading h1 mb-3"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
