@@ -64,7 +64,7 @@
         <img class="mw-100 d-lg-none" src="{{ $src }}" />
         <div class="wvu-bg-img d-none d-lg-block">
           {{ if $src }}
-            <img class="object-fit-cover h-100 w-100" src="{{ $src }}" />
+            <img class="object-fit-cover h-100 w-100" src="{{ $src }}" {{ if .alt_text }}alt="{{ .alt_text }}"{{ end }} />
           {{ end }}
         </div>
       </div>

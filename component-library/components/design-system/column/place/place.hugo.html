@@ -22,7 +22,7 @@
 <div class="row h-100 position-relative">
   {{ if .image }}
     <div class="wvu-place-img">
-      <img loading="lazy" class="w-100 h-100 object-fit-cover" width="2100px" height="1400px" src="{{ $src }}" style="z-index: -1;" />
+      <img loading="lazy" alt="{{ .alt_text }}" class="w-100 h-100 object-fit-cover" width="2100px" height="1400px" src="{{ $src }}" style="z-index: -1;" />
     </div>
   {{ else }}
     <div class="wvu-place-img">

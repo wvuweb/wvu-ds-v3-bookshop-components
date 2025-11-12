@@ -61,7 +61,7 @@
       <div class="ratio ratio-16x9"></div>
       <div class="wvu-bg-img">
         {{ if $src }}
-          <img class="object-fit-cover h-100 w-100" src="{{ $src }}" />
+          <img class="object-fit-cover h-100 w-100" src="{{ $src }}" {{ if .alt_text }}alt="{{ .alt_text }}"{{ end }} />
         {{ end }}
       </div>
     </div>
