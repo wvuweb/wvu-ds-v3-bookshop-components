@@ -23,8 +23,7 @@ _inputs:
     type: select
     options:
       allow_empty: true
-      values:
-        - _select_data.alert_types
+      values: _select_data.alert_types
       value_key: type
     cascade: true
   is_dynamic:
