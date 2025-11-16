@@ -11,8 +11,8 @@ spec:
 blueprint:
   heading: Heading
   subheading: Subheading goes here.
-  image:
   label: Places and Spaces
+  image:
   alt_text:
   text: Descriptive text goes here.
   ctas:
@@ -119,8 +119,6 @@ _inputs:
           class: reserved
         - name: Loud
           class: loud
-        - name: Let’s Go!
-          class: lets-go
       value_key: class
   image:
     type: image
