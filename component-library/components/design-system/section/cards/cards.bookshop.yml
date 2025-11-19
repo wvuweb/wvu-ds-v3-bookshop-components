@@ -173,7 +173,7 @@ _inputs:
       blockquote: true
       bulletedlist: true
       bold: true
-      format: p h2 h3 h4 h5 h6
+      format: p h3 h4 h5 h6
       image: false
       italic: true
       link: true

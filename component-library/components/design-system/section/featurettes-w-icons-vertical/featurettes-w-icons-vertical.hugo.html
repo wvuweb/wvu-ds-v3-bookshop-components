@@ -19,9 +19,11 @@
           {{ end }}
           <p>{{ .text | markdownify }}</p>
           {{ if .ctas }}
-            {{ range .ctas }}
-              <a class="btn wvu-b-btn" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
-            {{ end }}
+            <div>
+              {{ range .ctas }}
+                <a class="btn wvu-b-btn mb-1" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+              {{ end }}
+            </div>
           {{ end }}
         </div>
       </div>

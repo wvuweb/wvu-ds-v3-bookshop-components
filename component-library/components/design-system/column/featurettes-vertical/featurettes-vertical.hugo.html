@@ -37,9 +37,11 @@
         <h3 class="h2 wvu-b-display-heading">{{ .title }}</h3>
         <p>{{ .text | markdownify }}</p>
         {{ with .ctas }}
-          {{ range . }}
-            <a class="btn wvu-b-btn btn-sm" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
-          {{ end }}
+          <div>
+            {{ range . }}
+              <a class="btn wvu-b-btn btn-sm mb-1" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+            {{ end }}
+          </div>
         {{ end }}
       </div>
     </div>
