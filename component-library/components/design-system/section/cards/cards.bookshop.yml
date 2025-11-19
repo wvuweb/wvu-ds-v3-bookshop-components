@@ -168,7 +168,18 @@ _inputs:
       width: 1920
       height: 1080
   text:
-    type: textarea
+    type: markdown
+    options:
+      blockquote: true
+      bulletedlist: true
+      bold: true
+      format: p h2 h3 h4 h5 h6
+      image: false
+      italic: true
+      link: true
+      redo: true
+      removeformat: true
+      undo: true
   use_common_wrapper:
     type: auto
     hidden: true

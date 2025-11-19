@@ -22,7 +22,7 @@
               <div class=" p-5 h-100 rounded-2">
                 <h3 class="wvu-b-display-heading h2">{{ .title }}</h3>
                 {{ if .text }}
-                  <p class="mb-0">{{ .text }}</p>
+                  <p class="mb-0">{{ .text | markdownify }}</p>
                 {{ end }}
               </div>
             </div>
