@@ -17,6 +17,48 @@
     {{ if .use_common_wrapper }}
 
       {{ $src := "" }}
+      {{ $backgroundColor := "" }}
+      {{ $containerPadding := "" }}
+      {{ $containerBackgroundColor := "" }}
+
+      {{ if .settings.styles.color_palette }}
+        {{ $backgroundColor = .settings.styles.color_palette }}
+      {{ end }}
+
+      {{ if .background_image }}
+        {{ $src = .background_image }}
+        {{ if not .settings.styles.enable_blend }}
+          {{ $backgroundColor = "option-2" }}
+        {{ end }}
+      {{ end }}
+
+      {{ if or (eq .settings.layout.margin "mt-n8 mt-xxl-n9") (eq .settings.layout.margin "my-n8 my-xxl-n9") }}
+        {{ if .heading }}
+          {{ $containerPadding = "p-5 p-xl-6 wvu-b-shadow wvu-b-border" }}
+          {{ if and (ne .settings.styles.tone "loud") (ne .settings.styles.tone "lets-go") }}
+            {{ $containerBackgroundColor = .settings.styles.color_palette }}
+            {{ if .settings.styles.card_c }}
+              {{ $containerBackgroundColor = "option-1" }}
+            {{ end }}
+          {{ else }}
+            {{ $containerBackgroundColor = "option-1" }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+
+      {{ if or (eq .settings.layout.margin "mb-n8 mb-xxl-n9") (eq .settings.layout.margin "my-n8 my-xxl-n9") }}
+        {{ if .postscript.copy }}
+          {{ $containerPadding = "p-5 p-xl-6 wvu-b-shadow wvu-b-border" }}
+          {{ if and (ne .settings.styles.tone "loud") (ne .settings.styles.tone "lets-go") }}
+            {{ $containerBackgroundColor = .settings.styles.color_palette }}
+            {{ if .settings.styles.card_c }}
+              {{ $containerBackgroundColor = "option-1" }}
+            {{ end }}
+          {{ else }}
+            {{ $containerBackgroundColor = "option-1" }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
 
       {{- if not site.Params.env_bookshop_live -}}
         {{ $image := "" }}
@@ -39,14 +81,18 @@
 
       {{ if or site.Params.env_bookshop_live (ne .settings.config.edit_mode_only true) }}
 
-        <section id="{{ .settings.config.name }}" {{ if .aria_label }}aria-label="{{ .aria_label}}" {{ else}}aria-labelledby="{{ .settings.config.name }}-label" {{end }}class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}" data-pagefind-ignore="all">
+        <section id="{{ .settings.config.name }}" {{ if .aria_label }}aria-label="{{ .aria_label}}" {{ else}}aria-labelledby="{{ .settings.config.name }}-label" {{end }}class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}" data-pagefind-ignore="all">
           {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
+
+          {{ if .settings.styles.card_c }}
+            {{ $backgroundColor = .settings.styles.card_c }}
+          {{ end }}
 
           <div class="{{ .settings.layout.buffer }} {{ if eq ._bookshop_name "design-system/section/search" }}z-index-pagefind{{ end }}">
             <div class="container{{ if .settings.layout.full_bleed }}-fluid px-0{{ end }} wvu-z-index-content">
               <div class="{{ if not .settings.layout.full_bleed }}row{{ end }}">
                 <div class="{{ with .settings.layout.max_cols }}col-xxl-{{ . }} mx-xxl-auto{{ end }}">            
-                  <div class="{{ .settings.layout.margin }}">
+                  <div class="{{ .settings.layout.margin }} {{ $containerPadding }} bg-{{ $containerBackgroundColor }}">
                     {{ if and .is_nested .heading }}
                       <div class="row">
                         <div class="col-xl-16 mx-xl-auto">
