@@ -168,7 +168,6 @@ _inputs:
         - image/jpeg
       allowed_sources:
         - ccdam
-      pattern: (?i)\.(jpe?g|png)$
       pattern_message: Please select a JPG or PNG image file.
       width: 1920
       height: 1080
