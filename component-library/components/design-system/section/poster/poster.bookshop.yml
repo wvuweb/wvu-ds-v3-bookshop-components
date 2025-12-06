@@ -21,7 +21,7 @@ blueprint:
       audience: general
       tone: default
       card_c: option-1
-      bg_subtle:
+      # bg_subtle:
       # enable_blend: false
       tint_opacity: '0.7'
       # remove_container_background: false
@@ -136,8 +136,8 @@ _inputs:
           class: reserved
         - name: Loud
           class: loud
-        - name: Let’s Go!
-          class: lets-go
+        # - name: Let’s Go!
+        #   class: lets-go
       value_key: class
   body:
     type: markdown

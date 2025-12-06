@@ -163,12 +163,8 @@ _inputs:
   image:
     type: image
     options:
-      accepts_mime_types:
-        - image/png
-        - image/jpeg
       allowed_sources:
         - ccdam
-      pattern_message: Please select a JPG or PNG image file.
       width: 1920
       height: 1080
   text:

@@ -3,8 +3,15 @@
     <h2 class="wvu-b-display-heading">
       {{ .heading }}
     </h2>
-    {{ with .subheading }}
-      <p class="wvu-b-subheading mt-3 h4">{{ . }}</p>
+    {{ if .subheading }}
+      <p class="wvu-b-subheading mt-3 h4">{{ .subheading }}</p>
+    {{ end }}
+    {{ if .ctas }}
+      <div class="mt-4">
+        {{ range .ctas }}
+          <a class="btn wvu-b-btn btn-lg mb-1" href="{{ .url }}">{{ .text }}</a>
+        {{ end }}
+      </div>
     {{ end }}
   </div>
   <div class="col-xxl-16">
