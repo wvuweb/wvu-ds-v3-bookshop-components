@@ -99,6 +99,9 @@
                           <div class="pb-3">
                             <div class="mb-5 text-center">
                               <h2 id="{{ .settings.config.name }}-label" class="wvu-b-label h1 mb-3">{{ .heading }}</h2>
+                              {{ if .subheading }}
+                                <p class="config-light fs-5 mb-3">{{ .subheading }}</p>
+                              {{ end }}
                             </div>
                           </div>
                         </div>
