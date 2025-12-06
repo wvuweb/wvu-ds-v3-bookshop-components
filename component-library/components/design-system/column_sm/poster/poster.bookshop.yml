@@ -78,8 +78,6 @@ _inputs:
           class: reserved
         - name: Loud
           class: loud
-        - name: Let’s Go!
-          class: lets-go
       value_key: class
 _select_data:
   color_palettes:
