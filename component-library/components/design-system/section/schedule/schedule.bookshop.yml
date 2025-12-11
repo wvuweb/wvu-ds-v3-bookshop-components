@@ -14,7 +14,8 @@ blueprint:
   aria_label:
   items:
     - title: Item 1 Title
-      time:
+      start_time:
+      end_time:
       icon:
       # label:
       # badge:
