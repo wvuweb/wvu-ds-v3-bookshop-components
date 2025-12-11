@@ -1,5 +1,8 @@
 {{ $heading := .heading }}
 {{ $styles := .settings.styles }}
+{{ $colSpan := 8 }}
+{{ $itemCount := "" }}
+{{ $items := .items }}
 
 <div class="row gx-4 gx-xxl-5 mb-n5">
   {{ range .items }}
@@ -19,9 +22,17 @@
       {{ if and $image (ne $image.MediaType.SubType "svg") }}
         {{ $src = ($image.Fill ("960x640 center webp")).RelPermalink }}
       {{ end }}
+
+      {{ $itemCount = $items | len }}
+
+      {{ if eq $itemCount 2 }}
+        {{ $colSpan = "12" }}
+      {{ else if eq $itemCount 1 }}
+        {{ $colSpan = "18 mx-xl-auto" }}
+      {{ end }}
     {{- end -}}
 
-    <div class="col-24 col-lg-12 col-xl-8 mb-5">
+    <div class="col-24 col-lg-12 col-xl-{{ $colSpan }} mb-5">
       <div class="h-100 wvu-b-subtle wvu-b-shadow wvu-b-border">
         <div class="position-relative">                    
           {{ if .image }}
