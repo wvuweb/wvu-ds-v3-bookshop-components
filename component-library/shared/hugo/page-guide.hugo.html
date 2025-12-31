@@ -88,7 +88,7 @@
             {{ $backgroundColor = .settings.styles.card_c }}
           {{ end }}
 
-          <div class="{{ .settings.layout.buffer }} {{ if eq ._bookshop_name "design-system/section/search" }}z-index-pagefind{{ end }}">
+          <div class="{{ .settings.layout.buffer }} {{ if or (eq ._bookshop_name "design-system/section/search") (eq ._bookshop_name "program-search") }}z-index-pagefind{{ end }}">
             <div class="container{{ if .settings.layout.full_bleed }}-fluid px-0{{ end }} wvu-z-index-content">
               <div class="{{ if not .settings.layout.full_bleed }}row{{ end }}">
                 <div class="{{ with .settings.layout.max_cols }}col-xxl-{{ . }} mx-xxl-auto{{ end }}">            
