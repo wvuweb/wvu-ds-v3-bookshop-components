@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-lg-12 col-xl-10 col-xxl-8 mx-lg-auto">
+    <ul class="list-unstyled">
+      {{ range .links }}
+        <li class="mb-3"><a class="btn btn-wvu-gold w-100" href="{{ .url }}">{{ .text }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+</div>
