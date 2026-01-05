@@ -1,3 +1,46 @@
-{{ range .blocks }}
-  {{ partial "bookshop" . }}
-{{ end }}
+{{ $src := .image }}
+{{ $alt := .alt }}
+
+{{- if not site.Params.env_bookshop_live -}}
+  {{ $image := "" }}
+  {{/*  Get the image, either from its remote or local source  */}}
+  {{ if hasPrefix $src "http"}}
+    {{ $image = resources.GetRemote $src }}
+  {{ else }}
+    {{ $image = resources.Get $src }}
+  {{ end }}
+
+  {{/* Resize images and add them to a variable  */}}
+  {{ if and $image (ne $image.MediaType.SubType "svg") }}
+    {{ $src = ($image.Fill (printf "%dx%d webp" 960 960)).RelPermalink }}
+  {{ end }}
+{{- end -}}
+
+<div class="audience-general tone-lets-go bg-option-2 position-relative py-6">
+  <div class="wvu-bg-img">
+    <div class="wvu-b-pattern wvu-b-pattern-color h-100 w-100 position-absolute" style="opacity: .2"></div>
+    <div class="wvu-b-gradient d-flex w-100 h-100 justify-content-between position-absolute"></div>
+  </div>
+  <div class="container position-relative wvu-z-index-content">
+    <div class="row">
+      <div class="col-lg-12 col-xl-10 mx-lg-auto text-center">
+        <div class="d-flex flex-column align-items-center">
+          {{ if $src }}
+            <div class="mb-4" style="width: 150px; height: 150px;">
+              <img class="rounded-circle" src="{{ $src }}" alt="{{ $alt }}" />
+            </div>
+          {{ end }}
+          <h1>{{ .title }}</h1>
+          {{ if .subheading }}
+            <p class="lead mb-0">{{ .subheading }}</p>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    <div class="mt-5">
+      {{ range .blocks }}
+        {{ partial "bookshop" . }}
+      {{ end }}
+    </div>
+  </div>
+</div>
