@@ -14,7 +14,7 @@
     {{ if .settings.layout.is_cutout }}
       {{ $src = ($image.Fit (printf "%dx%d webp" 640 960)).RelPermalink }}
     {{ else }}
-      {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+      {{ $src = ($image.Fit (printf "%dx%d webp" 960 640)).RelPermalink }}
     {{ end }}
   {{ end }}
 {{- end -}}
