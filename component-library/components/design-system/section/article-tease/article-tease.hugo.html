@@ -103,13 +103,13 @@
           <div class="h-100 p-5 p-xxl-6">
 
             {{ if $label }}
-              <h2 id="{{ .settings.config.name }}-label" class="h6 wvu-b-label">{{ $label }}</h2>
+              <h2 id="{{ $params.settings.config.name }}-label" class="h6 wvu-b-label">{{ $label }}</h2>
             {{ end }}
 
             {{ if $label }}
-              <h3 id="{{ .settings.config.name }}-label" class="display-5" itemprop="headline"><a class="wvu-b-display-heading stretched-link text-decoration-none" href="{{ $link }}"><span class="wvu-b-font-adjust">{{ $params.title }}</span></a></h3>
+              <h3 id="{{ $params.settings.config.name }}-label" class="display-5" itemprop="headline"><a class="wvu-b-display-heading stretched-link text-decoration-none" href="{{ $link }}"><span class="wvu-b-font-adjust">{{ $params.title }}</span></a></h3>
             {{ else }}
-              <h2 id="{{ .settings.config.name }}-label" class="display-5" itemprop="headline"><a class="wvu-b-display-heading stretched-link text-decoration-none" href="{{ $link }}"><span class="wvu-b-font-adjust">{{ $params.title }}</span></a></h2>
+              <h2 id="{{ $params.settings.config.name }}-label" class="display-5" itemprop="headline"><a class="wvu-b-display-heading stretched-link text-decoration-none" href="{{ $link }}"><span class="wvu-b-font-adjust">{{ $params.title }}</span></a></h2>
             {{ end }}
 
             {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
