@@ -11,9 +11,9 @@
         </div>
         <div class="p-4 wvu-b-subtle">
           {{ if not $heading }}
-            <h2 class="wvu-b-display-heading h3"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
+            <h2 id="{{ .settings.config.name }}-label" class="wvu-b-display-heading h3"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
           {{ else }}
-            <h3 class="wvu-b-display-heading h3"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
+            <h3 id="{{ .settings.config.name }}-label" class="wvu-b-display-heading h3"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
           {{ end }}
           {{ .description | markdownify }}
           <a class="stretched-link" href="https://www.youtube.com/watch?v={{ .video_id }}"><span class="visually-hidden">Watch Video: {{ .title }}</span></a>

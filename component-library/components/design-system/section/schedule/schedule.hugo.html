@@ -11,9 +11,9 @@
         </div>
         <div class="col-lg-18 text-center text-lg-start">
           {{ if not $heading }}
-            <h2 class="wvu-b-display-heading h1"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
+            <h2 id="{{ .settings.config.name }}-label" class="wvu-b-display-heading h1"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
           {{ else }}
-            <h3 class="wvu-b-display-heading h1"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
+            <h3 id="{{ .settings.config.name }}-label" class="wvu-b-display-heading h1"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
           {{ end }}
           {{ if or .start_time .end_time }}
             <p class="lead">{{ if .start_time }}{{ .start_time }}{{ end }}{{ if .end_time }} - {{ .end_time }}{{ end }}</p>

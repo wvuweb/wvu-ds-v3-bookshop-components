@@ -31,7 +31,7 @@
       <p class="h6 mb-6 wvu-b-label">{{ .label }}</p>
     {{ end }}
     
-    <h2 id="" class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }} mb-n2" data-text="{{ . }}">
+    <h2 id="{{ .settings.config.name }}-label" class="wvu-b-display-heading wvu-b-accent-text wvu-b-text-shadow wvu-b-text-outline {{ $headingSize }} mb-n2" data-text="{{ . }}">
       <span class="wvu-b-font-adjust">{{ .heading }}</span>
     </h2>
 

@@ -33,7 +33,7 @@
       </div>
       <div class="px-5 py-7 wvu-z-index-content">
         <div class="wvu-p-max-width">
-          <h2 id="-label" class="display-4 wvu-b-display-heading wvu-b-accent-text mb-3" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
+          <h2 id="{{ .settings.config.name }}-label" class="display-4 wvu-b-display-heading wvu-b-accent-text mb-3" data-text="{{ .heading }}"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
 
           {{ with .subheading }}
             <p class="wvu-b-subheading fs-4 py-1 mb-4">

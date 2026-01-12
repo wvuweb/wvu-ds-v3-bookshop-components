@@ -2,7 +2,7 @@
   <div class="row gx-lg-6">
     <div class="col-lg">
       <div class="mb-4">
-        <h2 class="h1 wvu-b-subheading mb-4"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>  
+        <h2 id="{{ .settings.config.name }}-label" class="h1 wvu-b-subheading mb-4"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>  
         {{ with .subheading }}
           <p class="h4 wvu-b-heading"><span class="wvu-b-font-adjust">{{ . }}</span></p>
         {{ end }}

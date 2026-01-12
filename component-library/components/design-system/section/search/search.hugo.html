@@ -10,7 +10,7 @@
     {{ end }}
     
     {{ if .heading }}
-      <h2 id="" class="wvu-b-display-heading {{ $headingSize }}" data-text="{{ .heading }}">
+      <h2 id="{{ .settings.config.name }}-label" class="wvu-b-display-heading {{ $headingSize }}" data-text="{{ .heading }}">
         <span class="wvu-b-font-adjust">{{ .heading }}</span>
       </h2>
     {{ end }}
