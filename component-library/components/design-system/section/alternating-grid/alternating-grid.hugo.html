@@ -1,52 +1,61 @@
+{{ $sectionId := "" }}
 {{ $heading := .heading }}
-<div class="mb-n4">
-  {{ range .items }}
 
-    {{ $src := .image }}
+{{- if not site.Params.env_bookshop_live -}}
+  {{ $sectionId = .component_settings.config.name | urlize }}
+{{- end -}}
 
-    {{- if not site.Params.env_bookshop_live -}}
-      {{ $image := "" }}
-      {{/*  Get the image, either from its remote or local source  */}}
-      {{ if hasPrefix $src "http"}}
-        {{ $image = resources.GetRemote .image }}
-      {{ else }}
-        {{ $image = resources.Get .image }}
-      {{ end }}
-    
-      {{/* Resize images and add them to a variable  */}}
-      {{ if and $image (ne $image.MediaType.SubType "svg") }}
-        {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
-      {{ end }}
-    {{- end -}}
+<section id="{{ $sectionId }}" {{ if .aria_label }}aria-label="{{ .aria_label}}" {{ else}}aria-labelledby="{{ $sectionId }}-label" {{end }}class="audience-{{ .component_settings.styles.audience }} tone-{{ .component_settings.styles.tone }} wvu-b-text xsection-component {{ .component_settings.layout.padding }} position-relative bg-{{ .component_settings.styles.color_palette }} {{ if .component_settings.styles.bg_subtle }}wvu-b-subtle{{ end }}" data-pagefind-ignore="all">
+  <div class="{{ .component_settings.layout.buffer }}">
+    <div class="container wvu-z-index-content">
+      <div class="{{ .component_settings.layout.margin }} {{ .component_settings.layout.padding }}">
+        <div class="mb-n4">
+          {{ range .items }}
 
-    <div class="row gx-0 alternating-grid mb-6 wvu-b-border wvu-b-shadow">
-      <div class="col-lg-12 order-rotate px-0">
-        {{ if .image }}
-          <div class="h-100 mb-0 wvu-bg-size-cover" style="background-image: url({{ $src }}); padding-top: 66.6667%;">
-          </div>
-        {{ end }}
-      </div>
-      <div class="col-lg-12 order-2">
+            {{ $src := .image }}
 
-        <div class="h-100 d-flex align-items-center wvu-b-subtle p-5">
-          <div class="fs-5">
-            {{ if not $heading }}
-              <h2 class="display-5 wvu-b-display-heading wvu-b-accent-text">{{ .heading }}</h2>
-            {{ else }}
-              <h3 class="display-5 wvu-b-display-heading wvu-b-accent-text">{{ .heading }}</h3>
-            {{ end }}
-            <div class="mb-3">
-              {{ .copy | markdownify }}
-            </div>
-            {{ if .ctas }}
-              {{ range .ctas }}
-                <a class="btn wvu-b-btn" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+            {{- if not site.Params.env_bookshop_live -}}
+              {{ $image := "" }}
+              {{/*  Get the image, either from its remote or local source  */}}
+              {{ if hasPrefix $src "http"}}
+                {{ $image = resources.GetRemote .image }}
+              {{ else }}
+                {{ $image = resources.Get .image }}
               {{ end }}
-            {{ end }}
-          </div>
-        </div>
+            
+              {{/* Resize images and add them to a variable  */}}
+              {{ if and $image (ne $image.MediaType.SubType "svg") }}
+                {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+              {{ end }}
+            {{- end -}}
 
-      </div>
-    </div>
-  {{ end }}
-</div>
+            <div class="row gx-0 alternating-grid mb-6 wvu-b-border wvu-b-shadow">
+              <div class="col-lg-12 order-rotate px-0">
+                {{ if .image }}
+                  <div class="h-100 mb-0 wvu-bg-size-cover" style="background-image: url({{ $src }}); padding-top: 66.6667%;">
+                  </div>
+                {{ end }}
+              </div>
+              <div class="col-lg-12 order-2">
+                <div class="h-100 d-flex align-items-center wvu-b-subtle p-5">
+                  <div class="fs-5">
+                    {{ if not $heading }}
+                      <h2 class="display-5 wvu-b-display-heading wvu-b-accent-text">{{ .heading }}</h2>
+                    {{ else }}
+                      <h3 class="display-5 wvu-b-display-heading wvu-b-accent-text">{{ .heading }}</h3>
+                    {{ end }}
+                    <div class="mb-3">
+                      {{ .copy | markdownify }}
+                    </div>
+                    {{ if .ctas }}
+                      {{ range .ctas }}
+                        <a class="btn wvu-b-btn" href="{{ .url }}">{{ .text }}{{ with .icon }} <span class="fa-regular fa-{{ . }}"></span>{{ end }}</a>
+                      {{ end }}
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{ end }}
+        </div>
+</section>
