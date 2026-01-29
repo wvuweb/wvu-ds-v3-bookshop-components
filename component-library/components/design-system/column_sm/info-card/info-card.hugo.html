@@ -4,9 +4,9 @@
 {{ end }}
 <div class="bg-wvu-not-quite-white wvu-bg-shadow wvu-b-shadow wvu-b-border p-5 wvu-table">
   <div class="mb-4">
-    {{ if eq $headingLevel "H3" }}
+    {{ if and .heading (eq $headingLevel "H3") }}
       <h3 class="h3 wvu-b-subheading mb-4"><span class="wvu-b-font-adjust">{{ .heading }}</span></h3>
-    {{ else }}
+    {{ else if .heading }}
       <h2 class="h3 wvu-b-subheading mb-4"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
     {{ end }}
     {{ if .subheading }}
