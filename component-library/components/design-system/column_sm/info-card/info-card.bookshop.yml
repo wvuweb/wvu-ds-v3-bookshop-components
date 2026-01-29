@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   heading: Heading
+  heading_level: H3
   subheading:
   copy:
   card_c:
@@ -48,5 +49,12 @@ _inputs:
         - ccdam
   card_c:
     hidden: true
+  heading_level:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        - H2
+        - H3
   is_dynamic:
     hidden: true

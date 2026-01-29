@@ -1,8 +1,16 @@
+{{ $headingLevel := "" }}
+{{ if .heading_level }}
+  {{ $headingLevel = .heading_level }}
+{{ end }}
 <div class="bg-wvu-not-quite-white wvu-bg-shadow wvu-b-shadow wvu-b-border p-5">
   <div class="mb-4">
-    <h2 class="h1 wvu-b-subheading mb-4"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>  
-    {{ with .subheading }}
-      <p class="h4 wvu-b-heading"><span class="wvu-b-font-adjust">{{ . }}</span></p>
+    {{ if eq $headingLevel "H3" }}
+      <h3 class="h1 wvu-b-subheading mb-4"><span class="wvu-b-font-adjust">{{ .heading }}</span></h3>
+    {{ else }}
+      <h2 class="h1 wvu-b-subheading mb-4"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
+    {{ end }}
+    {{ if .subheading }}
+      <p class="h4 wvu-b-heading"><span class="wvu-b-font-adjust">{{ .subheading }}</span></p>
     {{ end }}
   </div>
   {{ .markdown | markdownify }}
