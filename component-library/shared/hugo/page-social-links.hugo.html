@@ -34,7 +34,7 @@
           {{ if .subheading }}
             <p class="lead mb-0">{{ .subheading }}</p>
           {{ end }}
-          {{ if page.Params.social_media_accounts }}
+          {{ if .social_media_accounts }}
             <ul class="list-inline mb-0 mt-3">
               {{ $icon := "" }}
               {{ range .social_media_accounts }}
