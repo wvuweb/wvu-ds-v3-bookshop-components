@@ -25,6 +25,15 @@
     <div class="row">
       <div class="col-lg-12 col-xl-10 mx-lg-auto text-center">
         <div class="d-flex flex-column align-items-center">
+          {{ if and .masthead_link .masthead_link.text }}
+            <p class="mb-5 wvu-b-label">
+              {{ if .masthead_link.url }}
+                <a class="text-decoration-none" href="{{ .masthead_link.url }}">{{ .masthead_link.text }}</a>
+              {{ else }}
+                {{ .masthead_link.text }}
+              {{ end }}
+            </p>
+          {{ end }}
           {{ if $src }}
             <div class="mb-4" style="width: 150px; height: 150px;">
               <img class="rounded-circle" src="{{ $src }}" alt="{{ $alt }}" />
