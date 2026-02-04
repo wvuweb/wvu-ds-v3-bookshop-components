@@ -25,12 +25,12 @@
     <div class="row">
       <div class="col-lg-12 col-xl-10 mx-lg-auto text-center">
         <div class="d-flex flex-column align-items-center">
-          {{ if and .masthead_link .masthead_link.text }}
+          {{ if and .masthead_link_text }}
             <p class="mb-5 wvu-b-label">
-              {{ if .masthead_link.url }}
-                <a class="text-decoration-none" href="{{ .masthead_link.url }}">{{ .masthead_link.text }}</a>
+              {{ if .masthead_link_url }}
+                <a class="text-decoration-none" href="{{ .masthead_link_url }}">{{ .masthead_link_text }}</a>
               {{ else }}
-                {{ .masthead_link.text }}
+                {{ .masthead_link_text }}
               {{ end }}
             </p>
           {{ end }}
@@ -45,16 +45,10 @@
           {{ end }}
           {{ if .social_media_accounts }}
             <ul class="list-inline mb-0 mt-3">
-              {{ $icon := "" }}
               {{ range .social_media_accounts }}
-                {{ if eq .social_media_platform "X" }}
-                  {{ $icon = "x-twitter" }}
-                {{ else }}
-                  {{ $icon = .social_media_platform | urlize }}
-                {{ end }}
                 <li class="list-inline-item">
                   <a class="bg-wvu-gold border border-2 border-wvu-blue text-wvu-blue mb-0 text-decoration-none d-flex align-items-center justify-content-center rounded-circle p-3" href="{{ .url }}">
-                    <span class="fab fa-{{ $icon }} position-absolute" aria-hidden="true"></span>
+                    <span class="fab fa-{{ .social_media_platform }} position-absolute" aria-hidden="true"></span>
                     <span class="visually-hidden">{{ .username }} on {{ .social_media_platform }}</span>
                   </a>
                 </li>          
