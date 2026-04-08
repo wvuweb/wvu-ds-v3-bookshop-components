@@ -36,6 +36,7 @@ blueprint:
     config:
       name: contact-us
       edit_mode_only: false
+      include_heading_postscript: true
   is_dynamic: false
   is_nested: false
   use_common_wrapper: true

@@ -1,3 +1,4 @@
+{{ $heading := .heading }}
 <div class="row justify-content-center">
   {{ with .offices }}
     {{ if or .offices_items .ctas }}
@@ -5,7 +6,11 @@
         <div class="h3">
           <span class="fa-solid fa-location-dot" aria-hidden="true"></span>
         </div>
-        <h2 class="fs-3 mb-4">At the Office</h2>
+        {{ if $heading }}
+          <h3 class="fs-3 mb-4">At the Office</h3>
+        {{ else }}
+          <h2 class="fs-3 mb-4">At the Office</h2>
+        {{ end }}
         {{ if .offices_items }}
           {{ range .offices_items }}
             <address>
@@ -36,7 +41,11 @@
         <div class="h3">
           <span class="fa-solid fa-envelope" aria-hidden="true"></span>
         </div>
-        <h2 class="fs-3 mb-4">By Email</h2>
+        {{ if $heading }}
+          <h3 class="fs-3 mb-4">By Email</h3>
+        {{ else }}
+          <h2 class="fs-3 mb-4">By Email</h2>
+        {{ end }}
         {{ if .emails_items }}
           {{ range .emails_items }}
             <p class="mb-3">
@@ -63,7 +72,11 @@
         <div class="h3">
           <span class="fa-solid fa-phone" aria-hidden="true"></span>
         </div>
-        <h2 class="fs-3 mb-4k">By Phone</h2>
+        {{ if $heading }}
+          <h3 class="fs-3 mb-4k">By Phone</h3>
+        {{ else }}
+          <h2 class="fs-3 mb-4k">By Phone</h2>
+        {{ end }}
         {{ if .phones_items }}
           {{ range .phones_items }}
             <p class="mb-3">
@@ -90,7 +103,11 @@
         <div class="h3">
           <span class="fa-solid fa-fax" aria-hidden="true"></span>
         </div>
-        <h2 class="fs-3 mb-4">By Fax</h2>
+        {{ if $heading }}
+          <h3 class="fs-3 mb-4">By Fax</h3>
+        {{ else }}
+          <h2 class="fs-3 mb-4">By Fax</h2>
+        {{ end }}
         {{ if .faxes_items }}
           {{ range .faxes_items }}
             <p class="mb-3">
