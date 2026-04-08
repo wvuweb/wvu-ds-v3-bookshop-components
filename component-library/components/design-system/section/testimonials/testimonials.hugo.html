@@ -11,11 +11,29 @@
         <p class="wvu-b-display-heading fs-4 mb-0">{{ .quote | markdownify }}</p>   
       </blockquote>
       {{ if .image }}
+
+        {{ $src := .image }}
+
+        {{- if not site.Params.env_bookshop_live -}}
+          {{ $image := "" }}
+          {{/*  Get the image, either from its remote or local source  */}}
+          {{ if hasPrefix $src "http"}}
+            {{ $image = resources.GetRemote .image }}
+          {{ else }}
+            {{ $image = resources.Get .image }}
+          {{ end }}
+        
+          {{/* Resize images and add them to a variable  */}}
+          {{ if and $image (ne $image.MediaType.SubType "svg") }}
+            {{ $src = ($image.Fill ("150x150 center webp")).RelPermalink }}
+          {{ end }}
+        {{- end -}}
+
         <div class="w-100 d-flex justify-content-center mb-2">            
           <div class="ratio ratio-1x1" style="height: 100px; width: 100px;">
             <div class="h-100 w-100 rounded-circle overflow-hidden">
               <div class="ratio ratio-1x1">
-                {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image "width" 960 "height" 960 "classes" "object-fit-cover")) }}
+                <img leading="lazy" class="object-fit-cover object-position-center" src="{{ $src }}" alt="{{ if .name }}Portrait of {{ .name }}{{ end }}" />
               </div>
             </div>
           </div>
