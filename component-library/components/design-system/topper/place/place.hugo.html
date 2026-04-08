@@ -42,7 +42,7 @@
   {{ end }}
 {{- end -}}
 
-<section class="py-6 {{ .topper.styles.background_c }} position-relative">
+<section class="audience-{{ .topper.settings.styles.audience }} tone-{{ .topper.settings.styles.tone}} bg-{{ $backgroundColor }} position-relative py-7">
   {{ if not .topper.background_image }}
     {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" "" "styles" .topper.settings.styles "layout" .topper.settings.layout)) }}
   {{ else }}
