@@ -52,7 +52,7 @@
                     <div class="row">
                       <div class="col-8 col-sm-24 mx-auto">
                         <div class="ratio ratio-1x1">
-                          <img class="rounded-circle shadow w-100 h-100 object-fit-cover" src="{{ $src }}" alt="Firstname Lastname headshot">
+                          <img class="rounded-circle shadow w-100 h-100 object-fit-cover" src="{{ $src }}" alt="Portrait of {{ $contact.name }}">
                         </div>
                       </div>
                     </div>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="col-xl-12">
                   <p class="mb-0 py-2">
-                    <span class="fa-solid fa-user-circle"></span> <a href="{{ .RelPermalink }}">View Profile<span class="visually-hidden">: Lorem Ipsum Dolor Sit Amet Consectetur</span></a>
+                    <span class="fa-solid fa-user-circle"></span> <a href="{{ .RelPermalink }}">View Profile<span class="visually-hidden">: {{ $contact.name }}</span></a>
                   </p>
                 </div>
               </div>
