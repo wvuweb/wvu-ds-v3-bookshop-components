@@ -16,7 +16,9 @@
     <ul class="list-unstyled">
       {{ range .items }}        
         <li class="d-flex mb-4">
-          <span class="h2 fa-solid fa-{{ $icon }} wvu-b-accent-text me-3 mt-1"></span>
+          <div class="h2 wvu-b-accent-text me-3 mt-1">
+            <span class="fa-solid fa-{{ $icon }}"></span>
+          </span>
           <div>
             {{ with .title }}
               <h3 class="h4 mb-0">{{ . }}</h3>
