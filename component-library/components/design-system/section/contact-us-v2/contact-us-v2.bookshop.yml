@@ -105,8 +105,8 @@ _inputs:
     type: text
   offices_items:
     label: Items
-    options:
-      structures: _structures.offices_items
+    # options:
+    #   structures: _structures.offices_items
   padding:
     type: auto
     hidden: true
