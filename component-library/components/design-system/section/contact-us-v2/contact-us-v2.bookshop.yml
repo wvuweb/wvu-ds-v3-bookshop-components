@@ -103,10 +103,10 @@ _inputs:
     type: array
   lines[*]:
     type: text
-  # offices_items:
-  #   label: Items
-  #   options:
-  #     structures: _structures.offices_items
+  offices_items:
+    label: Items
+    options:
+      structures: _structures.offices_items
   padding:
     type: auto
     hidden: true
