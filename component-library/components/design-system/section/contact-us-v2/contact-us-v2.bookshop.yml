@@ -107,10 +107,10 @@ _inputs:
     label: Items
     # options:
     #   structures: _structures.offices_items
-  # office_lines:
-  #   type: array
-  # office_lines[*]:
-  #   type: text
+  office_lines:
+    type: array
+  office_lines[*]:
+    type: text
   padding:
     type: auto
     hidden: true
@@ -211,8 +211,9 @@ _structures:
           url:
   offices_items:
     values:
-      - heading:
-        lines:
+      - value:
+          heading:
+          office_lines:
   phones_items:
     values:
       - value:
