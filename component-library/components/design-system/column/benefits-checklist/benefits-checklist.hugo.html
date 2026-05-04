@@ -1,9 +1,15 @@
 {{ $styles := .settings.styles }}
 {{ $icon := .benefits_icon }}
-
+{{ $headingLevel := "H3" }}
+{{ if .heading_level }}
+  {{ $headingLevel = .heading_level }}
+{{ end }}
 <div class="p-5 wvu-b-text wvu-b-subtle bg-">
-  {{ with .heading }}
-    <h2 class="display-5 mb-3 wvu-b-subheading mb-4">{{ . }}</h2>
+
+  {{ if and .heading (eq $headingLevel "H3") }}
+    <h3 class="display-5 mb-3 wvu-b-subheading mb-4"><span class="wvu-b-font-adjust">{{ .heading }}</span></h3>
+  {{ else if .heading }}
+    <h2 class="display-5 mb-3 wvu-b-subheading mb-4"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
   {{ end }}
 
   {{ with .subheading }}
