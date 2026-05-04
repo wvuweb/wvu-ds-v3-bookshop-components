@@ -211,9 +211,8 @@ _structures:
           url:
   offices_items:
     values:
-      - value:
-          heading:
-          lines:
+      - heading:
+        lines:
   phones_items:
     values:
       - value:
