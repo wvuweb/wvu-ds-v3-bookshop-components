@@ -106,7 +106,7 @@ _inputs:
   offices_items:
     label: Items
     options:
-      structures: _structures.offices_items
+      structures: _structures.office_items
   padding:
     type: auto
     hidden: true
@@ -205,7 +205,7 @@ _structures:
           text:
           icon:
           url:
-  offices_items:
+  office_items:
     values:
       - value:
           heading:
