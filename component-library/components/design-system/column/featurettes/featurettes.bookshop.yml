@@ -1,0 +1,77 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - detail_blocks
+  label: "Featurettes"
+  description: Flexible layout for text, images, and CTAs in any order.
+  icon: view_comfy_alt
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  heading: Heading
+  subheading: Subheading.
+  items:
+    - title: Item 1 Title
+      image:
+      alt_text:
+      # label:
+      # badge:
+      text: Item 1 text.
+      ctas:
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  # hide:
+  #   type: datetime
+  #   options:
+  #     timezone: America/New_York
+  # show:
+  #   type: datetime
+  alt_text:
+    hidden: '!image'
+    options:
+      required: true
+  badge:
+    hidden: true
+  copy:
+    type: markdown
+    options:
+      allowed_sources:
+        - ccdam
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
+  image:
+    type: image
+    options:
+      allowed_sources:
+        - ccdam
+      width: 1920
+      height: 1080
+  label:
+    hidden: true
+  text:
+    type: markdown
+    options:
+      blockquote: true
+      bulletedlist: true
+      bold: true
+      format: p h3 h4 h5 h6
+      image: false
+      italic: true
+      link: true
+      redo: true
+      removeformat: true
+      undo: true
+_structures:
+  links:
+    values:
+      - value:
+          text:
+          icon:
+          url:

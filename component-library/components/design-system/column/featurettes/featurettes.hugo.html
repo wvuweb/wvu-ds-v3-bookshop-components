@@ -1,0 +1,58 @@
+{{ $heading := .heading }}
+{{ $colSpan := 6 }}
+{{ $itemCount := "" }}
+{{ $items := .items }}
+
+<div class="row gx-lg-5 justify-content-center wvu-justify-children mb-n5">
+
+  {{ range .items }}
+
+    {{ $src := .image }}
+
+    {{- if not site.Params.env_bookshop_live -}}
+      {{ $image := "" }}
+      {{/*  Get the image, either from its remote or local source  */}}
+      {{ if hasPrefix $src "http"}}
+        {{ $image = resources.GetRemote .image }}
+      {{ else }}
+        {{ $image = resources.Get .image }}
+      {{ end }}
+    
+      {{/* Resize images and add them to a variable  */}}
+      {{ if and $image (ne $image.MediaType.SubType "svg") }}
+        {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+      {{ end }}
+
+      {{ $itemCount = $items | len }}
+
+      {{ if le $itemCount 3 }}
+        {{ $colSpan = 8 }}
+      {{ end }}
+    {{- end -}}
+
+    <div class="col-lg-12 col-xl-8 col-xxl-{{ $colSpan }} mb-5">
+      {{ if .image }}
+        <div class="mb-3">
+          <div class="ratio ratio-3x2">
+            <img loading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
+          </div>
+        </div>
+      {{ end }}
+
+      {{ if not $heading }}
+        <h2 class="wvu-b-display-heading h2"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
+      {{ else }}
+        <h3 class="wvu-b-display-heading h2"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
+      {{ end }}
+      <p>{{ .text | markdownify }}</p>
+      {{ if .ctas }}
+        <div>
+          {{ range .ctas }}
+            <a class="btn wvu-b-btn btn-sm mb-1" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+
+  {{ end }}
+</div>
