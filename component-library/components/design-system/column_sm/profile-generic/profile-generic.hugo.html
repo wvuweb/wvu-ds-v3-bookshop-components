@@ -55,8 +55,12 @@
             <div class="my-3 small">
               {{ .copy | markdownify }}
             </div>
-            <p class="mb-0 small mb-2"><a href="" class="text-decoration-none wvu-b-accent-text"><span class="fa-solid fa-user-circle"></span> View Profile</a></p>
-            <p class="mb-0 small"><a href="" class="text-decoration-none wvu-b-accent-text"><span class="fa-solid fa-circle-play"></span> Watch Video</a></p>
+            {{ if .profile_url }}
+              <p class="mb-0 small mb-2"><a href="{{ .profile_url }}" class="text-decoration-none wvu-b-accent-text"><span class="fa-solid fa-user-circle"></span> View Profile</a></p>
+            {{ end }}
+            {{ if .video_url }}
+              <p class="mb-0 small"><a href="{{ .video_url }}" class="text-decoration-none wvu-b-accent-text"><span class="fa-solid fa-circle-play"></span> Watch Video</a></p>
+            {{ end }}
           </div>
         </div>
         <div class="col-24 d-flex align-items-center position-relative">
@@ -64,7 +68,7 @@
             <div class="row">            
               {{ if .ctas }}
                 <div class="col-sm col-md-24">
-                  <div class="wvu-z-index-content">
+                  <div class="wvu-z-index-content px-4">
                     <h2 class="wvu-b-label small h6 wvu-text-letter-spacing-lg">See More</h2>
                     <ul class="list-unstyled w-100 small mb-5">
                       {{ range .ctas }}
