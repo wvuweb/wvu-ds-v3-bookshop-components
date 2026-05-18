@@ -17,6 +17,8 @@ blueprint:
   image:
   info:
   copy:
+  profile_url:
+  video_url:
   ctas:
   is_dynamic: false
 
@@ -50,11 +52,17 @@ _inputs:
     hidden: true
   is_dynamic:
     hidden: true
+  profile_url:
+    type: url
+    label: Profile Page Link
   super_heading:
     hidden: true
     type: array
   super_heading[*]:
     type: text
+  video_url:
+    type: url
+    label: Video Link
 _structures:
   links:
     style: select
