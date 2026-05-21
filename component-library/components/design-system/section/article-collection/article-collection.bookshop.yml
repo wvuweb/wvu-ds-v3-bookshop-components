@@ -150,15 +150,15 @@ _inputs:
   #   comment: >-
   #     Use to improve text legibility when using a background image. Disabled
   #     when blend is enabled.
-  tags:
-    type: multiselect
-    options:
-      allow_create: true
-      allow_empty: true
-      preview:
-        icon: shoppingmode
-    context:
-      content: Articles with these tags will pull into your collection.
+  # tags:
+  #   type: multiselect
+  #   options:
+  #     allow_create: true
+  #     allow_empty: true
+  #     preview:
+  #       icon: shoppingmode
+  #   context:
+  #     content: Articles with these tags will pull into your collection.
   tone:
     type: choice
     options:
