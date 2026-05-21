@@ -156,7 +156,7 @@ _inputs:
       allow_create: true
       allow_empty: true
     preview:
-        icon: shoppingmode
+      icon: shoppingmode
     context:
       content: Articles with these tags will pull into your collection.
   tone:
