@@ -2,6 +2,7 @@
 spec:
   structures:
     - detail_blocks
+    - program_detail_blocks
   label: "Heading"
   description: Standalone heading
   icon: format_h2
