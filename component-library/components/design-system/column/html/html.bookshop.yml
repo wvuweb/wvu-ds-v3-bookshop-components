@@ -2,6 +2,7 @@
 spec:
   structures:
     - detail_blocks
+    - program_detail_blocks
   label: "HTML"
   description: Add HTML markup.
   icon: code

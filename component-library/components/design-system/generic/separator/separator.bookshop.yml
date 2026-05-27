@@ -2,6 +2,7 @@
 spec:
   structures:
     - detail_blocks
+    - program_detail_blocks
   label: "Separator"
   description: A dotted horizontal line for visual separation between sections.
   icon: horizontal_rule
