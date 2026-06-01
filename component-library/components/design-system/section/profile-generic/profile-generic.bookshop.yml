@@ -2,6 +2,8 @@
 spec:
   structures:
     - content_blocks
+    - detail_blocks
+    - program_detail_blocks
   label: "Profile - Generic"
   description: Spotlight with image, name, location, and heading.
   icon: account_circle
