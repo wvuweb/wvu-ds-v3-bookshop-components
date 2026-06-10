@@ -76,6 +76,11 @@ _inputs:
       values: _select_data.color_palettes
       value_key: class
     cascade: true
+  copy:
+    type: markdown
+    options:
+      allowed_sources:
+        - ccdam
   ctas:
     type: array
     options:
@@ -151,11 +156,6 @@ _select_data:
       class: mb-n8 mb-xxl-n9
     - name: Pull Both
       class: my-n8 my-xxl-n9
-  copy:
-    type: markdown
-    options:
-      allowed_sources:
-        - ccdam
 _structures:
   cta_links:
     values:
