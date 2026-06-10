@@ -16,6 +16,8 @@ blueprint:
   links:
     - text: Text
       url:
+  postscript:
+    copy:
   settings:
     styles:
       audience: general
