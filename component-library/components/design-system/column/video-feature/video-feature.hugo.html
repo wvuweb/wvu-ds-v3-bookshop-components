@@ -1,12 +1,28 @@
 <div class="bg-light wvu-b-subtle component-column">
   {{ if .heading }}
-    <h2 class="h6 wvu-b-label p-3 mb-0">{{ .heading }}</h2>
+    {{ if .parent_has_heading }}
+      <h3 class="h6 wvu-b-label p-3 mb-0">{{ .heading }}</h3>
+    {{ else }}
+      <h2 class="h6 wvu-b-label p-3 mb-0">{{ .heading }}</h2>
+    {{ end }}
   {{ end }}
   <div class="mb-4">
     <div class="mb-xl-0">
       {{ partial "bookshop" (slice "design-system/generic/youtube-video" .) }}
       <div class="p-4">
-        <h2 class="fs-4 wvu-b-display-heading"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
+        {{ if .parent_has_heading }}
+          {{ if .heading }}
+            <h4 class="fs-4 wvu-b-display-heading"><span class="wvu-b-font-adjust">{{ .title }}</span></h4>
+          {{ else }}
+            <h3 class="fs-4 wvu-b-display-heading"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
+          {{ end }}
+        {{ else }}
+          {{ if .heading }}
+            <h3 class="fs-4 wvu-b-display-heading"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
+          {{ else }}
+            <h2 class="fs-4 wvu-b-display-heading"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
+          {{ end }}
+        {{ end }}
         <p class="mb-0">{{ .description }}</p>
       </div>
     </div>
