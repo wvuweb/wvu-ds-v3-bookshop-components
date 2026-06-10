@@ -2,36 +2,38 @@
 
 <div class="row mb-n6">
   <div class="col-xxl-16 mx-xxl-auto">
-    {{ range .items }}
-      <div class="row gx-4 mb-6">
-        <div class="col-lg-6">
-          <div class="position-relative">                    
-            <div class="display-0 config-extra-bold-italic wvu-text-outline wvu-b-accent-text" style="font-size: 15rem !important; line-height: .8em;">
-              <p class="is-count wvu-b-text-shadow"></p>
-            </div>
-          </div> 
-        </div>
-        <div class="col-lg-18">
-          {{ if not $heading }}
-            <h2 class="wvu-b-display-heading h1">{{ .title }}</h2>
-          {{ else }}
-            <h3 class="wvu-b-display-heading h1">{{ .title }}</h3>
-          {{ end }}
-          <p>{{ .text | markdownify }}</p>
-          {{ if .ctas }}
-            <div class="mt-4">
-              {{ range .ctas }}
-                <a class="btn wvu-b-btn mb-1" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
-              {{ end }}
-            </div>
-          {{ end }}
-          {{ if .postscript }}
-            <div class="mt-4">
-              {{ .postscript.copy | markdownify }}
-            </div>
-          {{ end }}
-        </div>
-      </div>
-    {{ end }}
+    <ol class="list-unstyled">
+      {{ range .items }}
+        <li class="row gx-4 mb-6">
+          <div class="col-lg-6">
+            <div class="position-relative">                    
+              <div class="display-0 config-extra-bold-italic wvu-text-outline wvu-b-accent-text" style="font-size: 15rem !important; line-height: .8em;">
+                <span class="is-count wvu-b-text-shadow"></span>
+              </div>
+            </div> 
+          </div>
+          <div class="col-lg-18">
+            {{ if not $heading }}
+              <h2 class="wvu-b-display-heading h1">{{ .title }}</h2>
+            {{ else }}
+              <h3 class="wvu-b-display-heading h1">{{ .title }}</h3>
+            {{ end }}
+            <p>{{ .text | markdownify }}</p>
+            {{ if .ctas }}
+              <div class="mt-4">
+                {{ range .ctas }}
+                  <a class="btn wvu-b-btn mb-1" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+                {{ end }}
+              </div>
+            {{ end }}
+            {{ if .postscript }}
+              <div class="mt-4">
+                {{ .postscript.copy | markdownify }}
+              </div>
+            {{ end }}
+          </div>
+        </li>
+      {{ end }}
+    </ol>
   </div>
 </div>
