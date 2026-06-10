@@ -157,7 +157,7 @@
                         {{ if .column_a }}
                           <div class="col-lg mb-5 mb-xl-0">
                             {{ if and (not site.Params.env_bookshop_live) $parentHasHeading }}
-                              {{ $childContext_col_a := merge .column_a (dict "parent_has_heading" $parentHasHeading )}}
+                              {{ $childContext_col_a := merge .column_a (dict "parent_has_heading" $parentHasHeading) }}
                               {{ partial "bookshop" $childContext_col_a }}
                             {{ else }}
                               {{ partial "bookshop" .column_a }}
