@@ -9,10 +9,10 @@
 {{ $counter := 0 }}
 
 {{ range .blocks }}
-  {{ $audienceLabel := "General Audience" }}
-  {{ $toneLabel := "Default Tone" }}
+  {{- $audienceLabel := "General Audience" -}}
+  {{- $toneLabel := "Default Tone" -}}
 
-  {{ if and .is_sitewide site.Params.env_bookshop_live }}
+  {{- if and .is_sitewide site.Params.env_bookshop_live -}}
     <div class="py-6 py-xxl-7">
       <div class="container">
         <div class="alert alert-info">
@@ -20,51 +20,51 @@
         </div>
       </div>
     </div>
-  {{ end }}
+  {{- end -}}
 
-  {{ $audienceOverride := "" }}
-  {{ $toneOverride := "" }}
-  {{ $bgSubtle := "" }}
+  {{- $audienceOverride := "" -}}
+  {{- $toneOverride := "" -}}
+  {{- $bgSubtle := "" -}}
 
-  {{ if eq .settings.styles.audience "alumni" }}
-    {{ $audienceLabel = "Academic / Traditional Audience" }}
-  {{ else if eq .settings.styles.audience "leader_partners" }}
-    {{ $audienceLabel = "Formal + Modern Audience" }}
-  {{ else if eq .settings.styles.audience "prospective_students" }}
-    {{ $audienceLabel = "Prospective Students Audience" }}
-  {{ end }}
+  {{- if eq .settings.styles.audience "alumni" -}}
+    {{- $audienceLabel = "Academic / Traditional Audience" -}}
+  {{- else if eq .settings.styles.audience "leader_partners" -}}
+    {{- $audienceLabel = "Formal + Modern Audience" -}}
+  {{- else if eq .settings.styles.audience "prospective_students" -}}
+    {{- $audienceLabel = "Prospective Students Audience" -}}
+  {{- end -}}
 
-  {{ if eq .settings.styles.tone "reserved" }}
-    {{ $toneLabel = "Reserved Tone" }}
-  {{ else if eq .settings.styles.tone "loud" }}
-    {{ $toneLabel = "Loud Tone" }}
-  {{ else if eq .settings.styles.tone "lets-go" }}
-    {{ $toneLabel = "Let’s Go! Tone" }}
-  {{ end }}
+  {{- if eq .settings.styles.tone "reserved" -}}
+    {{- $toneLabel = "Reserved Tone" -}}
+  {{- else if eq .settings.styles.tone "loud" -}}
+    {{- $toneLabel = "Loud Tone" -}}
+  {{- else if eq .settings.styles.tone "lets-go" -}}
+    {{- $toneLabel = "Let’s Go! Tone" -}}
+  {{- end -}}
 
-  {{ if .settings.styles.audience }}
-    {{ $audienceOverride = "override-audience-styles-site" }}
-  {{ end }}
+  {{- if .settings.styles.audience -}}
+    {{- $audienceOverride = "override-audience-styles-site" -}}
+  {{- end -}}
 
-  {{ if .settings.styles.tone }}
+  {{- if .settings.styles.tone -}}
     {{ $toneOverride = "override-tone-styles-site" }}
-  {{ end }}
+  {{- end -}}
 
-  {{ $src := "" }}
-  {{ $backgroundColor := "" }}
-  {{ $containerPadding := "" }}
-  {{ $containerBackgroundColor := "" }}
+  {{- $src := "" -}}
+  {{- $backgroundColor := "" -}}
+  {{- $containerPadding := "" -}}
+  {{- $containerBackgroundColor := "" -}}
 
-  {{ if .settings.styles.color_palette }}
+  {{- if .settings.styles.color_palette -}}
     {{ $backgroundColor = .settings.styles.color_palette }}
-  {{ end }}
+  {{- end -}}
 
-  {{ if .background_image }}
+  {{- if .background_image -}}
     {{ $src = .background_image }}
-    {{ if not .settings.styles.enable_blend }}
+    {{- if not .settings.styles.enable_blend -}}
       {{ $backgroundColor = "option-2" }}
-    {{ end }}
-  {{ end }}
+    {{- end -}}
+  {{- end -}}
 
   {{ if or (eq .settings.layout.margin "mt-n8 mt-xxl-n9") (eq .settings.layout.margin "my-n8 my-xxl-n9") }}
     {{ if .heading }}
@@ -136,6 +136,7 @@
       {{ if or (eq .settings.layout.margin "mt-n8 mt-xxl-n9") (eq .settings.layout.margin "my-n8 my-xxl-n9") }}
         <div class="pt-9 bg-wvu-not-quite-white"></div>
       {{ end }}
+      {{ "<!-- start component -->" | safeHTML }}
       <section id="{{ with .uuid }}{{ . }}{{ end }}" class="audience-{{ .settings.styles.audience }} tone-{{ .settings.styles.tone }} wvu-b-text xsection-component {{ .settings.layout.padding }} position-relative bg-{{ $backgroundColor }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}">
         {{ partial "bookshop_partial" (slice "section_background_simple" (dict "image" $src "styles" .settings.styles "config" .settings.config)) }}
 
@@ -249,9 +250,97 @@
           </div>
         </div>
       </section>
+      {{ "<!-- end component -->" | safeHTML }}
+      <button class="btn btn-dark w-100 bg-dark text-white rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $counter }}" aria-expanded="false" aria-controls="collapse-{{ $counter }}">
+        View HTML
+      </button>
+      <section class="code-example collapse p-4 p-xl-5 position-relative" id="collapse-{{ $counter }}">
+      </section>
       {{ if or (eq .settings.layout.margin "mb-n8 mb-xxl-n9") (eq .settings.layout.margin "my-n8 my-xxl-n9") }}
         <div class="pt-9 bg-wvu-not-quite-white"></div>
       {{ end }}
     </div>
   </div>
 {{ end }}
+
+<script>
+  function formatHTML(html) {
+    var INDENT = '  ';
+    var voidElements = new Set([
+      'area','base','br','col','embed','hr','img','input',
+      'link','meta','param','source','track','wbr'
+    ]);
+
+    // Strip HTML comments, collapse whitespace, then put each tag on its own line
+    html = html
+      .replace(new RegExp('<!--[\\s\\S]*?-->', 'g'), '')
+      .replace(/\s*\n\s*/g, ' ')
+      .replace(/>\s+</g, '>\n<')
+      .trim();
+
+    var level = 0;
+
+    return html.split('\n').map(function(line) {
+      line = line.trim();
+      if (!line) return null;
+
+      // Decrease indent before closing tags
+      if (/^<\//.test(line)) level = Math.max(0, level - 1);
+
+      var indented = INDENT.repeat(level) + line;
+
+      // Increase indent after opening tags (not void, not self-closing, not same-line close)
+      var m = line.match(/^<([a-z][a-z0-9-]*)/i);
+      if (m && !voidElements.has(m[1].toLowerCase()) && !/\/>$/.test(line) && !/^<\//.test(line)) {
+        var sameLineClose = new RegExp('<\\/' + m[1] + '\\s*>', 'i');
+        if (!sameLineClose.test(line)) level++;
+      }
+
+      return indented;
+    }).filter(Boolean).join('\n');
+  }
+
+  document.querySelectorAll('section.code-example').forEach(function(codeSection) {
+    var parent = codeSection.parentNode;
+    var childNodes = Array.from(parent.childNodes);
+
+    var startIdx = -1;
+    var endIdx = -1;
+
+    childNodes.forEach(function(node, i) {
+      if (node.nodeType === Node.COMMENT_NODE) {
+        if (node.nodeValue.trim() === 'start component') startIdx = i;
+        if (node.nodeValue.trim() === 'end component') endIdx = i;
+      }
+    });
+
+    if (startIdx === -1 || endIdx === -1) return;
+
+    var tempDiv = document.createElement('div');
+    childNodes.slice(startIdx + 1, endIdx).forEach(function(node) {
+      tempDiv.appendChild(node.cloneNode(true));
+    });
+
+    var formattedHTML = formatHTML(tempDiv.innerHTML);
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn btn-primary position-absolute';
+    btn.innerHTML = 'Copy <span class="fa-solid fa-clipboard"></span>'
+    btn.style.right = '20px'
+    btn.addEventListener('click', function() {
+      navigator.clipboard.writeText(formattedHTML).then(function() {
+        btn.innerHTML = 'Copied! <span class="fa-solid fa-clipboard"></span>';
+        setTimeout(function() { btn.innerHTML = 'Copy <span class="fa-solid fa-clipboard"></span>'; }, 2000);
+      });
+    });
+
+    var pre = document.createElement('pre');
+    var code = document.createElement('code');
+    code.className = 'language-html';
+    code.textContent = formattedHTML;
+    pre.appendChild(code);
+    codeSection.appendChild(btn);
+    codeSection.appendChild(pre);
+  });
+</script>
