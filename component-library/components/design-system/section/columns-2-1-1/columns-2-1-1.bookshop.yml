@@ -2,6 +2,7 @@
 spec:
   structures:
     - content_blocks
+    - default_content_blocks
   label: "Columns 2-1-1"
   description: Three-column layout with one wide and two narrow sections.
   icon: view_column
