@@ -3,8 +3,13 @@
 {{ $colSpan := 8 }}
 {{ $itemCount := "" }}
 {{ $items := .items }}
+{{ $centerItems := "" }}
 
-<div class="row gx-4 gx-xxl-5 mb-n5">
+{{ if lt (len .items) 3 }}
+  {{ $centerItems = "justify-content-xl-center" }}
+{{ end }}
+
+<div class="row gx-4 gx-xxl-5 mb-n5 {{ $centerItems }}">
   {{ range .items }}
 
     {{ $src := .image }}
@@ -30,9 +35,10 @@
       {{ else if eq $itemCount 1 }}
         {{ $colSpan = "18 mx-xl-auto" }}
       {{ end }}
+
     {{- end -}}
 
-    <div class="col-24 col-lg-12 col-xl-8 mb-5">
+    <div class="col-24 col-lg-12 col-xl-8 mb-4 mb-xxl-5">
       <div class="h-100 wvu-b-subtle wvu-b-shadow wvu-b-border">        
         <div class="position-relative p-5 text-center">
           <div class="mb-4 d-flex">
