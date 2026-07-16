@@ -19,7 +19,7 @@
         
           {{/* Resize images and add them to a variable  */}}
           {{ if and $image (ne $image.MediaType.SubType "svg") }}
-            {{ $src = ($image.Fill (printf "%dx%d webp" 100 100)).RelPermalink }}
+            {{ $src = ($image.Fill (printf "%dx%d webp" 960 960)).RelPermalink }}
           {{ end }}
         {{- end -}}
 
