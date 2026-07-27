@@ -10,7 +10,7 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  label:
+  label: Visit the Website
   url:
   icon: globe
 
