@@ -22,11 +22,9 @@
       {{- end -}}
 
       <div class="col-24 col-lg-12">
-        <div class="position-relative">                    
+        <div class="position-relative h-100">                    
           {{ if .image }}
-            <div class="h-100">
-              <img loading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
-            </div>
+            <img loading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
           {{ end }}
         </div> 
       </div>
