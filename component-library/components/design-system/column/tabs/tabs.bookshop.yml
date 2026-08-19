@@ -13,6 +13,7 @@ blueprint:
     - label: Tab
       text: Tab text.
   is_dynamic: false
+  uuid: 
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -26,3 +27,5 @@ _inputs:
     options:
       allowed_sources:
         - ccdam
+  uuid:
+    hidden: true
