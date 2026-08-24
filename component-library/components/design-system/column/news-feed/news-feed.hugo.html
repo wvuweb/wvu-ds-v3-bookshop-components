@@ -11,14 +11,12 @@
     {{ else }}
       {{ $url := .xml_feed }}
 
-      {{/* Guard 1: fetch can fail (bad URL, network issue, feed down) */}}
       {{ $resource := try (resources.GetRemote $url) }}
 
       {{ if $resource.Err }}
         {{ warnf "newsfeed-xml: failed to fetch %s: %s" $url $resource.Err }}
       {{ else if $resource.Value }}
 
-        {{/* Guard 2: unmarshal can fail on malformed/non-XML content */}}
         {{ $parsed := try (transform.Unmarshal $resource.Value) }}
 
         {{ if $parsed.Err }}
@@ -26,7 +24,6 @@
         {{ else if $parsed.Value }}
           {{ $data := $parsed.Value }}
 
-          {{/* Guard 3: figure out RSS vs Atom, defaulting to empty if neither shape matches */}}
           {{ $rawItems := slice }}
           {{ if $data.channel }}
             {{ $rawItems = $data.channel.item }}
@@ -35,7 +32,6 @@
             {{ $rawItems = $data.entry }}
           {{ end }}
 
-          {{/* Guard 4: normalize single-item results into a slice */}}
           {{ if reflect.IsSlice $rawItems }}
             {{ $items = $rawItems }}
           {{ else if $rawItems }}
@@ -49,7 +45,6 @@
     
   {{ end }}
 
-  {{/* Guard 5: only render the list if we actually have items */}}
   {{ if gt (len $items) 0 }}
     <ul class="list-unstyled">
       {{ range first $limit $items }}
