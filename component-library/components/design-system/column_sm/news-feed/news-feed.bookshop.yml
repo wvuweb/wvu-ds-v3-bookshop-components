@@ -1,0 +1,40 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - column_blocks_sm
+  label: "News Feed"
+  description: RSS or XML news feed.
+  icon: rss_feed
+  tags: [list]
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  heading: "News"
+  xml_feed: ""
+  article_limit: 3
+  postscript_links: []
+  
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+  text: "XML News Feed"
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  postscript_links:
+    type: array
+    options:
+      structures: _structures.links  
+  article_limit:
+    type: number
+    label: Number of Articles
+  xml_feed:
+    type: url
+    label: Feed URL
+_structures:
+  links:
+    style: select
+    values:
+      - value:
+          text:
+          icon:
+          url:

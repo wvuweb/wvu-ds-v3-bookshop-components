@@ -1,0 +1,85 @@
+<div class="h-100 mb-n3">
+  <h2 class="h4 mb-4 wvu-b-label">{{ .heading }}</h2>
+
+  {{ $limit := .article_limit }}
+  {{ $items := slice }}
+  {{ $isRSS := false }}
+
+  {{ if .xml_feed }}
+    {{ if site.Params.env_bookshop_live }}
+      {{ partial "bookshop" (slice "design-system/generic/collection-tooltip-dynamic-component" .) }}
+    {{ else }}
+      {{ $url := .xml_feed }}
+
+      {{/* Guard 1: fetch can fail (bad URL, network issue, feed down) */}}
+      {{ $resource := try (resources.GetRemote $url) }}
+
+      {{ if $resource.Err }}
+        {{ warnf "newsfeed-xml: failed to fetch %s: %s" $url $resource.Err }}
+      {{ else if $resource.Value }}
+
+        {{/* Guard 2: unmarshal can fail on malformed/non-XML content */}}
+        {{ $parsed := try (transform.Unmarshal $resource.Value) }}
+
+        {{ if $parsed.Err }}
+          {{ warnf "newsfeed-xml: failed to parse %s: %s" $url $parsed.Err }}
+        {{ else if $parsed.Value }}
+          {{ $data := $parsed.Value }}
+
+          {{/* Guard 3: figure out RSS vs Atom, defaulting to empty if neither shape matches */}}
+          {{ $rawItems := slice }}
+          {{ if $data.channel }}
+            {{ $rawItems = $data.channel.item }}
+            {{ $isRSS = true }}
+          {{ else if $data.entry }}
+            {{ $rawItems = $data.entry }}
+          {{ end }}
+
+          {{/* Guard 4: normalize single-item results into a slice */}}
+          {{ if reflect.IsSlice $rawItems }}
+            {{ $items = $rawItems }}
+          {{ else if $rawItems }}
+            {{ $items = slice $rawItems }}
+          {{ end }}
+
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ else }}
+    
+  {{ end }}
+
+  {{/* Guard 5: only render the list if we actually have items */}}
+  {{ if gt (len $items) 0 }}
+    <ul class="list-unstyled">
+      {{ range first $limit $items }}
+        <li class="row mb-2 position-relative">
+          <div>
+            <h3 class="wvu-b-display-title h6">
+              <a href="{{ .link | safeHTML }}" class="text-decoration-none stretched-link">{{ .title | safeHTML }}</a>
+            </h3>
+            <p class="small">
+              {{ if $isRSS }}
+                {{ .pubDate | time.Format "Monday, January 2, 2006" }}
+              {{ else }}
+                {{ .date | time.Format "Monday, January 2, 2006" }}
+              {{ end }}
+            </p>
+          </div>
+        </li>
+      {{ end }}
+    </ul>
+  {{ else }}
+    <p class="small text-wvu-seneca-gray">No stories available right now.</p>
+  {{ end }}
+
+  <div class="small">
+    {{ if .postscript_links }}
+      <div class="mt-2">
+        {{ range .postscript_links }}
+          <a href="{{ .url }}" class="d-inline-block me-2">{{ .text }} <span class="fa-solid fa-{{ .icon }}"></span></a>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</div>
