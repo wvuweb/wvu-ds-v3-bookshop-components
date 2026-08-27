@@ -6,8 +6,16 @@
       </div>
     {{ end }}
     <div class="">
-      {{ with .heading }}
-        <h2 class="fs-3">{{ . }}</h2>
+      {{ if eq .heading_level "h3" }}
+        <h3 class="fs-3">{{ .heading }}</h3>
+      {{ else if eq .heading_level "h4" }}
+        <h4 class="fs-3">{{ .heading }}</h4>
+      {{ else if eq .heading_level "h5" }}
+        <h5 class="fs-3">{{ .heading }}</h5>
+      {{ else if eq .heading_level "h6" }}
+        <h6 class="fs-3">{{ .heading }}</h6>
+      {{ else }}
+        <h2 class="fs-3">{{ .heading }}</h2>
       {{ end }}
       {{ .markdown | markdownify }}
     </div>
