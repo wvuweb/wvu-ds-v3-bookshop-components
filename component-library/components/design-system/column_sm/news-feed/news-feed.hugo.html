@@ -65,7 +65,9 @@
       {{ end }}
     </ul>
   {{ else }}
-    <p class="small config-light">No stories available right now.</p>
+    {{ if not site.Params.env_bookshop_live }}
+      <p class="small config-light">No stories available right now.</p>
+    {{ end }}
   {{ end }}
 
   <div class="small">
