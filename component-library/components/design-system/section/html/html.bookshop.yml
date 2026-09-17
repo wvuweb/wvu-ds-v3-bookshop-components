@@ -1,0 +1,37 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: "HTML"
+  description: Add HTML markup.
+  icon: code
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  code:
+  is_dynamic: false
+  is_nested: false
+  use_common_wrapper: false
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  code:
+    type: code
+    label: Example Code
+    comment: Enter the example code you want to display.
+    options:
+      max_visible_lines: 30
+      min_visible_lines: 15
+      show_gutter: true
+      syntax: html
+  is_dynamic:
+    hidden: true
+  is_nested:
+    hidden: true
+  use_common_wrapper:
+    type: auto
+    hidden: true
