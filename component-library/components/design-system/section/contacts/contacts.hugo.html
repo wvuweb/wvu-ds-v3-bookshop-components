@@ -71,6 +71,28 @@
             {{ else }}
               <h3 class="h5 mt-3">{{ $contact.name }}</h3>
             {{ end }}
+
+            {{ if $contact.job_position }}
+              {{ range $contact.job_position }}
+                <p class="small mb-0 mt-n1">
+                  {{ if .job_title }}
+                    {{ range .job_title }}
+                      <span class="d-block">{{ . }}</span>
+                    {{ end }}
+                  {{ end }}
+                  {{ if .organization }}
+                    <span class="d-block">{{ .organization }}</span>
+                  {{ end }}
+                </p>
+              {{ end }}
+            {{ else if $contact.job_title }}
+              <p class="small mb-0 mt-n1">
+                {{ range $contact.job_title }}
+                  <span class="d-block">{{ . }}</span>
+                {{ end }}
+              </p>
+            {{ end }}
+            
             {{ with $contact.staff_contact_info }}
               <p class="small">
                 {{ range . }}
