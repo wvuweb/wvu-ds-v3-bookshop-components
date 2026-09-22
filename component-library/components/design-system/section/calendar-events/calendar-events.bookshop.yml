@@ -82,8 +82,6 @@ _inputs:
       values: _select_data.color_palettes
       value_key: class
     cascade: true
-  copy:
-    type: markdown
   event_feed:
     type: code
     options:
