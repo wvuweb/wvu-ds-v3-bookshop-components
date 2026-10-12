@@ -137,12 +137,14 @@
                         {{ end }}
 
                         {{ with .postscript }}
-                          <div class="text-center mt-5">
-                            {{ with .copy }}
-                              <div class="mb-4">
-                                {{ . | markdownify }}
-                              </div>
-                            {{ end }}
+                          <div class="container text-center mt-5">
+                            <div class="col-xl-16 mx-xl-auto">
+                              {{ with .copy }}
+                                <div class="mb-4">
+                                  {{ . | markdownify }}
+                                </div>
+                              {{ end }}
+                            </div>
                           </div>
                         {{ end }}
                       {{ else }}
