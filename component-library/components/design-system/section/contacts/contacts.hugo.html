@@ -56,7 +56,7 @@
 
                 {{/* Resize images and add them to a variable  */}}
                 {{ if and $image (ne $image.MediaType.SubType "svg") }}
-                  {{ $src = ($image.Fill (printf "%dx%d webp" 960 960)).RelPermalink }}
+                  {{ $src = ($image.Fill (printf "%dx%d webp Center" 960 960)).RelPermalink }}
                 {{ end }}
               {{- end -}}
               <div class="w-100 d-flex justify-content-center">
