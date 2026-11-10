@@ -1,0 +1,88 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - detail_blocks
+  label: "Tabs"
+  description: Tabbed UI.
+  icon: tabs
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  heading: Heading
+  subheading: Subheading.
+  aria_label:
+  items:
+    - title: Item 1 Title
+      image:
+      alt_text:
+      date: January 1, 1111
+      time: 12:00 PM
+      icon: clock
+      text: Item 1 text.
+      ctas:
+  postscript:
+    copy:
+  is_dynamic: false
+  is_nested: false
+  use_common_wrapper: true
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  alt_text:
+    hidden: '!image'
+    options:
+      required: true
+  aria_label:
+    label: ARIA Label
+    hidden: 'heading'
+    options:
+      required: true
+    context:
+      content: If your component doesn’t have a heading, it needs an <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">ARIA label</a> to be accessible. Enter a concise label to provide a clear and useful name for this component e.g. “Featured News Stories.”
+  ctas:
+    type: array
+    options:
+      structures: _structures.links
+  image:
+    type: image
+    options:
+      allowed_sources:
+        - ccdam
+      width: 1920
+      height: 1080
+  text:
+    type: markdown
+    options:
+      bold: true
+      bulletedlist: true
+      embed: true
+      format: p h1 h2 h3 h4 h5 h6 pre address div
+      italic: true
+      image: false
+      indent: true
+      join_above: true
+      join_below: true
+      link: true
+      numberedlist: true
+      outdent: true
+      strike: true
+      subscript: true
+      superscript: true
+      table: true
+      underline: true
+      code: true
+      style: /assets/scss/custom/_content.scss
+  settings:
+    config:
+      name: timeline
+_structures:
+  links:
+    values:
+      - value:
+          text:
+          icon:
+          url:

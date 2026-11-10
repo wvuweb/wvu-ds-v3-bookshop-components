@@ -1,0 +1,95 @@
+<div class="row gx-xl-6">
+  <div class="col-xl-10">   
+    <div class="sticky-xl-top">
+      <div class="mt-xl-n5 pt-xl-5 mb-5 pb-3">
+        <h2 id="{{ .heading | urlize }}" class="wvu-b-label h1 mb-3"><span class="wvu-b-font-adjust">{{ .heading }}</span></h2>
+          {{ with .subheading }}
+            <p class="config-light fs-5 mb-3">{{ . }}</p>
+          {{ end }}
+          {{ with .copy }}
+            <p class="mb-3">{{ . | markdownify }}</p>
+          {{ end }}
+      </div>
+    </div>
+  </div>
+  <div class="col-xl">
+    {{ range .items }}
+      <div class="pb-5 ms-4 ps-4 position-relative wvu-z-index-content timeline-item border-start border-dark border-5">
+        <div class="position-absolute item-container d-flex text-center align-items-center bg-{{ .settings.styles.color_palette }} {{ if .settings.styles.bg_subtle }}wvu-b-subtle{{ end }}" style="left:-41px">
+          <div class="d-flex text-center align-items-center mx-auto icon-circle btn btn-sm wvu-b-btn">
+            {{ if .icon }}
+            <span class="fa-regular fa-{{ .icon }} mx-auto" aria-hidden="true"></span>
+            {{ else }}
+            <span class="fa-regular fa-clock mx-auto" aria-hidden="true"></span>
+            {{ end }}
+          </div>
+        </div>
+        <div class="px-4 d-md-flex flex-row-reverse">
+          {{ if .image }}
+            <div class="col-18 col-md-9">
+                {{ $src := .image }}
+
+                {{- if not site.Params.env_bookshop_live -}}
+                    {{ $image := "" }}
+                    {{/*  Get the image, either from its remote or local source  */}}
+                    {{ if hasPrefix $src "http"}}
+                    {{ $image = resources.GetRemote .image }}
+                    {{ else }}
+                    {{ $image = resources.Get .image }}
+                    {{ end }}
+                
+                    {{/* Resize images and add them to a variable  */}}
+                    {{ if and $image (ne $image.MediaType.SubType "svg") }}
+                    {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+                    {{ end }}
+                {{- end -}}
+
+                
+                <div class="ratio ratio-3x2 wvu-b-border wvu-b-shadow mb-4 mb-lg-0">
+                    <img loading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
+                </div>
+            </div>
+          {{ end }}
+
+          <div class="col-md pe-md-4">
+            <h3 id="{{ .title | urlize }}" class="pt-2 h2">{{ .title }}</h3>
+            {{ if or .date .time }}
+                <p class="lead fs-5 mb-2 wvu-b-accent-text">{{ if .date }}{{ .date }}{{ end }}{{ if .time }} - {{ .time }}{{ end }}</p>
+            {{ end }}
+
+            <p>{{ .text | markdownify }}</p>
+
+            {{ if .ctas }}
+                <div>
+                {{ range .ctas }}
+                    <a class="btn wvu-b-btn mb-1" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+                {{ end }}
+                </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+</div>
+
+<style>
+    .timeline-item:last-of-type{
+        border-left: 6px solid transparent !important;
+    }
+
+    .item-container {
+        width: 76px !important; 
+        height: 76px !important; 
+        border-radius: 50%;
+        color: aliceblue !important;
+    }
+
+    .icon-circle {
+        width: 66px !important; 
+        height: 66px !important; 
+        border-radius: 50%;
+        font-size: 1.25em;
+        background-color: var(--bs-btn-bg);
+    }
+</style>
