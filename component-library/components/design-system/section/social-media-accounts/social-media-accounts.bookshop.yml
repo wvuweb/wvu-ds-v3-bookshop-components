@@ -66,6 +66,8 @@ _inputs:
       values: _select_data.buffers
       value_key: class
     cascade: true
+  class:
+    label: Icon
   color_palette:
     type: choice
     options:
