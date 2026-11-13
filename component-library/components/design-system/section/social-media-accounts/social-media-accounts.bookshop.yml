@@ -12,8 +12,8 @@ spec:
 blueprint:
   heading: Follow Us
   items:
-    - class:
-      platform:
+    - platform:
+      class:
       username:
       url:
   settings:
