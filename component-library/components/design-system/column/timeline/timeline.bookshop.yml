@@ -48,7 +48,7 @@ _inputs:
     options:
       structures: _structures.links
   date:
-    instance_value: NOW
+    type: text
   time:
     options:
       timezone: America/New_York
