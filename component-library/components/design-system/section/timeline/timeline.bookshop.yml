@@ -17,7 +17,7 @@ blueprint:
     - title: Item 1 Title
       image:
       alt_text:
-      date: January 1, 1111
+      date: January 1, 2027
       time: 12:00 pm
       icon: clock
       text: Item 1 text.
@@ -114,10 +114,6 @@ _inputs:
       structures: _structures.links
   date:
     type: text
-  time:
-    options:
-      timezone: America/New_York
-    instance_value: NOW
   heading:
     options:
       required: true
@@ -156,6 +152,9 @@ _inputs:
       underline: true
       code: true
       style: /assets/scss/custom/_content.scss
+  time:
+    options:
+      timezone: America/New_York
   margin:
     type: select
     options:
