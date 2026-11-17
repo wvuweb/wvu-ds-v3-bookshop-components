@@ -124,6 +124,10 @@ _inputs:
       height: 1080
   include_heading_postscript:
     hidden: true
+  is_dynamic:
+    hidden: true
+  is_nested:
+    hidden: true
   text:
     type: markdown
     options:

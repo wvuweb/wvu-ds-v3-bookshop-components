@@ -54,6 +54,10 @@ _inputs:
         - ccdam
       width: 1920
       height: 1080
+  is_dynamic:
+    hidden: true
+  is_nested:
+    hidden: true
   text:
     type: markdown
     options:
