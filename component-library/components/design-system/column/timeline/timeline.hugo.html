@@ -69,6 +69,11 @@
       </aside>
     {{ end }}
   </div><!-- End items --> 
+  {{ if .postscript }}
+    <div class="mt-4">
+      {{ .postscript.copy | markdownify }}
+    </div>
+  {{ end }}
 </section>
 
 <style>

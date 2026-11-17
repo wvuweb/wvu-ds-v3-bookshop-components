@@ -23,6 +23,8 @@ blueprint:
       icon: clock
       text: Item 1 text.
       ctas:
+  postscript:
+    copy:
   settings:
     styles:
       audience: general

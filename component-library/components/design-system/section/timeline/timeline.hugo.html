@@ -84,6 +84,11 @@
       </aside>
     {{ end }}
   </div> <!-- End timeline items -->
+  {{ if .postscript }}
+    <div class="mt-4">
+      {{ .postscript.copy | markdownify }}
+    </div>
+  {{ end }}
 </div>
 
 <style>
