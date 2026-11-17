@@ -11,6 +11,13 @@
           {{ with .copy }}
             <p class="mb-3">{{ . | markdownify }}</p>
           {{ end }}
+        {{ if .ctas }}
+          <div>
+            {{ range .ctas }}
+              <a class="btn wvu-b-btn mb-1" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+            {{ end }}
+          </div>
+        {{ end }}
       </div>
     </div>
   </div> <!-- End heading and subheading -->

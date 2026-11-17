@@ -13,6 +13,7 @@ blueprint:
   subheading: Subheading.
   aria_label:
   copy:
+  ctas:
   items:
     - title: Item 1 Title
       image:
