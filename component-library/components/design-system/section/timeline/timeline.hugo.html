@@ -24,7 +24,7 @@
   <div class="col-xl"> <!-- Start timeline items -->
     {{ $styles := .settings.styles }}
     {{ range .items }}
-      <aside class="timeline-item wvu-z-index-content position-relative pb-5 ms-4 ps-4 border-start border-5" aria-labelledby="{{ .title | urlize }}" style="border-color: var(--bs-btn-bg);">
+      <aside class="timeline-item wvu-z-index-content position-relative pb-5 ms-4 ps-4 border-start border-5" aria-labelledby="{{ .title | urlize }}">
         <div class="icon-container position-absolute d-flex text-center align-items-center bg-{{ $styles.color_palette }} {{ if $styles.bg_subtle }}wvu-b-subtle{{ end }}"> <!-- Start icon -->
           <div class="icon-circle d-flex text-center align-items-center mx-auto btn btn-sm wvu-b-btn">
             {{ if .icon }}
@@ -87,6 +87,10 @@
 </div>
 
 <style>
+    .timeline-item{
+      border-color: var(--bs-btn-bg) !important;
+    }
+    
     .timeline-item:last-of-type{
         border-left: 6px solid transparent !important;
     }
