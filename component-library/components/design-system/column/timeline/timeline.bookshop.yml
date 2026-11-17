@@ -43,6 +43,28 @@ _inputs:
       required: true
     context:
       content: If your component doesn’t have a heading, it needs an <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">ARIA label</a> to be accessible. Enter a concise label to provide a clear and useful name for this component e.g. “Featured News Stories.”
+  copy:
+    type: markdown
+    options:
+      bold: true
+      bulletedlist: true
+      embed: true
+      format: p h1 h2 h3 h4 h5 h6 pre address div
+      italic: true
+      image: false
+      indent: true
+      join_above: true
+      join_below: true
+      link: true
+      numberedlist: true
+      outdent: true
+      strike: true
+      subscript: true
+      superscript: true
+      table: true
+      underline: true
+      code: true
+      style: /assets/scss/custom/_content.scss
   ctas:
     type: array
     options:
