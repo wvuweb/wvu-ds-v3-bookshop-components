@@ -18,7 +18,7 @@ blueprint:
       image:
       alt_text:
       date: January 1, 1111
-      time: 12:00 PM
+      time: 12:00 pm
       icon: clock
       text: Item 1 text.
       ctas:
