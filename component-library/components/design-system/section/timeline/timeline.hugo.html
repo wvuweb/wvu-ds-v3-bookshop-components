@@ -62,9 +62,9 @@
 
           <div class="col-md pe-md-5">
             {{ if not $heading }}
-              <h2 id="{{ .title | urlize }}" class="pt-2 wvu-b-accent-text"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
+              <h2 id="{{ .title | urlize }}" class="pt-2"><span class="wvu-b-font-adjust">{{ .title }}</span></h2>
             {{ else }}
-              <h3 id="{{ .title | urlize }}" class="h2 pt-2 wvu-b-accent-text"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
+              <h3 id="{{ .title | urlize }}" class="h2 pt-2"><span class="wvu-b-font-adjust">{{ .title }}</span></h3>
             {{ end }}
             {{ if or .date .time }}
               <p class="lead fs-5 mb-2 wvu-b-accent-text">{{ if .date }}{{ .date }}{{ end }}{{ if .time }} - {{ .time }}{{ end }}</p>
