@@ -4,7 +4,7 @@ spec:
     - detail_blocks
   label: "Timeline"
   description: A timeline with dates, times and descriptions.
-  icon: clock
+  icon: more_time
   tags: []
 
 # Defines the structure of this component, as well as the default values

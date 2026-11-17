@@ -1,10 +1,10 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - detail_blocks
+    - content_blocks
   label: "Timeline"
   description: A timeline with dates, times and descriptions.
-  icon: clock
+  icon: more_time
   tags: []
 
 # Defines the structure of this component, as well as the default values
