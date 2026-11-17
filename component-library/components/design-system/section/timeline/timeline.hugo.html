@@ -1,3 +1,5 @@
+{{ $heading := .heading }}
+
 <div class="row gx-xl-6">
   <div class="col-xl-10"> <!-- Start heading and subheading -->   
     <div class="sticky-xl-top">
@@ -52,7 +54,7 @@
           {{ end }}
 
           <div class="col-md pe-md-5">
-            {{ if not .heading }}
+            {{ if not $heading }}
               <h2 id="{{ .title | urlize }}" class="pt-2">{{ .title }}</h2>
             {{ else }}
               <h3 id="{{ .title | urlize }}" class="h2 pt-2">{{ .title }}</h3>
