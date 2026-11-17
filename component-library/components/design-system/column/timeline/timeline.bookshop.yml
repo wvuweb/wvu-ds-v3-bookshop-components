@@ -88,6 +88,9 @@ _inputs:
   settings:
     config:
       name: timeline
+  use_common_wrapper:
+    type: auto
+    hidden: true
 _structures:
   links:
     values:
