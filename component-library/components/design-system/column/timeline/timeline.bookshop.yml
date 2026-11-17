@@ -2,9 +2,9 @@
 spec:
   structures:
     - detail_blocks
-  label: "Tabs"
-  description: Tabbed UI.
-  icon: tabs
+  label: "Timeline"
+  description: A timeline with dates, times and descriptions.
+  icon: clock
   tags: []
 
 # Defines the structure of this component, as well as the default values
