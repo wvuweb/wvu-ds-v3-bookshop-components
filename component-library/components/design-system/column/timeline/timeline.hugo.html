@@ -1,81 +1,97 @@
 {{ $heading := .heading }}
-
-<div class="audience-general tone-loud">
-  <div>   
+<section {{ if .aria_label }}aria-label="{{ .aria_label}}"{{ else}}aria-labelledby="{{ .heading | urlize }}"{{ end }}> 
+  <div> <!-- Start heading --> 
     {{ if .heading }}
       <h2 id="{{ .heading | urlize }}">{{ .heading }}</h2>
       {{ with .subheading }}
         <p class="lead">{{ . }}</p>
       {{ end }}
     {{ end }}
-  </div>
-  <div class="mt-5">
+  </div> <!-- End heading -->
+  <div class="mt-5"> <!-- Start items -->
     {{ range .items }}
-      <div class="pb-5 ms-4 ps-4 position-relative wvu-z-index-content timeline-item">
-        <div class="position-absolute" style="left:-36px">
-            <div class="d-flex text-center align-items-center bg-wvu-blue h4 icon-circle">
-                {{ if .icon }}
-                <span class="fa-regular fa-{{ .icon }} text-white mx-auto" aria-hidden="true"></span>
-                {{ else }}
-                <span class="fa-regular fa-clock text-white mx-auto" aria-hidden="true"></span>
-                {{ end }}
-            </div>
+      <aside class="timeline-item wvu-z-index-content position-relative pb-5 ms-4 ps-4 border-start border-5" aria-labelledby="{{ .title | urlize }}">
+        <div class="icon-container position-absolute d-flex text-center align-items-center bg-option-1 wvu-b-subtle"> 
+          <div class="icon-circle d-flex text-center align-items-center mx-auto btn btn-sm wvu-b-btn">
+            {{ if .icon }}
+              <span class="fa-regular fa-{{ .icon }} text-white mx-auto" aria-hidden="true"></span>
+            {{ else }}
+              <span class="fa-regular fa-clock text-white mx-auto" aria-hidden="true"></span>
+            {{ end }}
+          </div>
         </div>
-        <div class="px-4 pt-1 d-lg-flex flex-row-reverse">
+        <div class="px-4 d-md-flex flex-row-reverse">
           {{ if .image }}
-            <div class="col-md-16 col-lg-10">
-                {{ $src := .image }}
+            <div class="col-18 col-md-9 audience-general tone-loud">
+              {{ $src := .image }}
 
-                {{- if not site.Params.env_bookshop_live -}}
-                    {{ $image := "" }}
-                    {{/*  Get the image, either from its remote or local source  */}}
-                    {{ if hasPrefix $src "http"}}
-                    {{ $image = resources.GetRemote .image }}
-                    {{ else }}
-                    {{ $image = resources.Get .image }}
-                    {{ end }}
-                
-                    {{/* Resize images and add them to a variable  */}}
-                    {{ if and $image (ne $image.MediaType.SubType "svg") }}
-                    {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
-                    {{ end }}
-                {{- end -}}
+              {{- if not site.Params.env_bookshop_live -}}
+                  {{ $image := "" }}
+                  {{/*  Get the image, either from its remote or local source  */}}
+                  {{ if hasPrefix $src "http"}}
+                  {{ $image = resources.GetRemote .image }}
+                  {{ else }}
+                  {{ $image = resources.Get .image }}
+                  {{ end }}
+              
+                  {{/* Resize images and add them to a variable  */}}
+                  {{ if and $image (ne $image.MediaType.SubType "svg") }}
+                  {{ $src = ($image.Fill (printf "%dx%d webp" 960 640)).RelPermalink }}
+                  {{ end }}
+              {{- end -}}
 
-                
-                <div class="ratio ratio-3x2 wvu-b-border wvu-b-shadow mb-4 mb-lg-0">
-                    <img loading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
-                </div>
+              <div class="ratio ratio-3x2 wvu-b-border wvu-b-shadow mb-4 mb-lg-0">
+                <img loading="lazy" class="object-fit-cover" src="{{ $src }}" alt="{{ .alt_text }}" />
+              </div>
             </div>
           {{ end }}
-          <div class="col-lg pe-lg-4">
+          <div class="col-md pe-md-5">
             {{ if not $heading }}
-                <h2 id="{{ .title | urlize }}" class="h3 pt-2">{{ .title }}</h2>
+              <h2 id="{{ .title | urlize }}" class="h3 pt-2">{{ .title }}</h2>
             {{ else }}
-                <h3 id="{{ .title | urlize }}" class="pt-2">{{ .title }}</h3>
+              <h3 id="{{ .title | urlize }}" class="pt-2">{{ .title }}</h3>
             {{ end }}
-
             {{ if or .date .time }}
-                <p class="lead fs-5 mb-2 text-wvu-rattler-gray">{{ if .date }}{{ .date }}{{ end }}{{ if .time }} - {{ .time }}{{ end }}</p>
+              <p class="lead fs-5 mb-2 text-wvu-rattler-gray">{{ if .date }}{{ .date }}{{ end }}{{ if .time }} - {{ .time }}{{ end }}</p>
             {{ end }}
 
             <p>{{ .text | markdownify }}</p>
 
             {{ if .ctas }}
-                <div>
+              <div>
                 {{ range .ctas }}
-                    <a class="btn btn-sm wvu-b-btn mb-1" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+                  <a class="btn btn-sm wvu-b-btn mb-1" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
                 {{ end }}
-                </div>
+              </div>
             {{ end }}
           </div>
         </div>
-      </div>
+      </aside>
     {{ end }}
-  </div>
-</div>
+  </div><!-- End items --> 
+</section>
 
 <style>
-    .timeline-item{
+  .timeline-item:last-of-type{
+        border-left: 6px solid transparent !important;
+    }
+
+    .icon-container {
+        width: 76px !important; 
+        height: 76px !important; 
+        border-radius: 50%;
+        left:-41px; 
+        top:-0.5em;
+    }
+
+    .icon-circle {
+        width: 66px !important; 
+        height: 66px !important; 
+        border-radius: 50%;
+        font-size: 1.5em;
+        background-color: var(--bs-btn-bg);
+    }
+    /*.timeline-item{
         border-left: 6px solid var(--bs-border-color);
     }
 
@@ -88,5 +104,5 @@
         width: 66px; 
         height: 66px; 
         border-radius: 50%;
-    }
+    }*/
 </style>
