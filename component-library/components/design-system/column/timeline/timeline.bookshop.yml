@@ -47,6 +47,12 @@ _inputs:
     type: array
     options:
       structures: _structures.links
+  date:
+    instance_value: NOW
+  time:
+    options:
+      timezone: America/New_York
+    instance_value: NOW
   image:
     type: image
     options:
